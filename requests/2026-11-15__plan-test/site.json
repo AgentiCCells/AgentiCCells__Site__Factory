@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "name": "Plan test",
+  "domain": "plan-test.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__PlanTest" },
+  "requested_by": "factory@AgentiCCells.dinis"
+}
