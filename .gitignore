@@ -8,7 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
+# build/ is not ignored here: build/ holds the factory scripts (factory@, 2026-11-15)
 develop-eggs/
 dist/
 downloads/

@@ -1,0 +1,45 @@
+name: Apply (dry run)
+# Apply on merge. FAC-003: a dry run that writes status.json back to dev and
+# creates nothing. No secrets. The only write is this repository's contents,
+# with the workflow's own short-lived token.
+on:
+  push:
+    branches: [dev]
+    paths: ['requests/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: apply
+  cancel-in-progress: false
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node test/run.mjs
+      - run: node build/leak-scan.mjs
+      # Every pending request is handled, not only this push's, so a run that
+      # GitHub cancels while queued loses nothing.
+      - name: Write status.json for pending requests
+        run: node build/apply.mjs --dry-run
+      - name: Commit the status files back to dev
+        run: |
+          git add requests
+          if git diff --cached --quiet; then echo "nothing to write back"; exit 0; fi
+          node build/leak-scan.mjs
+          git -c user.name="factory-apply" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Write back request status (dry run)" -m "Agent: factory-apply@AgentiCCells.dinis"
+          for i in 1 2 3 4 5; do
+            git push -q origin HEAD:dev && exit 0
+            sleep $((i * 3)); git pull -q --rebase origin dev
+          done
+          echo "push failed after 5 attempts" >&2; exit 1

@@ -9,10 +9,12 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 
 - `build/validate.mjs` (checks every request folder; the allowed zone is agenticcells.site only), `build/plan.mjs` (Markdown plan, reads files only), `test/` (good and bad fixtures, `node test/run.mjs`), all run locally 2026-11-15 and printing OK.
 - `build/leak-scan.mjs`, copied from AgentiCCells__Website `dev` (author security@, Apache-2.0), with one change: site/ is scanned only if it exists. Run locally: OK.
+- `.gitignore` (GitHub's Python template) ignored `build/`, so commit c136441 pushed the plan workflow without the scripts it runs. Found by factory@ 2026-11-15 ~21:28 UTC and fixed in the next commit.
+- `build/apply.mjs` and `.github/workflows/apply.yml`: on a push to dev that touches requests/, write `status.json` (mode dry-run, state planned or failed) for every request whose status is missing or older than its site.json, and commit it back to dev with the workflow's own token. Tested locally on a copy: writes once, a second run writes nothing, the validator accepts the result. **Not yet run on GitHub.** Creates nothing.
 - `.github/workflows/plan.yml`: tests, validate, leak scan and a plan comment on pull requests to dev. **Written, not yet run on GitHub.** Job 1 has a read-only token; the comment job has pull-requests: write and checks out nothing.
 
 ## Does not exist yet
-- No apply job, no CI versioning, no commit-trailer check, no release script.
+- No real apply step, no CI versioning, no commit-trailer check, no release script.
 - No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
 - No hosted zone for agenticcells.site: on 2026-11-15 20:46 UTC it was still on the registrar's default nameservers (source: ACC-027).
 - The template, website and hub repositories exist (created by Dinis) but factory@ has not touched them.
