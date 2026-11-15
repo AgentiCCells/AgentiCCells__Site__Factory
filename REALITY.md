@@ -15,11 +15,13 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 
 - First request: `requests/2026-11-15__agenticcells-site/` (agenticcells.site, AgentiCCells__Site__Website), merged by Dinis 2026-11-15 21:42 UTC; status planned, dry run.
 
+- AgentiCCells__Site__Template (FAC-004): build, validator, leak scan, Agent: trailer check, CI versioning, release script and CLAUDE.md, cut down from AgentiCCells__Website. Without a CNAME it is built, checked and tagged but not deployed. First CI run 2026-11-15 21:49 UTC passed and tagged v0.1.0. Not yet used to seed a site.
+
 ## Does not exist yet
 - No real apply step, no CI versioning, no commit-trailer check, no release script.
 - No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
 - No hosted zone for agenticcells.site: on 2026-11-15 20:46 UTC it was still on the registrar's default nameservers (source: ACC-027).
-- The template, website and hub repositories exist (created by Dinis) but factory@ has not touched them.
+- The website and hub repositories exist (created by Dinis); factory@ has not touched them.
 
 ## Facts about the specification
 - The pipeline's model is `map/site-creation.md` in AgentiCCells__Website: a map of what that repository did by hand, with a list of what a person must do today.
