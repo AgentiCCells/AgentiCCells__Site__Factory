@@ -10,8 +10,10 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 - `build/validate.mjs` (checks every request folder; the allowed zone is agenticcells.site only), `build/plan.mjs` (Markdown plan, reads files only), `test/` (good and bad fixtures, `node test/run.mjs`), all run locally 2026-11-15 and printing OK.
 - `build/leak-scan.mjs`, copied from AgentiCCells__Website `dev` (author security@, Apache-2.0), with one change: site/ is scanned only if it exists. Run locally: OK.
 - `.gitignore` (GitHub's Python template) ignored `build/`, so commit c136441 pushed the plan workflow without the scripts it runs. Found by factory@ 2026-11-15 ~21:28 UTC and fixed in the next commit.
-- `build/apply.mjs` and `.github/workflows/apply.yml`: on a push to dev that touches requests/, write `status.json` (mode dry-run, state planned or failed) for every request whose status is missing or older than its site.json, and commit it back to dev with the workflow's own token. Tested locally on a copy: writes once, a second run writes nothing, the validator accepts the result. **Not yet run on GitHub.** Creates nothing.
+- `build/apply.mjs` and `.github/workflows/apply.yml`: on a push to dev that touches requests/, write `status.json` (mode dry-run, state planned or failed) for every request whose status is missing or older than its site.json, and commit it back to dev with the workflow's own token. Tested locally on a copy: writes once, a second run writes nothing, the validator accepts the result. **First run on GitHub 2026-11-15 21:42 UTC** after Dinis merged pull request #2: it wrote `requests/2026-11-15__agenticcells-site/status.json` (state planned, mode dry-run) and pushed it to dev as commit c0e8312 with the workflow's own token; no settings change was needed. Creates nothing.
 - `.github/workflows/plan.yml`: tests, validate, leak scan and a plan comment on pull requests to dev. **Written, not yet run on GitHub.** Job 1 has a read-only token; the comment job has pull-requests: write and checks out nothing.
+
+- First request: `requests/2026-11-15__agenticcells-site/` (agenticcells.site, AgentiCCells__Site__Website), merged by Dinis 2026-11-15 21:42 UTC; status planned, dry run.
 
 ## Does not exist yet
 - No real apply step, no CI versioning, no commit-trailer check, no release script.
