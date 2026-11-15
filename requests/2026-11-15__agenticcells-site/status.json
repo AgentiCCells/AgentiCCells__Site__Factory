@@ -1,0 +1,51 @@
+{
+  "request": "2026-11-15__agenticcells-site",
+  "state": "planned",
+  "mode": "dry-run",
+  "updated": "2026-11-15T21:42:54Z",
+  "commit": "13ed329c531be43693693aa2889461490cb33f1b",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-15T21:42:54Z"
+    },
+    {
+      "name": "repo",
+      "result": "dry-run",
+      "detail": "not performed: dry run",
+      "time": "2026-11-15T21:42:54Z"
+    },
+    {
+      "name": "dns",
+      "result": "dry-run",
+      "detail": "not performed: dry run",
+      "time": "2026-11-15T21:42:54Z"
+    },
+    {
+      "name": "vault",
+      "result": "dry-run",
+      "detail": "not performed: dry run",
+      "time": "2026-11-15T21:42:54Z"
+    },
+    {
+      "name": "seed",
+      "result": "dry-run",
+      "detail": "not performed: dry run",
+      "time": "2026-11-15T21:42:54Z"
+    },
+    {
+      "name": "https",
+      "result": "dry-run",
+      "detail": "not performed: dry run",
+      "time": "2026-11-15T21:42:54Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "dry-run",
+      "detail": "not performed: dry run",
+      "time": "2026-11-15T21:42:54Z"
+    }
+  ]
+}
