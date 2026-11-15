@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "name": "AgentiCCells site",
+  "domain": "agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Website" },
+  "template": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Template", "ref": "dev" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "requested_by": "factory@AgentiCCells.dinis"
+}
