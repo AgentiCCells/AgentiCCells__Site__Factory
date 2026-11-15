@@ -4,8 +4,10 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import { checkRequest } from './validate.mjs';
 
-// Text from a request is data. Neutralise Markdown and mentions before it goes in a comment.
-const safe = (v) => String(v).replace(/[`<>@|\r\n\\*_\[\]]/g, ' ').slice(0, 120);
+// Text from a request is data. Each value goes in an inline code span, where
+// Markdown, HTML and @mentions are not processed; backticks, pipes and line
+// breaks are removed so the span and the table cannot be broken out of.
+const safe = (v) => '`' + String(v).replace(/[`|\r\n]/g, ' ').slice(0, 120) + '`';
 
 const out = ['## Site factory plan', '', '_Dry run on the pull request. Nothing has been created. No secrets or cloud access are used here._', ''];
 let failed = false;
@@ -30,7 +32,7 @@ for (const f of folders) {
     '| seed | push a first page |',
     `| https | check https://${safe(s.domain)} answers |`,
     `| first-pass | ${first ? 'run a first pass with Claude Code' : 'skipped (not requested)'} |`, '',
-    `Requested by ${safe(s.requested_by)}. Until FAC-003 and FAC-005 exist, apply is not built.`, '');
+    `Requested by ${safe(s.requested_by)}. Apply is a dry run for now (FAC-003): it writes status.json and creates nothing until the credentials of FAC-005 exist.`, '');
 }
 console.log(out.join('\n'));
 process.exit(failed ? 1 : 0);
