@@ -25,6 +25,7 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 ## Does not exist yet
 - Real apply steps (FAC-005): `build/real.mjs` (repo, seed, settings, dns, domain, deploy, https), `build/io.mjs` (GitHub API, seed push, Route 53, HTTPS), and the `real` job in `.github/workflows/apply.yml`, for requests marked `"apply": "real"`. Tested on 2026-11-16 with fakes (`test/real.mjs`) and, for the seed, against the real template pushing to a local bare repository: the seeded site's own gates passed. **Never run against GitHub or AWS**: the App and the AWS role do not exist yet.
 - `docs/aws-oidc.md`: proposal for the Route 53 role (trust and permission policies). Not carried out.
+- `docs/SETUP.md` (step by step for Dinis) and two manual check workflows, `check-github-app.yml` and `check-aws.yml`, which report what is set up and what is missing. Never run yet.
 - No CI versioning, no commit-trailer check, no release script.
 - No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
 - The website and hub repositories exist (created by Dinis); factory@ has not touched them.

@@ -1,0 +1,36 @@
+name: Check GitHub App setup
+# Manual. Reads the App's installation and permissions; changes nothing.
+# Runs in the `apply` environment, where the App's ID and key live.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: apply
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check the App
+        env:
+          FACTORY_APP_ID: ${{ vars.FACTORY_APP_ID }}
+          FACTORY_APP_PRIVATE_KEY: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+        run: node build/check-app.mjs
+      - name: Mint an installation token the way the apply job does
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: AgentiCCells
+      - name: Use the token to read (no changes)
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/repos/AgentiCCells/AgentiCCells__Site__Template)
+          echo "Read AgentiCCells__Site__Template with the App token: HTTP $code"
+          test "$code" = "200"
+          echo "OK: the apply job can mint and use the token."

@@ -1,0 +1,64 @@
+name: Check AWS role setup
+# Manual. Assumes the AWS role through OIDC and checks what it may do.
+# With write_test off: reads only. With write_test on: creates the CNAME
+# factory-check.agenticcells.site, deletes it again, and checks that the role is
+# refused for a TXT record and for the apex (both must be denied).
+on:
+  workflow_dispatch:
+    inputs:
+      write_test:
+        description: 'Also create and delete a test CNAME (factory-check.agenticcells.site)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: apply
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Settings present
+        env:
+          ROLE: ${{ vars.FACTORY_AWS_ROLE_ARN }}
+          ZONE: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
+        run: |
+          ok=1
+          [ -n "$ROLE" ] || { echo "- environment variable FACTORY_AWS_ROLE_ARN is not set in the apply environment"; ok=0; }
+          [ -n "$ZONE" ] || { echo "- environment variable FACTORY_ROUTE53_ZONE_ID is not set in the apply environment"; ok=0; }
+          [ "$ok" = 1 ] && echo "OK: role ARN and zone ID are set"
+          test "$ok" = 1
+      - name: Assume the role (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.FACTORY_AWS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Who am I
+        run: aws sts get-caller-identity --query Arn --output text
+      - name: Read the zone
+        env:
+          ZONE: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
+        run: |
+          aws route53 list-resource-record-sets --hosted-zone-id "$ZONE" --max-items 100 \
+            --query "ResourceRecordSets[?Type=='CNAME'].Name" --output text | tr '\t' '\n'
+          echo "OK: the role can read the zone"
+      - name: Write test (create, then delete, a test CNAME)
+        if: inputs.write_test
+        env:
+          ZONE: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
+        run: |
+          batch() { printf '{"Changes":[{"Action":"%s","ResourceRecordSet":{"Name":"%s","Type":"%s","TTL":300,"ResourceRecords":[{"Value":"%s"}]}}]}' "$1" "$2" "$3" "$4"; }
+          aws route53 change-resource-record-sets --hosted-zone-id "$ZONE" --change-batch "$(batch UPSERT factory-check.agenticcells.site CNAME agenticcells.github.io)" --query ChangeInfo.Status --output text
+          echo "OK: created factory-check.agenticcells.site"
+          aws route53 change-resource-record-sets --hosted-zone-id "$ZONE" --change-batch "$(batch DELETE factory-check.agenticcells.site CNAME agenticcells.github.io)" --query ChangeInfo.Status --output text
+          echo "OK: deleted it again"
+          if aws route53 change-resource-record-sets --hosted-zone-id "$ZONE" --change-batch "$(batch UPSERT factory-check.agenticcells.site TXT '\"x\"')" >/dev/null 2>&1; then
+            echo "PROBLEM: the role could write a TXT record; it should be limited to CNAME"; exit 1
+          fi
+          echo "OK: refused a TXT record, as it should"
+          if aws route53 change-resource-record-sets --hosted-zone-id "$ZONE" --change-batch "$(batch UPSERT agenticcells.site CNAME agenticcells.github.io)" >/dev/null 2>&1; then
+            echo "PROBLEM: the role could write the apex; it should be limited to *.agenticcells.site"; exit 1
+          fi
+          echo "OK: refused the apex, as it should"

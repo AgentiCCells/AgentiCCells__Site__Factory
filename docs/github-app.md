@@ -1,5 +1,7 @@
 # Setting up the factory's GitHub App (FAC-005a)
 
+The click-by-click steps are in `docs/SETUP.md`. This note explains why each part is needed.
+
 Status: proposal by factory@AgentiCCells.dinis, 2026-11-16, for Dinis to carry out. Dinis chose option B on 2026-11-16: "yes go for 'App installed on all repositories (option B)' ... we will look at a later stage to move this into a separate org". Nothing here exists yet.
 
 Dinis, 2026-11-15 (ACC-027): "Good credentials: a GitHub App and OpenID Connect for AWS, with no long-lived keys in the pipeline." The App's private key is the one long-lived secret: it lives only in GitHub's environment secrets, is never in a repository, and no agent sees it. Each run swaps it for an installation token that lasts about an hour and is scoped to the one repository that run works on.
@@ -40,10 +42,9 @@ In the AgentiCCells organisation's settings, under developer settings, create a 
 | Metadata | Read | required by GitHub |
 | Contents | Read and write | push the seed commit; write CNAME and site.json |
 | Workflows | Read and write | the seed includes `.github/workflows/pages.yml`; pushing it needs this |
-| Administration | Read and write | set the default branch and the `github-pages` environment's branch rule; under B, create repositories |
+| Administration | Read and write | create repositories (B); set the default branch; create the `github-pages` environment and its rule that `dev` may deploy |
 | Pages | Read and write | set the Pages source and the custom domain |
 | Actions | Read and write | start the new site's pages.yml after the settings are in place (the first push runs before Pages exists) |
-| Environments | Read and write | allow `dev` to deploy in the site's `github-pages` environment |
 
 ### Organisation and account permissions
 None. Verifying a domain for the organisation (ACC-018) stays a person's step.
