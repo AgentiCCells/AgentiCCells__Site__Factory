@@ -17,6 +17,8 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 
 - AgentiCCells__Site__Template (FAC-004): build, validator, leak scan, Agent: trailer check, CI versioning, release script and CLAUDE.md, cut down from AgentiCCells__Website. Without a CNAME it is built, checked and tagged but not deployed. First CI run 2026-11-15 21:49 UTC passed and tagged v0.1.0. Not yet used to seed a site.
 
+- `docs/github-app.md`: proposal for the GitHub App (permissions, install options, the `apply` environment). Not carried out.
+
 ## Does not exist yet
 - No real apply step, no CI versioning, no commit-trailer check, no release script.
 - No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
