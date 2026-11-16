@@ -1,0 +1,69 @@
+{
+  "request": "2026-11-16__qa-1",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-16T03:07:25Z",
+  "commit": "69bd0c6f8a28a2dd48d48b91817d9163de745bc5",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-16T03:07:14Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "adopted existing repository AgentiCCells/AgentiCCells__Site__Factory__Pipeline__QA-1",
+      "time": "2026-11-16T03:07:14Z"
+    },
+    {
+      "name": "seed",
+      "result": "skipped",
+      "detail": "repository already has commits; not seeded",
+      "time": "2026-11-16T03:07:15Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-16T03:07:17Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME qa-1.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-16T03:07:22Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain qa-1.agenticcells.site",
+      "time": "2026-11-16T03:07:23Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-16T03:07:23Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 924a812",
+      "time": "2026-11-16T03:07:24Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://qa-1.agenticcells.site/version.json serves v0.1.1 at 924a812; Enforce HTTPS turned on",
+      "time": "2026-11-16T03:07:25Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-16T03:07:25Z"
+    }
+  ]
+}
