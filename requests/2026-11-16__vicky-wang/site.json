@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "Vicky Wang",
+  "description": "Vicky Wang, project and operations manager: she ran one of the largest AI agent teams at Web Summit 2026 and co-edited PrompTugal.news.",
+  "domain": "vicky-wang.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Vicky-Wang" },
+  "visibility": "public",
+  "vault": { "create": true },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
