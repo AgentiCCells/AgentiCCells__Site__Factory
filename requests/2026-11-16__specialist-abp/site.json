@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Specialist: Agent Behaviour Policies",
+  "description": "The Agent Behaviour Policies specialist agent: a behaviour policy for every agent and pipeline, written the same way, and reviewed. Bootstrap packs, reviews and guidance for every team.",
+  "domain": "specialist-abp.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Specialist__Agent-Behaviour-Policies"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": true
+  },
+  "apply": "real",
+  "requested_by": "conductor@web-summit.dinis"
+}

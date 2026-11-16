@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Email AgenticCell",
+  "description": "The email agentic cell: one gateway agent alone touches Gmail; people and agents work on a signed, encrypted twin of the mailbox in a vault.",
+  "domain": "email-cell.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Cell__Email"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": true
+  },
+  "first_pass": {
+    "enabled": true
+  },
+  "apply": "real",
+  "requested_by": "conductor@web-summit.dinis"
+}

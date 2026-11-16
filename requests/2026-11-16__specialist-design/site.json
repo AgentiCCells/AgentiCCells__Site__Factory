@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Specialist: Design",
+  "description": "The Design specialist agent: the design system for SGit and its teams: tokens, patterns, the best examples, what good looks like. Bootstrap packs, reviews and guidance for every team.",
+  "domain": "specialist-design.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Specialist__Design"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": true
+  },
+  "apply": "real",
+  "requested_by": "conductor@web-summit.dinis"
+}

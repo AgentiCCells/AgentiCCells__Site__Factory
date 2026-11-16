@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Specialist: Writing",
+  "description": "The Writing specialist agent: voice, structure and wording: the writing guidance and the review service. Bootstrap packs, reviews and guidance for every team.",
+  "domain": "specialist-writing.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Specialist__Writing"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": true
+  },
+  "apply": "real",
+  "requested_by": "conductor@web-summit.dinis"
+}
