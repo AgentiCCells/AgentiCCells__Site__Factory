@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Specialist: Security",
+  "description": "The Security specialist agent: reviews, keys, secrets and leak scans: the security guidance and the review service. Bootstrap packs, reviews and guidance for every team.",
+  "domain": "specialist-security.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Specialist__Security"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": true
+  },
+  "apply": "real",
+  "requested_by": "conductor@web-summit.dinis"
+}

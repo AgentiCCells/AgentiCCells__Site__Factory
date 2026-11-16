@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Specialist: UX",
+  "description": "The UX specialist agent: what readers and users trip on and how to avoid it: the UX guidance every team starts from. Bootstrap packs, reviews and guidance for every team.",
+  "domain": "specialist-ux.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Specialist__UX"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": true
+  },
+  "apply": "real",
+  "requested_by": "conductor@web-summit.dinis"
+}
