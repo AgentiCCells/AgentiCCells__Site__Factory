@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "Silvio Switha",
+  "description": "Silvio Switha, AI entrepreneur, musician and producer: a portfolio of what he built with AI agents, and how to hire him for a project.",
+  "domain": "silvio-switha.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Silvio-Switha" },
+  "visibility": "public",
+  "vault": { "create": true },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
