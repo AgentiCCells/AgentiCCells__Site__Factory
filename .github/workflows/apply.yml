@@ -53,7 +53,8 @@ jobs:
         name: Are there real requests to act on?
         run: |
           git pull -q --rebase origin dev || true
-          n=$(node build/apply.mjs --list-real | wc -l)
+          list=$(node build/apply.mjs --list-real)   # no pipe: a failure here must fail the job
+          n=$(printf "%s" "$list" | grep -c . || true)
           echo "Real requests pending: $n"
           if [ "$n" -gt 0 ]; then echo "real=true" >> "$GITHUB_OUTPUT"; else echo "real=false" >> "$GITHUB_OUTPUT"; fi
 
