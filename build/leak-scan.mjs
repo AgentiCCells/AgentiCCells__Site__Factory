@@ -86,6 +86,7 @@ const ALLOW = [
   // The GitHub OIDC subject for the AWS trust policy, with the organisation's and
   // repository's public numeric IDs (factory@, 2026-11-16). Not a secret.
   ['docs/aws-oidc.md', 'long high-entropy string', 'OIDC subject with public numeric IDs'],
+  ['docs/SETUP.md', 'long high-entropy string', 'the same OIDC subject, in the setup steps'],
 ];
 const allowed = (path, kind) => ALLOW.some(([p, k]) => p === path && k === kind);
 
