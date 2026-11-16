@@ -42,8 +42,10 @@ jobs:
           git add requests
           if git diff --cached --quiet; then echo "nothing to write back"; exit 0; fi
           node build/leak-scan.mjs
-          git -c user.name="factory-apply" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
-            commit -q -m "Write back request status (dry run)" -m "Agent: factory-apply@AgentiCCells.dinis"
+          # The identity is set for the repository, not only for the commit: the retry below rebases, which needs it too.
+          git config user.name "factory-apply"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Write back request status (dry run)" -m "Agent: factory-apply@AgentiCCells.dinis"
           for i in 1 2 3 4 5; do
             git push -q origin HEAD:dev && exit 0
             sleep $((i * 3)); git pull -q --rebase origin dev
@@ -101,8 +103,10 @@ jobs:
           git add requests
           if git diff --cached --quiet; then echo "nothing to write back"; exit 0; fi
           node build/leak-scan.mjs
-          git -c user.name="factory-apply" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
-            commit -q -m "Write back request status (real)" -m "Agent: factory-apply@AgentiCCells.dinis"
+          # The identity is set for the repository, not only for the commit: the retry below rebases, which needs it too.
+          git config user.name "factory-apply"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Write back request status (real)" -m "Agent: factory-apply@AgentiCCells.dinis"
           for i in 1 2 3 4 5; do
             git push -q origin HEAD:dev && exit 0
             sleep $((i * 3)); git pull -q --rebase origin dev
