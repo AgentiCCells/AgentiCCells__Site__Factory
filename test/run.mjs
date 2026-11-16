@@ -18,5 +18,6 @@ if (names < 2) { fails++; console.log('bad folder names were accepted'); }
 fails += (await import('./real.mjs')).default;
 fails += (await import('./check-app.mjs')).default;
 fails += (await import('./check-sites.mjs')).default;
+fails += (await import('./first-pass.mjs')).default;
 if (fails) { console.log(`FAILED (${fails})`); process.exit(1); }
 console.log('OK (tests)');

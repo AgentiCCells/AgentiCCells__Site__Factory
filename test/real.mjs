@@ -82,6 +82,16 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
   expect('recheck only reads Pages and enforces HTTPS', io2.calls.every((c) => c.endsWith('/pages') || c === 'enforce'));
   expect('pending https does not enforce', !io.calls.includes('enforce'));
 }
+// 4b. First pass: pending only after a fresh seed; never on an adopted repository.
+{
+  const fp = { ...site, first_pass: { enabled: true } };
+  const r = await runReal('x', fp, fakeIo(), { httpsTries: 1 });
+  expect('first pass pending after a fresh seed', byName(r)['first-pass'] === 'pending' && r.state === 'live');
+  const r2 = await runReal('x', fp, fakeIo({ exists: true, empty: false }), { httpsTries: 1 });
+  expect('first pass skipped on an adopted repository', byName(r2)['first-pass'] === 'skipped');
+  const r3 = await runReal('x', fp, fakeIo({ fail: { 'POST /orgs/AgentiCCells/repos': 403 } }), { httpsTries: 1 });
+  expect('first pass skipped after a failure', byName(r3)['first-pass'] === 'skipped');
+}
 // 5. Apex domains are refused by the dns step.
 {
   const r = await runReal('x', { ...site, domain: 'agenticcells.site' }, fakeIo(), { httpsTries: 1 });

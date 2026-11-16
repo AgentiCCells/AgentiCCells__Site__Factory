@@ -25,7 +25,7 @@ Validated against `schema/site.schema.json`. Fields:
 | `template` | no | `{owner, name, ref}` of the seed repository; defaults to AgentiCCells__Site__Template on `dev` |
 | `visibility` | no | `public` (default) or `private` |
 | `vault` | no | `{create: bool}`: create an sgit vault for the site |
-| `first_pass` | no | `{enabled: bool}`: run a first pass with Claude Code (off by default) |
+| `first_pass` | no | `{enabled: bool}`: after a fresh seed, Claude Code writes a first version of the site from `brief.md` (off by default). It runs in the `first-pass` environment with file tools only and may change only `src/`, `hub.json` and `README.md`; a separate job checks the patch, runs the site's gates and pushes it |
 | `apply` | no | `dry-run` (default) or `real`. Only `real` requests are acted on, in the protected `apply` environment |
 | `requested_by` | yes | the agent or person making the request, as `role@AgentiCCells.person` or a name |
 

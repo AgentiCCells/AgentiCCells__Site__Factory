@@ -132,9 +132,18 @@ export async function runReal(name, site, io, opts = {}) {
     return { result: 'pending', detail: `${url} did not serve ${head.slice(0, 7)} yet; the next run checks again` };
   });
 
-  steps.push({ name: 'first-pass', result: 'skipped', detail: site.first_pass?.enabled ? 'requested, but needs the Claude key (not set up yet)' : 'not requested', time: io.now() });
+  // The first pass runs in separate jobs (first-pass.yml jobs in apply.yml), only on a
+  // repository this run seeded: never on an adopted repository that already had content.
+  const seedOk = steps.find((s) => s.name === 'seed')?.result === 'ok';
+  const fp = !site.first_pass?.enabled ? { result: 'skipped', detail: 'not requested' }
+    : stop ? { result: 'skipped', detail: 'an earlier step failed' }
+    : !seedOk ? { result: 'skipped', detail: 'requested, but this run did not seed the repository; the first pass only runs on a fresh seed' }
+    : { result: 'pending', detail: 'queued for the first-pass jobs' };
+  steps.push({ name: 'first-pass', ...fp, time: io.now() });
 
-  const state = steps.some((s) => s.result === 'failed') ? 'failed' : steps.some((s) => s.result === 'pending') ? 'applying' : 'live';
+  // The first pass does not hold the site back: the state reflects the site steps only.
+  const site_ = steps.filter((s) => s.name !== 'first-pass');
+  const state = site_.some((s) => s.result === 'failed') ? 'failed' : site_.some((s) => s.result === 'pending') ? 'applying' : 'live';
   return { state, steps };
 }
 

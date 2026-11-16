@@ -68,6 +68,8 @@ jobs:
     permissions:
       contents: write
       id-token: write
+    outputs:
+      first_pass: ${{ steps.fp.outputs.list }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -97,6 +99,12 @@ jobs:
           GH_TOKEN: ${{ steps.app.outputs.token }}
           FACTORY_ROUTE53_ZONE_ID: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
         run: node build/apply.mjs --real
+      - id: fp
+        name: Which requests wait for a first pass?
+        run: |
+          list=$(node build/first-pass.mjs --list)   # no pipe: a failure here must fail the job
+          echo "list=$list" >> "$GITHUB_OUTPUT"
+          echo "First pass pending: $list"
       - name: Commit the status files back to dev
         if: always()
         run: |
@@ -107,6 +115,157 @@ jobs:
           git config user.name "factory-apply"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -q -m "Write back request status (real)" -m "Agent: factory-apply@AgentiCCells.dinis"
+          for i in 1 2 3 4 5; do
+            git push -q origin HEAD:dev && exit 0
+            sleep $((i * 3)); git pull -q --rebase origin dev
+          done
+          echo "push failed after 5 attempts" >&2; exit 1
+
+  # First pass, part 1: Claude Code writes the site. Runs in the `first-pass` environment,
+  # which holds only the Claude federation settings: no GitHub App key, no AWS role, no
+  # write token. Claude gets file tools only (no shell, no web). The result leaves this
+  # job only as a patch.
+  first-pass-claude:
+    needs: real
+    if: needs.real.outputs.first_pass != '' && needs.real.outputs.first_pass != '[]'
+    runs-on: ubuntu-latest
+    environment: first-pass
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        item: ${{ fromJSON(needs.real.outputs.first_pass) }}
+    env:
+      ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+      ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+      ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+      ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Clone the new site (public, no credential)
+        env:
+          REPO: ${{ matrix.item.repo }}
+        run: git clone -q --depth 1 --branch dev "https://github.com/$REPO" site
+      - name: Claude Code writes the first version (file tools only)
+        env:
+          FOLDER: ${{ matrix.item.folder }}
+        run: |
+          export ANTHROPIC_IDENTITY_TOKEN_FILE="$RUNNER_TEMP/gha-jwt"
+          fetch() {
+            raw=$(curl -sS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com")
+            printf '%s' "$raw" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>process.stdout.write(JSON.parse(d).value||""))' > "$ANTHROPIC_IDENTITY_TOKEN_FILE.tmp"
+            mv "$ANTHROPIC_IDENTITY_TOKEN_FILE.tmp" "$ANTHROPIC_IDENTITY_TOKEN_FILE"
+          }
+          fetch
+          # GitHub's identity tokens last about 5 minutes and are single-use for the exchange:
+          # keep a fresh one in the file while Claude works.
+          ( while true; do sleep 120; fetch || true; done ) &
+          refresher=$!
+          [ -n "$ANTHROPIC_WORKSPACE_ID" ] || unset ANTHROPIC_WORKSPACE_ID
+          npm install -g -s @anthropic-ai/claude-code
+          node build/first-pass.mjs --prompt "$FOLDER" > "$RUNNER_TEMP/prompt.txt"
+          cd site
+          set +e
+          claude -p "$(cat "$RUNNER_TEMP/prompt.txt")" \
+            --model claude-opus-5-5 \
+            --max-turns 60 \
+            --allowedTools "Read,Edit,Write,Glob,Grep" \
+            --disallowedTools "Bash,WebFetch,WebSearch,Task,NotebookEdit" \
+            > "$RUNNER_TEMP/claude-summary.txt"
+          rc=$?
+          set -e
+          kill "$refresher" || true
+          cat "$RUNNER_TEMP/claude-summary.txt"
+          test "$rc" = 0
+      - name: Collect the changes as a patch
+        run: |
+          mkdir -p out
+          git -C site add -A
+          git -C site diff --cached --binary > out/first-pass.patch
+          cp "$RUNNER_TEMP/claude-summary.txt" out/summary.txt
+          node build/first-pass.mjs --check-patch out/first-pass.patch
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-pass-${{ matrix.item.label }}
+          path: out
+
+  # First pass, part 2: check the patch again, run the site's own gates, push it to the
+  # site's dev (which deploys it), and record the result. Claude's code is never run
+  # with a credential: the gates are the template's scripts, which the patch cannot change.
+  first-pass-push:
+    needs: [real, first-pass-claude]
+    if: always() && needs.real.outputs.first_pass != '' && needs.real.outputs.first_pass != '[]'
+    runs-on: ubuntu-latest
+    environment: apply
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        item: ${{ fromJSON(needs.real.outputs.first_pass) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: first-pass-${{ matrix.item.label }}
+          path: out
+      - name: GitHub App token (about an hour)
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: AgentiCCells
+      - name: Check, gate and push the first pass
+        id: push
+        env:
+          REPO: ${{ matrix.item.repo }}
+          FOLDER: ${{ matrix.item.folder }}
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          fail() { node build/first-pass.mjs --record "$FOLDER" failed "$1"; echo "FAILED: $1"; exit 0; }
+          [ -s out/first-pass.patch ] || fail "no patch from the Claude job (see its log)"
+          node build/first-pass.mjs --check-patch out/first-pass.patch || fail "the patch touched files the first pass may not change"
+          git clone -q --branch dev "https://github.com/$REPO" site
+          git -C site apply --index ../out/first-pass.patch || fail "the patch did not apply to the site's dev"
+          # The site's own gates, with no credential in their environment.
+          ( cd site && env -u GH_TOKEN node scripts/build.mjs && env -u GH_TOKEN node scripts/validate.mjs && env -u GH_TOKEN node scripts/leak-scan.mjs ) > gates.log 2>&1 || { cat gates.log; fail "the site's gates failed on Claude's version: $(tail -3 gates.log | tr '\n' ' ')"; }
+          cat gates.log
+          git -C site config user.name "factory-first-pass"
+          git -C site config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C site commit -q -m "First version of the site, written by Claude Code from the factory brief" \
+            -m "Request: $FOLDER in AgentiCCells__Site__Factory.
+
+          Agent: factory-first-pass@AgentiCCells.dinis
+          Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+          auth="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          git -C site -c "http.https://github.com/.extraheader=$auth" push -q origin HEAD:dev || fail "pushing to the site's dev failed"
+          sha=$(git -C site rev-parse --short HEAD)
+          node build/first-pass.mjs --record "$FOLDER" ok "Claude Code's first version pushed to dev as $sha ($(grep -c '' out/first-pass.patch) patch lines); the site's pages.yml deploys it"
+      - name: Commit the status files back to dev
+        if: always()
+        run: |
+          git add requests
+          if git diff --cached --quiet; then echo "nothing to write back"; exit 0; fi
+          node build/leak-scan.mjs
+          git config user.name "factory-apply"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Write back request status (first pass)" -m "Agent: factory-apply@AgentiCCells.dinis"
           for i in 1 2 3 4 5; do
             git push -q origin HEAD:dev && exit 0
             sleep $((i * 3)); git pull -q --rebase origin dev
