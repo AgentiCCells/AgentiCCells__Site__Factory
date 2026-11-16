@@ -2,7 +2,7 @@
   "request": "2026-11-16__qa-2",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-16T03:09:00Z",
+  "updated": "2026-11-16T03:10:36Z",
   "commit": "4dc1878412d4c01a4490e8b191bfb57c0ba3e2ac",
   "steps": [
     {
@@ -61,9 +61,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-16T03:09:00Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as 35e732c (245 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-16T03:10:36Z"
     }
   ]
 }
