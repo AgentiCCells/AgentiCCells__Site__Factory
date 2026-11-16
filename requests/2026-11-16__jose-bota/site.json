@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "José Bota",
+  "description": "José Bota, AI automation expert: agent apps, automations and integrations, built fast. Open to a full-time AI role and to freelance work.",
+  "domain": "jose-bota.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Jose-Bota" },
+  "visibility": "public",
+  "vault": { "create": true },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
