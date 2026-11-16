@@ -19,10 +19,12 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 
 - `docs/github-app.md`: proposal for the GitHub App (permissions, install options, the `apply` environment). Not carried out.
 
+- agenticcells.site is on Route 53 (four awsdns nameservers, checked by factory@ 2026-11-16 ~01:30 UTC through dns.google). The apex resolves to GitHub Pages and answers 200; site subdomains are CNAME records to agenticcells.github.io.
+- Three site repositories were made by hand on 2026-11-16 (Dinis created each with an initial commit at 00:45 to 00:47 UTC; sites@AgentiCCells.dinis then pushed the site, scripts, CI and an sgit vault). Each is live on a subdomain of agenticcells.site, and its /version.json said v0.1.0 at ~01:30 UTC. Checked by factory@ by reading the repositories and fetching the live pages. They are the worked example the factory must automate; their layout (src/, scripts/, _site/, a committed `.sg_vault/bare/`, hub.json with a public vault read key) differs from AgentiCCells__Site__Template's (content/, build/, site/, no vault).
+
 ## Does not exist yet
 - No real apply step, no CI versioning, no commit-trailer check, no release script.
 - No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
-- No hosted zone for agenticcells.site: on 2026-11-15 20:46 UTC it was still on the registrar's default nameservers (source: ACC-027).
 - The website and hub repositories exist (created by Dinis); factory@ has not touched them.
 
 ## Facts about the specification
