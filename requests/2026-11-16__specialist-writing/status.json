@@ -2,7 +2,7 @@
   "request": "2026-11-16__specialist-writing",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-16T16:00:13Z",
+  "updated": "2026-11-16T16:03:25Z",
   "commit": "955f730ae98d603a4d4b4df60276fbddae28b211",
   "steps": [
     {
@@ -61,9 +61,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-16T16:00:13Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as 0d1ca6c (101 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-16T16:03:25Z"
     }
   ]
 }
