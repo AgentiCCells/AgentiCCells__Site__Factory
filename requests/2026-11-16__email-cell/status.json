@@ -1,0 +1,69 @@
+{
+  "request": "2026-11-16__email-cell",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-16T15:54:40Z",
+  "commit": "955f730ae98d603a4d4b4df60276fbddae28b211",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-16T15:53:29Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Cell__Email",
+      "time": "2026-11-16T15:53:33Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 528d962 on dev",
+      "time": "2026-11-16T15:53:35Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-16T15:53:38Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME email-cell.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-16T15:53:50Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain email-cell.agenticcells.site",
+      "time": "2026-11-16T15:53:51Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "requested, but the vault step needs the sgit credential (not set up yet)",
+      "time": "2026-11-16T15:53:51Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 528d962",
+      "time": "2026-11-16T15:53:53Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://email-cell.agenticcells.site/version.json serves v0.1.0 at 528d962; Enforce HTTPS turned on",
+      "time": "2026-11-16T15:54:40Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "pending",
+      "detail": "queued for the first-pass jobs",
+      "time": "2026-11-16T15:54:40Z"
+    }
+  ]
+}
