@@ -24,15 +24,20 @@ for (const f of folders) {
   const s = JSON.parse(readFileSync(join(f, 'site.json'), 'utf8'));
   const t = s.template ?? { owner: 'AgentiCCells', name: 'AgentiCCells__Site__Template', ref: 'dev' };
   const first = s.first_pass?.enabled === true;
-  out.push('Valid. On merge, apply would:', '',
+  const real = s.apply === 'real';
+  const sub = s.domain.split('.').length >= 3;
+  out.push(real ? '**Valid. On merge, apply acts for real** (in the protected `apply` environment):' : 'Valid. On merge, apply writes a **dry-run** status and creates nothing. It would:', '',
     '| Step | What |', '|---|---|',
-    `| repo | create ${safe(s.visibility ?? 'public')} repository ${safe(s.repo.owner)}/${safe(s.repo.name)} from ${safe(t.owner)}/${safe(t.name)} at ${safe(t.ref ?? 'dev')} |`,
-    `| dns | add records for ${safe(s.domain)} in the factory zone |`,
-    `| vault | ${s.vault?.create ? 'create an sgit vault' : 'skipped (not requested)'} |`,
-    '| seed | push a first page |',
-    `| https | check https://${safe(s.domain)} answers |`,
-    `| first-pass | ${first ? 'run a first pass with Claude Code' : 'skipped (not requested)'} |`, '',
-    `Requested by ${safe(s.requested_by)}. Apply is a dry run for now (FAC-003): it writes status.json and creates nothing until the credentials of FAC-005 exist.`, '');
+    `| repo | adopt ${safe(s.repo.owner + '/' + s.repo.name)} if it exists, otherwise create it (${safe(s.visibility ?? 'public')}) |`,
+    `| seed | if the repository is empty, push ${safe(t.owner + '/' + t.name)} at ${safe(t.ref ?? 'dev')} to dev with the placeholders filled; never overwrite |`,
+    '| settings | default branch dev; Pages from GitHub Actions; dev may deploy |',
+    `| dns | ${sub ? `CNAME ${safe(s.domain)} to ${safe(s.repo.owner.toLowerCase() + '.github.io')} in Route 53` : `fails: ${safe(s.domain)} is an apex domain, not automated yet`} |`,
+    `| domain | set ${safe(s.domain)} as the Pages custom domain |`,
+    `| vault | ${s.vault?.create ? 'requested; skipped until the sgit credential exists' : 'skipped (not requested)'} |`,
+    '| deploy | start the site\'s pages.yml on dev |',
+    `| https | wait for https://${safe(s.domain)}/version.json to serve the deployed commit |`,
+    `| first-pass | ${first ? 'requested; skipped until the Claude key exists' : 'skipped (not requested)'} |`, '',
+    `Requested by ${safe(s.requested_by)}.`, '');
 }
 console.log(out.join('\n'));
 process.exit(failed ? 1 : 0);

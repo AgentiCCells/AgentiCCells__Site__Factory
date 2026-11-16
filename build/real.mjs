@@ -1,0 +1,138 @@
+// The real apply steps (FAC-005). Each step returns { result, detail } and never
+// prints a secret. Everything that touches the outside world comes in through
+// `io`, so the tests can run the same code with fakes:
+//   io.gh(method, path, body)  -> { status, data }   GitHub REST, with the App token
+//   io.seed({ template, repo, values })  -> { commit }  push the seeded template to dev
+//   io.dns.upsertCname(name, target)     -> void        Route 53, through the OIDC role
+//   io.fetchJson(url)                   -> object|null  a public GET, no credentials
+//   io.sleep(ms), io.now()
+// Order: validate, repo, seed, settings, dns, domain, vault, deploy, https, first-pass.
+
+const pagesHost = (owner) => `${owner.toLowerCase()}.github.io`;
+
+export async function runReal(name, site, io, { httpsTries = 40, httpsWaitMs = 15000 } = {}) {
+  const { owner, name: repo } = site.repo;
+  const full = `${owner}/${repo}`;
+  const t = site.template ?? { owner: 'AgentiCCells', name: 'AgentiCCells__Site__Template', ref: 'dev' };
+  const steps = [];
+  let stop = false;
+  let seeded = null;
+  const step = async (stepName, fn) => {
+    if (stop) { steps.push({ name: stepName, result: 'skipped', detail: 'an earlier step failed', time: io.now() }); return; }
+    let r;
+    try { r = await fn(); } catch (e) { r = { result: 'failed', detail: `error: ${String(e.message || e).slice(0, 200)}` }; }
+    if (r.result === 'failed') stop = true;
+    steps.push({ name: stepName, ...r, time: io.now() });
+  };
+  const ok = (status) => status >= 200 && status < 300;
+
+  steps.push({ name: 'validate', result: 'ok', detail: 'request is valid', time: io.now() });
+
+  let created = false;
+  await step('repo', async () => {
+    const got = await io.gh('GET', `/repos/${full}`);
+    if (got.status === 200) return { result: 'ok', detail: `adopted existing repository ${full}` };
+    if (got.status !== 404) return { result: 'failed', detail: `reading ${full} returned ${got.status}` };
+    const made = await io.gh('POST', `/orgs/${owner}/repos`, {
+      name: repo, visibility: site.visibility ?? 'public', description: site.description ?? site.name,
+      has_wiki: false, has_projects: false, auto_init: false,
+    });
+    if (made.status !== 201) return { result: 'failed', detail: `creating ${full} returned ${made.status}` };
+    created = true;
+    return { result: 'ok', detail: `created ${full}` };
+  });
+
+  await step('seed', async () => {
+    const commits = await io.gh('GET', `/repos/${full}/commits?per_page=1`);
+    // 409: the repository is empty. Only an empty repository is seeded; nothing is ever overwritten.
+    if (commits.status !== 409) return { result: 'skipped', detail: created ? 'repository not empty after creation' : 'repository already has commits; not seeded' };
+    const values = {
+      __SITE_NAME__: site.name,
+      __SITE_DESCRIPTION__: site.description ?? site.name,
+      __SITE_REPO__: full,
+      __SITE_DOMAIN__: site.domain,
+    };
+    const { commit } = await io.seed({ template: t, repo: { owner, name: repo }, values, request: name });
+    seeded = commit;
+    return { result: 'ok', detail: `seeded from ${t.owner}/${t.name}@${t.ref ?? 'dev'} as ${commit.slice(0, 7)} on dev` };
+  });
+
+  await step('settings', async () => {
+    const r1 = await io.gh('PATCH', `/repos/${full}`, { default_branch: 'dev' });
+    if (!ok(r1.status)) return { result: 'failed', detail: `default branch returned ${r1.status}` };
+    const pages = await io.gh('GET', `/repos/${full}/pages`);
+    const r2 = pages.status === 404
+      ? await io.gh('POST', `/repos/${full}/pages`, { build_type: 'workflow' })
+      : await io.gh('PUT', `/repos/${full}/pages`, { build_type: 'workflow' });
+    if (!ok(r2.status)) return { result: 'failed', detail: `Pages source returned ${r2.status}` };
+    const r3 = await io.gh('PUT', `/repos/${full}/environments/github-pages`, { deployment_branch_policy: { protected_branches: false, custom_branch_policies: true } });
+    if (!ok(r3.status)) return { result: 'failed', detail: `github-pages environment returned ${r3.status}` };
+    const pol = await io.gh('GET', `/repos/${full}/environments/github-pages/deployment-branch-policies`);
+    const has = (pol.data?.branch_policies ?? []).some((b) => b.name === 'dev');
+    if (!has) {
+      const r4 = await io.gh('POST', `/repos/${full}/environments/github-pages/deployment-branch-policies`, { name: 'dev', type: 'branch' });
+      if (!ok(r4.status)) return { result: 'failed', detail: `dev deploy rule returned ${r4.status}` };
+    }
+    return { result: 'ok', detail: 'default branch dev; Pages from GitHub Actions; dev may deploy' };
+  });
+
+  await step('dns', async () => {
+    const labels = site.domain.split('.');
+    if (labels.length < 3) return { result: 'failed', detail: 'apex domains are not automated yet; only subdomains get a CNAME' };
+    await io.dns.upsertCname(site.domain, pagesHost(owner));
+    return { result: 'ok', detail: `CNAME ${site.domain} -> ${pagesHost(owner)}` };
+  });
+
+  await step('domain', async () => {
+    const r = await io.gh('PUT', `/repos/${full}/pages`, { cname: site.domain });
+    if (!ok(r.status)) return { result: 'failed', detail: `custom domain returned ${r.status}` };
+    return { result: 'ok', detail: `custom domain ${site.domain}` };
+  });
+
+  await step('vault', async () => site.vault?.create
+    ? { result: 'skipped', detail: 'requested, but the vault step needs the sgit credential (not set up yet)' }
+    : { result: 'skipped', detail: 'not requested' });
+
+  let head = seeded;
+  await step('deploy', async () => {
+    if (!head) {
+      const b = await io.gh('GET', `/repos/${full}/branches/dev`);
+      if (b.status !== 200) return { result: 'failed', detail: `reading dev returned ${b.status}` };
+      head = b.data.commit.sha;
+    }
+    const r = await io.gh('POST', `/repos/${full}/actions/workflows/pages.yml/dispatches`, { ref: 'dev' });
+    if (!ok(r.status)) return { result: 'failed', detail: `starting pages.yml returned ${r.status}` };
+    return { result: 'ok', detail: `started pages.yml on dev at ${head.slice(0, 7)}` };
+  });
+
+  await step('https', async () => {
+    const url = `https://${site.domain}/version.json`;
+    for (let i = 0; i < httpsTries; i++) {
+      const v = await io.fetchJson(url);
+      if (v && v.commit === head) return { result: 'ok', detail: `${url} serves ${v.version} at ${head.slice(0, 7)}` };
+      await io.sleep(httpsWaitMs);
+    }
+    return { result: 'pending', detail: `${url} did not serve ${head.slice(0, 7)} yet; the next run checks again` };
+  });
+
+  steps.push({ name: 'first-pass', result: 'skipped', detail: site.first_pass?.enabled ? 'requested, but needs the Claude key (not set up yet)' : 'not requested', time: io.now() });
+
+  const state = steps.some((s) => s.result === 'failed') ? 'failed' : steps.some((s) => s.result === 'pending') ? 'applying' : 'live';
+  return { state, steps };
+}
+
+// A later run for a request left 'applying': only the https check runs again.
+export async function recheck(site, io, previous, opts = {}) {
+  const steps = previous.steps.filter((s) => s.name !== 'https' && s.name !== 'first-pass');
+  const deploy = previous.steps.find((s) => s.name === 'deploy');
+  const head = (deploy?.detail.match(/at ([0-9a-f]{7})/) || [])[1];
+  const url = `https://${site.domain}/version.json`;
+  let https = { name: 'https', result: 'pending', detail: `${url} did not serve ${head} yet; the next run checks again` };
+  for (let i = 0; i < (opts.httpsTries ?? 4); i++) {
+    const v = await io.fetchJson(url);
+    if (v && head && String(v.commit).startsWith(head)) { https = { name: 'https', result: 'ok', detail: `${url} serves ${v.version} at ${head}` }; break; }
+    await io.sleep(opts.httpsWaitMs ?? 15000);
+  }
+  steps.push({ ...https, time: io.now() }, previous.steps.find((s) => s.name === 'first-pass'));
+  return { state: https.result === 'ok' ? 'live' : 'applying', steps };
+}

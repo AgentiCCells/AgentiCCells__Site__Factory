@@ -17,13 +17,15 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 
 - AgentiCCells__Site__Template (FAC-004): build, validator, leak scan, Agent: trailer check, CI versioning, release script and CLAUDE.md, cut down from AgentiCCells__Website. Without a CNAME it is built, checked and tagged but not deployed. First CI run 2026-11-15 21:49 UTC passed and tagged v0.1.0. Not yet used to seed a site.
 
-- `docs/github-app.md`: proposal for the GitHub App (permissions, install options, the `apply` environment). Not carried out.
+- `docs/github-app.md`: proposal for the GitHub App; Dinis chose option B (all repositories) on 2026-11-16. Not carried out.
 
 - agenticcells.site is on Route 53 (four awsdns nameservers, checked by factory@ 2026-11-16 ~01:30 UTC through dns.google). The apex resolves to GitHub Pages and answers 200; site subdomains are CNAME records to agenticcells.github.io.
 - Three site repositories were made by hand on 2026-11-16 (Dinis created each with an initial commit at 00:45 to 00:47 UTC; sites@AgentiCCells.dinis then pushed the site, scripts, CI and an sgit vault). Each is live on a subdomain of agenticcells.site, and its /version.json said v0.1.0 at ~01:30 UTC. Checked by factory@ by reading the repositories and fetching the live pages. They are the worked example the factory must automate; their layout (src/, scripts/, _site/, a committed `.sg_vault/bare/`, hub.json with a public vault read key) differs from AgentiCCells__Site__Template's (content/, build/, site/, no vault).
 
 ## Does not exist yet
-- No real apply step, no CI versioning, no commit-trailer check, no release script.
+- Real apply steps (FAC-005): `build/real.mjs` (repo, seed, settings, dns, domain, deploy, https), `build/io.mjs` (GitHub API, seed push, Route 53, HTTPS), and the `real` job in `.github/workflows/apply.yml`, for requests marked `"apply": "real"`. Tested on 2026-11-16 with fakes (`test/real.mjs`) and, for the seed, against the real template pushing to a local bare repository: the seeded site's own gates passed. **Never run against GitHub or AWS**: the App and the AWS role do not exist yet.
+- `docs/aws-oidc.md`: proposal for the Route 53 role (trust and permission policies). Not carried out.
+- No CI versioning, no commit-trailer check, no release script.
 - No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
 - The website and hub repositories exist (created by Dinis); factory@ has not touched them.
 

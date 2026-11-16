@@ -1,7 +1,11 @@
-name: Apply (dry run)
-# Apply on merge. FAC-003: a dry run that writes status.json back to dev and
-# creates nothing. No secrets. The only write is this repository's contents,
-# with the workflow's own short-lived token.
+name: Apply
+# Apply on merge.
+# - dry-run job (FAC-003): every request not marked "apply": "real" gets a dry-run
+#   status.json. No secrets; creates nothing.
+# - real job (FAC-005): requests marked "apply": "real". Runs only in the protected
+#   `apply` environment (dev only; Dinis may require his approval), with a GitHub App
+#   token that lasts about an hour and, for DNS, an AWS role assumed through OIDC.
+#   Never runs code from a pull request: it runs on dev after merge.
 on:
   push:
     branches: [dev]
@@ -13,10 +17,12 @@ concurrency:
   group: apply
   cancel-in-progress: false
 jobs:
-  apply:
+  dry-run:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      real: ${{ steps.list.outputs.real }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,7 +35,7 @@ jobs:
       - run: node build/leak-scan.mjs
       # Every pending request is handled, not only this push's, so a run that
       # GitHub cancels while queued loses nothing.
-      - name: Write status.json for pending requests
+      - name: Write dry-run status.json for pending requests
         run: node build/apply.mjs --dry-run
       - name: Commit the status files back to dev
         run: |
@@ -38,6 +44,62 @@ jobs:
           node build/leak-scan.mjs
           git -c user.name="factory-apply" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Write back request status (dry run)" -m "Agent: factory-apply@AgentiCCells.dinis"
+          for i in 1 2 3 4 5; do
+            git push -q origin HEAD:dev && exit 0
+            sleep $((i * 3)); git pull -q --rebase origin dev
+          done
+          echo "push failed after 5 attempts" >&2; exit 1
+      - id: list
+        name: Are there real requests to act on?
+        run: |
+          git pull -q --rebase origin dev || true
+          n=$(node build/apply.mjs --list-real | wc -l)
+          echo "Real requests pending: $n"
+          if [ "$n" -gt 0 ]; then echo "real=true" >> "$GITHUB_OUTPUT"; else echo "real=false" >> "$GITHUB_OUTPUT"; fi
+
+  real:
+    needs: dry-run
+    if: needs.dry-run.outputs.real == 'true'
+    runs-on: ubuntu-latest
+    environment: apply
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node test/run.mjs
+      - name: GitHub App token (about an hour)
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: AgentiCCells
+      - name: AWS role for Route 53 (OIDC, no stored keys)
+        if: vars.FACTORY_AWS_ROLE_ARN != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.FACTORY_AWS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Act on real requests
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          FACTORY_ROUTE53_ZONE_ID: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
+        run: node build/apply.mjs --real
+      - name: Commit the status files back to dev
+        if: always()
+        run: |
+          git add requests
+          if git diff --cached --quiet; then echo "nothing to write back"; exit 0; fi
+          node build/leak-scan.mjs
+          git -c user.name="factory-apply" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Write back request status (real)" -m "Agent: factory-apply@AgentiCCells.dinis"
           for i in 1 2 3 4 5; do
             git push -q origin HEAD:dev && exit 0
             sleep $((i * 3)); git pull -q --rebase origin dev

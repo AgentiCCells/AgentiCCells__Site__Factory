@@ -14,9 +14,9 @@ const REPO = /^[A-Za-z0-9._-]{1,100}$/;
 const REF = /^[A-Za-z0-9._/-]{1,100}$/;
 // Domains the factory may manage. A change here is a decision for Dinis.
 export const ALLOWED_ZONES = ['agenticcells.site'];
-export const STEPS = ['validate', 'repo', 'dns', 'vault', 'seed', 'https', 'first-pass'];
+export const STEPS = ['validate', 'repo', 'seed', 'settings', 'dns', 'domain', 'vault', 'deploy', 'https', 'first-pass'];
 const STATES = ['planned', 'applying', 'live', 'failed', 'torn-down'];
-const RESULTS = ['ok', 'failed', 'skipped', 'dry-run'];
+const RESULTS = ['ok', 'failed', 'skipped', 'dry-run', 'pending'];
 
 const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
 function onlyKeys(o, allowed, path, errs) {
@@ -39,9 +39,11 @@ function flag(o, key, path, errs) {
 export function checkSite(site) {
   const errs = [];
   if (!isObj(site)) return ['site.json: must be an object'];
-  onlyKeys(site, ['schema', 'name', 'domain', 'repo', 'template', 'visibility', 'vault', 'first_pass', 'requested_by'], 'site.json', errs);
+  onlyKeys(site, ['schema', 'name', 'description', 'domain', 'repo', 'template', 'visibility', 'vault', 'first_pass', 'apply', 'requested_by'], 'site.json', errs);
   if (site.schema !== 1) errs.push('schema: must be the number 1');
   if (typeof site.name !== 'string' || !site.name.trim() || site.name.length > 80) errs.push('name: 1 to 80 characters');
+  if (site.description !== undefined && (typeof site.description !== 'string' || !site.description.trim() || site.description.length > 200)) errs.push('description: 1 to 200 characters');
+  if (site.apply !== undefined && !['dry-run', 'real'].includes(site.apply)) errs.push('apply: dry-run or real');
   if (typeof site.domain !== 'string' || !DOMAIN.test(site.domain)) errs.push('domain: not a valid lowercase domain');
   else if (!ALLOWED_ZONES.some((z) => site.domain === z || site.domain.endsWith('.' + z))) errs.push(`domain: "${site.domain}" is outside the zones the factory may manage (${ALLOWED_ZONES.join(', ')})`);
   ownerName(site.repo, 'repo', errs, false);
