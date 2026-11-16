@@ -2,7 +2,7 @@
   "request": "2026-11-16__specialist-design",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-16T15:57:06Z",
+  "updated": "2026-11-16T16:02:38Z",
   "commit": "955f730ae98d603a4d4b4df60276fbddae28b211",
   "steps": [
     {
@@ -61,9 +61,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-16T15:57:06Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as 506c987 (102 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-16T16:02:38Z"
     }
   ]
 }
