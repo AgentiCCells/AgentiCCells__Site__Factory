@@ -14,7 +14,9 @@ Skip this if the account already has it.
 ## 2. The role
 Name: `agenticcells-site-factory-dns`. Maximum session: 1 hour.
 
-**Trust policy** (only this repository's `apply` environment may assume it). Replace `<ACCOUNT_ID>`:
+**Trust policy** (only this repository's `apply` environment may assume it). Replace `<ACCOUNT_ID>`.
+
+The subject carries the organisation's and the repository's numeric IDs (`AgentiCCells@357027852`, `AgentiCCells__Site__Factory@1459223341`): that is the subject format GitHub sends for this organisation, read from the **Check AWS role setup** run of 2026-11-16 02:28 UTC. It also means a repository deleted and recreated under the same name does not match.
 ```json
 {
   "Version": "2012-10-17",
@@ -25,7 +27,7 @@ Name: `agenticcells-site-factory-dns`. Maximum session: 1 hour.
     "Condition": {
       "StringEquals": {
         "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-        "token.actions.githubusercontent.com:sub": "repo:AgentiCCells/AgentiCCells__Site__Factory:environment:apply"
+        "token.actions.githubusercontent.com:sub": "repo:AgentiCCells@357027852/AgentiCCells__Site__Factory@1459223341:environment:apply"
       }
     }
   }]

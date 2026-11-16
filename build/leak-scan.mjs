@@ -83,7 +83,9 @@ function highEntropy(line) {
 
 // Narrow allowlist: [path, kind, reason]. Keep each entry to one file and one kind.
 const ALLOW = [
-  // (none yet)
+  // The GitHub OIDC subject for the AWS trust policy, with the organisation's and
+  // repository's public numeric IDs (factory@, 2026-11-16). Not a secret.
+  ['docs/aws-oidc.md', 'long high-entropy string', 'OIDC subject with public numeric IDs'],
 ];
 const allowed = (path, kind) => ALLOW.some(([p, k]) => p === path && k === kind);
 
