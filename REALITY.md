@@ -27,7 +27,8 @@ Checked 2026-11-15 by factory@AgentiCCells.dinis. A thing not written here does 
 - `docs/aws-oidc.md`: proposal for the Route 53 role (trust and permission policies). Not carried out.
 - `docs/SETUP.md` (step by step for Dinis) and two manual check workflows, `check-github-app.yml` and `check-aws.yml`, which report what is set up and what is missing. Never run yet.
 - No CI versioning, no commit-trailer check, no release script.
-- No GitHub App, no AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
+- GitHub App `agenticcells-site-factory` (App ID 5777442), created and installed by Dinis on 2026-11-16: owned by AgentiCCells, installed on all repositories (option B), permissions actions, administration, contents, pages and workflows write, metadata read. Its key is an environment secret of `apply`; factory@ has never seen it. **Check GitHub App setup** passed on 2026-11-16 (screenshot from Dinis): it minted a token and read AgentiCCells__Site__Template with it (HTTP 200).
+- No AWS role, no sgit token, no Claude key. None is held by this repository or by factory@.
 - The website and hub repositories exist (created by Dinis); factory@ has not touched them.
 
 ## Facts about the specification
