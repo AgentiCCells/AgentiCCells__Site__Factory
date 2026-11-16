@@ -10,6 +10,16 @@
 
 const pagesHost = (owner) => `${owner.toLowerCase()}.github.io`;
 
+// Once GitHub has issued the certificate, turn on Enforce HTTPS (http redirects to https).
+// GitHub refuses it before the certificate exists, so this is tried after the https check passes.
+export async function enforceHttps(full, io) {
+  const p = await io.gh('GET', `/repos/${full}/pages`);
+  if (p.status !== 200) return `Enforce HTTPS not set: reading Pages returned ${p.status}`;
+  if (p.data?.https_enforced) return 'Enforce HTTPS already on';
+  const r = await io.gh('PUT', `/repos/${full}/pages`, { https_enforced: true });
+  return r.status >= 200 && r.status < 300 ? 'Enforce HTTPS turned on' : `Enforce HTTPS not set yet (GitHub returned ${r.status}); the next run tries again`;
+}
+
 export async function runReal(name, site, io, { httpsTries = 40, httpsWaitMs = 15000 } = {}) {
   const { owner, name: repo } = site.repo;
   const full = `${owner}/${repo}`;
@@ -109,7 +119,7 @@ export async function runReal(name, site, io, { httpsTries = 40, httpsWaitMs = 1
     const url = `https://${site.domain}/version.json`;
     for (let i = 0; i < httpsTries; i++) {
       const v = await io.fetchJson(url);
-      if (v && v.commit === head) return { result: 'ok', detail: `${url} serves ${v.version} at ${head.slice(0, 7)}` };
+      if (v && v.commit === head) return { result: 'ok', detail: `${url} serves ${v.version} at ${head.slice(0, 7)}; ${await enforceHttps(full, io)}` };
       await io.sleep(httpsWaitMs);
     }
     return { result: 'pending', detail: `${url} did not serve ${head.slice(0, 7)} yet; the next run checks again` };
@@ -130,7 +140,7 @@ export async function recheck(site, io, previous, opts = {}) {
   let https = { name: 'https', result: 'pending', detail: `${url} did not serve ${head} yet; the next run checks again` };
   for (let i = 0; i < (opts.httpsTries ?? 4); i++) {
     const v = await io.fetchJson(url);
-    if (v && head && String(v.commit).startsWith(head)) { https = { name: 'https', result: 'ok', detail: `${url} serves ${v.version} at ${head}` }; break; }
+    if (v && head && String(v.commit).startsWith(head)) { https = { name: 'https', result: 'ok', detail: `${url} serves ${v.version} at ${head}; ${await enforceHttps(`${site.repo.owner}/${site.repo.name}`, io)}` }; break; }
     await io.sleep(opts.httpsWaitMs ?? 15000);
   }
   steps.push({ ...https, time: io.now() }, previous.steps.find((s) => s.name === 'first-pass'));

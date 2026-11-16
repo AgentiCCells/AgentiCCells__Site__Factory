@@ -25,6 +25,7 @@ function fakeIo({ exists = false, empty = true, served = true, fail = {} } = {})
       if (path.endsWith('/deployment-branch-policies') && method === 'GET') return { status: 200, data: { branch_policies: [] } };
       if (path.endsWith('/branches/dev')) return { status: 200, data: { commit: { sha: SHA } } };
       if (path.endsWith('/dispatches')) return { status: 204 };
+      if (method === 'PUT' && path.endsWith('/pages') && body?.https_enforced) { calls.push('enforce'); return { status: 204 }; }
       return { status: 200, data: {} };
     },
     async seed({ values }) { calls.push(`seed ${values.__SITE_DOMAIN__}`); empty = false; return { commit: SHA }; },
@@ -49,6 +50,7 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
   expect('CNAME to agenticcells.github.io', io.calls.includes('dns qa-1.agenticcells.site agenticcells.github.io'));
   expect('dns before the custom domain', io.calls.indexOf('dns qa-1.agenticcells.site agenticcells.github.io') < io.calls.lastIndexOf(`PUT /repos/${site.repo.owner}/${site.repo.name}/pages`));
   expect('all ten steps recorded', r.steps.length === 10);
+  expect('Enforce HTTPS turned on after https passes', io.calls.includes('enforce') && /Enforce HTTPS turned on/.test(r.steps.find((x) => x.name === 'https').detail));
 }
 // 2. An existing repository with commits is adopted, never seeded over.
 {
@@ -76,7 +78,8 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
   const io2 = fakeIo({ exists: true, empty: false });
   const r2 = await recheck(site, io2, { steps: r.steps }, { httpsTries: 1 });
   expect('recheck makes it live', r2.state === 'live' && byName(r2).https === 'ok');
-  expect('recheck changes nothing else', io2.calls.length === 0);
+  expect('recheck only reads Pages and enforces HTTPS', io2.calls.every((c) => c.endsWith('/pages') || c === 'enforce'));
+  expect('pending https does not enforce', !io.calls.includes('enforce'));
 }
 // 5. Apex domains are refused by the dns step.
 {
