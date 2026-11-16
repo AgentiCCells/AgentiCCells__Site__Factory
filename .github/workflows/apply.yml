@@ -87,6 +87,8 @@ jobs:
         with:
           role-to-assume: ${{ vars.FACTORY_AWS_ROLE_ARN }}
           aws-region: us-east-1
+          # Fail on the first refusal so the error shows at once (the default retries for minutes).
+          retry-max-attempts: 1
       - name: Act on real requests
         env:
           GH_TOKEN: ${{ steps.app.outputs.token }}

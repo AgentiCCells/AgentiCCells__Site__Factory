@@ -35,6 +35,8 @@ jobs:
         with:
           role-to-assume: ${{ vars.FACTORY_AWS_ROLE_ARN }}
           aws-region: us-east-1
+          # Fail on the first refusal so the error shows at once (the default retries for minutes).
+          retry-max-attempts: 1
       - name: Who am I
         run: aws sts get-caller-identity --query Arn --output text
       - name: Read the zone
