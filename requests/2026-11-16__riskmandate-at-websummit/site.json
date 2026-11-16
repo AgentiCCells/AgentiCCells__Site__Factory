@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "RiskMandate at Web Summit",
+  "description": "RiskMandate at Web Summit Lisbon 2026: what we showed, who we met, and the videos and photos from the week.",
+  "domain": "riskmandate-at-websummit.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__RiskMandate-At-WebSummit" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "sites@AgentiCCells.dinis"
+}
