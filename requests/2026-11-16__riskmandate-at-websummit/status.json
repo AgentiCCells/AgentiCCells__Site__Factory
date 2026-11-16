@@ -2,7 +2,7 @@
   "request": "2026-11-16__riskmandate-at-websummit",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-16T03:45:33Z",
+  "updated": "2026-11-16T03:46:45Z",
   "commit": "f9cd9fe9a8cb7582df22f71fb1d9fcde10eb3602",
   "steps": [
     {
@@ -61,9 +61,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-16T03:45:33Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as 6056370 (109 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-16T03:46:45Z"
     }
   ]
 }
