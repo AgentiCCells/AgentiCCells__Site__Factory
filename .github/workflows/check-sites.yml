@@ -1,0 +1,40 @@
+name: Check sites
+# Manual. Lists every AgentiCCells repository served by GitHub Pages and checks DNS,
+# GitHub's domain check, the HTTPS certificate, Enforce HTTPS and what the site serves.
+# Report only, unless "fix" is ticked: then it re-saves a custom domain whose GitHub DNS
+# check failed while public DNS is right, and turns on Enforce HTTPS where the
+# certificate exists. The table is in the run's summary.
+on:
+  workflow_dispatch:
+    inputs:
+      fix:
+        description: 'Fix what can be fixed (re-check the domain, turn on Enforce HTTPS)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash -eo pipefail {0}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: apply
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: GitHub App token (about an hour)
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: AgentiCCells
+      - name: Check every site
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          FIX: ${{ inputs.fix }}
+        run: |
+          if [ "$FIX" = "true" ]; then node build/check-sites.mjs --fix; else node build/check-sites.mjs; fi

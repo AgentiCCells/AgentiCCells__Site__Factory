@@ -69,6 +69,9 @@ In the AWS account that holds the Route 53 zone for agenticcells.site:
 2. Open pull request #3 (https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/3), click **Ready for review**, then merge it.
 3. The **Apply** workflow runs; if you set required reviewers, approve the `real` job. It writes `requests/2026-11-16__qa-1/status.json` back to `dev`, and https://qa-1.agenticcells.site should come up (the HTTPS certificate can take a few minutes; if the run ends with the request `applying`, run **Apply** again by hand later and it only re-checks).
 
+## Afterwards: Check sites
+**Check sites** (`check-sites.yml`, manual) lists every AgentiCCells repository served by GitHub Pages (factory-made and hand-made) and reports, per site: public DNS, GitHub's own domain check, the HTTPS certificate, Enforce HTTPS, and what https serves. Report only, unless **fix** is ticked: then it re-saves a custom domain whose GitHub check failed while public DNS is right (GitHub then checks again and requests the certificate), and turns on Enforce HTTPS wherever the certificate exists. The table is on the run's summary page.
+
 ## Undo
 - GitHub: suspend or uninstall the App (org settings, **GitHub Apps**); delete the environment secret.
 - AWS: delete the role.

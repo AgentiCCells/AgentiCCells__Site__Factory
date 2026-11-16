@@ -52,9 +52,15 @@ export function realIo(env = process.env) {
     },
     async fetchJson(url) {
       try {
-        const res = await fetch(`${url}?t=${Date.now()}`, { headers: { 'user-agent': 'agenticcells-site-factory' }, signal: AbortSignal.timeout(10000) });
+        const res = await fetch(`${url}${url.includes('?') ? '&' : '?'}t=${Date.now()}`, { headers: { 'user-agent': 'agenticcells-site-factory' }, signal: AbortSignal.timeout(10000) });
         return res.ok ? await res.json() : null;
       } catch { return null; }
+    },
+    // What public DNS (Google's resolver) answers for a CNAME, without trailing dot; null if none.
+    async publicCname(name) {
+      const v = await this.fetchJson(`https://dns.google/resolve?name=${encodeURIComponent(name)}&type=CNAME`);
+      const a = (v?.Answer ?? []).find((x) => x.type === 5);
+      return a ? String(a.data).replace(/\.$/, '').toLowerCase() : null;
     },
     async seed({ template, repo, values, request }) {
       const dir = mkdtempSync(join(tmpdir(), 'seed-'));

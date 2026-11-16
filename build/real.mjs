@@ -20,7 +20,8 @@ export async function enforceHttps(full, io) {
   return r.status >= 200 && r.status < 300 ? 'Enforce HTTPS turned on' : `Enforce HTTPS not set yet (GitHub returned ${r.status}); the next run tries again`;
 }
 
-export async function runReal(name, site, io, { httpsTries = 40, httpsWaitMs = 15000 } = {}) {
+export async function runReal(name, site, io, opts = {}) {
+  const { httpsTries = 40, httpsWaitMs = 15000 } = opts;
   const { owner, name: repo } = site.repo;
   const full = `${owner}/${repo}`;
   const t = site.template ?? { owner: 'AgentiCCells', name: 'AgentiCCells__Site__Template', ref: 'dev' };
@@ -90,7 +91,13 @@ export async function runReal(name, site, io, { httpsTries = 40, httpsWaitMs = 1
     const labels = site.domain.split('.');
     if (labels.length < 3) return { result: 'failed', detail: 'apex domains are not automated yet; only subdomains get a CNAME' };
     await io.dns.upsertCname(site.domain, pagesHost(owner));
-    return { result: 'ok', detail: `CNAME ${site.domain} -> ${pagesHost(owner)}` };
+    // Wait until public DNS answers, so that GitHub's own DNS check (made the moment the
+    // custom domain is set) does not see "no such name" and stop (seen on QA-1, 2026-11-16).
+    for (let i = 0; i < (opts.dnsTries ?? 18); i++) {
+      if (await io.publicCname(site.domain) === pagesHost(owner)) return { result: 'ok', detail: `CNAME ${site.domain} -> ${pagesHost(owner)}, visible in public DNS` };
+      await io.sleep(opts.dnsWaitMs ?? 10000);
+    }
+    return { result: 'ok', detail: `CNAME ${site.domain} -> ${pagesHost(owner)} written, but not yet visible in public DNS; GitHub's domain check may need a re-check (run the Check sites workflow)` };
   });
 
   await step('domain', async () => {

@@ -30,6 +30,7 @@ function fakeIo({ exists = false, empty = true, served = true, fail = {} } = {})
     },
     async seed({ values }) { calls.push(`seed ${values.__SITE_DOMAIN__}`); empty = false; return { commit: SHA }; },
     dns: { async upsertCname(n, t) { calls.push(`dns ${n} ${t}`); } },
+    async publicCname() { return 'agenticcells.github.io'; },
     async fetchJson() { return served ? { version: 'v0.1.0', commit: SHA } : null; },
   };
   return io;
