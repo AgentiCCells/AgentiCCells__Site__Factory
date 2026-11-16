@@ -1,0 +1,73 @@
+name: Check Claude setup
+# Manual. Runs in the `first-pass` environment, which holds nothing but the Claude
+# federation settings (no App key, no AWS role). Exchanges GitHub's identity token
+# for a short-lived Anthropic token (Workload Identity Federation), then makes one
+# tiny call through Claude Code the way the first-pass job will. Stores no key.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash -eo pipefail {0}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: first-pass
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+      ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+      ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+      ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
+      ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/gha-jwt
+    steps:
+      - name: Settings present
+        run: |
+          ok=1
+          for v in ANTHROPIC_FEDERATION_RULE_ID ANTHROPIC_SERVICE_ACCOUNT_ID ANTHROPIC_ORGANIZATION_ID; do
+            if [ -z "${!v}" ]; then echo "- environment variable $v is not set in the first-pass environment"; ok=0; else echo "$v = ${!v}"; fi
+          done
+          [ -n "$ANTHROPIC_WORKSPACE_ID" ] && echo "ANTHROPIC_WORKSPACE_ID = $ANTHROPIC_WORKSPACE_ID" || echo "ANTHROPIC_WORKSPACE_ID not set (fine when the rule covers one workspace)"
+          [ -z "$ANTHROPIC_WORKSPACE_ID" ] && unset ANTHROPIC_WORKSPACE_ID || true
+          test "$ok" = 1
+      - name: What GitHub presents (claims only, never the token)
+        run: |
+          raw=$(curl -sS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com")
+          tok=$(printf '%s' "$raw" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>process.stdout.write(JSON.parse(d).value||""))')
+          node -e '
+            const p = JSON.parse(Buffer.from(process.argv[1].split(".")[1], "base64url").toString());
+            for (const k of ["sub","aud","repository","repository_owner","environment","ref"]) console.log(`  ${k} = ${p[k]}`);
+          ' "$tok"
+      - name: Exchange it for an Anthropic token (the token is never printed)
+        run: |
+          raw=$(curl -sS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com")
+          jwt=$(printf '%s' "$raw" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>process.stdout.write(JSON.parse(d).value||""))')
+          body=$(JWT="$jwt" node -e '
+            const b = { grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer", assertion: process.env.JWT,
+              federation_rule_id: process.env.ANTHROPIC_FEDERATION_RULE_ID, organization_id: process.env.ANTHROPIC_ORGANIZATION_ID,
+              service_account_id: process.env.ANTHROPIC_SERVICE_ACCOUNT_ID };
+            if (process.env.ANTHROPIC_WORKSPACE_ID) b.workspace_id = process.env.ANTHROPIC_WORKSPACE_ID;
+            process.stdout.write(JSON.stringify(b));')
+          code=$(curl -sS -o "$RUNNER_TEMP/exchange.json" -w '%{http_code}' https://api.anthropic.com/v1/oauth/token -H 'content-type: application/json' -d "$body")
+          node -e '
+            const r = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));
+            if (process.argv[2] === "200" && String(r.access_token || "").startsWith("sk-ant-oat01-")) console.log(`OK: exchange worked, token lasts ${r.expires_in} s`);
+            else { console.log(`FAILED (HTTP ${process.argv[2]}): ${r.error?.message || r.error || "no detail"}. The Console page Workload identity, tab history, gives the reason.`); process.exit(1); }
+          ' "$RUNNER_TEMP/exchange.json" "$code"
+          rm -f "$RUNNER_TEMP/exchange.json"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: One tiny call through Claude Code (federated, no key)
+        run: |
+          raw=$(curl -sS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com")
+          printf '%s' "$raw" | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>process.stdout.write(JSON.parse(d).value||""))' > "$ANTHROPIC_IDENTITY_TOKEN_FILE"
+          [ -z "$ANTHROPIC_WORKSPACE_ID" ] && unset ANTHROPIC_WORKSPACE_ID
+          npm install -g -s @anthropic-ai/claude-code
+          claude --version
+          out=$(claude -p "Reply with exactly the word: ready" --model claude-opus-5-5 --max-turns 1 --allowedTools "")
+          echo "Claude Code said: $out"
+          case "$out" in *ready*) echo "OK: Claude Code works with the federated token";; *) echo "FAILED: unexpected reply"; exit 1;; esac
