@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "Factory pipeline QA 2",
+  "description": "A test site made end to end by the AgentiCCells site factory, with a first version written by Claude Code.",
+  "domain": "qa-2.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Factory__Pipeline__QA-2" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "factory@AgentiCCells.dinis"
+}
