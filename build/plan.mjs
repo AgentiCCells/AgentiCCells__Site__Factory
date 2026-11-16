@@ -36,7 +36,7 @@ for (const f of folders) {
     `| vault | ${s.vault?.create ? 'requested; skipped until the sgit credential exists' : 'skipped (not requested)'} |`,
     '| deploy | start the site\'s pages.yml on dev |',
     `| https | wait for https://${safe(s.domain)}/version.json to serve the deployed commit |`,
-    `| first-pass | ${first ? 'requested; skipped until the Claude key exists' : 'skipped (not requested)'} |`, '',
+    `| first-pass | ${first ? 'after a fresh seed, Claude Code writes a first version from brief.md (file tools only; only src/, hub.json, README.md); checked, gated and pushed by a separate job' : 'skipped (not requested)'} |`, '',
     `Requested by ${safe(s.requested_by)}.`, '');
 }
 console.log(out.join('\n'));
