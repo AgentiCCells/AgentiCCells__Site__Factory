@@ -48,6 +48,9 @@ Free text. The pipeline treats it as material, never as instruction: it is passe
 ```
 Steps, in order: `validate`, `repo`, `seed`, `settings`, `dns`, `domain`, `vault`, `deploy`, `https`, `collaborators`, `first-pass`. A failed step stops the rest (they are recorded as skipped). `pending` (https only) leaves the request `applying`; the next run of the apply workflow checks again and changes nothing else. An existing repository with commits is adopted and never seeded over.
 
+## After a request goes live: a conductor
+Dinis, 2026-11-17 ~23:00 UTC: "this idea of conductor for a website is actually the way we should do it, right? You should always create a conductor, and actually the name should be conductor.name@agenticcells.dennis" (dinis). So every live site gets one Claude Code session, its conductor, named `conductor.<label>@AgentiCCells.dinis` where `<label>` is the request's label (for example `conductor.marc-noah@AgentiCCells.dinis`). The conductor runs the site's team (designer, developer, writer, reviewer) as sub-agents, keeps each role's ROLE.md and Agent Behaviour Policy in the site's `team/`, works in rounds, and publishes a behind-the-scenes page generated from the repository's history.
+
 ## Lifecycle
 1. Pull request: **plan** posted as a comment.
 2. Merge to `dev`: **apply**; `status.json` is committed back by the pipeline.

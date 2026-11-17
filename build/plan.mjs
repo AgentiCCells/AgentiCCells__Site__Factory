@@ -31,7 +31,7 @@ for (const f of folders) {
     `| repo | adopt ${safe(s.repo.owner + '/' + s.repo.name)} if it exists, otherwise create it (${safe(s.visibility ?? 'public')}) |`,
     `| seed | if the repository is empty, push ${safe(t.owner + '/' + t.name)} at ${safe(t.ref ?? 'dev')} to dev with the placeholders filled; never overwrite |`,
     '| settings | default branch dev; Pages from GitHub Actions; dev may deploy |',
-    `| dns | ${sub ? `CNAME ${safe(s.domain)} to ${safe(s.repo.owner.toLowerCase() + '.github.io')} in the Route 53 zone ${safe(zoneOf(s.domain))}` : `fails: ${safe(s.domain)} is an apex domain, not automated yet`} |`,
+    `| dns | ${sub ? `CNAME ${safe(s.domain)} to ${safe(s.repo.owner.toLowerCase() + '.github.io')} in the Route 53 zone ${safe(zoneOf(s.domain))}` : `apex ${safe(s.domain)}: never written by the factory; adopted if a person has already pointed it at GitHub Pages, otherwise the step fails`} |`,
     `| domain | set ${safe(s.domain)} as the Pages custom domain |`,
     `| vault | ${s.vault?.create ? 'requested; skipped until the sgit credential exists' : 'skipped (not requested)'} |`,
     '| deploy | start the site\'s pages.yml on dev |',

@@ -9,6 +9,8 @@
 // Order: validate, repo, seed, settings, dns, domain, vault, deploy, https, collaborators, first-pass.
 
 const pagesHost = (owner) => `${owner.toLowerCase()}.github.io`;
+// GitHub Pages' apex addresses (docs.github.com, "Managing a custom domain for your GitHub Pages site").
+export const PAGES_IPS = ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153'];
 
 // Once GitHub has issued the certificate, turn on Enforce HTTPS (http redirects to https).
 // GitHub refuses it before the certificate exists, so this is tried after the https check passes.
@@ -89,7 +91,13 @@ export async function runReal(name, site, io, opts = {}) {
 
   await step('dns', async () => {
     const labels = site.domain.split('.');
-    if (labels.length < 3) return { result: 'failed', detail: 'apex domains are not automated yet; only subdomains get a CNAME' };
+    if (labels.length < 3) {
+      // An apex is never written by the factory (the AWS role may not touch it). If a person has
+      // already pointed it at GitHub Pages, adopt it as it is; otherwise stop and say why.
+      const a = (await io.publicA?.(site.domain)) ?? [];
+      if (a.length && a.every((ip) => PAGES_IPS.includes(ip))) return { result: 'ok', detail: `apex ${site.domain} already points at GitHub Pages (${a.length} A records, set by a person); not changed` };
+      return { result: 'failed', detail: `apex ${site.domain} does not point at GitHub Pages (A records: ${a.join(', ') || 'none'}); a person sets the apex, the factory does not` };
+    }
     await io.dns.upsertCname(site.domain, pagesHost(owner));
     // Wait until public DNS answers, so that GitHub's own DNS check (made the moment the
     // custom domain is set) does not see "no such name" and stop (seen on QA-1, 2026-11-16).
