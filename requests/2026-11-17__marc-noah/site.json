@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "Marc Noah",
+  "description": "Marc Noah, Australian-Portuguese singer-songwriter living in the Algarve: the composer and his songs.",
+  "domain": "marc-noah.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Marc-Noah" },
+  "visibility": "public",
+  "vault": { "create": true },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
