@@ -1,6 +1,6 @@
 // Tests for build/real.mjs with fake GitHub, DNS and HTTPS. No network.
 import { runReal, recheck } from '../build/real.mjs';
-import { fillPlaceholders } from '../build/io.mjs';
+import { fillPlaceholders, tokenFor, realIo } from '../build/io.mjs';
 import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -50,7 +50,8 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
   expect('creates the repository', io.calls.includes('POST /orgs/AgentiCCells/repos'));
   expect('CNAME to agenticcells.github.io', io.calls.includes('dns qa-1.agenticcells.site agenticcells.github.io'));
   expect('dns before the custom domain', io.calls.indexOf('dns qa-1.agenticcells.site agenticcells.github.io') < io.calls.lastIndexOf(`PUT /repos/${site.repo.owner}/${site.repo.name}/pages`));
-  expect('all ten steps recorded', r.steps.length === 10);
+  expect('all eleven steps recorded', r.steps.length === 11);
+  expect('collaborators skipped when none requested', s.collaborators === 'skipped');
   expect('Enforce HTTPS turned on after https passes', io.calls.includes('enforce') && /Enforce HTTPS turned on/.test(r.steps.find((x) => x.name === 'https').detail));
 }
 // 2. An existing repository with commits is adopted, never seeded over.
@@ -106,5 +107,44 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
   expect('html escaped', readFileSync(join(d, 'a.html'), 'utf8') === '<p>A test &lt;site&gt; &amp; &quot;more&quot;</p>');
   expect('json escaped', JSON.parse(readFileSync(join(d, 'h.json'), 'utf8')).x === site.description);
   rmSync(d, { recursive: true, force: true });
+}
+// 7. Collaborators: invited with push; 204 means already there; a bad login fails the request but nothing else.
+{
+  const io = fakeIo({ fail: { '/collaborators/no-such-user': 404 } });
+  const orig = io.gh.bind(io);
+  io.gh = async (m, p, b) => { if (p.endsWith('/collaborators/already-there')) { io.calls.push(`${m} ${p}`); return { status: 204 }; } if (p.includes('/collaborators/') && !p.endsWith('no-such-user')) { io.calls.push(`${m} ${p} ${b?.permission}`); return { status: 201 }; } return orig(m, p, b); };
+  const r = await runReal('x', { ...site, collaborators: ['riskmandate-agent', 'already-there'] }, io, { httpsTries: 1 });
+  const c = r.steps.find((x) => x.name === 'collaborators');
+  expect('collaborators ok', c.result === 'ok' && r.state === 'live');
+  expect('invited with push', io.calls.includes(`PUT /repos/${site.repo.owner}/${site.repo.name}/collaborators/riskmandate-agent push`));
+  expect('already-there reported', /already-there already a collaborator/.test(c.detail));
+  expect('collaborators after https', r.steps.findIndex((x) => x.name === 'collaborators') > r.steps.findIndex((x) => x.name === 'https'));
+  const r2 = await runReal('x', { ...site, collaborators: ['no-such-user'] }, fakeIo({ fail: { '/collaborators/no-such-user': 404 } }), { httpsTries: 1 });
+  expect('bad login fails the request', r2.state === 'failed' && byName(r2).collaborators === 'failed' && byName(r2).https === 'ok');
+  const r3 = await runReal('x', { ...site, collaborators: ['a'] }, fakeIo({ fail: { 'POST /orgs/AgentiCCells/repos': 403 } }), { httpsTries: 1 });
+  expect('no invitation after an earlier failure', byName(r3).collaborators === 'skipped');
+}
+// 8. A PrompTugal site: CNAME to promptugal.github.io, repository in the PrompTugal organisation.
+{
+  const pt = { ...site, domain: 'data.promptugal.news', repo: { owner: 'PrompTugal', name: 'PrompTugal__Data' } };
+  const io = fakeIo();
+  io.gh = ((orig) => async (m, p, b) => (m === 'GET' && p === '/repos/PrompTugal/PrompTugal__Data') ? (io.calls.push(`${m} ${p}`), { status: 404 }) : orig(m, p, b))(io.gh.bind(io));
+  io.publicCname = async () => 'promptugal.github.io';
+  const r = await runReal('x', pt, io, { httpsTries: 1 });
+  expect('PrompTugal repository created in its organisation', io.calls.includes('POST /orgs/PrompTugal/repos'));
+  expect('CNAME to promptugal.github.io', io.calls.includes('dns data.promptugal.news promptugal.github.io') && byName(r).dns === 'ok');
+}
+// 9. Tokens per owner, and the zone ID from FACTORY_ROUTE53_ZONES or the old variable.
+{
+  expect('PrompTugal token', tokenFor('PrompTugal', { GH_TOKEN: 'a', GH_TOKEN_PROMPTUGAL: 'b' }) === 'b');
+  expect('AgentiCCells token', tokenFor('AgentiCCells', { GH_TOKEN: 'a' }) === 'a');
+  expect('no token for an owner without one', tokenFor('Other', { GH_TOKEN: 'a' }) === null);
+  let threw = false; try { realIo({ GH_TOKEN: 'a' }, 'PrompTugal'); } catch { threw = true; }
+  expect('realIo refuses an owner without a token', threw);
+  const io = realIo({ GH_TOKEN: 'a', FACTORY_ROUTE53_ZONE_ID: 'ZOLD', FACTORY_ROUTE53_ZONES: '{"promptugal.news":"ZPT"}' });
+  expect('zone from the map', io.dns.zoneId('data.promptugal.news') === 'ZPT');
+  expect('agenticcells.site from the old variable', io.dns.zoneId('x.agenticcells.site') === 'ZOLD');
+  let out = false; try { io.dns.zoneId('x.example.com'); } catch { out = true; }
+  expect('a foreign domain has no zone', out);
 }
 export default fails;

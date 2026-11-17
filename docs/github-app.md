@@ -69,3 +69,15 @@ The token covers the whole installation (option B), because a repository that do
 ## Rotating and revoking
 - Rotate: generate a new key, replace the secret, delete the old key in the App's settings.
 - Stop everything at once: suspend or uninstall the App. Nothing else holds its power.
+
+## A second owner: PrompTugal (2026-11-17)
+Dinis, 2026-11-17 ~18:20 UTC, on the factory creating `data.promptugal.news`: "let's do this, since it will really make a massive difference". A GitHub App installation is per account, so the App installed on AgentiCCells cannot create a repository in the PrompTugal organisation.
+
+**Dinis's step:** in the App's settings (AgentiCCells organisation, Developer settings, GitHub Apps, `agenticcells-site-factory`, Install App), install it on **PrompTugal**, **All repositories** (the factory creates repositories there, as option B above). The permissions are the App's own, unchanged: actions, administration, contents, pages and workflows write, metadata read.
+
+**What the pipeline does with it:** the apply workflow mints a second installation token with `owner: PrompTugal` (`continue-on-error`, so nothing breaks while the App is not installed there) and hands it to the real step as `GH_TOKEN_PROMPTUGAL`; a request for a PrompTugal repository uses only that token (`build/io.mjs`, `tokenFor`). `build/validate.mjs` lets PrompTugal repositories serve only `promptugal.news`, and AgentiCCells repositories only `agenticcells.site`.
+
+**The cost** (see the newsroom's "CI behaviour policies"): the App's power now covers two organisations. Required reviewers on the `apply` environment remain the brake.
+
+## Collaborators (2026-11-17)
+A request may list up to five GitHub logins in `collaborators`. After the site is live, the apply job invites each with write (push) access: `PUT /repos/{owner}/{repo}/collaborators/{login}` with `permission: push`, which needs the App's administration write, already granted. The merge is the approval; each person must accept the invitation. This is the "invite" gate in the newsroom's "Your own agentic cell, end to end", done by the same pipeline instead of a separate workflow.

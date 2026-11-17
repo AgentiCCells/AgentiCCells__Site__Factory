@@ -6,7 +6,7 @@
 //   io.dns.upsertCname(name, target)     -> void        Route 53, through the OIDC role
 //   io.fetchJson(url)                   -> object|null  a public GET, no credentials
 //   io.sleep(ms), io.now()
-// Order: validate, repo, seed, settings, dns, domain, vault, deploy, https, first-pass.
+// Order: validate, repo, seed, settings, dns, domain, vault, deploy, https, collaborators, first-pass.
 
 const pagesHost = (owner) => `${owner.toLowerCase()}.github.io`;
 
@@ -132,6 +132,24 @@ export async function runReal(name, site, io, opts = {}) {
     return { result: 'pending', detail: `${url} did not serve ${head.slice(0, 7)} yet; the next run checks again` };
   });
 
+  // Invite the requested GitHub accounts with write (push) access. Runs last among the
+  // site steps, so a wrong login never holds the site back; it does mark the request failed.
+  // GitHub answers 201 (invitation sent) or 204 (already a collaborator).
+  await step('collaborators', async () => {
+    const logins = site.collaborators ?? [];
+    if (!logins.length) return { result: 'skipped', detail: 'none requested' };
+    const done = [], bad = [];
+    for (const login of logins) {
+      const r = await io.gh('PUT', `/repos/${full}/collaborators/${encodeURIComponent(login)}`, { permission: 'push' });
+      if (r.status === 201) done.push(`${login} invited`);
+      else if (r.status === 204) done.push(`${login} already a collaborator`);
+      else bad.push(`${login} (GitHub returned ${r.status})`);
+    }
+    return bad.length
+      ? { result: 'failed', detail: `write access: ${[...done, `not invited: ${bad.join(', ')}`].join('; ')}` }
+      : { result: 'ok', detail: `write access: ${done.join('; ')}; each must accept the invitation` };
+  });
+
   // The first pass runs in separate jobs (first-pass.yml jobs in apply.yml), only on a
   // repository this run seeded: never on an adopted repository that already had content.
   const seedOk = steps.find((s) => s.name === 'seed')?.result === 'ok';
@@ -149,7 +167,7 @@ export async function runReal(name, site, io, opts = {}) {
 
 // A later run for a request left 'applying': only the https check runs again.
 export async function recheck(site, io, previous, opts = {}) {
-  const steps = previous.steps.filter((s) => s.name !== 'https' && s.name !== 'first-pass');
+  const steps = previous.steps.filter((s) => !['https', 'collaborators', 'first-pass'].includes(s.name));
   const deploy = previous.steps.find((s) => s.name === 'deploy');
   const head = (deploy?.detail.match(/at ([0-9a-f]{7})/) || [])[1];
   const url = `https://${site.domain}/version.json`;
@@ -159,6 +177,8 @@ export async function recheck(site, io, previous, opts = {}) {
     if (v && head && String(v.commit).startsWith(head)) { https = { name: 'https', result: 'ok', detail: `${url} serves ${v.version} at ${head}; ${await enforceHttps(`${site.repo.owner}/${site.repo.name}`, io)}` }; break; }
     await io.sleep(opts.httpsWaitMs ?? 15000);
   }
-  steps.push({ ...https, time: io.now() }, previous.steps.find((s) => s.name === 'first-pass'));
-  return { state: https.result === 'ok' ? 'live' : 'applying', steps };
+  steps.push({ ...https, time: io.now() });
+  for (const n of ['collaborators', 'first-pass']) { const p = previous.steps.find((s) => s.name === n); if (p) steps.push(p); }
+  const failed = steps.some((s) => s.name !== 'first-pass' && s.result === 'failed');
+  return { state: failed ? 'failed' : https.result === 'ok' ? 'live' : 'applying', steps };
 }
