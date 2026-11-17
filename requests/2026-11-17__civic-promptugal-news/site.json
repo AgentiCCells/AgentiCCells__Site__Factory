@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Civic",
+  "description": "Public data, public services and bureaucracy in Portugal, explained and cross-mapped. Independent, not a government site.",
+  "domain": "civic.promptugal.news",
+  "repo": {
+    "owner": "PrompTugal",
+    "name": "PrompTugal__News__Civic"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}

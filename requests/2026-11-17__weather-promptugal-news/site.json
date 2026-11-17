@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Weather",
+  "description": "Weather and civil protection for Portugal, place by place: IPMA warnings and forecasts, fire risk, storms, sea state and UV.",
+  "domain": "weather.promptugal.news",
+  "repo": {
+    "owner": "PrompTugal",
+    "name": "PrompTugal__News__Weather"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Travel",
+  "description": "Travel and tourism in Portugal: flights, transport and strikes, weather for visitors, events, and tourism as an industry.",
+  "domain": "travel.promptugal.news",
+  "repo": {
+    "owner": "PrompTugal",
+    "name": "PrompTugal__News__Travel"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
