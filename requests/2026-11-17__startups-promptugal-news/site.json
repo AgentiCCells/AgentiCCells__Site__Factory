@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Startups",
+  "description": "Portugal's startups and their funding, place by place: companies, incubators, programmes and rounds.",
+  "domain": "startups.promptugal.news",
+  "repo": {
+    "owner": "PrompTugal",
+    "name": "PrompTugal__News__Startups"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
