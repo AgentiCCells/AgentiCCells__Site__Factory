@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-17__marc-noah",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-17T21:34:10Z",
+  "commit": "7e3a91c12525d0a7c08208dd516255912d1bb79c",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-17T21:33:14Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Marc-Noah",
+      "time": "2026-11-17T21:33:18Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 33ccbf8 on dev",
+      "time": "2026-11-17T21:33:20Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-17T21:33:23Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME marc-noah.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-17T21:33:36Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain marc-noah.agenticcells.site",
+      "time": "2026-11-17T21:33:37Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "requested, but the vault step needs the sgit credential (not set up yet)",
+      "time": "2026-11-17T21:33:37Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 33ccbf8",
+      "time": "2026-11-17T21:33:39Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://marc-noah.agenticcells.site/version.json serves v0.1.0 at 33ccbf8; Enforce HTTPS turned on",
+      "time": "2026-11-17T21:34:10Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-17T21:34:10Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "pending",
+      "detail": "queued for the first-pass jobs",
+      "time": "2026-11-17T21:34:10Z"
+    }
+  ]
+}
