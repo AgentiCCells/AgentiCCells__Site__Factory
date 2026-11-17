@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-17__weather-promptugal-news",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-17T19:05:06Z",
+  "commit": "d830939a9ccdb5cbdc862c8ee920624ce7c424c1",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-17T19:04:12Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created PrompTugal/PrompTugal__News__Weather",
+      "time": "2026-11-17T19:04:16Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 384066e on dev",
+      "time": "2026-11-17T19:04:18Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-17T19:04:22Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME weather.promptugal.news -> promptugal.github.io, visible in public DNS",
+      "time": "2026-11-17T19:04:33Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain weather.promptugal.news",
+      "time": "2026-11-17T19:04:34Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T19:04:34Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 384066e",
+      "time": "2026-11-17T19:04:35Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://weather.promptugal.news/version.json serves v0.1.0 at 384066e; Enforce HTTPS turned on",
+      "time": "2026-11-17T19:05:06Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-17T19:05:06Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T19:05:06Z"
+    }
+  ]
+}

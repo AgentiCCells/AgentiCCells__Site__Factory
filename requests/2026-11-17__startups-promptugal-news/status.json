@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-17__startups-promptugal-news",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-17T19:03:03Z",
+  "commit": "d830939a9ccdb5cbdc862c8ee920624ce7c424c1",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-17T19:02:08Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created PrompTugal/PrompTugal__News__Startups",
+      "time": "2026-11-17T19:02:12Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as dce0f62 on dev",
+      "time": "2026-11-17T19:02:14Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-17T19:02:17Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME startups.promptugal.news -> promptugal.github.io, visible in public DNS",
+      "time": "2026-11-17T19:02:29Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain startups.promptugal.news",
+      "time": "2026-11-17T19:02:30Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T19:02:30Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at dce0f62",
+      "time": "2026-11-17T19:02:31Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://startups.promptugal.news/version.json serves v0.1.0 at dce0f62; Enforce HTTPS turned on",
+      "time": "2026-11-17T19:03:03Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-17T19:03:03Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T19:03:03Z"
+    }
+  ]
+}
