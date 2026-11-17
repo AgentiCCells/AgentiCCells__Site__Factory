@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news data",
+  "description": "The data behind PrompTugal.news: a refactor of the storm data site, built by its own agentic team.",
+  "domain": "data.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Data" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
