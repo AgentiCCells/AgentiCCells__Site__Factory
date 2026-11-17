@@ -2,7 +2,7 @@
   "request": "2026-11-17__marc-noah",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-17T21:34:10Z",
+  "updated": "2026-11-17T21:37:38Z",
   "commit": "7e3a91c12525d0a7c08208dd516255912d1bb79c",
   "steps": [
     {
@@ -67,9 +67,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-17T21:34:10Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as b9f7ac6 (621 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-17T21:37:38Z"
     }
   ]
 }
