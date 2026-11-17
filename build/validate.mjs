@@ -12,9 +12,21 @@ const DOMAIN = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/;
 const OWNER = /^[A-Za-z0-9][A-Za-z0-9-]{0,38}$/;
 const REPO = /^[A-Za-z0-9._-]{1,100}$/;
 const REF = /^[A-Za-z0-9._/-]{1,100}$/;
-// Domains the factory may manage. A change here is a decision for Dinis.
-export const ALLOWED_ZONES = ['agenticcells.site'];
-export const STEPS = ['validate', 'repo', 'seed', 'settings', 'dns', 'domain', 'vault', 'deploy', 'https', 'first-pass'];
+// Domains the factory may manage, and the GitHub owners whose repositories each may serve.
+// A change here is a decision for Dinis: it also needs the AWS role to cover the zone and
+// the GitHub App to be installed on the owner (docs/aws-oidc.md, docs/github-app.md).
+// promptugal.news added at Dinis's word, 2026-11-17 ~18:20 UTC ("let's do this").
+export const ZONES = {
+  'agenticcells.site': ['AgentiCCells'],
+  'promptugal.news': ['PrompTugal'],
+};
+export const ALLOWED_ZONES = Object.keys(ZONES);
+// The zone a domain belongs to (the longest allowed suffix), or null.
+export const zoneOf = (domain) => ALLOWED_ZONES.filter((z) => domain === z || domain.endsWith('.' + z)).sort((a, b) => b.length - a.length)[0] ?? null;
+// GitHub logins invited as collaborators with write (push) access; at most five per request.
+const LOGIN = /^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$/;
+export const MAX_COLLABORATORS = 5;
+export const STEPS = ['validate', 'repo', 'seed', 'settings', 'dns', 'domain', 'vault', 'deploy', 'https', 'collaborators', 'first-pass'];
 const STATES = ['planned', 'applying', 'live', 'failed', 'torn-down'];
 const RESULTS = ['ok', 'failed', 'skipped', 'dry-run', 'pending'];
 
@@ -39,14 +51,24 @@ function flag(o, key, path, errs) {
 export function checkSite(site) {
   const errs = [];
   if (!isObj(site)) return ['site.json: must be an object'];
-  onlyKeys(site, ['schema', 'name', 'description', 'domain', 'repo', 'template', 'visibility', 'vault', 'first_pass', 'apply', 'requested_by'], 'site.json', errs);
+  onlyKeys(site, ['schema', 'name', 'description', 'domain', 'repo', 'template', 'visibility', 'vault', 'first_pass', 'apply', 'requested_by', 'collaborators'], 'site.json', errs);
   if (site.schema !== 1) errs.push('schema: must be the number 1');
   if (typeof site.name !== 'string' || !site.name.trim() || site.name.length > 80) errs.push('name: 1 to 80 characters');
   if (site.description !== undefined && (typeof site.description !== 'string' || !site.description.trim() || site.description.length > 200)) errs.push('description: 1 to 200 characters');
   if (site.apply !== undefined && !['dry-run', 'real'].includes(site.apply)) errs.push('apply: dry-run or real');
   if (typeof site.domain !== 'string' || !DOMAIN.test(site.domain)) errs.push('domain: not a valid lowercase domain');
-  else if (!ALLOWED_ZONES.some((z) => site.domain === z || site.domain.endsWith('.' + z))) errs.push(`domain: "${site.domain}" is outside the zones the factory may manage (${ALLOWED_ZONES.join(', ')})`);
+  else if (!zoneOf(site.domain)) errs.push(`domain: "${site.domain}" is outside the zones the factory may manage (${ALLOWED_ZONES.join(', ')})`);
   ownerName(site.repo, 'repo', errs, false);
+  const zone = typeof site.domain === 'string' ? zoneOf(site.domain) : null;
+  if (zone && isObj(site.repo) && typeof site.repo.owner === 'string' && !ZONES[zone].includes(site.repo.owner)) errs.push(`repo.owner: "${site.repo.owner}" may not serve ${zone} (allowed: ${ZONES[zone].join(', ')})`);
+  if (site.collaborators !== undefined) {
+    if (!Array.isArray(site.collaborators)) errs.push('collaborators: must be a list of GitHub logins');
+    else {
+      if (site.collaborators.length > MAX_COLLABORATORS) errs.push(`collaborators: at most ${MAX_COLLABORATORS}`);
+      for (const c of site.collaborators) if (typeof c !== 'string' || !LOGIN.test(c)) errs.push(`collaborators: "${c}" is not a valid GitHub login`);
+      if (new Set(site.collaborators.map((c) => String(c).toLowerCase())).size !== site.collaborators.length) errs.push('collaborators: listed twice');
+    }
+  }
   if (site.template !== undefined) ownerName(site.template, 'template', errs, true);
   if (site.visibility !== undefined && !['public', 'private'].includes(site.visibility)) errs.push('visibility: public or private');
   flag(site.vault, 'create', 'vault', errs);

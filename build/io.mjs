@@ -1,11 +1,14 @@
 // The real outside world for build/real.mjs. Used only by the apply workflow's
 // real job, inside the protected `apply` environment.
-// Needs: GH_TOKEN (the App's installation token, about an hour), and for DNS the
-// AWS credentials set by OIDC plus FACTORY_ROUTE53_ZONE_ID. Never prints a secret.
+// Needs: an App installation token for the repository's owner (GH_TOKEN for AgentiCCells,
+// GH_TOKEN_<OWNER> for any other owner, about an hour each), and for DNS the AWS credentials
+// set by OIDC. The hosted zone ID comes from FACTORY_ROUTE53_ZONES (JSON, zone -> ID), or
+// FACTORY_ROUTE53_ZONE_ID for agenticcells.site, or else is looked up by name. Never prints a secret.
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, rmSync, readdirSync, statSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { zoneOf } from './validate.mjs';
 
 const htmlEsc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonEsc = (s) => JSON.stringify(String(s)).slice(1, -1);
@@ -27,9 +30,15 @@ export function siteReadme(values, request) {
   return `# ${values.__SITE_NAME__}\n\n${values.__SITE_DESCRIPTION__}\n\n- Live at https://${values.__SITE_DOMAIN__} (version at /version.json).\n- Made by the AgentiCCells site factory from request \`requests/${request}/\` in AgentiCCells__Site__Factory, seeded from AgentiCCells__Site__Template.\n- Release: \`scripts/release.sh\` (build, validate, leak scan, then push to dev; CI deploys and tags v0.1.N).\n\nLicences: code Apache-2.0; text CC BY 4.0.\n`;
 }
 
-export function realIo(env = process.env) {
-  const token = env.GH_TOKEN;
-  if (!token) throw new Error('GH_TOKEN is not set: the GitHub App token step did not run');
+// The installation token for a repository owner, or null.
+export function tokenFor(owner, env = process.env) {
+  const own = env[`GH_TOKEN_${String(owner).toUpperCase().replace(/[^A-Z0-9]/g, '_')}`];
+  return own || (owner === 'AgentiCCells' ? env.GH_TOKEN : null) || null;
+}
+
+export function realIo(env = process.env, owner = 'AgentiCCells') {
+  const token = tokenFor(owner, env);
+  if (!token) throw new Error(`no GitHub App token for ${owner}: is the App installed on ${owner}, and does the apply workflow mint a token for it?`);
   const auth = 'AUTHORIZATION: basic ' + Buffer.from(`x-access-token:${token}`).toString('base64');
   // Child processes (git, the site's gates) get no credentials. git's own GIT_CONFIG_* settings are kept.
   const cleanEnv = Object.fromEntries(Object.entries(env).filter(([k]) => /^GIT_CONFIG_/.test(k) || !/TOKEN|SECRET|KEY|AWS_|ACTIONS_ID_TOKEN/i.test(k)));
@@ -85,9 +94,21 @@ export function realIo(env = process.env) {
       } finally { rmSync(dir, { recursive: true, force: true }); }
     },
     dns: {
+      zoneId(name) {
+        const zone = zoneOf(name);
+        if (!zone) throw new Error(`${name} is outside the zones the factory may manage`);
+        let map = {};
+        try { map = env.FACTORY_ROUTE53_ZONES ? JSON.parse(env.FACTORY_ROUTE53_ZONES) : {}; } catch { throw new Error('FACTORY_ROUTE53_ZONES is not valid JSON'); }
+        if (map[zone]) return map[zone];
+        if (zone === 'agenticcells.site' && env.FACTORY_ROUTE53_ZONE_ID) return env.FACTORY_ROUTE53_ZONE_ID;
+        // Look it up by name (needs route53:ListHostedZonesByName on the role).
+        const out = JSON.parse(execFileSync('aws', ['route53', 'list-hosted-zones-by-name', '--dns-name', zone, '--max-items', '1'], { stdio: ['ignore', 'pipe', 'pipe'] }).toString());
+        const z = (out.HostedZones ?? [])[0];
+        if (!z || z.Name !== `${zone}.` || z.Config?.PrivateZone) throw new Error(`no public Route 53 zone named ${zone} is visible to the role`);
+        return String(z.Id).replace('/hostedzone/', '');
+      },
       async upsertCname(name, target) {
-        const zone = env.FACTORY_ROUTE53_ZONE_ID;
-        if (!zone) throw new Error('FACTORY_ROUTE53_ZONE_ID is not set: the AWS role is not set up yet');
+        const zone = this.zoneId(name);
         const batch = { Comment: `site factory: ${name}`, Changes: [{ Action: 'UPSERT', ResourceRecordSet: { Name: name, Type: 'CNAME', TTL: 300, ResourceRecords: [{ Value: target }] } }] };
         execFileSync('aws', ['route53', 'change-resource-record-sets', '--hosted-zone-id', zone, '--change-batch', JSON.stringify(batch)], { stdio: ['ignore', 'pipe', 'pipe'] });
       },

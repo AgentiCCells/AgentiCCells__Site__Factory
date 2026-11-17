@@ -86,6 +86,14 @@ jobs:
           app-id: ${{ vars.FACTORY_APP_ID }}
           private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
           owner: AgentiCCells
+      - name: GitHub App token for PrompTugal (if the App is installed there)
+        id: app_pt
+        continue-on-error: true
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: PrompTugal
       - name: AWS role for Route 53 (OIDC, no stored keys)
         if: vars.FACTORY_AWS_ROLE_ARN != ''
         uses: aws-actions/configure-aws-credentials@v4
@@ -97,7 +105,9 @@ jobs:
       - name: Act on real requests
         env:
           GH_TOKEN: ${{ steps.app.outputs.token }}
+          GH_TOKEN_PROMPTUGAL: ${{ steps.app_pt.outputs.token }}
           FACTORY_ROUTE53_ZONE_ID: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
+          FACTORY_ROUTE53_ZONES: ${{ vars.FACTORY_ROUTE53_ZONES }}
         run: node build/apply.mjs --real
       - id: fp
         name: Which requests wait for a first pass?
@@ -231,12 +241,20 @@ jobs:
           app-id: ${{ vars.FACTORY_APP_ID }}
           private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
           owner: AgentiCCells
+      - name: GitHub App token for PrompTugal (if the App is installed there)
+        id: app_pt
+        continue-on-error: true
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: PrompTugal
       - name: Check, gate and push the first pass
         id: push
         env:
           REPO: ${{ matrix.item.repo }}
           FOLDER: ${{ matrix.item.folder }}
-          GH_TOKEN: ${{ steps.app.outputs.token }}
+          GH_TOKEN: ${{ startsWith(matrix.item.repo, 'PrompTugal/') && steps.app_pt.outputs.token || steps.app.outputs.token }}
         run: |
           fail() { node build/first-pass.mjs --record "$FOLDER" failed "$1"; echo "FAILED: $1"; exit 0; }
           [ -s out/first-pass.patch ] || fail "no patch from the Claude job (see its log)"

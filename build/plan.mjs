@@ -2,7 +2,7 @@
 // Usage: node build/plan.mjs <request-folder>...   prints Markdown; exit 1 if any request is invalid.
 import { readFileSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
-import { checkRequest } from './validate.mjs';
+import { checkRequest, zoneOf } from './validate.mjs';
 
 // Text from a request is data. Each value goes in an inline code span, where
 // Markdown, HTML and @mentions are not processed; backticks, pipes and line
@@ -31,11 +31,12 @@ for (const f of folders) {
     `| repo | adopt ${safe(s.repo.owner + '/' + s.repo.name)} if it exists, otherwise create it (${safe(s.visibility ?? 'public')}) |`,
     `| seed | if the repository is empty, push ${safe(t.owner + '/' + t.name)} at ${safe(t.ref ?? 'dev')} to dev with the placeholders filled; never overwrite |`,
     '| settings | default branch dev; Pages from GitHub Actions; dev may deploy |',
-    `| dns | ${sub ? `CNAME ${safe(s.domain)} to ${safe(s.repo.owner.toLowerCase() + '.github.io')} in Route 53` : `fails: ${safe(s.domain)} is an apex domain, not automated yet`} |`,
+    `| dns | ${sub ? `CNAME ${safe(s.domain)} to ${safe(s.repo.owner.toLowerCase() + '.github.io')} in the Route 53 zone ${safe(zoneOf(s.domain))}` : `fails: ${safe(s.domain)} is an apex domain, not automated yet`} |`,
     `| domain | set ${safe(s.domain)} as the Pages custom domain |`,
     `| vault | ${s.vault?.create ? 'requested; skipped until the sgit credential exists' : 'skipped (not requested)'} |`,
     '| deploy | start the site\'s pages.yml on dev |',
     `| https | wait for https://${safe(s.domain)}/version.json to serve the deployed commit |`,
+    `| collaborators | ${(s.collaborators ?? []).length ? `invite ${s.collaborators.map(safe).join(', ')} with write (push) access; each must accept` : 'skipped (none requested)'} |`,
     `| first-pass | ${first ? 'after a fresh seed, Claude Code writes a first version from brief.md (file tools only; only src/, hub.json, README.md); checked, gated and pushed by a separate job' : 'skipped (not requested)'} |`, '',
     `Requested by ${safe(s.requested_by)}.`, '');
 }

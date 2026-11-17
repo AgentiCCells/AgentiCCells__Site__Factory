@@ -2,10 +2,25 @@
   "schema": 1,
   "name": "AgentiCCells site",
   "domain": "agenticcells.site",
-  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Website" },
-  "template": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Template", "ref": "dev" },
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Website"
+  },
+  "template": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Template",
+    "ref": "dev"
+  },
   "visibility": "public",
-  "vault": { "create": false },
-  "first_pass": { "enabled": false },
-  "requested_by": "factory@AgentiCCells.dinis"
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "requested_by": "factory@AgentiCCells.dinis",
+  "collaborators": [
+    "riskmandate-agent",
+    "riskmandate-silvio"
+  ]
 }

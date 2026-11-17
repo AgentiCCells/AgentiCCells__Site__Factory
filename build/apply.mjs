@@ -2,7 +2,7 @@
 // Usage:
 //   node build/apply.mjs --dry-run      every request not marked "apply": "real": write a dry-run status
 //   node build/apply.mjs --list-real    print the folders a real run would act on (no credentials needed)
-//   node build/apply.mjs --real         act for real on those folders (needs GH_TOKEN; see build/io.mjs)
+//   node build/apply.mjs --real         act for real on those folders (needs an App token per owner; see build/io.mjs)
 // A request is handled when its status is missing, older than its site.json or brief.md,
 // of the other mode, or (real only) still 'applying'.
 import { writeFileSync, existsSync, readFileSync } from 'node:fs';
@@ -53,12 +53,16 @@ async function main() {
   if (args.includes('--real')) {
     const { runReal, recheck } = await import('./real.mjs');
     const { realIo } = await import('./io.mjs');
-    const io = realIo();
     const todo = pending('real');
     for (const { folder, commit, site, previous } of todo) {
       const errs = checkRequest(folder);
-      let r;
-      if (errs.length) r = { state: 'failed', steps: [{ name: 'validate', result: 'failed', detail: `${errs.length} problem(s); run node build/validate.mjs`, time: now() }] };
+      let r, io = null;
+      if (!errs.length) {
+        try { io = realIo(process.env, site.repo.owner); }
+        catch (e) { r = { state: 'failed', steps: [{ name: 'validate', result: 'ok', detail: 'request is valid', time: now() }, { name: 'repo', result: 'failed', detail: String(e.message).slice(0, 200), time: now() }] }; }
+      }
+      if (r) { /* no token for this owner */ }
+      else if (errs.length) r = { state: 'failed', steps: [{ name: 'validate', result: 'failed', detail: `${errs.length} problem(s); run node build/validate.mjs`, time: now() }] };
       else if (previous) r = await recheck(site, io, previous);
       else r = await runReal(basename(folder), site, io);
       write(folder, { request: basename(folder), state: r.state, mode: 'real', updated: now(), commit, steps: r.steps });

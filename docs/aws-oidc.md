@@ -72,3 +72,63 @@ Neither is a secret. Then tell factory@ "the AWS role is set up".
 
 ## Revoking
 Delete the role, or remove the trust policy's statement. Nothing else holds the access.
+
+## A second zone: promptugal.news (2026-11-17)
+Dinis, 2026-11-17 ~18:20 UTC: "let's do this". promptugal.news is on Route 53 (awsdns nameservers, checked by cells@ 2026-11-17 through dns.google). If its hosted zone is in the **same AWS account** as agenticcells.site, extend the existing role; if it is in another account, ask cells@ or factory@ for a second role instead.
+
+**Dinis's step:** replace the role's permission policy with this one. Replace `<AGENTICCELLS_ZONE_ID>` and `<PROMPTUGAL_ZONE_ID>` (Route 53, Hosted zones, the "Hosted zone ID" column). Still CNAME records only, subdomains only, one statement per zone:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CnamesUnderAgenticcellsSite",
+      "Effect": "Allow",
+      "Action": "route53:ChangeResourceRecordSets",
+      "Resource": "arn:aws:route53:::hostedzone/<AGENTICCELLS_ZONE_ID>",
+      "Condition": {
+        "ForAllValues:StringEquals": {
+          "route53:ChangeResourceRecordSetsRecordTypes": ["CNAME"],
+          "route53:ChangeResourceRecordSetsActions": ["UPSERT", "DELETE"]
+        },
+        "ForAllValues:StringLike": {
+          "route53:ChangeResourceRecordSetsNormalizedRecordNames": ["*.agenticcells.site"]
+        }
+      }
+    },
+    {
+      "Sid": "CnamesUnderPromptugalNews",
+      "Effect": "Allow",
+      "Action": "route53:ChangeResourceRecordSets",
+      "Resource": "arn:aws:route53:::hostedzone/<PROMPTUGAL_ZONE_ID>",
+      "Condition": {
+        "ForAllValues:StringEquals": {
+          "route53:ChangeResourceRecordSetsRecordTypes": ["CNAME"],
+          "route53:ChangeResourceRecordSetsActions": ["UPSERT", "DELETE"]
+        },
+        "ForAllValues:StringLike": {
+          "route53:ChangeResourceRecordSetsNormalizedRecordNames": ["*.promptugal.news"]
+        }
+      }
+    },
+    {
+      "Sid": "ReadTheTwoZones",
+      "Effect": "Allow",
+      "Action": "route53:ListResourceRecordSets",
+      "Resource": [
+        "arn:aws:route53:::hostedzone/<AGENTICCELLS_ZONE_ID>",
+        "arn:aws:route53:::hostedzone/<PROMPTUGAL_ZONE_ID>"
+      ]
+    },
+    {
+      "Sid": "FindZonesByName",
+      "Effect": "Allow",
+      "Action": "route53:ListHostedZonesByName",
+      "Resource": "*"
+    }
+  ]
+}
+```
+`ListHostedZonesByName` lets the pipeline find a zone's ID from its name, so no new pipeline variable is needed; it reveals zone names and IDs in the account, nothing else, and AWS allows it only on `*`. If you would rather not grant it, leave out the last statement and instead add the environment variable `FACTORY_ROUTE53_ZONES` to the `apply` environment, for example `{"agenticcells.site":"<AGENTICCELLS_ZONE_ID>","promptugal.news":"<PROMPTUGAL_ZONE_ID>"}` (not a secret).
+
+The apex `promptugal.news` and every other record type stay a person's job, as for agenticcells.site. To check it, run **Check AWS role setup**; to test the zone itself, the first PrompTugal request will show it in its status.
