@@ -1,51 +1,75 @@
 {
   "request": "2026-11-15__agenticcells-site",
-  "state": "planned",
-  "mode": "dry-run",
-  "updated": "2026-11-15T21:42:54Z",
-  "commit": "13ed329c531be43693693aa2889461490cb33f1b",
+  "state": "applying",
+  "mode": "real",
+  "updated": "2026-11-17T23:08:50Z",
+  "commit": "ba31ccef7c8557f388d6f2756961106956cb50a6",
   "steps": [
     {
       "name": "validate",
       "result": "ok",
       "detail": "request is valid",
-      "time": "2026-11-15T21:42:54Z"
+      "time": "2026-11-17T22:58:41Z"
     },
     {
       "name": "repo",
-      "result": "dry-run",
-      "detail": "not performed: dry run",
-      "time": "2026-11-15T21:42:54Z"
-    },
-    {
-      "name": "dns",
-      "result": "dry-run",
-      "detail": "not performed: dry run",
-      "time": "2026-11-15T21:42:54Z"
-    },
-    {
-      "name": "vault",
-      "result": "dry-run",
-      "detail": "not performed: dry run",
-      "time": "2026-11-15T21:42:54Z"
+      "result": "ok",
+      "detail": "adopted existing repository AgentiCCells/AgentiCCells__Site__Website",
+      "time": "2026-11-17T22:58:42Z"
     },
     {
       "name": "seed",
-      "result": "dry-run",
-      "detail": "not performed: dry run",
-      "time": "2026-11-15T21:42:54Z"
+      "result": "skipped",
+      "detail": "repository already has commits; not seeded",
+      "time": "2026-11-17T22:58:42Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-17T22:58:44Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "apex agenticcells.site already points at GitHub Pages (4 A records, set by a person); not changed",
+      "time": "2026-11-17T22:58:44Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain agenticcells.site",
+      "time": "2026-11-17T22:58:45Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T22:58:45Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at c4f487c",
+      "time": "2026-11-17T22:58:46Z"
     },
     {
       "name": "https",
-      "result": "dry-run",
-      "detail": "not performed: dry run",
-      "time": "2026-11-15T21:42:54Z"
+      "result": "pending",
+      "detail": "https://agenticcells.site/version.json did not serve c4f487c yet; the next run checks again",
+      "time": "2026-11-17T23:08:50Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-17T23:08:50Z"
     },
     {
       "name": "first-pass",
-      "result": "dry-run",
-      "detail": "not performed: dry run",
-      "time": "2026-11-15T21:42:54Z"
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T23:08:50Z"
     }
   ]
 }
