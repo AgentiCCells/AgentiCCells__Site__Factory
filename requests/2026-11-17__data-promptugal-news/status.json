@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-17__data-promptugal-news",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-17T18:49:33Z",
+  "commit": "a1867a8d9464a79634c3e7dd0a1ab7ed61d7d8f3",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-17T18:48:38Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created PrompTugal/PrompTugal__News__Data",
+      "time": "2026-11-17T18:48:42Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 2796729 on dev",
+      "time": "2026-11-17T18:48:44Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-17T18:48:47Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME data.promptugal.news -> promptugal.github.io, visible in public DNS",
+      "time": "2026-11-17T18:48:59Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain data.promptugal.news",
+      "time": "2026-11-17T18:49:00Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T18:49:00Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 2796729",
+      "time": "2026-11-17T18:49:02Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://data.promptugal.news/version.json serves v0.1.0 at 2796729; Enforce HTTPS turned on",
+      "time": "2026-11-17T18:49:33Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-17T18:49:33Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-17T18:49:33Z"
+    }
+  ]
+}
