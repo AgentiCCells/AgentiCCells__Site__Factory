@@ -96,7 +96,12 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
 // 5. Apex domains are refused by the dns step.
 {
   const r = await runReal('x', { ...site, domain: 'agenticcells.site' }, fakeIo(), { httpsTries: 1 });
-  expect('apex dns fails', byName(r).dns === 'failed');
+  expect('apex dns fails when nothing points at Pages', byName(r).dns === 'failed');
+  const io = fakeIo(); io.publicA = async () => ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153'];
+  const r2 = await runReal('x', { ...site, domain: 'agenticcells.site' }, io, { httpsTries: 1 });
+  expect('apex already on Pages is adopted, not written', byName(r2).dns === 'ok' && !io.calls.some((c) => c.startsWith('dns ')));
+  const io3 = fakeIo(); io3.publicA = async () => ['185.199.108.153', '1.2.3.4'];
+  expect('apex partly elsewhere fails', byName(await runReal('x', { ...site, domain: 'agenticcells.site' }, io3, { httpsTries: 1 })).dns === 'failed');
 }
 // 6. Placeholders are escaped for each file type.
 {

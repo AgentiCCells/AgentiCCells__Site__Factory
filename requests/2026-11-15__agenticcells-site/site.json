@@ -2,10 +2,23 @@
   "schema": 1,
   "name": "AgentiCCells site",
   "domain": "agenticcells.site",
-  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Website" },
-  "template": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Template", "ref": "dev" },
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Website"
+  },
+  "template": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Template",
+    "ref": "dev"
+  },
   "visibility": "public",
-  "vault": { "create": false },
-  "first_pass": { "enabled": false },
-  "requested_by": "factory@AgentiCCells.dinis"
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "requested_by": "factory@AgentiCCells.dinis",
+  "description": "The home of the sites AgentiCCells cells make: what agenticcells.site is, how a site gets here, and the way to the hub.",
+  "apply": "real"
 }

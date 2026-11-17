@@ -71,6 +71,11 @@ export function realIo(env = process.env, owner = 'AgentiCCells') {
       const a = (v?.Answer ?? []).find((x) => x.type === 5);
       return a ? String(a.data).replace(/\.$/, '').toLowerCase() : null;
     },
+    // The A records public DNS answers for a name, or [].
+    async publicA(name) {
+      const v = await this.fetchJson(`https://dns.google/resolve?name=${encodeURIComponent(name)}&type=A`);
+      return (v?.Answer ?? []).filter((x) => x.type === 1).map((x) => String(x.data)).sort();
+    },
     async seed({ template, repo, values, request }) {
       const dir = mkdtempSync(join(tmpdir(), 'seed-'));
       try {
