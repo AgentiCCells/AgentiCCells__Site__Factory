@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__algarve-holiday-homes",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T16:13:41Z",
+  "commit": "2f3029d8935dff7717d8308e488b4424dbf0957e",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T16:12:14Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Algarve-Holiday-Homes",
+      "time": "2026-11-18T16:12:18Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 6e07d51 on dev",
+      "time": "2026-11-18T16:12:20Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T16:12:23Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME algarve-holiday-homes.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-18T16:12:38Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain algarve-holiday-homes.agenticcells.site",
+      "time": "2026-11-18T16:12:38Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T16:12:38Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 6e07d51",
+      "time": "2026-11-18T16:12:40Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://algarve-holiday-homes.agenticcells.site/version.json serves v0.1.0 at 6e07d51; Enforce HTTPS turned on",
+      "time": "2026-11-18T16:13:41Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-18T16:13:41Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T16:13:41Z"
+    }
+  ]
+}
