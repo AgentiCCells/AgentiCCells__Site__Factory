@@ -19,5 +19,6 @@ fails += (await import('./real.mjs')).default;
 fails += (await import('./check-app.mjs')).default;
 fails += (await import('./check-sites.mjs')).default;
 fails += (await import('./first-pass.mjs')).default;
+fails += (await import('./access.mjs')).default;
 if (fails) { console.log(`FAILED (${fails})`); process.exit(1); }
 console.log('OK (tests)');

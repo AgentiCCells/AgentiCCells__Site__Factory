@@ -9,6 +9,7 @@
 // Order: validate, repo, seed, settings, dns, domain, vault, deploy, https, collaborators, first-pass.
 
 import { FIRST_PASS_ON } from './validate.mjs';
+import { addTeams, homepageOf } from './access.mjs';
 const pagesHost = (owner) => `${owner.toLowerCase()}.github.io`;
 // GitHub Pages' apex addresses (docs.github.com, "Managing a custom domain for your GitHub Pages site").
 export const PAGES_IPS = ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153'];
@@ -72,8 +73,8 @@ export async function runReal(name, site, io, opts = {}) {
   });
 
   await step('settings', async () => {
-    const r1 = await io.gh('PATCH', `/repos/${full}`, { default_branch: 'dev' });
-    if (!ok(r1.status)) return { result: 'failed', detail: `default branch returned ${r1.status}` };
+    const r1 = await io.gh('PATCH', `/repos/${full}`, { default_branch: 'dev', homepage: homepageOf(site) });
+    if (!ok(r1.status)) return { result: 'failed', detail: `default branch and website returned ${r1.status}` };
     const pages = await io.gh('GET', `/repos/${full}/pages`);
     const r2 = pages.status === 404
       ? await io.gh('POST', `/repos/${full}/pages`, { build_type: 'workflow' })
@@ -87,7 +88,7 @@ export async function runReal(name, site, io, opts = {}) {
       const r4 = await io.gh('POST', `/repos/${full}/environments/github-pages/deployment-branch-policies`, { name: 'dev', type: 'branch' });
       if (!ok(r4.status)) return { result: 'failed', detail: `dev deploy rule returned ${r4.status}` };
     }
-    return { result: 'ok', detail: 'default branch dev; Pages from GitHub Actions; dev may deploy' };
+    return { result: 'ok', detail: `default branch dev; website ${homepageOf(site)}; Pages from GitHub Actions; dev may deploy` };
   });
 
   await step('dns', async () => {
@@ -141,22 +142,25 @@ export async function runReal(name, site, io, opts = {}) {
     return { result: 'pending', detail: `${url} did not serve ${head.slice(0, 7)} yet; the next run checks again` };
   });
 
-  // Invite the requested GitHub accounts with write (push) access. Runs last among the
-  // site steps, so a wrong login never holds the site back; it does mark the request failed.
-  // GitHub answers 201 (invitation sent) or 204 (already a collaborator).
+  // Invite the requested GitHub accounts with write (push) access, and give the owner's
+  // teams (build/access.mjs) their role. Runs last among the site steps, so a wrong login
+  // or a missing App permission never holds the site back; it does mark the request failed.
+  // GitHub answers 201 (invitation sent) or 204 (already a collaborator; team role set).
   await step('collaborators', async () => {
     const logins = site.collaborators ?? [];
-    if (!logins.length) return { result: 'skipped', detail: 'none requested' };
-    const done = [], bad = [];
+    const teams = await addTeams(site, io, opts.teams);
+    if (!logins.length && !teams.any) return { result: 'skipped', detail: 'none requested' };
+    const done = [...teams.done], bad = [...teams.bad];
     for (const login of logins) {
       const r = await io.gh('PUT', `/repos/${full}/collaborators/${encodeURIComponent(login)}`, { permission: 'push' });
       if (r.status === 201) done.push(`${login} invited`);
       else if (r.status === 204) done.push(`${login} already a collaborator`);
       else bad.push(`${login} (GitHub returned ${r.status})`);
     }
+    const tail = logins.length ? '; each login must accept the invitation' : '';
     return bad.length
-      ? { result: 'failed', detail: `write access: ${[...done, `not invited: ${bad.join(', ')}`].join('; ')}` }
-      : { result: 'ok', detail: `write access: ${done.join('; ')}; each must accept the invitation` };
+      ? { result: 'failed', detail: `access: ${[...done, `not given: ${bad.join(', ')}`].join('; ')}` }
+      : { result: 'ok', detail: `access: ${done.join('; ')}${tail}` };
   });
 
   // The first pass runs in separate jobs (first-pass.yml jobs in apply.yml), only on a
