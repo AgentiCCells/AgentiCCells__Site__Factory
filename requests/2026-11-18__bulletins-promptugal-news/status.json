@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__bulletins-promptugal-news",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T19:27:55Z",
+  "commit": "7d8d16698097cae9faf0235d3418a5e3a59ba978",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T19:26:44Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created PrompTugal/PrompTugal__News__Bulletins",
+      "time": "2026-11-18T19:26:47Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 9ea77fd on dev",
+      "time": "2026-11-18T19:26:49Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T19:26:52Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME bulletins.promptugal.news -> promptugal.github.io, visible in public DNS",
+      "time": "2026-11-18T19:27:06Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain bulletins.promptugal.news",
+      "time": "2026-11-18T19:27:07Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T19:27:07Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 9ea77fd",
+      "time": "2026-11-18T19:27:09Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://bulletins.promptugal.news/version.json serves v0.1.0 at 9ea77fd; Enforce HTTPS turned on",
+      "time": "2026-11-18T19:27:55Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "write access: riskmandate-agent already a collaborator; each must accept the invitation",
+      "time": "2026-11-18T19:27:55Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T19:27:55Z"
+    }
+  ]
+}
