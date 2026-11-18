@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__evals",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T18:49:20Z",
+  "commit": "4dfcfac57401986eca9c6080eb74021ceca88b1d",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T18:48:23Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Evals",
+      "time": "2026-11-18T18:48:26Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as f2d1547 on dev",
+      "time": "2026-11-18T18:48:28Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T18:48:32Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME evals.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-18T18:48:46Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain evals.agenticcells.site",
+      "time": "2026-11-18T18:48:47Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T18:48:47Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at f2d1547",
+      "time": "2026-11-18T18:48:48Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://evals.agenticcells.site/version.json serves v0.1.0 at f2d1547; Enforce HTTPS turned on",
+      "time": "2026-11-18T18:49:20Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-18T18:49:20Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T18:49:20Z"
+    }
+  ]
+}
