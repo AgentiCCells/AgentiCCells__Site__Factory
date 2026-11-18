@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Cyber",
+  "description": "Cyber security and threat intelligence for PrompTugal.news. First version coming.",
+  "domain": "cyber.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Cyber" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "collaborators": ["riskmandate-agent"],
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
