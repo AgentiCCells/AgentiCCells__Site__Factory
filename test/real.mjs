@@ -51,7 +51,10 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
   expect('CNAME to agenticcells.github.io', io.calls.includes('dns qa-1.agenticcells.site agenticcells.github.io'));
   expect('dns before the custom domain', io.calls.indexOf('dns qa-1.agenticcells.site agenticcells.github.io') < io.calls.lastIndexOf(`PUT /repos/${site.repo.owner}/${site.repo.name}/pages`));
   expect('all eleven steps recorded', r.steps.length === 11);
-  expect('collaborators skipped when none requested', s.collaborators === 'skipped');
+  expect('owner team given its role even with no logins', s.collaborators === 'ok' && io.calls.includes(`PUT /orgs/AgentiCCells/teams/agenticcells-team-devs/repos/AgentiCCells/${site.repo.name}`));
+  expect('website set with the default branch', r.steps.find((x) => x.name === 'settings').detail.includes('website https://qa-1.agenticcells.site'));
+  const none = byName(await runReal('2026-11-16__qa-1', site, fakeIo(), { httpsTries: 1, teams: {} }));
+  expect('collaborators skipped when no logins and no teams', none.collaborators === 'skipped');
   expect('Enforce HTTPS turned on after https passes', io.calls.includes('enforce') && /Enforce HTTPS turned on/.test(r.steps.find((x) => x.name === 'https').detail));
 }
 // 2. An existing repository with commits is adopted, never seeded over.
