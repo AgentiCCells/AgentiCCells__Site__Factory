@@ -2,7 +2,7 @@
   "request": "2026-11-18__sustain-nobility",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-18T02:29:12Z",
+  "updated": "2026-11-18T02:35:03Z",
   "commit": "cbed9ba3acbe94258db73bdb1cf04c54c47c13fd",
   "steps": [
     {
@@ -67,9 +67,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-18T02:29:12Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as a5b8e00 (1116 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-18T02:35:03Z"
     }
   ]
 }
