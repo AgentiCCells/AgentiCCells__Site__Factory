@@ -2,7 +2,7 @@
   "request": "2026-11-18__ipma-data",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-18T10:39:36Z",
+  "updated": "2026-11-18T10:48:43Z",
   "commit": "a4c96523807f1f736119b2668f42cf2a5ede0f39",
   "steps": [
     {
@@ -67,9 +67,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-18T10:39:36Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as 0262f7e (1645 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-18T10:48:43Z"
     }
   ]
 }
