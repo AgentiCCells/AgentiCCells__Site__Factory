@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Library",
+  "description": "The library of PrompTugal.news: the repository that holds the information for everything. First version coming.",
+  "domain": "library.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Library" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "collaborators": ["riskmandate-agent"],
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
