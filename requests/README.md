@@ -23,7 +23,7 @@ Validated against `schema/site.schema.json`. Fields:
 | `domain` | yes | the domain to serve it on; only subdomains of the zones the factory may manage, each for its own GitHub owner: `agenticcells.site` (AgentiCCells) and `promptugal.news` (PrompTugal), listed in `build/validate.mjs` |
 | `repo` | yes | `{owner, name}` of the GitHub repository to create |
 | `template` | no | `{owner, name, ref}` of the seed repository; defaults to AgentiCCells__Site__Template on `dev` |
-| `visibility` | no | `public` (default) or `private` |
+| `visibility` | no | `public` (default) or `private`. Dinis, 2026-11-18 ~15:10 UTC: "every repo that we're going to create here is public. I don't want to do any private repos for now": use `public` |
 | `vault` | no | `{create: bool}`: create an sgit vault for the site |
 | `first_pass` | no | `{enabled: bool}`: **switched off since 2026-11-18** (`FIRST_PASS_ON` in `build/validate.mjs`, at Dinis's word); a request that asks for it records the step as skipped, and the site's conductor session builds the first version. When it was on: after a fresh seed, Claude Code wrote a first version of the site from `brief.md`. It runs in the `first-pass` environment with file tools only and may change only `src/`, `hub.json` and `README.md`; a separate job checks the patch, runs the site's gates and pushes it |
 | `apply` | no | `dry-run` (default) or `real`. Only `real` requests are acted on, in the protected `apply` environment |
