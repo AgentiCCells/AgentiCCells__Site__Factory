@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__london-billboard",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T17:53:41Z",
+  "commit": "ae17c2ba055a5c3814ec52e289957bc50c530d18",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T17:52:26Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__London-Billboard",
+      "time": "2026-11-18T17:52:30Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 33e3ed5 on dev",
+      "time": "2026-11-18T17:52:32Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T17:52:35Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME london-billboard.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-18T17:53:07Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain london-billboard.agenticcells.site",
+      "time": "2026-11-18T17:53:07Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T17:53:07Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 33e3ed5",
+      "time": "2026-11-18T17:53:09Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://london-billboard.agenticcells.site/version.json serves v0.1.0 at 33e3ed5; Enforce HTTPS turned on",
+      "time": "2026-11-18T17:53:41Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-18T17:53:41Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T17:53:41Z"
+    }
+  ]
+}
