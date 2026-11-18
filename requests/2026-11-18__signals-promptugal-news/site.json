@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Signals",
+  "description": "Signals for PrompTugal.news: social media and other signals, including weak signals. First version coming.",
+  "domain": "signals.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Signals" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "collaborators": ["riskmandate-agent"],
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
