@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "IPMA data, drawn",
+  "description": "Portugal's public weather data from IPMA, drawn live from data.promptugal.news, with the Storm Charles archive. Not a warning service: follow IPMA.",
+  "domain": "ipma-data.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__IPMA-Data" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
