@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Events",
+  "description": "Events across Portugal, town by town: part of PrompTugal.news. First version coming.",
+  "domain": "events.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Events" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "collaborators": ["riskmandate-agent"],
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
