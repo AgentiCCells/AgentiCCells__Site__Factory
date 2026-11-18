@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__cyber-promptugal-news",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T15:55:43Z",
+  "commit": "3280b43f8b1ff05d80ea47ec772293e4df2ab723",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T15:54:46Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created PrompTugal/PrompTugal__News__Cyber",
+      "time": "2026-11-18T15:54:50Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 3310f45 on dev",
+      "time": "2026-11-18T15:54:52Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T15:54:55Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME cyber.promptugal.news -> promptugal.github.io, visible in public DNS",
+      "time": "2026-11-18T15:55:10Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain cyber.promptugal.news",
+      "time": "2026-11-18T15:55:10Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T15:55:10Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 3310f45",
+      "time": "2026-11-18T15:55:12Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://cyber.promptugal.news/version.json serves v0.1.0 at 3310f45; Enforce HTTPS turned on",
+      "time": "2026-11-18T15:55:43Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "write access: riskmandate-agent already a collaborator; each must accept the invitation",
+      "time": "2026-11-18T15:55:43Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T15:55:43Z"
+    }
+  ]
+}
