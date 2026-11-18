@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "SUSTAIN-NOBILITY",
+  "description": "A redesign proposal for SUSTAIN-NOBILITY Advisory, AI governance readiness for SMEs and their advisers, made by AgentiCCells with their agreement.",
+  "domain": "sustain-nobility.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Sustain-Nobility" },
+  "visibility": "public",
+  "vault": { "create": true },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
