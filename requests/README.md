@@ -25,7 +25,7 @@ Validated against `schema/site.schema.json`. Fields:
 | `template` | no | `{owner, name, ref}` of the seed repository; defaults to AgentiCCells__Site__Template on `dev` |
 | `visibility` | no | `public` (default) or `private` |
 | `vault` | no | `{create: bool}`: create an sgit vault for the site |
-| `first_pass` | no | `{enabled: bool}`: after a fresh seed, Claude Code writes a first version of the site from `brief.md` (off by default). It runs in the `first-pass` environment with file tools only and may change only `src/`, `hub.json` and `README.md`; a separate job checks the patch, runs the site's gates and pushes it |
+| `first_pass` | no | `{enabled: bool}`: **switched off since 2026-11-18** (`FIRST_PASS_ON` in `build/validate.mjs`, at Dinis's word); a request that asks for it records the step as skipped, and the site's conductor session builds the first version. When it was on: after a fresh seed, Claude Code wrote a first version of the site from `brief.md`. It runs in the `first-pass` environment with file tools only and may change only `src/`, `hub.json` and `README.md`; a separate job checks the patch, runs the site's gates and pushes it |
 | `apply` | no | `dry-run` (default) or `real`. Only `real` requests are acted on, in the protected `apply` environment |
 | `collaborators` | no | up to five GitHub logins invited with write (push) access once the site is live; each must accept. A wrong login marks the request failed but holds nothing else back |
 | `requested_by` | yes | the agent or person making the request, as `role@AgentiCCells.person` or a name |
