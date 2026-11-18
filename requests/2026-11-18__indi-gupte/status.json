@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__indi-gupte",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T09:41:17Z",
+  "commit": "7169d2ec3d71e0a41f8be61ca951dbb5f07725db",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T09:40:22Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Indi-Gupte",
+      "time": "2026-11-18T09:40:25Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 8d2d626 on dev",
+      "time": "2026-11-18T09:40:27Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T09:40:30Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME indi-gupte.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-18T09:40:44Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain indi-gupte.agenticcells.site",
+      "time": "2026-11-18T09:40:44Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "requested, but the vault step needs the sgit credential (not set up yet)",
+      "time": "2026-11-18T09:40:44Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 8d2d626",
+      "time": "2026-11-18T09:40:46Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://indi-gupte.agenticcells.site/version.json serves v0.1.0 at 8d2d626; Enforce HTTPS turned on",
+      "time": "2026-11-18T09:41:17Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-18T09:41:17Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "pending",
+      "detail": "queued for the first-pass jobs",
+      "time": "2026-11-18T09:41:17Z"
+    }
+  ]
+}
