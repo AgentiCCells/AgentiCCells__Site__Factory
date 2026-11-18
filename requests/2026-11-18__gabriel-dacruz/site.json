@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "name": "Gabriel DaCruz",
+  "description": "Gabriel DaCruz, composer for concert, film and television, trained in Lisbon and London.",
+  "domain": "gabriel-dacruz.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__gabriel-dacruz" },
+  "visibility": "public",
+  "apply": "real",
+  "collaborators": ["GDC-2026"],
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}
