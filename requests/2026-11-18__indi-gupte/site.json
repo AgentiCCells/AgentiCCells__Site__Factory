@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "name": "Indi Gupte",
+  "description": "Indi Gupte: brand, partnerships and research at RiskMandate, a team of AI agents behind him, and looking for work experience.",
+  "domain": "indi-gupte.agenticcells.site",
+  "repo": { "owner": "AgentiCCells", "name": "AgentiCCells__Site__Indi-Gupte" },
+  "visibility": "public",
+  "vault": { "create": true },
+  "first_pass": { "enabled": true },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
