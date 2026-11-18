@@ -8,6 +8,7 @@
 //   io.sleep(ms), io.now()
 // Order: validate, repo, seed, settings, dns, domain, vault, deploy, https, collaborators, first-pass.
 
+import { FIRST_PASS_ON } from './validate.mjs';
 const pagesHost = (owner) => `${owner.toLowerCase()}.github.io`;
 // GitHub Pages' apex addresses (docs.github.com, "Managing a custom domain for your GitHub Pages site").
 export const PAGES_IPS = ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153'];
@@ -161,7 +162,9 @@ export async function runReal(name, site, io, opts = {}) {
   // The first pass runs in separate jobs (first-pass.yml jobs in apply.yml), only on a
   // repository this run seeded: never on an adopted repository that already had content.
   const seedOk = steps.find((s) => s.name === 'seed')?.result === 'ok';
+  const fpOn = opts.firstPassOn ?? FIRST_PASS_ON;
   const fp = !site.first_pass?.enabled ? { result: 'skipped', detail: 'not requested' }
+    : !fpOn ? { result: 'skipped', detail: 'requested, but the first pass is switched off (Dinis, 2026-11-18); the site\'s conductor session builds the first version' }
     : stop ? { result: 'skipped', detail: 'an earlier step failed' }
     : !seedOk ? { result: 'skipped', detail: 'requested, but this run did not seed the repository; the first pass only runs on a fresh seed' }
     : { result: 'pending', detail: 'queued for the first-pass jobs' };

@@ -26,6 +26,12 @@ export const zoneOf = (domain) => ALLOWED_ZONES.filter((z) => domain === z || do
 // GitHub logins invited as collaborators with write (push) access; at most five per request.
 const LOGIN = /^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$/;
 export const MAX_COLLABORATORS = 5;
+// The Claude Code first pass (FAC-005d) is switched off. Dinis, 2026-11-18 ~14:45 UTC: "from now
+// on, we don't need to have that Claude code step, since that was an experiment to see how it worked
+// and it is costing us money". Each site's conductor session builds its first version instead.
+// A request may still say first_pass.enabled; it is recorded as skipped. Turning it back on is a
+// decision for Dinis.
+export const FIRST_PASS_ON = false;
 export const STEPS = ['validate', 'repo', 'seed', 'settings', 'dns', 'domain', 'vault', 'deploy', 'https', 'collaborators', 'first-pass'];
 const STATES = ['planned', 'applying', 'live', 'failed', 'torn-down'];
 const RESULTS = ['ok', 'failed', 'skipped', 'dry-run', 'pending'];

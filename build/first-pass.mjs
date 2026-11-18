@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { listRequests } from './validate.mjs';
+import { listRequests, FIRST_PASS_ON } from './validate.mjs';
 
 // Paths Claude may change in a seeded site. Not scripts/, not .github/, not CLAUDE.md.
 export const ALLOWED = [/^src\/[^\0]+$/, /^hub\.json$/, /^README\.md$/];
@@ -17,6 +17,7 @@ const readJson = (p) => { try { return JSON.parse(readFileSync(p, 'utf8')); } ca
 
 export function pendingFirstPass(folders = listRequests()) {
   const out = [];
+  if (!FIRST_PASS_ON) return out; // switched off (validate.mjs); the jobs then do not run
   for (const f of folders) {
     const st = readJson(join(f, 'status.json'));
     const site = readJson(join(f, 'site.json'));

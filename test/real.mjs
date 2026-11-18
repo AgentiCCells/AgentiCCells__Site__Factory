@@ -86,9 +86,11 @@ const expect = (label, cond) => { if (!cond) { fails++; console.log(`real: ${lab
 // 4b. First pass: pending only after a fresh seed; never on an adopted repository.
 {
   const fp = { ...site, first_pass: { enabled: true } };
-  const r = await runReal('x', fp, fakeIo(), { httpsTries: 1 });
+  const r0 = await runReal('x', fp, fakeIo(), { httpsTries: 1 });
+  expect('first pass switched off by default', byName(r0)['first-pass'] === 'skipped' && /switched off/.test(r0.steps.find((x) => x.name === 'first-pass').detail));
+  const r = await runReal('x', fp, fakeIo(), { httpsTries: 1, firstPassOn: true });
   expect('first pass pending after a fresh seed', byName(r)['first-pass'] === 'pending' && r.state === 'live');
-  const r2 = await runReal('x', fp, fakeIo({ exists: true, empty: false }), { httpsTries: 1 });
+  const r2 = await runReal('x', fp, fakeIo({ exists: true, empty: false }), { httpsTries: 1, firstPassOn: true });
   expect('first pass skipped on an adopted repository', byName(r2)['first-pass'] === 'skipped');
   const r3 = await runReal('x', fp, fakeIo({ fail: { 'POST /orgs/AgentiCCells/repos': 403 } }), { httpsTries: 1 });
   expect('first pass skipped after a failure', byName(r3)['first-pass'] === 'skipped');

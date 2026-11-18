@@ -2,7 +2,7 @@
 // Usage: node build/plan.mjs <request-folder>...   prints Markdown; exit 1 if any request is invalid.
 import { readFileSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
-import { checkRequest, zoneOf } from './validate.mjs';
+import { checkRequest, zoneOf, FIRST_PASS_ON } from './validate.mjs';
 
 // Text from a request is data. Each value goes in an inline code span, where
 // Markdown, HTML and @mentions are not processed; backticks, pipes and line
@@ -24,6 +24,7 @@ for (const f of folders) {
   const s = JSON.parse(readFileSync(join(f, 'site.json'), 'utf8'));
   const t = s.template ?? { owner: 'AgentiCCells', name: 'AgentiCCells__Site__Template', ref: 'dev' };
   const first = s.first_pass?.enabled === true;
+  const fpText = !first ? 'skipped (not requested)' : !FIRST_PASS_ON ? 'skipped: requested, but the first pass is switched off (Dinis, 2026-11-18); the site\'s conductor session builds the first version' : null;
   const real = s.apply === 'real';
   const sub = s.domain.split('.').length >= 3;
   out.push(real ? '**Valid. On merge, apply acts for real** (in the protected `apply` environment):' : 'Valid. On merge, apply writes a **dry-run** status and creates nothing. It would:', '',
@@ -37,7 +38,7 @@ for (const f of folders) {
     '| deploy | start the site\'s pages.yml on dev |',
     `| https | wait for https://${safe(s.domain)}/version.json to serve the deployed commit |`,
     `| collaborators | ${(s.collaborators ?? []).length ? `invite ${s.collaborators.map(safe).join(', ')} with write (push) access; each must accept` : 'skipped (none requested)'} |`,
-    `| first-pass | ${first ? 'after a fresh seed, Claude Code writes a first version from brief.md (file tools only; only src/, hub.json, README.md); checked, gated and pushed by a separate job' : 'skipped (not requested)'} |`, '',
+    `| first-pass | ${fpText ?? 'after a fresh seed, Claude Code writes a first version from brief.md (file tools only; only src/, hub.json, README.md); checked, gated and pushed by a separate job'} |`, '',
     `Requested by ${safe(s.requested_by)}.`, '');
 }
 console.log(out.join('\n'));
