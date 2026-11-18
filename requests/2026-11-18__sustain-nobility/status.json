@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__sustain-nobility",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T02:29:12Z",
+  "commit": "cbed9ba3acbe94258db73bdb1cf04c54c47c13fd",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T02:28:19Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Sustain-Nobility",
+      "time": "2026-11-18T02:28:23Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 98b913a on dev",
+      "time": "2026-11-18T02:28:25Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T02:28:28Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME sustain-nobility.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-18T02:28:39Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain sustain-nobility.agenticcells.site",
+      "time": "2026-11-18T02:28:40Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "requested, but the vault step needs the sgit credential (not set up yet)",
+      "time": "2026-11-18T02:28:40Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 98b913a",
+      "time": "2026-11-18T02:28:41Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://sustain-nobility.agenticcells.site/version.json serves v0.1.0 at 98b913a; Enforce HTTPS turned on",
+      "time": "2026-11-18T02:29:12Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-18T02:29:12Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "pending",
+      "detail": "queued for the first-pass jobs",
+      "time": "2026-11-18T02:29:12Z"
+    }
+  ]
+}
