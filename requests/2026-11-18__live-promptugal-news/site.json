@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Live",
+  "description": "Live views of Portugal from public, officially shared webcams: streamed, never recorded. First version coming.",
+  "domain": "live.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Live" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "collaborators": ["riskmandate-agent"],
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
