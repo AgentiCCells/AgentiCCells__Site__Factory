@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-18__ipma-data",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-18T10:39:36Z",
+  "commit": "a4c96523807f1f736119b2668f42cf2a5ede0f39",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-18T10:38:39Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__IPMA-Data",
+      "time": "2026-11-18T10:38:43Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as be5b5d0 on dev",
+      "time": "2026-11-18T10:38:45Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-18T10:38:48Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME ipma-data.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-18T10:39:02Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain ipma-data.agenticcells.site",
+      "time": "2026-11-18T10:39:03Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-18T10:39:03Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at be5b5d0",
+      "time": "2026-11-18T10:39:04Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://ipma-data.agenticcells.site/version.json serves v0.1.0 at be5b5d0; Enforce HTTPS turned on",
+      "time": "2026-11-18T10:39:36Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "none requested",
+      "time": "2026-11-18T10:39:36Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "pending",
+      "detail": "queued for the first-pass jobs",
+      "time": "2026-11-18T10:39:36Z"
+    }
+  ]
+}
