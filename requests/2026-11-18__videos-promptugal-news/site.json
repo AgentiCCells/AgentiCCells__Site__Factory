@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "PrompTugal.news Videos",
+  "description": "The videos of PrompTugal.news. First version coming.",
+  "domain": "videos.promptugal.news",
+  "repo": { "owner": "PrompTugal", "name": "PrompTugal__News__Videos" },
+  "visibility": "public",
+  "vault": { "create": false },
+  "first_pass": { "enabled": false },
+  "collaborators": ["riskmandate-agent"],
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
