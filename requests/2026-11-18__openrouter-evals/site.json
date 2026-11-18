@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "OpenRouter evals",
+  "description": "An independent, client-side playground and evals for OpenRouter: chat, images, web search and tool calls on live Portuguese data, with Agent Behaviour Policies tested across models.",
+  "domain": "openrouter-evals.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__OpenRouter-Evals"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}

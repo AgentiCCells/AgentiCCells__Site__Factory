@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Evals",
+  "description": "A family of client-side playgrounds and evals for AI model providers, with Agent Behaviour Policies at the centre, and the shared core they all use.",
+  "domain": "evals.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Evals"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
