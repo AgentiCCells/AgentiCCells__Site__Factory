@@ -2,7 +2,7 @@
   "request": "2026-11-18__mondweep-chakravorty",
   "state": "live",
   "mode": "real",
-  "updated": "2026-11-18T10:04:25Z",
+  "updated": "2026-11-18T10:07:06Z",
   "commit": "25f4081be271d8357ab5b54b2a3ed67bea4d0c40",
   "steps": [
     {
@@ -67,9 +67,9 @@
     },
     {
       "name": "first-pass",
-      "result": "pending",
-      "detail": "queued for the first-pass jobs",
-      "time": "2026-11-18T10:04:25Z"
+      "result": "ok",
+      "detail": "Claude Code's first version pushed to dev as 57ee724 (448 patch lines); the site's pages.yml deploys it",
+      "time": "2026-11-18T10:07:06Z"
     }
   ]
 }
