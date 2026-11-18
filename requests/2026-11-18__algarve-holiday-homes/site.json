@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Algarve holiday homes (made-up example)",
+  "description": "A made-up company with five holiday homes in the Algarve: availability, a simulated booking, a scripted agent, and live weather and events from our data.",
+  "domain": "algarve-holiday-homes.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Algarve-Holiday-Homes"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}

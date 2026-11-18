@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Events, from our data",
+  "description": "A demonstration site: events in Lisbon and the Algarve from the public data PrompTugal.news collects, with the weather for each, how it was built, and how to use the raw data.",
+  "domain": "events-demo.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Events-Demo"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
