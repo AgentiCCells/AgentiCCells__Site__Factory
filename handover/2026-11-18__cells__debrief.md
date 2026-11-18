@@ -26,7 +26,7 @@ All requests in `requests/` show live except agenticcells.site (https pending: i
 | evals, openrouter-evals | conductor.evals, asked to stop 18:55 | Created 18:45; round 1 (shared core + hub) just started. |
 | events-demo, cyber-demo | conductors BLOCKED since 16:18 | Never ran: each stopped at an "Add Repo" approval prompt nobody answered. Sites are still the factory seed page. Restart on the new account. |
 | agenticcells.site | conductor BLOCKED since 17 Nov 23:09 | Never ran (same Add Repo prompt). Restart on the new account; add `commit` to version.json so https completes. |
-| *.promptugal.news (weather, civic, startups, travel, events, signals, library, videos, cyber, live, data) | PrompTugal.news team | Placeholders by cells@; the PrompTugal team builds them. live.promptugal.news: stream, never record, public officially shared webcams only. |
+| *.promptugal.news (weather, civic, startups, travel, events, signals, library, videos, cyber, live, bulletins (added 19:30 UTC), data) | PrompTugal.news team | Placeholders by cells@; the PrompTugal team builds them. live.promptugal.news: stream, never record, public officially shared webcams only. |
 
 Each running conductor was asked to write `team/DEBRIEF.md` and `team/NEXT-BRIEFING.md` in its repository.
 
