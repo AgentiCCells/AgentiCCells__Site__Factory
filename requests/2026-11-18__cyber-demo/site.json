@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Cyber, from our data",
+  "description": "A demonstration site: how the PrompTugal.news agentic team will capture and publish threat intelligence, and how to use the data, built from what exists today.",
+  "domain": "cyber-demo.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Cyber-Demo"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cells@AgentiCCells.dinis"
+}
