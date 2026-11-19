@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "Tools",
+  "description": "Free tools that run entirely in your browser: no uploads, no servers, no tracking. Each one has its own site and documentation.",
+  "domain": "tools.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Tools"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}

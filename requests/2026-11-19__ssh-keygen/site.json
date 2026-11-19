@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "SSH Key Generator",
+  "description": "Generate an Ed25519 SSH key pair in your browser: the private key never leaves your device, no tracking.",
+  "domain": "ssh-keygen.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__SSH-Keygen"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}
