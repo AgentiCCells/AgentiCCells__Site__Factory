@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T14:23Z",
+  "updated": "2026-11-19T14:24Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -42,7 +42,7 @@
       "site": "gabriel-dacruz.agenticcells.site",
       "conductor": "conductor.gabriel-dacruz@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2",
-      "state": "live v0.1.25 (commit b6bcf05): security@'s third ruling met; CI checks only from the pushed-over commit, fails closed; skips by ancestry only; 19/19 tests. Needs Dinis: branch protection on dev",
+      "state": "live v0.1.26 (commit ddf6875): security@'s fourth ruling met; CI anchors every check at the last successful github-pages deployment and fails closed; 20/20 tests. Needs Dinis: branch protection on dev",
       "live_version": "v0.1.21 (its session summary)",
       "cost_usd": 4.02,
       "waits_on_dinis": false
