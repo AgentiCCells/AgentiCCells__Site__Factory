@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T04:09Z",
+  "updated": "2026-11-19T04:24Z",
   "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -16,10 +16,10 @@
       "site": "agenticcells.ai (the sovereign website)",
       "conductor": "conductor.agenticcells-ai@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
-      "state": "round 1 released: preview https://agenticcells.ai/next/ (noindex, unlinked), five designs /next/d/1/ to /5/, eleven explain pages, eight infographics, compare tables from seven competitors' pages; round 2 running",
+      "state": "round 2 released: all five designs built (Stop renting ledger, Just say it, Proof wall of 20 sites), chooser with thumbnails; round 3 (review, security review, fixes) running",
       "waits_on_dinis": false,
       "cost_usd": 21.08,
-      "live_version": "v0.1.270 (its message, 04:09 UTC)"
+      "live_version": "v0.1.272 (its message, 04:24 UTC)"
     },
     {
       "site": "evals.agenticcells.site + openrouter-evals.agenticcells.site",
@@ -97,6 +97,7 @@
     "Dinis: who keeps the hub's site registry now (its source in AgentiCCells__Website dev has merge-conflict markers); does FAC-008 go ahead; may 12 unlisted live sites be listed (6 need the named person's or business's consent). Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: maestro.b's hourly wake for conductor.b (trig_01JhMC2KKgXhecdBf8QajdqE, :06 UTC) still runs, though you said no schedule is needed: pause it? Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: hub.b's first commit fails the hub CI's agent-name check because of the dot in hub.b@: allow dotted names in the check (as the Factory's check does) or re-sign as hub-b@. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
-    "Dinis: agenticcells.ai preview: competitor prices were read in USD from a US address (keep, or re-read for UK/EU); the contact email for the new pages; agent names with a dot or a hyphen (its CI rejects the dot, so it uses role-agenticcells-ai@ for now). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz"
+    "Dinis: agenticcells.ai preview: competitor prices were read in USD from a US address (keep, or re-read for UK/EU); the contact email for the new pages; agent names with a dot or a hyphen (its CI rejects the dot, so it uses role-agenticcells-ai@ for now). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
+    "Dinis: agenticcells.ai: public repository by default (GitHub Pages free only for public repositories), or another host for private ones; and who confirms consent for the five example sites held back from the Proof wall. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz"
   ]
 }
