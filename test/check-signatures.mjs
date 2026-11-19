@@ -99,6 +99,20 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   expect('an orphan commit is refused', checkSignatures({ cwd: repo, before: old }).errors.some((e) => e.startsWith(orphanHead.slice(0, 7)) && /parent has no team\/keys.json/.test(e)));
   reset();
   run('git', ['branch', '-q', '-D', 'orphan']);
+  // Control 7, behaviour: a push that weakens the checker and adds an unsigned commit still fails,
+  // because the trusted copy (the one CI takes from the base) does the judging.
+  writeFileSync(join(repo, SELF), 'console.log("OK"); process.exit(0);\n');
+  commit('weaken the checker', { sign: false, file: SELF });
+  const weak = checkSignatures({ cwd: repo, before: base });
+  expect('a push that weakens the checker still fails under the trusted copy', weak.errors.length === 1 && /no valid signature/.test(weak.errors[0]));
+  reset();
+  // Control 6: a shallow checkout is refused.
+  {
+    const shallow = join(d, 'shallow');
+    execFileSync('git', ['clone', '-q', '--depth', '1', `file://${repo}`, shallow]);
+    const r = checkSignatures({ cwd: shallow, before: old });
+    expect('a shallow checkout is refused', r.errors.length === 1 && /shallow checkout/.test(r.errors[0]));
+  }
   expect('commits before the check are not checked', checkSignatures({ cwd: repo }).errors.length === 0);
   rmSync(d, { recursive: true, force: true });
 }

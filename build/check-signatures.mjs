@@ -34,6 +34,8 @@ const lines = (s) => (s ? s.split('\n').map((x) => x.trim()).filter(Boolean) : [
 export function checkSignatures({ cwd = process.cwd(), before, after = 'HEAD' } = {}) {
   const git = (...a) => execFileSync('git', a, { cwd, encoding: 'utf8' }).trim();
   const tryGit = (...a) => { try { return git(...a); } catch { return null; } };
+  // A shallow clone hides history, so parents and older commits cannot be told apart: refuse it.
+  if (tryGit('rev-parse', '--is-shallow-repository') === 'true') return { errors: ['shallow checkout: fetch the full history (fetch-depth 0)'], checked: 0, skipped: 0 };
   const first = lines(git('log', '--format=%H', '--diff-filter=A', '--reverse', after, '--', SELF))[0];
   if (!first) return { errors: [`cannot find the commit that added ${SELF}`], checked: 0, skipped: 0 };
   const from = before && !/^0+$/.test(before) && tryGit('rev-parse', '--verify', '--quiet', `${before}^{commit}`);
