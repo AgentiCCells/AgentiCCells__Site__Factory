@@ -1,21 +1,30 @@
-[
-  {
-    "id": "sha256:0a7a91df0fa23c54",
-    "label": "cells@AgentiCCells.dinis",
-    "fingerprint": "sha256:0a7a91df0fa23c54",
-    "signing_fingerprint": "sha256:26870890ec91ec9d",
-    "public_key": {
-      "v": 1,
-      "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAus31wytxfH4ZQDa8JF49\ntSUbeAL15tToYkNoV93kfQ0MeQlIYdAfFyjPAnh1Xb0ezbTQK0RimdS1Gy9iyv6W\nAPJyuKHnKRRnNeN0zfTvNPhEvjENSDGI/z96JMnovXF+e3akbcW0NOI25ENK8gwf\nw3haJfA/c3ML1tPN3+JN6ZDeYLezfJEQ3+K+N5M+l14NWfwryf7Ejcofb7KwTUId\nZTpGEyJcxjmUq7Zqv2gIayv1VuBYsKaofYEeLT9ibkb/nR++4cOfPNhOGeU27kpZ\n2OS3/u0Yd38UHJ04WIo4S33QrzSr1EQKUIqJwq08KBL8HpRfJ3xcBqhTqXzPk+uS\nPmqY7GwDzE9fVM3QUrnTXICyjAKT0mlrbpO/73iPZWQgQOVMe9ihF9riLl4UdXxn\nGhZktgxWV7wmya5Ck/B+MGyfB+8EGla27Xzx4VpocWRRJNtW8QMiC3E9DyyxOZGW\nk6Bb50Y3QfGoOY0liLQCeM2mp70QzR5jqHGc2CN0PHKK9sBYMyNLg79PbCgehto1\nMT39HH+hzMkImNtoAUczfWUm0Y3mdk7o7lBMyJtWjhi2ygZ0UqEDuNuxxrZx+cut\nkoFdy3/Z9s49/0jf6cl8zHa2siKxxH0c1dpDCkO8iHMx5wl8XfChLcQyqNTP0Fs7\nbTI7dU+0hkQvx8hyv9LmeksCAwEAAQ==\n-----END PUBLIC KEY-----\n",
-      "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAED2sPr1jO2U2OjjdUnH8JdlYbi0DP\nIdPDS+40MqylrfeklzaSDY12OhwtPC/7nAmr66GhXDc34qpGJwKjzfuqTA==\n-----END PUBLIC KEY-----\n",
-      "label": "cells@AgentiCCells.dinis",
+{
+  "about": "Public keys of the agents that commit to this repository. Every commit is signed with one of these keys and names the session recorded here (Dinis, 19 November 2026).",
+  "keys": [
+    {
+      "id": "cells-agenticcells",
+      "agent": "cells.b@AgentiCCells.dinis",
+      "label": "cells@AgentiCCells.dinis (held by cells.b@, Claude Code session on Dinis's second account)",
+      "role": "Runs the AgentiCCells site factory (AgentiCCells/AgentiCCells__Site__Factory). A session key: it ends with its session.",
+      "how": "Made by the agent in its own session on 18 November 2026 with sgit pki keygen; public bundle from sgit pki export. Only the public half is here; the other half stays in the session.",
+      "created": "2026-11-18",
+      "status": "active",
+      "authorised": "Dinis, 2026-11-18 ~22:48 UTC: \"when we onboard a new session here, that session should create the public key and overwrite the public key... we can only have one official that I need to authorize every time we do the shift. So now this becomes the official one.\"",
+      "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
       "fingerprint": "sha256:0a7a91df0fa23c54",
-      "signing_fingerprint": "sha256:26870890ec91ec9d"
-    },
-    "created": "2026-11-18",
-    "held_by": "cells.b@AgentiCCells.dinis, session on Dinis's second account",
-    "lifetime": "ephemeral: valid while this agent's session exists",
-    "status": "active",
-    "authorised": "Dinis, 2026-11-18 ~22:48 UTC: \"when we onboard a new session here, that session should create the public key and overwrite the public key... we can only have one official that I need to authorize every time we do the shift. So now this becomes the official one.\""
-  }
-]
+      "signing_fingerprint": "sha256:26870890ec91ec9d",
+      "bundle": {
+        "v": 1,
+        "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAus31wytxfH4ZQDa8JF49\ntSUbeAL15tToYkNoV93kfQ0MeQlIYdAfFyjPAnh1Xb0ezbTQK0RimdS1Gy9iyv6W\nAPJyuKHnKRRnNeN0zfTvNPhEvjENSDGI/z96JMnovXF+e3akbcW0NOI25ENK8gwf\nw3haJfA/c3ML1tPN3+JN6ZDeYLezfJEQ3+K+N5M+l14NWfwryf7Ejcofb7KwTUId\nZTpGEyJcxjmUq7Zqv2gIayv1VuBYsKaofYEeLT9ibkb/nR++4cOfPNhOGeU27kpZ\n2OS3/u0Yd38UHJ04WIo4S33QrzSr1EQKUIqJwq08KBL8HpRfJ3xcBqhTqXzPk+uS\nPmqY7GwDzE9fVM3QUrnTXICyjAKT0mlrbpO/73iPZWQgQOVMe9ihF9riLl4UdXxn\nGhZktgxWV7wmya5Ck/B+MGyfB+8EGla27Xzx4VpocWRRJNtW8QMiC3E9DyyxOZGW\nk6Bb50Y3QfGoOY0liLQCeM2mp70QzR5jqHGc2CN0PHKK9sBYMyNLg79PbCgehto1\nMT39HH+hzMkImNtoAUczfWUm0Y3mdk7o7lBMyJtWjhi2ygZ0UqEDuNuxxrZx+cut\nkoFdy3/Z9s49/0jf6cl8zHa2siKxxH0c1dpDCkO8iHMx5wl8XfChLcQyqNTP0Fs7\nbTI7dU+0hkQvx8hyv9LmeksCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+        "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAED2sPr1jO2U2OjjdUnH8JdlYbi0DP\nIdPDS+40MqylrfeklzaSDY12OhwtPC/7nAmr66GhXDc34qpGJwKjzfuqTA==\n-----END PUBLIC KEY-----\n",
+        "label": "cells@AgentiCCells.dinis",
+        "fingerprint": "sha256:0a7a91df0fa23c54",
+        "signing_fingerprint": "sha256:26870890ec91ec9d"
+      },
+      "ssh_signing": {
+        "from": "bundle.sign",
+        "note": "This agent signs its git commits with the bundle.sign key (ECDSA P-256, sha256:26870890ec91ec9d) as an SSH signature (namespace git). build/check-signatures.mjs derives the OpenSSH form from bundle.sign with ssh-keygen -i -m PKCS8 and verifies each commit with git verify-commit."
+      }
+    }
+  ]
+}
