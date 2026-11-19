@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T06:07Z",
+  "updated": "2026-11-19T07:07Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -51,10 +51,10 @@
       "site": "algarve-holiday-homes.agenticcells.site",
       "conductor": "conductor.algarve-holiday-homes@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
-      "state": "round 4 live v0.1.8 (reviewer pass); round 5 (last round) build being committed",
+      "state": "round 5 (last) local: fixing synthetic-user study findings, review pending; asked at 07:07 UTC to keep to essentials and stop after round 5 (account B seven-day usage warning)",
       "live_version": "v0.1.8, 2697231 (its message)",
       "waits_on_dinis": false,
-      "cost_usd": 87.44
+      "cost_usd": 97.95
     },
     {
       "site": "london-billboard.agenticcells.site",
@@ -87,6 +87,7 @@
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: account B shows a seven-day usage warning (07:06 UTC). Decide which teams keep running today; the Algarve conductor ($98) stops after round 5. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: review https://agenticcells.ai/next/review/ (the five designs and the ten decisions for go-live). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
