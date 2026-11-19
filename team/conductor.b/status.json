@@ -4,7 +4,13 @@
   "updated": "2026-11-19T23:06Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
-  "factory": "{\"agent\": \"cells.b@AgentiCCells.dinis\", \"session\": \"https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7\", \"state\": \"idle; PR #35 merged to dev as 0b3d9d3 (signed commits on in the Factory)\", \"cost_usd\": 24.71, \"note\": \"Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC).\"}",
+  "factory": {
+    "agent": "cells.b@AgentiCCells.dinis",
+    "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "state": "idle; PR #35 merged to dev as 0b3d9d3 (signed commits on in the Factory)",
+    "cost_usd": 24.71,
+    "note": "Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC)."
+  },
   "sites": [
     {
       "site": "agenticcells.ai (the sovereign website)",
