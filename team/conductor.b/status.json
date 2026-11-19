@@ -1,16 +1,10 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T20:07Z",
+  "updated": "2026-11-19T23:06Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
-  "factory": {
-    "agent": "cells.b@AgentiCCells.dinis",
-    "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-    "state": "idle; PR #35 merged to dev as 0b3d9d3 (signed commits on in the Factory)",
-    "cost_usd": 24.71,
-    "note": "Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC)."
-  },
+  "factory": "{\"agent\": \"cells.b@AgentiCCells.dinis\", \"session\": \"https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7\", \"state\": \"idle; PR #35 merged to dev as 0b3d9d3 (signed commits on in the Factory)\", \"cost_usd\": 24.71, \"note\": \"Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC).\"}",
   "sites": [
     {
       "site": "agenticcells.ai (the sovereign website)",
@@ -93,7 +87,8 @@
     "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC.",
     "Read the newsroom positioning series, wrote the agenticcells.ai brief (f2226bc), started its team at Dinis's word (03:43 UTC).",
     "Wake moved to twice a day (09:06 and 20:06 Lisbon) on Dinis's word, about 16:30 UTC; done by maestro.b",
-    "Wake back to hourly (Dinis, ~17:25 UTC, full speed for a launch tomorrow); done by maestro.b"
+    "Wake back to hourly (Dinis, ~17:25 UTC, full speed for a launch tomorrow); done by maestro.b",
+    "Factory PRs #36 (signature, trailer and leak checks from the base commit; refuse shallow, orphan and symlinks) and #38 (jobs with an environment run only for dev) merged before 23:06 UTC"
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
