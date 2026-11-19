@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "What am I leaking?",
+  "description": "What your browser tells every site you visit: your fingerprint, shown and explained on your own device, so you can see it and decide what to do.",
+  "domain": "what-am-i-leaking.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__What-Am-I-Leaking"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}

@@ -8,6 +8,57 @@ on:
 permissions:
   contents: read
 jobs:
+  # Control 9: the signature and leak checks run in their own job, which runs no code from the pull
+  # request. It checks the tree out as data, takes each checker from the base commit (dev's tip) and
+  # checks BEFORE..head, BEFORE being the merge-base with dev, with a clean environment.
+  trusted-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GIT_NO_REPLACE_OBJECTS: "1"
+      NODE_OPTIONS: ""
+      BASE: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Take the trusted checkers from the base commit
+        run: |
+          set -euo pipefail
+          BEFORE=$(git merge-base "$BASE" "$HEAD_SHA")
+          echo "BEFORE=$BEFORE" >> "$GITHUB_ENV"
+          # Refuse symlinks on the checker paths, in BEFORE's tree and in the checkout.
+          # The checkers' code comes from the base commit (dev's tip, already merged), never the PR head.
+          for f in build/check-signatures.mjs build/leak-scan.mjs; do
+            mode=$(git ls-tree "$BASE" -- "$f" | cut -d' ' -f1)
+            if [ "$mode" != "100644" ] && [ "$mode" != "100755" ]; then echo "refused: $f in the base is not a plain file ($mode)"; exit 1; fi
+          done
+          if [ -L build ] || [ -e build/.trusted-leak-scan.mjs ] || [ -L build/.trusted-leak-scan.mjs ]; then echo "refused: build/ is a symlink or the trusted path exists"; exit 1; fi
+          mkdir -p "$RUNNER_TEMP/trusted"
+          git show "$BASE:build/check-signatures.mjs" > "$RUNNER_TEMP/trusted/check-signatures.mjs"
+          git show "$BASE:build/leak-scan.mjs" > build/.trusted-leak-scan.mjs
+          # Control 10: the symlink check, also from the base. Until it is merged it is not in the base,
+          # and the pull request that adds it is reviewed by Dinis (as for the signature check).
+          mode=$(git ls-tree "$BASE" -- build/check-symlinks.mjs | cut -d' ' -f1)
+          if [ -n "$mode" ]; then
+            if [ "$mode" != "100644" ]; then echo "refused: build/check-symlinks.mjs in the base is not a plain file ($mode)"; exit 1; fi
+            git show "$BASE:build/check-symlinks.mjs" > "$RUNNER_TEMP/trusted/check-symlinks.mjs"
+          fi
+          echo "NODE_BIN=$(command -v node)" >> "$GITHUB_ENV"
+      - name: Every new commit is signed by its agent's published key and names its session
+        run: '"$NODE_BIN" "$RUNNER_TEMP/trusted/check-signatures.mjs" "$BEFORE" "$HEAD_SHA"'
+      - name: No symlinks in any commit of the range or in the tree (control 10; exceptions from the base only)
+        run: |
+          if [ -f "$RUNNER_TEMP/trusted/check-symlinks.mjs" ]; then "$NODE_BIN" "$RUNNER_TEMP/trusted/check-symlinks.mjs" "$BASE" "$BEFORE" "$HEAD_SHA" --tree .
+          else echo "check-symlinks.mjs is not in the base yet: this pull request adds it"; fi
+      - name: Leak scan (BEFORE's copy; it finds the repository root from its own location)
+        run: '"$NODE_BIN" build/.trusted-leak-scan.mjs'
   plan:
     runs-on: ubuntu-latest
     permissions:
@@ -23,13 +74,6 @@ jobs:
         run: node test/run.mjs
       - name: Validate every request
         run: node build/validate.mjs
-      - name: Leak scan
-        run: node build/leak-scan.mjs
-      - name: Every new commit is signed by its agent's published key and names its session
-        env:
-          BASE: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: node build/check-signatures.mjs "$BASE" "$HEAD_SHA"
       - name: Plan the changed requests
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
@@ -59,6 +103,9 @@ jobs:
         with:
           name: plan
           path: out
+      - name: Refuse symlinks in the downloaded artifact (control 10)
+        run: |
+          if [ -n "$(find out -type l -print -quit)" ]; then find out -type l; echo "refused: the plan artifact holds a symlink"; exit 1; fi
       - name: Post or update the plan comment
         uses: actions/github-script@v7
         with:

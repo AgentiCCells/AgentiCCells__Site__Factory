@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-19__image-tools",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-19T19:16:07Z",
+  "commit": "7b0f01c0c823ee82f2414eb576e39f3499202229",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-19T19:14:56Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Image-Tools",
+      "time": "2026-11-19T19:15:01Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as c65b9f1 on dev",
+      "time": "2026-11-19T19:15:03Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://image-tools.agenticcells.site; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-19T19:15:08Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME image-tools.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-19T19:15:19Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain image-tools.agenticcells.site",
+      "time": "2026-11-19T19:15:19Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-19T19:15:19Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at c65b9f1",
+      "time": "2026-11-19T19:15:21Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://image-tools.agenticcells.site/version.json serves v0.1.0 at c65b9f1; Enforce HTTPS turned on",
+      "time": "2026-11-19T19:16:07Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-19T19:16:07Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-19T19:16:07Z"
+    }
+  ]
+}

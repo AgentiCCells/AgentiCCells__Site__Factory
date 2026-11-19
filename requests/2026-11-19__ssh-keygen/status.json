@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-19__ssh-keygen",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-19T19:17:18Z",
+  "commit": "7b0f01c0c823ee82f2414eb576e39f3499202229",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-19T19:16:07Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__SSH-Keygen",
+      "time": "2026-11-19T19:16:11Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 21e5040 on dev",
+      "time": "2026-11-19T19:16:14Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://ssh-keygen.agenticcells.site; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-19T19:16:18Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME ssh-keygen.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-19T19:16:29Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain ssh-keygen.agenticcells.site",
+      "time": "2026-11-19T19:16:30Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-19T19:16:30Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 21e5040",
+      "time": "2026-11-19T19:16:31Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://ssh-keygen.agenticcells.site/version.json serves v0.1.0 at 21e5040; Enforce HTTPS turned on",
+      "time": "2026-11-19T19:17:18Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-19T19:17:18Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-19T19:17:18Z"
+    }
+  ]
+}
