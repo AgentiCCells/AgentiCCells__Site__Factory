@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "Video Recorder",
+  "description": "Record your screen, camera and microphone in the browser: nothing is uploaded, no account, no tracking.",
+  "domain": "video-recorder.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Video-Recorder"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}

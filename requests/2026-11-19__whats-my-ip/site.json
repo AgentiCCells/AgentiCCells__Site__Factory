@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "What's my IP",
+  "description": "Your public IP address and network, with nothing else: no tracking, no ads, no cookies, and a plain account of how it is found.",
+  "domain": "whats-my-ip.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Whats-My-IP"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}

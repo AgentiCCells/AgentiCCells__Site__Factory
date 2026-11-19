@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "File Encryptor",
+  "description": "Encrypt or decrypt any file with AES-256-GCM, entirely in your browser: nothing is uploaded, no tracking.",
+  "domain": "file-encryptor.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__File-Encryptor"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}
