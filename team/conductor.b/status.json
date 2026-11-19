@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T03:06Z",
+  "updated": "2026-11-19T03:44Z",
   "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -12,6 +12,13 @@
     "note": "Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC)."
   },
   "sites": [
+    {
+      "site": "agenticcells.ai (the sovereign website)",
+      "conductor": "conductor.agenticcells-ai@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
+      "state": "started 03:43 UTC at Dinis's word; overnight rounds; preview under /next/, home page unchanged until Dinis reviews",
+      "waits_on_dinis": false
+    },
     {
       "site": "evals.agenticcells.site + openrouter-evals.agenticcells.site",
       "conductor": "conductor.evals@AgentiCCells.dinis",
@@ -70,11 +77,12 @@
     "Read CLAUDE.md, REALITY.md, the cells@ debrief and next briefing, conductor-common.md, requests/README.md, board/.",
     "Made key sha256:7c2fd8c33a5e5d50 (signing sha256:061a8ad3642561dd) and published the public bundle in team/keys.json.",
     "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC.",
-    "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC."
+    "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC.",
+    "Read the newsroom positioning series, wrote the agenticcells.ai brief (f2226bc), started its team at Dinis's word (03:43 UTC)."
   ],
   "next": [
-    "Watch the Algarve conductor's first report; relay its asks.",
-    "Restart london-billboard next, only on Dinis's yes."
+    "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
+    "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
     "Dinis: merge PR #35; plan check green and no conflict at 02:52 UTC. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/35",
