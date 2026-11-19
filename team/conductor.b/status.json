@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T07:38Z",
+  "updated": "2026-11-19T14:14Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -25,7 +25,7 @@
       "site": "evals.agenticcells.site + openrouter-evals.agenticcells.site",
       "conductor": "conductor.evals@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
-      "state": "round 1 released; round 2 needs Dinis (repo attach approvals: OpenRouter-Evals push, Factory read; second provider's domain, naming, key variable name)",
+      "state": "live v0.1.8 (Evals commit 1b9146b): security@'s second ruling met; CI and release run the commit, signature and leak checks from the trusted base, fail closed; a gap in v0.1.7 (self-granted trailer exemption honoured) found and fixed. Round 2 still needs Dinis (repo attach approvals; second provider's domain, naming, key variable name)",
       "live_version": "v0.1.5, commit bed12f3 (its session summary)",
       "cost_usd": 18.3,
       "waits_on_dinis": true
@@ -101,6 +101,7 @@
     "Dinis: hub.b's first commit fails the hub CI's agent-name check because of the dot in hub.b@: allow dotted names in the check (as the Factory's check does) or re-sign as hub-b@. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: agenticcells.ai preview: competitor prices were read in USD from a US address (keep, or re-read for UK/EU); the contact email for the new pages; agent names with a dot or a hyphen (its CI rejects the dot, so it uses role-agenticcells-ai@ for now). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: agenticcells.ai: public repository by default (GitHub Pages free only for public repositories), or another host for private ones; and who confirms consent for the five example sites held back from the Proof wall. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
-    "Dinis: Algarve open items in team/HANDOVER.md: dark-mode contrast of the platform bars, the billboard link, the real-data window, and whether the old round-3 branch may be deleted. Waits: https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3"
+    "Dinis: Algarve open items in team/HANDOVER.md: dark-mode contrast of the platform bars, the billboard link, the real-data window, and whether the old round-3 branch may be deleted. Waits: https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
+    "Dinis: turn on branch protection for AgentiCCells__Site__Evals (the CI workflow file still comes from the pushed tree, so only protection closes that gap). Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B"
   ]
 }
