@@ -1,0 +1,79 @@
+{
+  "agent": "conductor.b@AgentiCCells.dinis",
+  "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
+  "updated": "2026-11-19T02:50Z",
+  "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
+  "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
+  "factory": {
+    "agent": "cells.b@AgentiCCells.dinis",
+    "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "state": "idle, last turn completed (signer check and refusal tests)",
+    "cost_usd": 17.0,
+    "note": "Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC)."
+  },
+  "sites": [
+    {
+      "site": "evals.agenticcells.site + openrouter-evals.agenticcells.site",
+      "conductor": "conductor.evals@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
+      "state": "blocked: round 1 on branch round-1, 7 commits, checks pass, not released",
+      "live_version": "v0.1.2 (its session summary)",
+      "cost_usd": 13.01,
+      "waits_on_dinis": true
+    },
+    {
+      "site": "gabriel-dacruz.agenticcells.site",
+      "conductor": "conductor.gabriel-dacruz@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2",
+      "state": "idle, last turn completed",
+      "live_version": "v0.1.21 (its session summary)",
+      "cost_usd": 4.02,
+      "waits_on_dinis": false
+    },
+    {
+      "site": "algarve-holiday-homes.agenticcells.site",
+      "conductor": "conductor.algarve-holiday-homes@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
+      "state": "started 02:49 UTC from team/NEXT-BRIEFING.md at Dinis's yes; resumes round 3",
+      "live_version": "v0.1.4 (its debrief)",
+      "waits_on_dinis": false
+    },
+    {
+      "site": "london-billboard.agenticcells.site",
+      "conductor": "none on account B",
+      "state": "stopped at the move; next in the restart order",
+      "waits_on_dinis": true
+    },
+    {
+      "site": "events-demo, cyber-demo, agenticcells.site",
+      "conductor": "none (never ran)",
+      "state": "factory seed page; agenticcells.site status still applying (https)",
+      "waits_on_dinis": true
+    },
+    {
+      "site": "marc-noah, sustain-nobility, indi-gupte, mondweep-chakravorty, ipma-data, weather-demo, yiheng-wang, silvio-switha, jose-bota",
+      "conductor": "none on account B",
+      "state": "live, idle since the move (debrief 2026-11-18)",
+      "waits_on_dinis": true
+    }
+  ],
+  "done": [
+    "Read CLAUDE.md, REALITY.md, the cells@ debrief and next briefing, conductor-common.md, requests/README.md, board/.",
+    "Made key sha256:7c2fd8c33a5e5d50 (signing sha256:061a8ad3642561dd) and published the public bundle in team/keys.json.",
+    "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC."
+  ],
+  "next": [
+    "Watch the Algarve conductor's first report; relay its asks.",
+    "Restart london-billboard next, only on Dinis's yes."
+  ],
+  "asks": [
+    "Dinis: merge PR #35 (signed commits in the Factory, check on every PR). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "Dinis: give riskmandate-agent write access to the AgentiCCells site repositories (team agenticcells-team-devs or collaborator); conductor.evals's round 1 is local until then. Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
+    "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
+    "Dinis: the further eval site for a prospective partner: its domain and the API host its token is for (name kept in the sessions). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "Dinis: older items from handover/2026-11-18__cells__debrief.md still stand (data-team note, naming Dinis on behind-the-scenes pages, team policies, four people's answers, the fast-inference or router site, the template PR, FAC-008). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "Dinis: go-ahead to restart the next conductor, london-billboard (then events-demo, cyber-demo, agenticcells.site). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
+    "Dinis: choose a name for a site's team in place of \"conductor\" (proposals in team/conductor.b/decisions/2026-11-19.md and in the session). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm"
+  ]
+}
