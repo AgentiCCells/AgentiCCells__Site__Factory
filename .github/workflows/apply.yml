@@ -18,6 +18,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   dry-run:
+    if: github.ref == 'refs/heads/dev'  # manual runs from other branches never reach the environment's secrets
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -62,7 +63,7 @@ jobs:
 
   real:
     needs: dry-run
-    if: needs.dry-run.outputs.real == 'true'
+    if: github.ref == 'refs/heads/dev' && needs.dry-run.outputs.real == 'true'
     runs-on: ubuntu-latest
     environment: apply
     permissions:
@@ -137,7 +138,7 @@ jobs:
   # job only as a patch.
   first-pass-claude:
     needs: real
-    if: needs.real.outputs.first_pass != '' && needs.real.outputs.first_pass != '[]'
+    if: github.ref == 'refs/heads/dev' && needs.real.outputs.first_pass != '' && needs.real.outputs.first_pass != '[]'
     runs-on: ubuntu-latest
     environment: first-pass
     permissions:
@@ -211,7 +212,7 @@ jobs:
   # with a credential: the gates are the template's scripts, which the patch cannot change.
   first-pass-push:
     needs: [real, first-pass-claude]
-    if: always() && needs.real.outputs.first_pass != '' && needs.real.outputs.first_pass != '[]'
+    if: always() && github.ref == 'refs/heads/dev' && needs.real.outputs.first_pass != '' && needs.real.outputs.first_pass != '[]'
     runs-on: ubuntu-latest
     environment: apply
     permissions:

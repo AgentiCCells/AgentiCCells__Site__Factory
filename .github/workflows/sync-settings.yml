@@ -11,6 +11,7 @@ defaults:
     shell: bash -eo pipefail {0}
 jobs:
   sync:
+    if: github.ref == 'refs/heads/dev'  # manual runs from other branches never reach the environment's secrets
     runs-on: ubuntu-latest
     environment: apply
     steps:
