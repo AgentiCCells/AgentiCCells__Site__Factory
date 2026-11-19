@@ -1,13 +1,13 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T02:54Z",
+  "updated": "2026-11-19T02:55Z",
   "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
     "agent": "cells.b@AgentiCCells.dinis",
     "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-    "state": "idle, last turn completed (signer check and refusal tests)",
+    "state": "woken 02:56 UTC at Dinis's word; asked to keep team/cells.b/status.json",
     "cost_usd": 17.0,
     "note": "Signed-commit check is PR #35 (factory/signed-commits), plan check green, waiting for Dinis to merge (cells.b, 02:39 UTC)."
   },
@@ -20,6 +20,13 @@
       "live_version": "v0.1.2 (its session summary)",
       "cost_usd": 13.01,
       "waits_on_dinis": true
+    },
+    {
+      "site": "hub.agenticcells.site",
+      "conductor": "hub.b@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
+      "state": "started 02:55 UTC at Dinis's word; onboarding and a listing status, no changes yet",
+      "waits_on_dinis": false
     },
     {
       "site": "gabriel-dacruz.agenticcells.site",
@@ -60,7 +67,8 @@
   "done": [
     "Read CLAUDE.md, REALITY.md, the cells@ debrief and next briefing, conductor-common.md, requests/README.md, board/.",
     "Made key sha256:7c2fd8c33a5e5d50 (signing sha256:061a8ad3642561dd) and published the public bundle in team/keys.json.",
-    "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC."
+    "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC.",
+    "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC."
   ],
   "next": [
     "Watch the Algarve conductor's first report; relay its asks.",
