@@ -1,8 +1,8 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T02:38Z",
-  "state": "onboarded; waiting for Dinis's first word and the hourly wake",
+  "updated": "2026-11-19T02:50Z",
+  "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
     "agent": "cells.b@AgentiCCells.dinis",
@@ -31,7 +31,15 @@
       "waits_on_dinis": false
     },
     {
-      "site": "algarve-holiday-homes, london-billboard",
+      "site": "algarve-holiday-homes.agenticcells.site",
+      "conductor": "conductor.algarve-holiday-homes@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
+      "state": "started 02:49 UTC from team/NEXT-BRIEFING.md at Dinis's yes; resumes round 3",
+      "live_version": "v0.1.4 (its debrief)",
+      "waits_on_dinis": false
+    },
+    {
+      "site": "london-billboard.agenticcells.site",
       "conductor": "none on account B",
       "state": "stopped at the move; next in the restart order",
       "waits_on_dinis": true
@@ -51,11 +59,12 @@
   ],
   "done": [
     "Read CLAUDE.md, REALITY.md, the cells@ debrief and next briefing, conductor-common.md, requests/README.md, board/.",
-    "Made key sha256:7c2fd8c33a5e5d50 (signing sha256:061a8ad3642561dd) and published the public bundle in team/keys.json."
+    "Made key sha256:7c2fd8c33a5e5d50 (signing sha256:061a8ad3642561dd) and published the public bundle in team/keys.json.",
+    "Started conductor.algarve-holiday-homes (session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC."
   ],
   "next": [
-    "Hourly: pull dev, read each session's status and cost, update this file, brief Dinis.",
-    "Restart conductors one at a time in cells@'s order, only on Dinis's yes."
+    "Watch the Algarve conductor's first report; relay its asks.",
+    "Restart london-billboard next, only on Dinis's yes."
   ],
   "asks": [
     "Dinis: merge PR #35 (signed commits in the Factory, check on every PR). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
@@ -63,8 +72,8 @@
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: the further eval site for a prospective partner: its domain and the API host its token is for (name kept in the sessions). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-    "Dinis: go-ahead to restart the next conductor, algarve-holiday-homes (then london-billboard, events-demo, cyber-demo, agenticcells.site), and whether cells.b or conductor.b starts it. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: older items from handover/2026-11-18__cells__debrief.md still stand (data-team note, naming Dinis on behind-the-scenes pages, team policies, four people's answers, the fast-inference or router site, the template PR, FAC-008). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-    "Dinis: confirm the hourly wake maestro.b is to create for conductor.b. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm"
+    "Dinis: go-ahead to restart the next conductor, london-billboard (then events-demo, cyber-demo, agenticcells.site). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
+    "Dinis: choose a name for a site's team in place of \"conductor\" (proposals in team/conductor.b/decisions/2026-11-19.md and in the session). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm"
   ]
 }
