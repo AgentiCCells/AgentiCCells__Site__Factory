@@ -43,6 +43,8 @@ export function checkSignatures({ cwd = process.cwd(), before, after = 'HEAD', t
   // Fail closed: without the trusted base in this clone, nothing can be judged.
   if (!tryGit('rev-parse', '--verify', '--quiet', `${trustedBase}^{commit}`)) return { errors: [`trusted base ${trustedBase.slice(0, 7)} is not in this clone`], checked: 0, skipped: 0 };
   const from = before && !/^0+$/.test(before) && tryGit('rev-parse', '--verify', '--quiet', `${before}^{commit}`);
+  // BEFORE must be the already-checked commit the change builds on: refuse one that is not an ancestor of AFTER.
+  if (from && spawnSync('git', ['merge-base', '--is-ancestor', from, after], { cwd }).status !== 0) return { errors: [`before (${from.slice(0, 7)}) is not an ancestor of ${after}: update the branch from dev`], checked: 0, skipped: 0 };
   const range = lines(git('rev-list', ...(from ? [`${from}..${after}`] : [after])));
   const isAncestorOfBase = (c) => spawnSync('git', ['merge-base', '--is-ancestor', c, trustedBase], { cwd }).status === 0;
   const inScope = new Set(range.filter((c) => !isAncestorOfBase(c)));

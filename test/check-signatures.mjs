@@ -122,13 +122,34 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   // Fail closed: a trusted base that is not in the clone refuses everything.
   const missing = checkSignatures({ trustedBase: '0123456789abcdef0123456789abcdef01234567', cwd: repo, before: old });
   expect('a missing trusted base fails closed', missing.errors.length === 1 && /trusted base .* is not in this clone/.test(missing.errors[0]));
+  // Control 7: BEFORE must be an ancestor of AFTER (no force-pushed or unrelated base).
+  {
+    const sideBase = run('git', ['rev-parse', 'HEAD']);
+    commit(`ahead on dev${trailers}`, { file: 'y.txt' });
+    const devTip = run('git', ['rev-parse', 'HEAD']);
+    run('git', ['reset', '-q', '--hard', sideBase]);
+    commit(`on a branch${trailers}`, { file: 'z.txt' });
+    const r = checkSignatures({ trustedBase: base, cwd: repo, before: devTip });
+    expect('BEFORE that is not an ancestor of AFTER fails', r.errors.length === 1 && /is not an ancestor/.test(r.errors[0]));
+    reset();
+  }
+  // Control 8: a backdated orphan is still refused (ancestry, never dates).
+  run('git', ['checkout', '-q', '--orphan', 'old-orphan']);
+  commit(`backdated orphan${trailers}`, { file: 'q.txt', env: { GIT_AUTHOR_DATE: '2001-01-01T00:00:00Z', GIT_COMMITTER_DATE: '2001-01-01T00:00:00Z' } });
+  const oldOrphan = run('git', ['rev-parse', 'HEAD']);
+  run('git', ['checkout', '-q', 'dev']);
+  run('git', ['merge', '-q', '--no-ff', '-S', '--allow-unrelated-histories', '-m', `merge backdated${trailers}`, 'old-orphan']);
+  expect('a backdated orphan is refused', checkSignatures({ trustedBase: base, cwd: repo, before: base }).errors.some((e) => e.startsWith(oldOrphan.slice(0, 7)) && /parent has no team\/keys.json/.test(e)));
+  reset();
+  run('git', ['branch', '-q', '-D', 'old-orphan']);
   expect('commits before the check are not checked', checkSignatures({ trustedBase: base, cwd: repo }).errors.length === 0);
   rmSync(d, { recursive: true, force: true });
 }
 // Control 7: CI runs the checker from the base branch's copy.
 {
   const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/plan.yml'), 'utf8');
-  expect('plan.yml runs the checker from the base copy', /git show "\$BASE:build\/check-signatures.mjs"/.test(wf) && !/run: node build\/check-signatures.mjs/.test(wf));
-  expect('plan.yml runs the leak scan from the base copy', /git show "\$BASE:build\/leak-scan.mjs"/.test(wf) && !/run: node build\/leak-scan.mjs/.test(wf));
+  expect('plan.yml runs the checker from the base copy', /git show "\$BEFORE:build\/check-signatures.mjs"/.test(wf) && !/run: node build\/check-signatures.mjs/.test(wf));
+  expect('plan.yml takes BEFORE from the merge-base with dev', /BEFORE=\$\(git merge-base "\$BASE"/.test(wf));
+  expect('plan.yml runs the leak scan from the base copy', /git show "\$BEFORE:build\/leak-scan.mjs"/.test(wf) && !/run: node build\/leak-scan.mjs/.test(wf));
 }
 export default fails;
