@@ -90,7 +90,21 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   run('git', ['merge', '-q', '--no-ff', '-S', '-m', `merge signed${trailers}`, 'side2']);
   expect('an unsigned commit on a merged side branch fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /side, unsigned/.test(e) && /no valid signature/.test(e)));
   reset();
+  // Control 6: an orphan commit is refused, even signed and carrying its own keys.
+  run('git', ['checkout', '-q', '--orphan', 'orphan']);
+  commit(`orphan, signed${trailers}`, { file: 'o.txt' });
+  const orphanHead = run('git', ['rev-parse', 'HEAD']);
+  run('git', ['checkout', '-q', 'dev']);
+  run('git', ['merge', '-q', '--no-ff', '-S', '--allow-unrelated-histories', '-m', `merge orphan${trailers}`, 'orphan']);
+  expect('an orphan commit is refused', checkSignatures({ cwd: repo, before: old }).errors.some((e) => e.startsWith(orphanHead.slice(0, 7)) && /parent has no team\/keys.json/.test(e)));
+  reset();
+  run('git', ['branch', '-q', '-D', 'orphan']);
   expect('commits before the check are not checked', checkSignatures({ cwd: repo }).errors.length === 0);
   rmSync(d, { recursive: true, force: true });
+}
+// Control 7: CI runs the checker from the base branch's copy.
+{
+  const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/plan.yml'), 'utf8');
+  expect('plan.yml runs the checker from the base copy', /git show "\$BASE:build\/check-signatures.mjs"/.test(wf) && !/run: node build\/check-signatures.mjs/.test(wf));
 }
 export default fails;

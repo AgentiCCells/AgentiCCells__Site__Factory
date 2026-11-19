@@ -18,6 +18,8 @@
 // pass the head commit, not GitHub's synthetic merge commit. Controls per security@'s ruling of 19 Nov 01:30 UTC.
 // Both controls follow signals.b@'s review of this pattern (PrompTugal__News__Signals 0101639), relayed by conductor.b@.
 // The OpenSSH form of each key is derived from its published PEM (bundle.sign) with ssh-keygen; nothing else is trusted.
+// An orphan commit (no parent) is refused: it has no parent keys to trust (control 6). CI runs this file from
+// the base branch's copy, not the pushed tree's (control 7; .github/workflows/plan.yml).
 // Needs git 2.34+ and ssh-keygen. Prints OK or each failing commit and exits 1. History is never rewritten.
 import { execFileSync, spawnSync } from 'node:child_process';
 import { writeFileSync, mkdtempSync, rmSync } from 'node:fs';

@@ -29,7 +29,12 @@ jobs:
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: node build/check-signatures.mjs "$BASE" "$HEAD_SHA"
+        # Run the checker from the base branch's copy, never the pull request's own,
+        # so a pull request cannot change the check that judges it (control 7).
+        run: |
+          mkdir -p "$RUNNER_TEMP/trusted"
+          git show "$BASE:build/check-signatures.mjs" > "$RUNNER_TEMP/trusted/check-signatures.mjs"
+          node "$RUNNER_TEMP/trusted/check-signatures.mjs" "$BASE" "$HEAD_SHA"
       - name: Plan the changed requests
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
