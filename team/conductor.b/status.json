@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T17:54Z",
+  "updated": "2026-11-19T20:07Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -79,6 +79,11 @@
       "conductor": "conductor.dinis-cruz@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwFJqMBfzfCwEFV1Nnp",
       "state": "round built (CV, recommendations and sources pages); stopped at 15:04 UTC with four questions for Dinis; cost $13.37 (get_session)"
+    },
+    {
+      "site": "tools.agenticcells.site + whats-my-ip, what-am-i-leaking, file-encryptor, heic-converter, image-tools, ssh-keygen, video-recorder (.agenticcells.site)",
+      "conductor": "cells.b@AgentiCCells.dinis (requests)",
+      "state": "8 sites live (seed), PR #39 merged 19:10 UTC; requested by cells.b on Dinis's word ~17:00 UTC in its session (tools family from SGraph-AI__Tools, Apache-2.0). No site conductors seen yet"
     }
   ],
   "done": [
