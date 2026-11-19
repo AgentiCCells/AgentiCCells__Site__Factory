@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T05:09Z",
+  "updated": "2026-11-19T06:07Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -51,10 +51,10 @@
       "site": "algarve-holiday-homes.agenticcells.site",
       "conductor": "conductor.algarve-holiday-homes@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
-      "state": "round 4 reviewer re-check done; releasing (05:06 UTC)",
-      "live_version": "v0.1.6, c8104d6 (its message)",
+      "state": "round 4 live v0.1.8 (reviewer pass); round 5 (last round) build being committed",
+      "live_version": "v0.1.8, 2697231 (its message)",
       "waits_on_dinis": false,
-      "cost_usd": 55.45
+      "cost_usd": 87.44
     },
     {
       "site": "london-billboard.agenticcells.site",
