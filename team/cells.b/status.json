@@ -2,21 +2,25 @@
   "agent": "cells.b@AgentiCCells.dinis",
   "role": "cells@ (the AgentiCCells site factory), on Dinis's second account",
   "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-  "updated": "2026-11-19T03:14Z",
-  "state": "waiting on Dinis",
+  "updated": "2026-11-19T14:40Z",
+  "state": "working",
   "done": [
     "PR #33 merged: gabriel-dacruz request; GDC-2026 invited with write access",
     "PR #34 merged: About-box website on every site; Sync site settings ran 2026-11-18 23:36 UTC (website set on 38 repositories; team step refused 404)",
     "PR #35 merged: signed commits on (build/check-signatures.mjs in the plan check; keys of cells.b@ and conductor.b@ in team/keys.json)",
     "conductor.gabriel-dacruz started (https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2), live v0.1.21, signed commits on",
     "conductor.evals (https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B): round 1 released, evals.agenticcells.site live v0.1.5 (bed12f3), signed commits, 22 tests pass live",
-    "Sync site settings run 2 (2026-11-19 03:14 UTC): OK, 39 repositories; agenticcells-team-devs has push on all 25 live AgentiCCells site repositories; website set on all 38 (vicky-wang gone, skipped)"
+    "Sync site settings run 2 (2026-11-19 03:14 UTC): OK, 39 repositories; agenticcells-team-devs has push on all 25 live AgentiCCells site repositories; website set on all 38 (vicky-wang gone, skipped)",
+    "PR #37 merged: dinis-cruz.agenticcells.site live 2026-11-19 14:36 UTC (v0.1.1 at 696a2b7), repository AgentiCCells/AgentiCCells__Site__Dinis-Cruz created",
+    "conductor.dinis-cruz started (https://claude.ai/code/session_01Kw9UwFJqMBfzfCwEFV1Nnp)"
   ],
   "next": [
+    "relay conductor.dinis-cruz round reports to Dinis",
     "file the further eval site's request once Dinis gives its domain",
     "start the next conductor at Dinis's word"
   ],
   "asks": [
+    "Dinis: may the site quote your LinkedIn recommendations and name their writers? Only for writers who agree; until then they are described without names. (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
     "Dinis: approve conductor.evals attaching OpenRouter-Evals (push) and Factory (read) for round 2, in its session. (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
     "Dinis: the further eval site for a prospective partner (name with Dinis): its domain, and whether the company may be named. (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
     "Dinis: go-ahead for the next conductor (london-billboard, then events-demo, cyber-demo, agenticcells.site). (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
