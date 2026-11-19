@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T14:24Z",
+  "updated": "2026-11-19T15:07Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -73,6 +73,12 @@
       "conductor": "none on account B",
       "state": "live, idle since the move (debrief 2026-11-18)",
       "waits_on_dinis": true
+    },
+    {
+      "site": "dinis-cruz.agenticcells.site",
+      "conductor": "conductor.dinis-cruz@AgentiCCells.dinis",
+      "session": "https://claude.ai/code/session_01Kw9UwFJqMBfzfCwEFV1Nnp",
+      "state": "live v0.1.1 at 696a2b7 (PR #37 merged, 14:36 UTC); conductor started by cells.b at about 14:40 UTC"
     }
   ],
   "done": [
@@ -103,6 +109,7 @@
     "Dinis: agenticcells.ai: public repository by default (GitHub Pages free only for public repositories), or another host for private ones; and who confirms consent for the five example sites held back from the Proof wall. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: Algarve open items in team/HANDOVER.md: dark-mode contrast of the platform bars, the billboard link, the real-data window, and whether the old round-3 branch may be deleted. Waits: https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
     "Dinis: turn on branch protection for AgentiCCells__Site__Evals (the CI workflow file still comes from the pushed tree, so only protection closes that gap). Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
-    "Dinis: turn on branch protection on dev for the gabriel-dacruz.agenticcells.site repository (its CI workflow file still comes from the push). Waits: https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2"
+    "Dinis: turn on branch protection on dev for the gabriel-dacruz.agenticcells.site repository (its CI workflow file still comes from the push). Waits: https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2",
+    "Dinis: may the dinis-cruz site quote your LinkedIn recommendations and name their writers (only writers who agree)? Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7"
   ]
 }
