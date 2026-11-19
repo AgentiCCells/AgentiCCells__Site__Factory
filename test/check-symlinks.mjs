@@ -19,7 +19,7 @@ let r = checkSymlinks({ cwd: repo, base, before: base, after: 'HEAD', tree: repo
 ok(r.errors.some((e) => e.includes('link: symlink added')), 'a symlink added then removed was not caught');
 // 2. listed only in the pushed tree: still fails
 mkdirSync(join(repo, 'team'), { recursive: true });
-writeFileSync(join(repo, 'team/symlink-exceptions.json'), JSON.stringify({ exceptions: [{ path: 'link2', reason: 'test' }] }));
+writeFileSync(join(repo, 'team/symlink-exceptions.json'), JSON.stringify({ exceptions: [{ path: 'link2', target: 'a.txt', reason: 'test' }] }));
 symlinkSync('a.txt', join(repo, 'link2')); g('add', '.'); g('commit', '-qm', 'self-listed link');
 r = checkSymlinks({ cwd: repo, base, before: base, after: 'HEAD', tree: repo });
 ok(r.errors.some((e) => e.includes('link2')), 'a symlink listed only in the pushed tree passed');
@@ -28,6 +28,31 @@ const base2 = g('rev-parse', 'HEAD');
 writeFileSync(join(repo, 'b.txt'), 'b\n'); g('add', '.'); g('commit', '-qm', 'more');
 r = checkSymlinks({ cwd: repo, base: base2, before: base2, after: 'HEAD', tree: repo });
 ok(r.errors.length === 0, `a symlink listed in the base was refused: ${r.errors.join('; ')}`);
+// 3b. a listed link re-pointed to another target fails
+g('switch', '-q', '-c', 'repoint'); execFileSync('rm', [join(repo, 'link2')]); symlinkSync('/etc/passwd', join(repo, 'link2')); g('add', '.'); g('commit', '-qm', 'repoint');
+r = checkSymlinks({ cwd: repo, base: base2, before: base2, after: 'HEAD', tree: repo });
+ok(r.errors.some((e) => e.includes('link2') && e.includes('added or changed')), 'a listed link re-pointed elsewhere passed');
+g('switch', '-q', 'dev'); g('branch', '-qD', 'repoint');
+// 3c. AFTER's own tree is read: a symlink that came in before BEFORE but is still in the tree fails
+r = checkSymlinks({ cwd: repo, base, before: 'HEAD', after: 'HEAD' });
+ok(r.errors.some((e) => e.startsWith('tree of') && e.includes('link2')), "a symlink in AFTER's tree was not caught");
+// 3d. a .git symlink nested inside a built site is caught (only the top-level .git is skipped)
+const site = mkdtempSync(join(tmpdir(), 'site-')); mkdirSync(join(site, 'out')); symlinkSync('/', join(site, 'out', '.git'));
+r = checkSymlinks({ cwd: repo, base: base2, before: 'HEAD', after: 'HEAD', dirs: [site] });
+ok(r.errors.some((e) => e.includes('out/.git')), 'a nested .git symlink was skipped');
+// 3e. non-UTF-8 names are compared as raw bytes: two names that decode to the same text are kept apart
+{
+  const r2 = mkdtempSync(join(tmpdir(), 'nb-'));
+  const g2 = (...a) => execFileSync('git', a, { cwd: r2, encoding: 'utf8' }).trim();
+  g2('init', '-q', '-b', 'dev'); g2('config', 'user.name', 't'); g2('config', 'user.email', 't@t'); g2('config', 'commit.gpgsign', 'false');
+  // The exception names the UTF-8 replacement character; the real file name holds a lone 0xff byte, which decodes to the same character.
+  mkdirSync(join(r2, 'team')); writeFileSync(join(r2, 'team/symlink-exceptions.json'), JSON.stringify({ exceptions: [{ path: 'x\ufffd', target: 'a', reason: 'test' }] }));
+  writeFileSync(join(r2, 'a'), 'a'); g2('add', '.'); g2('commit', '-qm', 'base'); const b = g2('rev-parse', 'HEAD');
+  symlinkSync('a', Buffer.concat([Buffer.from(r2 + '/'), Buffer.from([0x78, 0xff])]));
+  g2('add', '-A'); g2('commit', '-qm', 'non-utf8 link');
+  const rr = checkSymlinks({ cwd: r2, base: b, before: b, after: 'HEAD' });
+  ok(rr.errors.length >= 1, 'a non-UTF-8 link name matched an exception for a different name');
+}
 // 4. a merge bringing a symlink from a side branch fails
 g('switch', '-q', '-c', 'side'); symlinkSync('b.txt', join(repo, 'side-link')); g('add', '.'); g('commit', '-qm', 'side link');
 g('switch', '-q', 'dev'); writeFileSync(join(repo, 'c.txt'), 'c\n'); g('add', '.'); g('commit', '-qm', 'main'); g('merge', '-q', '--no-edit', 'side');
