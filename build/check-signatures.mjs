@@ -6,14 +6,16 @@
 // Pattern: cyber.b@'s scripts/check-signatures.mjs in PrompTugal__News__Cyber (commit c8fff24, Apache-2.0, same team).
 //
 // Usage: node build/check-signatures.mjs <before> <after>   the range to check (run by plan.yml on pull requests)
-// For each non-merge commit in before..after made after the commit that added this file:
-//   1. it carries a git SSH signature that verifies against a key in its PARENT's team/keys.json (status not
+// For each commit in before..after (merges and side branches included) that is not the commit that added this
+// file or older than it:
+//   1. it carries a git SSH signature that verifies against a key in its (first) PARENT's team/keys.json (status not
 //      "superseded"), never the keys in the commit itself: a new or rotated key is added by a commit signed with a
 //      key already listed, or by a person (the commit that adds this check is reviewed and merged by Dinis);
 //   2. the key's agent is the commit's one Agent: trailer;
 //   3. its one Claude-Session: trailer is the session recorded with that key.
 // No commit is exempt by its author or committer, which anyone can set. The factory's own workflow commits are on
-// dev only and never in a pull request's range. Merge commits are skipped (GitHub makes them).
+// dev only and never in a pull request's range. One failure refuses the whole range (exit 1). In a pull request,
+// pass the head commit, not GitHub's synthetic merge commit. Controls per security@'s ruling of 19 Nov 01:30 UTC.
 // Both controls follow signals.b@'s review of this pattern (PrompTugal__News__Signals 0101639), relayed by conductor.b@.
 // The OpenSSH form of each key is derived from its published PEM (bundle.sign) with ssh-keygen; nothing else is trusted.
 // Needs git 2.34+ and ssh-keygen. Prints OK or each failing commit and exits 1. History is never rewritten.
@@ -33,9 +35,10 @@ export function checkSignatures({ cwd = process.cwd(), before, after = 'HEAD' } 
   const first = lines(git('log', '--format=%H', '--diff-filter=A', '--reverse', after, '--', SELF))[0];
   if (!first) return { errors: [`cannot find the commit that added ${SELF}`], checked: 0, skipped: 0 };
   const from = before && !/^0+$/.test(before) && tryGit('rev-parse', '--verify', '--quiet', `${before}^{commit}`);
-  const range = lines(git('rev-list', '--no-merges', ...(from ? [`${from}..${after}`] : [after])));
-  // In scope: commits after the one that added this file (that commit is reviewed by a person).
-  const inScope = new Set(lines(git('rev-list', '--ancestry-path', `${first}..${after}`)));
+  const range = lines(git('rev-list', ...(from ? [`${from}..${after}`] : [after])));
+  // Out of scope: the commit that added this file (reviewed by a person) and everything older than it.
+  const older = new Set(lines(git('rev-list', first)));
+  const inScope = new Set(range.filter((c) => !older.has(c)));
 
   const dir = mkdtempSync(join(tmpdir(), 'sigcheck-'));
   const cache = new Map();
@@ -66,7 +69,7 @@ export function checkSignatures({ cwd = process.cwd(), before, after = 'HEAD' } 
       if (!inScope.has(c)) continue;
       checked++;
       const subject = git('log', '-1', '--format=%s', c);
-      const parent = signersAt(`${c}^`);
+      const parent = signersAt(`${c}^1`);
       if (!parent) { errors.push(`${c.slice(0, 7)} ${subject}: its parent has no team/keys.json`); continue; }
       const agents = lines(git('log', '-1', '--format=%(trailers:key=Agent,valueonly)', c));
       const sessions = lines(git('log', '-1', '--format=%(trailers:key=Claude-Session,valueonly)', c));

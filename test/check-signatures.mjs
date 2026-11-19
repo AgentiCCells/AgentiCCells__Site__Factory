@@ -75,6 +75,20 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   const chain = checkSignatures({ cwd: repo, before: old });
   expect('a key added by a signed commit is then accepted', chain.errors.length === 0 && chain.checked === 2);
   reset();
+  // An unsigned merge commit fails; so does an unsigned commit on a merged side branch.
+  run('git', ['checkout', '-q', '-b', 'side']);
+  commit(`side, signed${trailers}`, { file: 's.txt' });
+  run('git', ['checkout', '-q', 'dev']);
+  run('git', ['merge', '-q', '--no-ff', '--no-gpg-sign', '-m', `merge unsigned${trailers}`, 'side']);
+  expect('an unsigned merge commit fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /merge unsigned/.test(e)));
+  reset();
+  run('git', ['branch', '-q', '-D', 'side']);
+  run('git', ['checkout', '-q', '-b', 'side2', old]);
+  commit('side, unsigned', { sign: false, file: 's2.txt' });
+  run('git', ['checkout', '-q', 'dev']);
+  run('git', ['merge', '-q', '--no-ff', '-S', '-m', `merge signed${trailers}`, 'side2']);
+  expect('an unsigned commit on a merged side branch fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /side, unsigned/.test(e)));
+  reset();
   expect('commits before the check are not checked', checkSignatures({ cwd: repo }).errors.length === 0);
   rmSync(d, { recursive: true, force: true });
 }
