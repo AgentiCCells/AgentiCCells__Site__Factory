@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T16:06Z",
+  "updated": "2026-11-19T16:39Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -86,7 +86,8 @@
     "Made key sha256:7c2fd8c33a5e5d50 (signing sha256:061a8ad3642561dd) and published the public bundle in team/keys.json.",
     "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC.",
     "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC.",
-    "Read the newsroom positioning series, wrote the agenticcells.ai brief (f2226bc), started its team at Dinis's word (03:43 UTC)."
+    "Read the newsroom positioning series, wrote the agenticcells.ai brief (f2226bc), started its team at Dinis's word (03:43 UTC).",
+    "Wake moved to twice a day (09:06 and 20:06 Lisbon) on Dinis's word, about 16:30 UTC; done by maestro.b"
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
@@ -103,7 +104,6 @@
     "Dinis: the further eval site (company named in the session): its domain or label, and may the company be named publicly? Their API is not given yet. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: approve conductor.evals's two repository attach requests (OpenRouter-Evals push, Factory read) in its session. Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: who keeps the hub's site registry now (its source in AgentiCCells__Website dev has merge-conflict markers); does FAC-008 go ahead; may 12 unlisted live sites be listed (6 need the named person's or business's consent). Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
-    "Dinis: maestro.b's hourly wake for conductor.b (trig_01JhMC2KKgXhecdBf8QajdqE, :06 UTC) still runs, though you said no schedule is needed: pause it? Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: hub.b's first commit fails the hub CI's agent-name check because of the dot in hub.b@: allow dotted names in the check (as the Factory's check does) or re-sign as hub-b@. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: agenticcells.ai preview: competitor prices were read in USD from a US address (keep, or re-read for UK/EU); the contact email for the new pages; agent names with a dot or a hyphen (its CI rejects the dot, so it uses role-agenticcells-ai@ for now). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: agenticcells.ai: public repository by default (GitHub Pages free only for public repositories), or another host for private ones; and who confirms consent for the five example sites held back from the Proof wall. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
