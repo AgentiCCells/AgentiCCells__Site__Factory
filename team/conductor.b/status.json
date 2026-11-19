@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T16:39Z",
+  "updated": "2026-11-19T17:31Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -16,7 +16,7 @@
       "site": "agenticcells.ai (the sovereign website)",
       "conductor": "conductor.agenticcells-ai@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
-      "state": "done after round 5 (stopped): preview passes for Dinis's review, not yet for go-live (remaining list in team/rounds/5.md); hand-over team/HANDOVER.md; home page and live price unchanged",
+      "state": "refactor on /next/ from 17:33 UTC (Dinis's word: agentic cells and the agentic web; sovereignwebsite.ai as the smallest cell); live site unchanged; cost so far $57.69 (get_session)",
       "waits_on_dinis": false,
       "cost_usd": 21.08,
       "live_version": "v0.1.279 (its message, 04:55 UTC)"
@@ -87,7 +87,8 @@
     "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC.",
     "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC.",
     "Read the newsroom positioning series, wrote the agenticcells.ai brief (f2226bc), started its team at Dinis's word (03:43 UTC).",
-    "Wake moved to twice a day (09:06 and 20:06 Lisbon) on Dinis's word, about 16:30 UTC; done by maestro.b"
+    "Wake moved to twice a day (09:06 and 20:06 Lisbon) on Dinis's word, about 16:30 UTC; done by maestro.b",
+    "Wake back to hourly (Dinis, ~17:25 UTC, full speed for a launch tomorrow); done by maestro.b"
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
