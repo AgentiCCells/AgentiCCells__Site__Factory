@@ -1,8 +1,8 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T04:39Z",
-  "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
+  "updated": "2026-11-19T04:55Z",
+  "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
     "agent": "cells.b@AgentiCCells.dinis",
@@ -16,10 +16,10 @@
       "site": "agenticcells.ai (the sovereign website)",
       "conductor": "conductor.agenticcells-ai@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
-      "state": "rounds 3 and 4 released (6c4a482): buyer review passes for Dinis's review, security review no high findings, fixes applied; morning review page at https://agenticcells.ai/next/review/ with ten decisions; round 5 (last fixes, final review) running",
+      "state": "done after round 5 (stopped): preview passes for Dinis's review, not yet for go-live (remaining list in team/rounds/5.md); hand-over team/HANDOVER.md; home page and live price unchanged",
       "waits_on_dinis": false,
       "cost_usd": 21.08,
-      "live_version": "v0.1.272 (its message, 04:24 UTC)"
+      "live_version": "v0.1.279 (its message, 04:55 UTC)"
     },
     {
       "site": "evals.agenticcells.site + openrouter-evals.agenticcells.site",
