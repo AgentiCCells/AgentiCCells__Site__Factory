@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T02:50Z",
+  "updated": "2026-11-19T02:54Z",
   "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -67,13 +67,13 @@
     "Restart london-billboard next, only on Dinis's yes."
   ],
   "asks": [
-    "Dinis: merge PR #35 (signed commits in the Factory, check on every PR). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "Dinis: merge PR #35; plan check green and no conflict at 02:52 UTC. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/35",
     "Dinis: give riskmandate-agent write access to the AgentiCCells site repositories (team agenticcells-team-devs or collaborator); conductor.evals's round 1 is local until then. Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
-    "Dinis: the further eval site for a prospective partner: its domain and the API host its token is for (name kept in the sessions). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: older items from handover/2026-11-18__cells__debrief.md still stand (data-team note, naming Dinis on behind-the-scenes pages, team policies, four people's answers, the fast-inference or router site, the template PR, FAC-008). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: go-ahead to restart the next conductor, london-billboard (then events-demo, cyber-demo, agenticcells.site). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-    "Dinis: choose a name for a site's team in place of \"conductor\" (proposals in team/conductor.b/decisions/2026-11-19.md and in the session). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm"
+    "Dinis: choose a name for a site's team in place of \"conductor\" (proposals in team/conductor.b/decisions/2026-11-19.md and in the session). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
+    "Dinis: the further eval site (company named in the session): its domain or label, and may the company be named publicly? Their API is not given yet. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm"
   ]
 }
