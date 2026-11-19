@@ -43,9 +43,20 @@ jobs:
           mkdir -p "$RUNNER_TEMP/trusted"
           git show "$BASE:build/check-signatures.mjs" > "$RUNNER_TEMP/trusted/check-signatures.mjs"
           git show "$BASE:build/leak-scan.mjs" > build/.trusted-leak-scan.mjs
+          # Control 10: the symlink check, also from the base. Until it is merged it is not in the base,
+          # and the pull request that adds it is reviewed by Dinis (as for the signature check).
+          mode=$(git ls-tree "$BASE" -- build/check-symlinks.mjs | cut -d' ' -f1)
+          if [ -n "$mode" ]; then
+            if [ "$mode" != "100644" ]; then echo "refused: build/check-symlinks.mjs in the base is not a plain file ($mode)"; exit 1; fi
+            git show "$BASE:build/check-symlinks.mjs" > "$RUNNER_TEMP/trusted/check-symlinks.mjs"
+          fi
           echo "NODE_BIN=$(command -v node)" >> "$GITHUB_ENV"
       - name: Every new commit is signed by its agent's published key and names its session
         run: '"$NODE_BIN" "$RUNNER_TEMP/trusted/check-signatures.mjs" "$BEFORE" "$HEAD_SHA"'
+      - name: No symlinks in any commit of the range or in the tree (control 10; exceptions from the base only)
+        run: |
+          if [ -f "$RUNNER_TEMP/trusted/check-symlinks.mjs" ]; then "$NODE_BIN" "$RUNNER_TEMP/trusted/check-symlinks.mjs" "$BASE" "$BEFORE" "$HEAD_SHA" --tree .
+          else echo "check-symlinks.mjs is not in the base yet: this pull request adds it"; fi
       - name: Leak scan (BEFORE's copy; it finds the repository root from its own location)
         run: '"$NODE_BIN" build/.trusted-leak-scan.mjs'
   plan:
@@ -92,6 +103,9 @@ jobs:
         with:
           name: plan
           path: out
+      - name: Refuse symlinks in the downloaded artifact (control 10)
+        run: |
+          if [ -n "$(find out -type l -print -quit)" ]; then find out -type l; echo "refused: the plan artifact holds a symlink"; exit 1; fi
       - name: Post or update the plan comment
         uses: actions/github-script@v7
         with:
