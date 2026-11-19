@@ -15,7 +15,7 @@
 // Public keys are allowed only in team/keys.json and team/keys/*.json, and only
 // when those files hold no private part. Any change to the allowlist below must
 // be narrow (one path, one kind) and say why.
-import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, lstatSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
@@ -122,7 +122,8 @@ function walk(dir) {
   if (!existsSync(dir)) return [];
   return readdirSync(dir).flatMap((n) => {
     const p = join(dir, n);
-    return statSync(p).isDirectory() ? walk(p) : [p];
+    const st = lstatSync(p); // never follow a symlink
+    return st.isDirectory() ? walk(p) : [p];
   });
 }
 
@@ -137,11 +138,16 @@ function scanTree() {
   let count = 0, skipped = 0;
   for (const p of paths) {
     const full = join(root, p);
-    if (!existsSync(full) || statSync(full).isDirectory()) continue; // deleted in the working tree
+    let st; try { st = lstatSync(full); } catch { continue; } // deleted in the working tree
+    // A symlink is refused, never followed: it could point the scan away from the bytes that ship.
+    if (st.isSymbolicLink()) { errors.push(`${p}:0: symlink (not followed, not allowed)`); continue; }
+    if (st.isDirectory()) continue;
     const buf = readFileSync(full);
-    if (isBinary(buf)) { skipped++; continue; }
+    // A file with a NUL byte is still scanned (as latin1), never skipped: a secret is plain ASCII inside it.
+    const text = isBinary(buf) ? buf.toString('latin1') : buf.toString('utf8');
+    if (isBinary(buf)) skipped++;
     count++;
-    for (const f of scanText(p, buf.toString('utf8'))) errors.push(`${p}:${f.line}: ${f.kind}`);
+    for (const f of scanText(p, text)) errors.push(`${p}:${f.line}: ${f.kind}`);
   }
   return { errors, count, skipped };
 }
@@ -181,5 +187,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.error(`FAILED (${errors.length}) in ${count} ${history ? 'commits' : 'files'}`);
     process.exit(1);
   }
-  console.log(history ? `OK (${count} commits)` : `OK (${count} files, ${skipped} binary skipped)`);
+  console.log(history ? `OK (${count} commits)` : `OK (${count} files, ${skipped} of them with NUL bytes, scanned as latin1)`);
 }

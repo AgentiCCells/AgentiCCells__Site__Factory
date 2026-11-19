@@ -147,7 +147,8 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
 }
 // Control 7: CI runs the checker from the base branch's copy.
 {
-  const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/plan.yml'), 'utf8');
+  // Comments are stripped first, so a test cannot be satisfied by a comment in the workflow.
+  const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/plan.yml'), 'utf8').split('\n').filter((l) => !/^\s*#/.test(l)).map((l) => l.replace(/\s+#\s.*$/, '')).join('\n');
   expect('plan.yml runs the checker from the base copy', /git show "\$BASE:build\/check-signatures.mjs"/.test(wf) && !/run: node build\/check-signatures.mjs/.test(wf));
   const trusted = wf.slice(wf.indexOf('  trusted-checks:'), wf.indexOf('\n  plan:'));
   expect('control 9: the trusted job runs no code from the pull request', trusted.length > 0 && !/run: node |node test\/|node build\/(?!\.trusted)/.test(trusted.replace(/"\$NODE_BIN" build\/\.trusted-leak-scan\.mjs/g, '')));
