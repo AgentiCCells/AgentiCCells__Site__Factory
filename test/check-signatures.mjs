@@ -40,18 +40,19 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   commit(`signed${trailers}`);
   const good = checkSignatures({ cwd: repo, before: old });
   expect('signed commit with the right trailers passes', good.errors.length === 0 && good.checked === 1);
+  expect('the test repository uses ssh-keygen, not the environment signer', run('git', ['config', 'gpg.ssh.program']) === 'ssh-keygen');
   reset();
   const unsigned = commit(`unsigned${trailers}`, { sign: false });
-  expect('unsigned commit fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => e.startsWith(unsigned.slice(0, 7))));
+  expect('unsigned commit fails for want of a signature', checkSignatures({ cwd: repo, before: old }).errors.some((e) => e.startsWith(unsigned.slice(0, 7)) && /no valid signature/.test(e)));
   reset();
   commit('wrong session\n\nAgent: tester@AgentiCCells.dinis\nClaude-Session: https://claude.ai/code/session_other');
-  expect('wrong session fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /Claude-Session/.test(e)));
+  expect('wrong session fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /Claude-Session: missing or not the session/.test(e)));
   reset();
   commit('wrong agent\n\nAgent: someone@AgentiCCells.dinis\nClaude-Session: ' + SESSION);
-  expect('wrong agent fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /Agent:/.test(e)));
+  expect('wrong agent fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /signed by tester@AgentiCCells.dinis, Agent: someone@/.test(e)));
   reset();
   commit('Write back request status (real)', { sign: false, env: { GIT_COMMITTER_NAME: 'factory-apply', GIT_AUTHOR_NAME: 'factory-apply' } });
-  expect('no exemption by committer name', checkSignatures({ cwd: repo, before: old }).errors.length === 1);
+  expect('no exemption by committer name', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]))(checkSignatures({ cwd: repo, before: old })));
   reset();
   // A commit that adds its own key and signs with it must fail: keys come from the parent.
   const key2 = join(d, 'k2.pem'), pub2 = join(d, 'k2.pub.pem');
@@ -64,7 +65,7 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   writeFileSync(join(repo, 'team/keys.json'), JSON.stringify(withNew));
   run('git', ['config', 'user.signingkey', key2]);
   commit('self-added key\n\nAgent: intruder@AgentiCCells.dinis\nClaude-Session: ' + SESSION, { file: 'c.txt' });
-  expect('a commit signed by a key it adds itself fails', checkSignatures({ cwd: repo, before: old }).errors.length === 1);
+  expect('a commit signed by a key it adds itself fails', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]) && /self-added key/.test(r.errors[0]))(checkSignatures({ cwd: repo, before: old })));
   reset();
   // The same key added by a commit signed with a listed key, then used: passes.
   run('git', ['config', 'user.signingkey', key]);
@@ -80,14 +81,14 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   commit(`side, signed${trailers}`, { file: 's.txt' });
   run('git', ['checkout', '-q', 'dev']);
   run('git', ['merge', '-q', '--no-ff', '--no-gpg-sign', '-m', `merge unsigned${trailers}`, 'side']);
-  expect('an unsigned merge commit fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /merge unsigned/.test(e)));
+  expect('an unsigned merge commit fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /merge unsigned/.test(e) && /no valid signature/.test(e)));
   reset();
   run('git', ['branch', '-q', '-D', 'side']);
-  run('git', ['checkout', '-q', '-b', 'side2', old]);
+  run('git', ['checkout', '-q', '-b', 'side2', base]);
   commit('side, unsigned', { sign: false, file: 's2.txt' });
   run('git', ['checkout', '-q', 'dev']);
   run('git', ['merge', '-q', '--no-ff', '-S', '-m', `merge signed${trailers}`, 'side2']);
-  expect('an unsigned commit on a merged side branch fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /side, unsigned/.test(e)));
+  expect('an unsigned commit on a merged side branch fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /side, unsigned/.test(e) && /no valid signature/.test(e)));
   reset();
   expect('commits before the check are not checked', checkSignatures({ cwd: repo }).errors.length === 0);
   rmSync(d, { recursive: true, force: true });
