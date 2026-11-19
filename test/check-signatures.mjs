@@ -149,6 +149,10 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
 {
   const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/plan.yml'), 'utf8');
   expect('plan.yml runs the checker from the base copy', /git show "\$BEFORE:build\/check-signatures.mjs"/.test(wf) && !/run: node build\/check-signatures.mjs/.test(wf));
+  const trusted = wf.slice(wf.indexOf('  trusted-checks:'), wf.indexOf('\n  plan:'));
+  expect('control 9: the trusted job runs no code from the pull request', trusted.length > 0 && !/run: node |node test\/|node build\/(?!\.trusted)/.test(trusted.replace(/"\$NODE_BIN" build\/\.trusted-leak-scan\.mjs/g, '')));
+  expect('control 9: clean environment and symlink refusal', /GIT_NO_REPLACE_OBJECTS: "1"/.test(trusted) && /NODE_OPTIONS: ""/.test(trusted) && /not a plain file/.test(trusted) && /persist-credentials: false/.test(trusted));
+  expect('control 9: the plan job no longer runs the security checks', !/check-signatures|leak-scan/.test(wf.slice(wf.indexOf('\n  plan:'))));
   expect('plan.yml takes BEFORE from the merge-base with dev', /BEFORE=\$\(git merge-base "\$BASE"/.test(wf));
   expect('plan.yml runs the leak scan from the base copy', /git show "\$BEFORE:build\/leak-scan.mjs"/.test(wf) && !/run: node build\/leak-scan.mjs/.test(wf));
 }

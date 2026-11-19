@@ -8,6 +8,45 @@ on:
 permissions:
   contents: read
 jobs:
+  # Control 9: the signature and leak checks run in their own job, which runs no code from the pull
+  # request. It checks the tree out as data, takes each checker from BEFORE (where the pull request
+  # leaves dev, already checked) into RUNNER_TEMP, and runs it with a clean environment.
+  trusted-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GIT_NO_REPLACE_OBJECTS: "1"
+      NODE_OPTIONS: ""
+      BASE: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Take the trusted checkers from BEFORE
+        run: |
+          set -euo pipefail
+          BEFORE=$(git merge-base "$BASE" "$HEAD_SHA")
+          echo "BEFORE=$BEFORE" >> "$GITHUB_ENV"
+          # Refuse symlinks on the checker paths, in BEFORE's tree and in the checkout.
+          for f in build/check-signatures.mjs build/leak-scan.mjs; do
+            mode=$(git ls-tree "$BEFORE" -- "$f" | cut -d' ' -f1)
+            if [ "$mode" != "100644" ] && [ "$mode" != "100755" ]; then echo "refused: $f in BEFORE is not a plain file ($mode)"; exit 1; fi
+          done
+          if [ -L build ] || [ -e build/.trusted-leak-scan.mjs ] || [ -L build/.trusted-leak-scan.mjs ]; then echo "refused: build/ is a symlink or the trusted path exists"; exit 1; fi
+          mkdir -p "$RUNNER_TEMP/trusted"
+          git show "$BEFORE:build/check-signatures.mjs" > "$RUNNER_TEMP/trusted/check-signatures.mjs"
+          git show "$BEFORE:build/leak-scan.mjs" > build/.trusted-leak-scan.mjs
+          echo "NODE_BIN=$(command -v node)" >> "$GITHUB_ENV"
+      - name: Every new commit is signed by its agent's published key and names its session
+        run: '"$NODE_BIN" "$RUNNER_TEMP/trusted/check-signatures.mjs" "$BEFORE" "$HEAD_SHA"'
+      - name: Leak scan (BEFORE's copy; it finds the repository root from its own location)
+        run: '"$NODE_BIN" build/.trusted-leak-scan.mjs'
   plan:
     runs-on: ubuntu-latest
     permissions:
@@ -23,28 +62,6 @@ jobs:
         run: node test/run.mjs
       - name: Validate every request
         run: node build/validate.mjs
-      - name: Leak scan (the base branch's copy, never the pull request's)
-        env:
-          BASE: ${{ github.event.pull_request.base.sha }}
-        # Control 7: security checks and their config come from the trusted copy; a missing copy fails the step.
-        # The copy sits in build/ because the scan finds the repository root from its own location.
-        run: |
-          BEFORE=$(git merge-base "$BASE" "${{ github.event.pull_request.head.sha }}")
-          git show "$BEFORE:build/leak-scan.mjs" > build/.trusted-leak-scan.mjs
-          node build/.trusted-leak-scan.mjs
-          rm -f build/.trusted-leak-scan.mjs
-      - name: Every new commit is signed by its agent's published key and names its session
-        env:
-          BASE: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        # Run the checker from BEFORE's copy (dev where the pull request leaves it), never the pull
-        # request's own, so a pull request cannot change the check that judges it (control 7). A missing copy fails.
-        run: |
-          # BEFORE: where the pull request leaves dev, already checked; the checker runs from its copy.
-          BEFORE=$(git merge-base "$BASE" "$HEAD_SHA")
-          mkdir -p "$RUNNER_TEMP/trusted"
-          git show "$BEFORE:build/check-signatures.mjs" > "$RUNNER_TEMP/trusted/check-signatures.mjs"
-          node "$RUNNER_TEMP/trusted/check-signatures.mjs" "$BEFORE" "$HEAD_SHA"
       - name: Plan the changed requests
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
