@@ -36,23 +36,23 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   commit(`add the check${trailers}`, { file: 'b.txt' });
   const base = run('git', ['rev-parse', 'HEAD']);
   const reset = () => run('git', ['reset', '-q', '--hard', base]);
-  expect('the commit that adds the check is not itself checked', checkSignatures({ cwd: repo, before: old }).checked === 0);
+  expect('the commit that adds the check is not itself checked', checkSignatures({ trustedBase: base, cwd: repo, before: old }).checked === 0);
   commit(`signed${trailers}`);
-  const good = checkSignatures({ cwd: repo, before: old });
+  const good = checkSignatures({ trustedBase: base, cwd: repo, before: old });
   expect('signed commit with the right trailers passes', good.errors.length === 0 && good.checked === 1);
   expect('the test repository uses ssh-keygen, not the environment signer', run('git', ['config', 'gpg.ssh.program']) === 'ssh-keygen');
   reset();
   const unsigned = commit(`unsigned${trailers}`, { sign: false });
-  expect('unsigned commit fails for want of a signature', checkSignatures({ cwd: repo, before: old }).errors.some((e) => e.startsWith(unsigned.slice(0, 7)) && /no valid signature/.test(e)));
+  expect('unsigned commit fails for want of a signature', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => e.startsWith(unsigned.slice(0, 7)) && /no valid signature/.test(e)));
   reset();
   commit('wrong session\n\nAgent: tester@AgentiCCells.dinis\nClaude-Session: https://claude.ai/code/session_other');
-  expect('wrong session fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /Claude-Session: missing or not the session/.test(e)));
+  expect('wrong session fails', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => /Claude-Session: missing or not the session/.test(e)));
   reset();
   commit('wrong agent\n\nAgent: someone@AgentiCCells.dinis\nClaude-Session: ' + SESSION);
-  expect('wrong agent fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /signed by tester@AgentiCCells.dinis, Agent: someone@/.test(e)));
+  expect('wrong agent fails', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => /signed by tester@AgentiCCells.dinis, Agent: someone@/.test(e)));
   reset();
   commit('Write back request status (real)', { sign: false, env: { GIT_COMMITTER_NAME: 'factory-apply', GIT_AUTHOR_NAME: 'factory-apply' } });
-  expect('no exemption by committer name', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]))(checkSignatures({ cwd: repo, before: old })));
+  expect('no exemption by committer name', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]))(checkSignatures({ trustedBase: base, cwd: repo, before: old })));
   reset();
   // A commit that adds its own key and signs with it must fail: keys come from the parent.
   const key2 = join(d, 'k2.pem'), pub2 = join(d, 'k2.pub.pem');
@@ -65,7 +65,7 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   writeFileSync(join(repo, 'team/keys.json'), JSON.stringify(withNew));
   run('git', ['config', 'user.signingkey', key2]);
   commit('self-added key\n\nAgent: intruder@AgentiCCells.dinis\nClaude-Session: ' + SESSION, { file: 'c.txt' });
-  expect('a commit signed by a key it adds itself fails', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]) && /self-added key/.test(r.errors[0]))(checkSignatures({ cwd: repo, before: old })));
+  expect('a commit signed by a key it adds itself fails', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]) && /self-added key/.test(r.errors[0]))(checkSignatures({ trustedBase: base, cwd: repo, before: old })));
   reset();
   // The same key added by a commit signed with a listed key, then used: passes.
   run('git', ['config', 'user.signingkey', key]);
@@ -73,7 +73,7 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   commit(`add a key, signed by a listed key${trailers}`, { file: 'c.txt' });
   run('git', ['config', 'user.signingkey', key2]);
   commit('use the new key\n\nAgent: intruder@AgentiCCells.dinis\nClaude-Session: ' + SESSION);
-  const chain = checkSignatures({ cwd: repo, before: old });
+  const chain = checkSignatures({ trustedBase: base, cwd: repo, before: old });
   expect('a key added by a signed commit is then accepted', chain.errors.length === 0 && chain.checked === 2);
   reset();
   // An unsigned merge commit fails; so does an unsigned commit on a merged side branch.
@@ -81,14 +81,14 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   commit(`side, signed${trailers}`, { file: 's.txt' });
   run('git', ['checkout', '-q', 'dev']);
   run('git', ['merge', '-q', '--no-ff', '--no-gpg-sign', '-m', `merge unsigned${trailers}`, 'side']);
-  expect('an unsigned merge commit fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /merge unsigned/.test(e) && /no valid signature/.test(e)));
+  expect('an unsigned merge commit fails', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => /merge unsigned/.test(e) && /no valid signature/.test(e)));
   reset();
   run('git', ['branch', '-q', '-D', 'side']);
   run('git', ['checkout', '-q', '-b', 'side2', base]);
   commit('side, unsigned', { sign: false, file: 's2.txt' });
   run('git', ['checkout', '-q', 'dev']);
   run('git', ['merge', '-q', '--no-ff', '-S', '-m', `merge signed${trailers}`, 'side2']);
-  expect('an unsigned commit on a merged side branch fails', checkSignatures({ cwd: repo, before: old }).errors.some((e) => /side, unsigned/.test(e) && /no valid signature/.test(e)));
+  expect('an unsigned commit on a merged side branch fails', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => /side, unsigned/.test(e) && /no valid signature/.test(e)));
   reset();
   // Control 6: an orphan commit is refused, even signed and carrying its own keys.
   run('git', ['checkout', '-q', '--orphan', 'orphan']);
@@ -96,29 +96,39 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   const orphanHead = run('git', ['rev-parse', 'HEAD']);
   run('git', ['checkout', '-q', 'dev']);
   run('git', ['merge', '-q', '--no-ff', '-S', '--allow-unrelated-histories', '-m', `merge orphan${trailers}`, 'orphan']);
-  expect('an orphan commit is refused', checkSignatures({ cwd: repo, before: old }).errors.some((e) => e.startsWith(orphanHead.slice(0, 7)) && /parent has no team\/keys.json/.test(e)));
+  expect('an orphan commit is refused', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => e.startsWith(orphanHead.slice(0, 7)) && /parent has no team\/keys.json/.test(e)));
   reset();
   run('git', ['branch', '-q', '-D', 'orphan']);
   // Control 7, behaviour: a push that weakens the checker and adds an unsigned commit still fails,
   // because the trusted copy (the one CI takes from the base) does the judging.
   writeFileSync(join(repo, SELF), 'console.log("OK"); process.exit(0);\n');
   commit('weaken the checker', { sign: false, file: SELF });
-  const weak = checkSignatures({ cwd: repo, before: base });
+  const weak = checkSignatures({ trustedBase: base, cwd: repo, before: base });
   expect('a push that weakens the checker still fails under the trusted copy', weak.errors.length === 1 && /no valid signature/.test(weak.errors[0]));
   reset();
   // Control 6: a shallow checkout is refused.
   {
     const shallow = join(d, 'shallow');
     execFileSync('git', ['clone', '-q', '--depth', '1', `file://${repo}`, shallow]);
-    const r = checkSignatures({ cwd: shallow, before: old });
+    const r = checkSignatures({ trustedBase: base, cwd: shallow, before: old });
     expect('a shallow checkout is refused', r.errors.length === 1 && /shallow checkout/.test(r.errors[0]));
   }
-  expect('commits before the check are not checked', checkSignatures({ cwd: repo }).errors.length === 0);
+  // Control 8: deleting the checker never skips a commit.
+  run('git', ['rm', '-q', SELF]);
+  commit('remove the checker and change something', { sign: false, file: 'x.txt' });
+  const gone = checkSignatures({ trustedBase: base, cwd: repo, before: base });
+  expect('a commit that removes the checker and is unsigned fails', gone.errors.length === 1 && /no valid signature/.test(gone.errors[0]));
+  reset();
+  // Fail closed: a trusted base that is not in the clone refuses everything.
+  const missing = checkSignatures({ trustedBase: '0123456789abcdef0123456789abcdef01234567', cwd: repo, before: old });
+  expect('a missing trusted base fails closed', missing.errors.length === 1 && /trusted base .* is not in this clone/.test(missing.errors[0]));
+  expect('commits before the check are not checked', checkSignatures({ trustedBase: base, cwd: repo }).errors.length === 0);
   rmSync(d, { recursive: true, force: true });
 }
 // Control 7: CI runs the checker from the base branch's copy.
 {
   const wf = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github/workflows/plan.yml'), 'utf8');
   expect('plan.yml runs the checker from the base copy', /git show "\$BASE:build\/check-signatures.mjs"/.test(wf) && !/run: node build\/check-signatures.mjs/.test(wf));
+  expect('plan.yml runs the leak scan from the base copy', /git show "\$BASE:build\/leak-scan.mjs"/.test(wf) && !/run: node build\/leak-scan.mjs/.test(wf));
 }
 export default fails;

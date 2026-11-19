@@ -6,8 +6,9 @@
 // Pattern: cyber.b@'s scripts/check-signatures.mjs in PrompTugal__News__Cyber (commit c8fff24, Apache-2.0, same team).
 //
 // Usage: node build/check-signatures.mjs <before> <after>   the range to check (run by plan.yml on pull requests)
-// For each commit in before..after (merges and side branches included) that is not the commit that added this
-// file or older than it:
+// For each commit in before..after (merges and side branches included) that is not an ancestor of the pinned
+// TRUSTED_BASE (control 8: a skip is decided only by git merge-base --is-ancestor, never by what a tree holds,
+// so deleting this file never skips a commit):
 //   1. it carries a git SSH signature that verifies against a key in its (first) PARENT's team/keys.json (status not
 //      "superseded"), never the keys in the commit itself: a new or rotated key is added by a commit signed with a
 //      key already listed, or by a person (the commit that adds this check is reviewed and merged by Dinis);
@@ -28,21 +29,23 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 export const SELF = 'build/check-signatures.mjs';
+// The trusted base: the commit that added this check (7003389, reviewed and merged by Dinis in PR #35).
+// It is pinned here, in the trusted copy CI runs; there is no environment override.
+export const TRUSTED_BASE = '70033898e756a0dce4e581370629ccd9b00bb29b';
 const AGENT = /^[a-z0-9]+(?:[.-][a-z0-9]+)*@[a-z0-9.-]+$/i;
 const lines = (s) => (s ? s.split('\n').map((x) => x.trim()).filter(Boolean) : []);
 
-export function checkSignatures({ cwd = process.cwd(), before, after = 'HEAD' } = {}) {
+export function checkSignatures({ cwd = process.cwd(), before, after = 'HEAD', trustedBase = TRUSTED_BASE } = {}) {
   const git = (...a) => execFileSync('git', a, { cwd, encoding: 'utf8' }).trim();
   const tryGit = (...a) => { try { return git(...a); } catch { return null; } };
   // A shallow clone hides history, so parents and older commits cannot be told apart: refuse it.
   if (tryGit('rev-parse', '--is-shallow-repository') === 'true') return { errors: ['shallow checkout: fetch the full history (fetch-depth 0)'], checked: 0, skipped: 0 };
-  const first = lines(git('log', '--format=%H', '--diff-filter=A', '--reverse', after, '--', SELF))[0];
-  if (!first) return { errors: [`cannot find the commit that added ${SELF}`], checked: 0, skipped: 0 };
+  // Fail closed: without the trusted base in this clone, nothing can be judged.
+  if (!tryGit('rev-parse', '--verify', '--quiet', `${trustedBase}^{commit}`)) return { errors: [`trusted base ${trustedBase.slice(0, 7)} is not in this clone`], checked: 0, skipped: 0 };
   const from = before && !/^0+$/.test(before) && tryGit('rev-parse', '--verify', '--quiet', `${before}^{commit}`);
   const range = lines(git('rev-list', ...(from ? [`${from}..${after}`] : [after])));
-  // Out of scope: the commit that added this file (reviewed by a person) and everything older than it.
-  const older = new Set(lines(git('rev-list', first)));
-  const inScope = new Set(range.filter((c) => !older.has(c)));
+  const isAncestorOfBase = (c) => spawnSync('git', ['merge-base', '--is-ancestor', c, trustedBase], { cwd }).status === 0;
+  const inScope = new Set(range.filter((c) => !isAncestorOfBase(c)));
 
   const dir = mkdtempSync(join(tmpdir(), 'sigcheck-'));
   const cache = new Map();
@@ -91,5 +94,5 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [before, after] = process.argv.slice(2);
   const r = checkSignatures({ before, after: after || 'HEAD' });
   if (r.errors.length) { console.error(r.errors.join('\n')); console.error(`FAILED (${r.errors.length} of ${r.checked} commits checked)`); process.exit(1); }
-  console.log(`OK (${r.checked} signed commits checked, ${r.skipped} not after the check skipped)`);
+  console.log(`OK (${r.checked} signed commits checked, ${r.skipped} older than the trusted base skipped)`);
 }

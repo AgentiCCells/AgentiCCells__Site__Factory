@@ -23,8 +23,15 @@ jobs:
         run: node test/run.mjs
       - name: Validate every request
         run: node build/validate.mjs
-      - name: Leak scan
-        run: node build/leak-scan.mjs
+      - name: Leak scan (the base branch's copy, never the pull request's)
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        # Control 7: security checks and their config come from the trusted copy; a missing copy fails the step.
+        # The copy sits in build/ because the scan finds the repository root from its own location.
+        run: |
+          git show "$BASE:build/leak-scan.mjs" > build/.trusted-leak-scan.mjs
+          node build/.trusted-leak-scan.mjs
+          rm -f build/.trusted-leak-scan.mjs
       - name: Every new commit is signed by its agent's published key and names its session
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
