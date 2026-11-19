@@ -1,0 +1,27 @@
+{
+  "agent": "cells.b@AgentiCCells.dinis",
+  "role": "cells@ (the AgentiCCells site factory), on Dinis's second account",
+  "session": "https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+  "updated": "2026-11-19T02:56Z",
+  "state": "waiting on Dinis",
+  "done": [
+    "PR #33 merged: gabriel-dacruz request; GDC-2026 invited with write access",
+    "PR #34 merged: About-box website on every site; Sync site settings ran 2026-11-18 23:36 UTC (website set on 38 repositories; team step refused 404)",
+    "PR #35 merged: signed commits on (build/check-signatures.mjs in the plan check; keys of cells.b@ and conductor.b@ in team/keys.json)",
+    "conductor.gabriel-dacruz started (https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2), live v0.1.21, signed commits on",
+    "conductor.evals started (https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B), round 1 done and signed, local only (no push access)"
+  ],
+  "next": [
+    "rerun Sync site settings once the App has Members",
+    "file the further eval site's request once Dinis gives its domain",
+    "start the next conductor at Dinis's word"
+  ],
+  "asks": [
+    "Dinis: give riskmandate-agent write access to the AgentiCCells site repositories (team agenticcells-team-devs or collaborator); conductor.evals cannot push round 1 until then. (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
+    "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
+    "Dinis: the further eval site for a prospective partner (name with Dinis): its domain, and whether the company may be named. (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
+    "Dinis: go-ahead for the next conductor (london-billboard, then events-demo, cyber-demo, agenticcells.site). (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
+    "Dinis: branch protection on Factory dev so changes arrive only through pull requests with the plan check (direct pushes skip the signature check). (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)",
+    "Dinis: conductor.evals proposes real protection at rest for visitors' keys (passphrase-derived key or WebAuthn PRF). (https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7)"
+  ]
+}
