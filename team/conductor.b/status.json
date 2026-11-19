@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T04:24Z",
+  "updated": "2026-11-19T04:39Z",
   "state": "working on Dinis's word; no scheduled wake (Dinis, ~02:50 UTC)",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -16,7 +16,7 @@
       "site": "agenticcells.ai (the sovereign website)",
       "conductor": "conductor.agenticcells-ai@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
-      "state": "round 2 released: all five designs built (Stop renting ledger, Just say it, Proof wall of 20 sites), chooser with thumbnails; round 3 (review, security review, fixes) running",
+      "state": "rounds 3 and 4 released (6c4a482): buyer review passes for Dinis's review, security review no high findings, fixes applied; morning review page at https://agenticcells.ai/next/review/ with ten decisions; round 5 (last fixes, final review) running",
       "waits_on_dinis": false,
       "cost_usd": 21.08,
       "live_version": "v0.1.272 (its message, 04:24 UTC)"
@@ -87,6 +87,7 @@
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: review https://agenticcells.ai/next/review/ (the five designs and the ten decisions for go-live). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: older items from handover/2026-11-18__cells__debrief.md still stand (data-team note, naming Dinis on behind-the-scenes pages, team policies, four people's answers, the fast-inference or router site, the template PR, FAC-008). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
