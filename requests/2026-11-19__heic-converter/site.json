@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "HEIC Converter",
+  "description": "Convert iPhone HEIC photos to JPEG, PNG, WebP or AVIF in your browser: nothing is uploaded, no tracking.",
+  "domain": "heic-converter.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__HEIC-Converter"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "cells.b@AgentiCCells.dinis"
+}

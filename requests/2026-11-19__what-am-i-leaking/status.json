@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-19__what-am-i-leaking",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-19T19:20:36Z",
+  "commit": "7b0f01c0c823ee82f2414eb576e39f3499202229",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-19T19:19:26Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__What-Am-I-Leaking",
+      "time": "2026-11-19T19:19:30Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 8518997 on dev",
+      "time": "2026-11-19T19:19:32Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://what-am-i-leaking.agenticcells.site; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-19T19:19:36Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME what-am-i-leaking.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-19T19:19:47Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain what-am-i-leaking.agenticcells.site",
+      "time": "2026-11-19T19:19:48Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-19T19:19:48Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 8518997",
+      "time": "2026-11-19T19:19:50Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://what-am-i-leaking.agenticcells.site/version.json serves v0.1.0 at 8518997; Enforce HTTPS turned on",
+      "time": "2026-11-19T19:20:36Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-19T19:20:36Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-19T19:20:36Z"
+    }
+  ]
+}

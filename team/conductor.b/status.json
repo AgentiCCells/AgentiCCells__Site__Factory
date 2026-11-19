@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T16:39Z",
+  "updated": "2026-11-19T17:54Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -16,7 +16,7 @@
       "site": "agenticcells.ai (the sovereign website)",
       "conductor": "conductor.agenticcells-ai@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
-      "state": "done after round 5 (stopped): preview passes for Dinis's review, not yet for go-live (remaining list in team/rounds/5.md); hand-over team/HANDOVER.md; home page and live price unchanged",
+      "state": "refactored preview v0.1.282 at https://agenticcells.ai/next/ (Dinis confirmed the refactor in its session ~17:55 UTC; four sizes £500/£1,500/£5,000/£20,000 as first proposal; PrompTugal.news and the Sovereign Agentic Website as main case studies; £50 only as the Sovereign Website's own launch offer). Home page and live prices unchanged. Cost: about 673,000 sub-agent tokens this round (own count)",
       "waits_on_dinis": false,
       "cost_usd": 21.08,
       "live_version": "v0.1.279 (its message, 04:55 UTC)"
@@ -87,15 +87,16 @@
     "Started conductor.algarve-holiday-homes (https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3) at Dinis's word, 02:49 UTC.",
     "Woke cells.b and started hub.b at Dinis's word, 02:55 to 02:56 UTC.",
     "Read the newsroom positioning series, wrote the agenticcells.ai brief (f2226bc), started its team at Dinis's word (03:43 UTC).",
-    "Wake moved to twice a day (09:06 and 20:06 Lisbon) on Dinis's word, about 16:30 UTC; done by maestro.b"
+    "Wake moved to twice a day (09:06 and 20:06 Lisbon) on Dinis's word, about 16:30 UTC; done by maestro.b",
+    "Wake back to hourly (Dinis, ~17:25 UTC, full speed for a launch tomorrow); done by maestro.b"
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: agenticcells.ai refactor: go live and which design; confirm the four sizes and the event-team label; the website on the £500 rung or at its own £50; 'team inside' as the next step; names in the PrompTugal case study; the family bar; contact; languages. Review https://agenticcells.ai/next/review/. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: account B shows a seven-day usage warning (07:06 UTC). Decide which teams keep running today; the Algarve conductor ($98) stops after round 5. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-    "Dinis: review https://agenticcells.ai/next/review/ (the five designs and the ten decisions for go-live). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: older items from handover/2026-11-18__cells__debrief.md still stand (data-team note, naming Dinis on behind-the-scenes pages, team policies, four people's answers, the fast-inference or router site, the template PR, FAC-008). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
