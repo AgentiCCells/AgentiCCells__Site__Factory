@@ -110,6 +110,7 @@
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: cell.email.b has onboarded (live v0.1.38 at 9c60b39, 73 tests OK). Its session's permission check refused making its signing key and pushing, so its onboarding commit 42d3246 is held locally. Allow both in its session. Waits: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG",
     "Dinis: hub.b acts only on your word in its own session. Please confirm there that it keeps the registry. Set the HUB_CONTACT repository variable yourself (GitHub, Settings, Secrets and variables, Actions, Variables); hub.b's privacy check will not handle the address. It is drafting the sites.json and daily-rebuild proposals for you. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: Algarve Evolution moves to SovereignWebsite as a private vault site (your word in algarve-evolution.b's session, relayed 12:36 UTC). When it is working there, say the word here and the AgentiCCells side decommissions algarve-evolution.agenticcells.site and deletes AgentiCCells__Site__Algarve-Evolution. Nothing is touched until then. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: merge Factory PR #45 (protect release branches: base stage on PrompTugal Live, Library and Signals; the factory App needs Administration write on PrompTugal). cells.b reports your word of 20 Nov for it. https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/45 Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
