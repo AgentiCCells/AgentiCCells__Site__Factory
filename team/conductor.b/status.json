@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-19T23:06Z",
+  "updated": "2026-11-20T01:02Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -34,7 +34,7 @@
       "site": "hub.agenticcells.site",
       "conductor": "hub.b@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
-      "state": "first commit fails the hub's CI agent-name check (the dot in hub.b@); waits on Dinis: option 1 allow the dotted name in the check, or option 2 re-sign as hub-b@",
+      "state": "live v0.1.18 (hub.b, 01:03 UTC on Dinis's word in its session): all 44 cells, Explore and Browse views; commit check accepts role.b@ names (Dinis approved); signed commits. Asks for Dinis in its team/status.json",
       "waits_on_dinis": true,
       "cost_usd": 6.29
     },
@@ -112,12 +112,12 @@
     "Dinis: approve conductor.evals's two repository attach requests (OpenRouter-Evals push, Factory read) in its session. Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: who keeps the hub's site registry now (its source in AgentiCCells__Website dev has merge-conflict markers); does FAC-008 go ahead; may 12 unlisted live sites be listed (6 need the named person's or business's consent). Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: hub.b's first commit fails the hub CI's agent-name check because of the dot in hub.b@: allow dotted names in the check (as the Factory's check does) or re-sign as hub-b@. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
-    "Dinis: agenticcells.ai preview: competitor prices were read in USD from a US address (keep, or re-read for UK/EU); the contact email for the new pages; agent names with a dot or a hyphen (its CI rejects the dot, so it uses role-agenticcells-ai@ for now). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: agenticcells.ai: public repository by default (GitHub Pages free only for public repositories), or another host for private ones; and who confirms consent for the five example sites held back from the Proof wall. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: Algarve open items in team/HANDOVER.md: dark-mode contrast of the platform bars, the billboard link, the real-data window, and whether the old round-3 branch may be deleted. Waits: https://claude.ai/code/session_01Kw9UwFXY6WQ4v9WMGVg8G3",
     "Dinis: turn on branch protection for AgentiCCells__Site__Evals (the CI workflow file still comes from the pushed tree, so only protection closes that gap). Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
     "Dinis: turn on branch protection on dev for the gabriel-dacruz.agenticcells.site repository (its CI workflow file still comes from the push). Waits: https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2",
     "Dinis: may the dinis-cruz site quote your LinkedIn recommendations and name their writers (only writers who agree)? Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-    "Dinis: answer the four questions from the dinis-cruz site conductor. Waits: https://claude.ai/code/session_01Kw9UwFJqMBfzfCwEFV1Nnp"
+    "Dinis: answer the four questions from the dinis-cruz site conductor. Waits: https://claude.ai/code/session_01Kw9UwFJqMBfzfCwEFV1Nnp",
+    "Dinis: hub asks: who keeps the registry; FAC-008 sites.json; the HUB_CONTACT variable; a daily rebuild. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP"
   ]
 }
