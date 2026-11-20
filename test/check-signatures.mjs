@@ -51,7 +51,7 @@ if (has("openssl", ["version"]) && has("which", ["ssh-keygen"])) {
   commit('wrong agent\n\nAgent: someone@AgentiCCells.dinis\nClaude-Session: ' + SESSION);
   expect('wrong agent fails', checkSignatures({ trustedBase: base, cwd: repo, before: old }).errors.some((e) => /signed by tester@AgentiCCells.dinis, Agent: someone@/.test(e)));
   reset();
-  commit('Write back request status (real)', { sign: false, env: { GIT_COMMITTER_NAME: 'factory-apply', GIT_AUTHOR_NAME: 'factory-apply' } });
+  commit('Write back request status (real)', { sign: false, env: { GIT_COMMITTER_NAME: 'factory.apply', GIT_AUTHOR_NAME: 'factory.apply' } });
   expect('no exemption by committer name', ((r) => r.errors.length === 1 && /no valid signature/.test(r.errors[0]))(checkSignatures({ trustedBase: base, cwd: repo, before: old })));
   reset();
   // A commit that adds its own key and signs with it must fail: keys come from the parent.

@@ -88,8 +88,8 @@ export function realIo(env = process.env, owner = 'AgentiCCells') {
         writeFileSync(join(src, 'REALITY.md'), `# REALITY.md: what exists now\n\n- Seeded by the AgentiCCells site factory on ${new Date().toISOString().slice(0, 10)} from ${template.owner}/${template.name}@${template.ref ?? 'dev'}.\n- Its live state is recorded in requests/${request}/status.json in AgentiCCells__Site__Factory.\n`);
         git(src, 'init', '-q', '-b', 'dev');
         git(src, 'add', '-A');
-        git(src, '-c', 'user.name=factory-apply', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
-          'commit', '-q', '-m', `Seed from ${template.name} (factory request ${request})`, '-m', 'Agent: factory-apply@AgentiCCells.dinis');
+        git(src, '-c', 'user.name=factory.apply', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
+          'commit', '-q', '-m', `Seed from ${template.name} (factory request ${request})`, '-m', 'Agent: factory.apply@AgentiCCells.dinis');
         // The site's own gates must pass before anything is pushed.
         for (const s of ['scripts/build.mjs', 'scripts/validate.mjs', 'scripts/leak-scan.mjs']) {
           if (existsSync(join(src, s))) execFileSync('node', [s], { cwd: src, env: cleanEnv, stdio: ['ignore', 'pipe', 'pipe'] });
