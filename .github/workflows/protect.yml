@@ -1,0 +1,45 @@
+name: Protect release branches
+# Manual. Applies protect/repos.json with build/protect.mjs: dev protection, the release-tag
+# ruleset and the github-pages deployment rule, per repository and stage. Writes nothing to
+# this repository. The table is in the run's summary. Dinis, 2026-11-20.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash -eo pipefail {0}
+jobs:
+  protect:
+    if: github.ref == 'refs/heads/dev'  # manual runs from other branches never reach the environment's secrets
+    runs-on: ubuntu-latest
+    environment: apply
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node test/run.mjs
+      - run: node build/protect.mjs --plan
+      - name: GitHub App token for PrompTugal
+        id: app_pt
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: PrompTugal
+      - name: GitHub App token for AgentiCCells
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: AgentiCCells
+      - name: Apply the protections
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          GH_TOKEN_PROMPTUGAL: ${{ steps.app_pt.outputs.token }}
+        run: node build/protect.mjs
