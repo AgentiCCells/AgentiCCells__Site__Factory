@@ -21,5 +21,9 @@ fails += (await import('./check-sites.mjs')).default;
 fails += (await import('./first-pass.mjs')).default;
 fails += (await import('./access.mjs')).default;
 fails += (await import('./check-signatures.mjs')).default;
+fails += (await import('./check-symlinks.mjs')).default;
+fails += (await import('./leak-scan.mjs')).default;
+fails += (await import('./workflow-guards.mjs')).default;
+fails += (await import('./workflow-scripts.mjs')).default;
 if (fails) { console.log(`FAILED (${fails})`); process.exit(1); }
 console.log('OK (tests)');
