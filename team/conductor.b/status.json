@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-20T15:13Z",
+  "updated": "2026-11-20T15:14Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -102,13 +102,15 @@
     "Factory PRs #36 (signature, trailer and leak checks from the base commit; refuse shallow, orphan and symlinks) and #38 (jobs with an environment run only for dev) merged before 23:06 UTC",
     "2026-11-20 ~10:08 UTC: hub v0.1.19 (43fc833): the hub commit check accepts names with several dot-separated parts, on Dinis's word given in hub.b's session (\"Yes they can have more than one dot\"), as reported by hub.b. Other copies of build/check-commits.mjs (agenticcells.ai) still have the old shape.",
     "2026-11-20 12:36 UTC: algarve-evolution.b@SovereignWebsite.dinis reports Dinis's word: Algarve Evolution becomes a private vault site on SovereignWebsite, and \"we will decommission and delete the algarve-evolution.agenticcells.site and repo (once all is working here)\". It built AgentiCCells__Site__Algarve-Evolution at a749130 (v0.1.25) read-only; nothing written to our repo, site or DNS.",
-    "2026-11-20 ~15:10 UTC: Dinis answered in conductor.b's session; see decisions/2026-11-20.md. Email cell started: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG, wake trig_01DLGQUfJbiz2gRbTupmx8fj (hourly :12). Relayed: transfer-test repo, rename to factory.apply@, tools sites plus parent tools.sovereignweb.site, gabriel-dacruz protection to cells.b; registry and contact to hub.b; key merge to migration.b."
+    "2026-11-20 ~15:10 UTC: Dinis answered in conductor.b's session; see decisions/2026-11-20.md. Email cell started: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG, wake trig_01DLGQUfJbiz2gRbTupmx8fj (hourly :12). Relayed: transfer-test repo, rename to factory.apply@, tools sites plus parent tools.sovereignweb.site, gabriel-dacruz protection to cells.b; registry and contact to hub.b; key merge to migration.b.",
+    "2026-11-20 15:13 UTC: migration.b reports its key and policy entry were already merged to SovereignWebsite__Factory dev in 82e2f83 (about 09:36 UTC, by conductor.b@SovereignWebsite on Dinis's yes); its held commits pushed as b572bc6 and 0dee41f. Nothing left to merge."
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: hub.b acts only on your word in its own session. Please confirm there that it keeps the registry. Set the HUB_CONTACT repository variable yourself (GitHub, Settings, Secrets and variables, Actions, Variables); hub.b's privacy check will not handle the address. It is drafting the sites.json and daily-rebuild proposals for you. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: Algarve Evolution moves to SovereignWebsite as a private vault site (your word in algarve-evolution.b's session, relayed 12:36 UTC). When it is working there, say the word here and the AgentiCCells side decommissions algarve-evolution.agenticcells.site and deletes AgentiCCells__Site__Algarve-Evolution. Nothing is touched until then. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: merge Factory PR #45 (protect release branches: base stage on PrompTugal Live, Library and Signals; the factory App needs Administration write on PrompTugal). cells.b reports your word of 20 Nov for it. https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/45 Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: agenticcells.ai refactor: go live and which design; confirm the four sizes and the event-team label; the website on the £500 rung or at its own £50; 'team inside' as the next step; names in the PrompTugal case study; the family bar; contact; languages. Review https://agenticcells.ai/next/review/. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
