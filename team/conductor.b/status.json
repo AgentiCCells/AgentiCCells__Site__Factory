@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-20T01:02Z",
+  "updated": "2026-11-20T01:06Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -118,6 +118,9 @@
     "Dinis: turn on branch protection on dev for the gabriel-dacruz.agenticcells.site repository (its CI workflow file still comes from the push). Waits: https://claude.ai/code/session_01Kw9UwCM7h8xj8WNMVwSCs2",
     "Dinis: may the dinis-cruz site quote your LinkedIn recommendations and name their writers (only writers who agree)? Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: answer the four questions from the dinis-cruz site conductor. Waits: https://claude.ai/code/session_01Kw9UwFJqMBfzfCwEFV1Nnp",
-    "Dinis: hub asks: who keeps the registry; FAC-008 sites.json; the HUB_CONTACT variable; a daily rebuild. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP"
+    "Dinis: hub asks: who keeps the registry; FAC-008 sites.json; the HUB_CONTACT variable; a daily rebuild. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
+    "Dinis: allow conductor.agenticcells-ai to change its commit check to accept dotted names (its safety check refused a CI-check edit). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
+    "Dinis: may agent names have more than one dot (role.focus.b@)? Factory and template accept it; the hub check does not yet. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
+    "Dinis: rename the Factory commit agent factory-apply@ to factory.apply@? Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7"
   ]
 }
