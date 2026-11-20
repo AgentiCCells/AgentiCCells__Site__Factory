@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "GTA 6 launch: the facts",
+  "description": "An unofficial, sourced page on the Grand Theft Auto VI launch: date, platforms, unlock times, download size and what is not announced. No tracking.",
+  "domain": "gta6-launch.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__GTA6-Launch"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "trends@AgentiCCells.dinis"
+}
