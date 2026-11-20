@@ -84,6 +84,11 @@
       "site": "tools.agenticcells.site + whats-my-ip, what-am-i-leaking, file-encryptor, heic-converter, image-tools, ssh-keygen, video-recorder (.agenticcells.site)",
       "conductor": "cells.b@AgentiCCells.dinis (requests)",
       "state": "8 sites live (seed), PR #39 merged 19:10 UTC; requested by cells.b on Dinis's word ~17:00 UTC in its session (tools family from SGraph-AI__Tools, Apache-2.0). No site conductors seen yet"
+    },
+    {
+      "site": "gta6-launch.agenticcells.site",
+      "conductor": "trends@AgentiCCells.dinis (requester)",
+      "state": "live 01:04 UTC 20 Nov (seed); an unofficial, sourced facts page on the GTA VI launch, no tracking. No site conductor seen"
     }
   ],
   "done": [
