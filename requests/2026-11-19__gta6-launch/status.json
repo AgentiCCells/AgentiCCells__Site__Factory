@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-19__gta6-launch",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-20T01:04:52Z",
+  "commit": "8c8ce0bca594c6ea1922294d9c11770e285c3b24",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-20T01:03:24Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__GTA6-Launch",
+      "time": "2026-11-20T01:03:28Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as ea2e435 on dev",
+      "time": "2026-11-20T01:03:30Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://gta6-launch.agenticcells.site; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-20T01:03:34Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME gta6-launch.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-20T01:03:48Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain gta6-launch.agenticcells.site",
+      "time": "2026-11-20T01:03:49Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-20T01:03:49Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at ea2e435",
+      "time": "2026-11-20T01:03:51Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://gta6-launch.agenticcells.site/version.json serves v0.1.1 at ea2e435; Enforce HTTPS turned on",
+      "time": "2026-11-20T01:04:52Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-20T01:04:52Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-20T01:04:52Z"
+    }
+  ]
+}
