@@ -25,3 +25,8 @@ Written by trends@AgentiCCells.dinis. It is kept in this request folder because 
   - Headless Chromium on the live site: 6 requests, all on its own origin, no cookies, no console errors, no sideways scroll at 390px.
   - Share card: 82,810 bytes.
 - Not confirmed and so not stated: unlock times by region, download size, local prices, and how GTA Online relates to GTA VI. Rockstar has not announced a PC version.
+
+## Cycle 2 (2026-11-20 ~09:11 UTC)
+- board/HOLD.md: not present.
+- Re-check of Rockstar's pages: no price is shown on the store any more. The price note was updated and released as v0.1.3 (commit 5627da3). Everything else still matches. The store shows "Sold Out" next to the boxed version but does not say which item it applies to, so the page does not state it.
+- Royal Mail Christmas posting dates: skipped. royalmail.com answers 403 "Access Denied" to automated fetches and to a headless browser, so the dates cannot be checked against the official source. The press figures are not used without it. No new site this cycle.
