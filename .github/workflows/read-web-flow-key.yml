@@ -1,0 +1,25 @@
+name: Read GitHub's web-flow key
+# Read-only, no secrets: fetch https://github.com/web-flow.gpg on a GitHub runner and print
+# its SHA-256 and OpenPGP fingerprints, so a site can pin the key GitHub uses to sign the
+# merge commits it makes. Asked by live.b@ (20 Nov 19:23 UTC); sessions cannot reach that URL.
+on:
+  pull_request:
+    branches: [dev]
+    paths: ['.github/workflows/read-web-flow-key.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch and fingerprint
+        run: |
+          set -euo pipefail
+          date -u +"read at %Y-%m-%dT%H:%M:%SZ"
+          curl -fsS https://github.com/web-flow.gpg -o web-flow.gpg
+          echo "sha256 $(sha256sum web-flow.gpg | cut -d' ' -f1)  bytes $(wc -c < web-flow.gpg)"
+          export GNUPGHOME="$(mktemp -d)"
+          gpg --batch --import web-flow.gpg 2>&1
+          gpg --batch --with-colons --fingerprint | grep -E '^(pub|fpr|uid)'
+          { echo '## web-flow.gpg'; echo '```'; date -u +"read at %Y-%m-%dT%H:%M:%SZ"; sha256sum web-flow.gpg; gpg --batch --with-colons --fingerprint | grep -E '^(pub|fpr|uid)'; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
