@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-20T11:21Z",
+  "updated": "2026-11-20T12:17Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -108,6 +108,7 @@
   ],
   "asks": [
     "Dinis: which project owns the Algarve Evolution site (AgentiCCells/AgentiCCells__Site__Algarve-Evolution, last push 17 Nov, no AgentiCCells team on it)? SovereignWebsite's conductor.b is preparing an 'Algarve Revolution' site with algarve.b. Keep it here, or move it across (your yes)? Both sides hold until you answer. Waits: https://claude.ai/code/session_01Kw9UwDCS5Px4dXRJUGP9Qu",
+    "Dinis: may the AgentiCCells Factory (cells.b) create a throwaway repository AgentiCCells__Site__Transfer-Test (one README, no Pages, no domain) so SovereignWebsite's factory.b can test the transfer path on it alone? SovereignWebsite says you made the sovereignwebsite-transfer App (Administration read/write, installed on AgentiCCells); I have not checked that. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: merge Factory PR #45 (protect release branches: base stage on PrompTugal Live, Library and Signals; the factory App needs Administration write on PrompTugal). cells.b reports your word of 20 Nov for it. https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/45 Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: agenticcells.ai refactor: go live and which design; confirm the four sizes and the event-team label; the website on the £500 rung or at its own £50; 'team inside' as the next step; names in the PrompTugal case study; the family bar; contact; languages. Review https://agenticcells.ai/next/review/. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: account B shows a seven-day usage warning (07:06 UTC). Decide which teams keep running today; the Algarve conductor ($98) stops after round 5. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
