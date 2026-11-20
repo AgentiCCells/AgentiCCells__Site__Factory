@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-20T04:06Z",
+  "updated": "2026-11-20T10:07Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -106,6 +106,7 @@
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: merge Factory PR #45 (protect release branches: base stage on PrompTugal Live, Library and Signals; the factory App needs Administration write on PrompTugal). cells.b reports your word of 20 Nov for it. https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/45 Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: agenticcells.ai refactor: go live and which design; confirm the four sizes and the event-team label; the website on the £500 rung or at its own £50; 'team inside' as the next step; names in the PrompTugal case study; the family bar; contact; languages. Review https://agenticcells.ai/next/review/. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: account B shows a seven-day usage warning (07:06 UTC). Decide which teams keep running today; the Algarve conductor ($98) stops after round 5. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
@@ -127,7 +128,6 @@
     "Dinis: allow conductor.agenticcells-ai to change its commit check to accept dotted names (its safety check refused a CI-check edit). Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: may agent names have more than one dot (role.focus.b@)? Factory and template accept it; the hub check does not yet. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: rename the Factory commit agent factory-apply@ to factory.apply@? Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
-    "Dinis: cells.b has a question open for you in its session (it waits on your answer to an AskUserQuestion; its worker is disconnected until you open it). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: migration.b waits for its key and policy entry (migration.b@SovereignWebsite.dinis) to be merged; commits 9e20bc4 and 739af33 are held local until then. Waits: https://claude.ai/code/session_01Kw9UwDKiseUFyqtG1xyVaG"
   ]
 }
