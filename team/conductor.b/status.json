@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-20T16:07Z",
+  "updated": "2026-11-20T16:44Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -110,6 +110,7 @@
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: in design.b@SovereignWebsite's session (about 16:00 UTC) you asked for 'the hub' to be easier to navigate, with the test sites reviewed and the real ones shown high up. Did you mean hub.agenticcells.site (ours, kept by hub.b)? If yes, design.b sends its written review to hub.b, and you give hub.b the word in its session. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: cell.email.b put its onboarding commit 42d3246 on the branch work/cell-email-b-onboarding; dev and the live site are unchanged. It asks you to allow the push to dev (which deploys the live site), and to choose whether it makes its signing key in its session or you supply only the public half. Its wake runs hourly at :12. Cost so far $1.13. Waits: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG",
     "Dinis: merge Factory PR #45 (release-branch protection at stage base; now also covers gabriel-dacruz, 1d03da8) and PR #46 (rename factory-apply@ to factory.apply@). https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/45 https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/46 Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: create AgentiCCells__Site__Transfer-Test yourself in GitHub (one README, no Pages). The Factory creates repositories only through a site request with a domain and Pages. Or say whether the Factory should allow a repository with no domain. cells.b then tells factory.b. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
