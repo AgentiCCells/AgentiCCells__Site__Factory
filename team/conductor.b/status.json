@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T09:08:44Z",
+  "updated": "2026-11-21T09:09:26Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -110,7 +110,8 @@
     "20:07 UTC: cells.b (review ready, $103.67 by get_session) pushed branch factory/read-web-flow-key, 274b1d0: a read-only workflow, no secrets, that fingerprints GitHub's web-flow signing key for live.b@ (asked 19:23). It reports the live.b@ key checks scheduled for 08:08 UTC tomorrow, then rollout. Not on dev yet.",
     "00:19 UTC 21 Nov: Dinis said in this session 'yes, move dinis-cruz to SovereignWebsite' and merged PR #45 (eb3c1a6). Relayed to SovereignWebsite (conductor.b, migration.b) and cells.b at 00:20. cells.b is asked to rebase PR #46, which has a conflict.",
     "About 01:00 UTC 21 Nov (its clock): conductor.agenticcells-ai reports agenticcells.ai v0.1.285 serves design 1 at / with fifteen root pages, indexable and in the sitemap, at Dinis's word in its session ('go live with design 1', about 00:20). The /next/ preview stays. Reported, not checked by conductor.b.",
-    "2026-11-21 09:07 UTC: read PR #49 (cells.b, opened 08:24 UTC), put it to Dinis; the live.b@ 08:08 key check reported done at 08:27 UTC (via PR #49, not checked)."
+    "2026-11-21 09:07 UTC: read PR #49 (cells.b, opened 08:24 UTC), put it to Dinis; the live.b@ 08:08 key check reported done at 08:27 UTC (via PR #49, not checked).",
+    "2026-11-21 09:10 UTC: maestro.b@ reported (relayed, not Dinis in this session) that at Dinis's word my wake and cell.email.b's run every three hours until Monday 00:00 UTC, to keep the weekly limit; record PrompTugal__News__Website board/team/maestro.b/decisions/2026-11-21-slow-until-monday.md. Checked: my wake's schedule is now 6 */3 * * *, next 12:06 UTC."
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
