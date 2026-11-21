@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T01:07Z",
+  "updated": "2026-11-21T09:08:44Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -109,7 +109,8 @@
     "18:08 UTC: day debrief written, team/conductor.b/debriefs/2026-11-20__day.md",
     "20:07 UTC: cells.b (review ready, $103.67 by get_session) pushed branch factory/read-web-flow-key, 274b1d0: a read-only workflow, no secrets, that fingerprints GitHub's web-flow signing key for live.b@ (asked 19:23). It reports the live.b@ key checks scheduled for 08:08 UTC tomorrow, then rollout. Not on dev yet.",
     "00:19 UTC 21 Nov: Dinis said in this session 'yes, move dinis-cruz to SovereignWebsite' and merged PR #45 (eb3c1a6). Relayed to SovereignWebsite (conductor.b, migration.b) and cells.b at 00:20. cells.b is asked to rebase PR #46, which has a conflict.",
-    "About 01:00 UTC 21 Nov (its clock): conductor.agenticcells-ai reports agenticcells.ai v0.1.285 serves design 1 at / with fifteen root pages, indexable and in the sitemap, at Dinis's word in its session ('go live with design 1', about 00:20). The /next/ preview stays. Reported, not checked by conductor.b."
+    "About 01:00 UTC 21 Nov (its clock): conductor.agenticcells-ai reports agenticcells.ai v0.1.285 serves design 1 at / with fifteen root pages, indexable and in the sitemap, at Dinis's word in its session ('go live with design 1', about 00:20). The /next/ preview stays. Reported, not checked by conductor.b.",
+    "2026-11-21 09:07 UTC: read PR #49 (cells.b, opened 08:24 UTC), put it to Dinis; the live.b@ 08:08 key check reported done at 08:27 UTC (via PR #49, not checked)."
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
@@ -119,6 +120,7 @@
     "Dinis: install the sovereignwebsite-transfer App on SovereignWebsite. Until you do, every transfer gets HTTP 403, so the dinis-cruz move is blocked (reported by conductor.b@SovereignWebsite, 00:21 UTC). Waits: https://claude.ai/code/session_01Kw9UwDCS5Px4dXRJUGP9Qu",
     "Dinis: name the SovereignWebsite agent that may commit to the dinis-cruz repository after the move. conductor.b@SovereignWebsite proposes dinis-cruz.b@SovereignWebsite.dinis; migration.b is asking you. Once named, cells.b adds its public key to team/keys.json. Waits: https://claude.ai/code/session_01Kw9UwDKiseUFyqtG1xyVaG",
     "Dinis: after merging PR #46, run 'Protect release branches' from the Factory Actions tab on dev, so the PR #45 protection is applied (reported by cells.b, 00:22 UTC). Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/actions",
+    "Dinis: merge or close PR #49, which moves PrompTugal__News__Live to stage pr (pull request for every change to dev, check 'security' required) and adds a 'Working with stage pr' section to docs/abp-release-controls.md. It rests on live.b@ reporting at 08:27 UTC that Live's security job runs on pull requests and GitHub's merge key is pinned (97b28e8, 7f1419a); reported, not checked by me. The new docs line says agents merge their own pull requests 'with Dinis's standing permission given in that agent's own session': confirm that wording is yours. Then run 'Protect release branches' again. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/49",
     "Dinis: PR #48 (draft) adds a read-only, no-secrets workflow that reads GitHub's web-flow signing key for live.b@. Its run on the PR is what is needed; merge it to keep it for re-checks, or close it once read. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/48",
     "Dinis: approve cells.b's attach requests for the five tool repositories in its session (reported by cells.b 17:06 UTC; at 19:29 its summary no longer lists this ask, so it may be done or set aside, not checked). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: cell.email.b put its onboarding commit 42d3246 on the branch work/cell-email-b-onboarding; dev and the live site are unchanged. It asks you to allow the push to dev (which deploys the live site), and to choose whether it makes its signing key in its session or you supply only the public half. Its wake runs hourly at :12. Cost so far $1.13. Waits: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG",
