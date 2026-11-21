@@ -1,9 +1,9 @@
 {
-  "about": "Release protections the Factory applies with build/protect.mjs (workflow 'Protect release branches'). Dinis, 2026-11-20: try on live and a couple of other PrompTugal repositories first; 'the key requirement is that (for now) the agent that creates the PR can still merge it'. So pull requests require no approving review. stage 'base': no force-push or deletion of dev, release tags v* creatable only by GitHub Actions, Pages deploys from dev only; nothing changes how agents work. stage 'pr': base plus a pull request required for every change to dev, with the listed checks passing. Move a repository to 'pr' only after its workflow runs those checks on pull requests and its agents work through pull requests. gabriel-dacruz added at Dinis's word, relayed by conductor.b@ at 15:12 UTC: \"this is a job for the factory agent\".",
+  "about": "Release protections the Factory applies with build/protect.mjs (workflow 'Protect release branches'). Dinis, 2026-11-20: try on live and a couple of other PrompTugal repositories first; 'the key requirement is that (for now) the agent that creates the PR can still merge it'. So pull requests require no approving review. stage 'base': no force-push or deletion of dev, release tags v* creatable only by GitHub Actions, Pages deploys from dev only; nothing changes how agents work. stage 'pr': base plus a pull request required for every change to dev, with the listed checks passing. Move a repository to 'pr' only after its workflow runs those checks on pull requests and its agents work through pull requests. gabriel-dacruz added at Dinis's word, relayed by conductor.b@ at 15:12 UTC: \"this is a job for the factory agent\". Live moved to stage pr on 21 Nov: live.b@ reported (08:27 UTC) the security job running on pull requests and GitHub's merge key pinned (97b28e8, 7f1419a).",
   "repos": [
     {
       "repo": "PrompTugal/PrompTugal__News__Live",
-      "stage": "base",
+      "stage": "pr",
       "checks": [
         "security"
       ]
