@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T21:49:43Z",
+  "updated": "2026-11-21T21:52:34Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -114,7 +114,8 @@
     "2026-11-21 09:10 UTC: maestro.b@ reported (relayed, not Dinis in this session) that at Dinis's word my wake and cell.email.b's run every three hours until Monday 00:00 UTC, to keep the weekly limit; record PrompTugal__News__Website board/team/maestro.b/decisions/2026-11-21-slow-until-monday.md. Checked: my wake's schedule is now 6 */3 * * *, next 12:06 UTC.",
     "2026-11-21 12:07 UTC: wake (three-hourly). No new commits on dev; no session changed since 09:13 UTC. Put PR #47 to Dinis.",
     "2026-11-21 16:53 UTC: Dinis merged PR #49 (Live to stage pr, d3e362a) and PR #47 (black-friday-rights request, 4e91aac). Still open: #46 and #48.",
-    "2026-11-21 21:49 UTC: Dinis merged PR #48 (d1b8c1c). PR #46 conflicts with dev in REALITY.md; asked cells.b to resolve it with a signed merge or rebase."
+    "2026-11-21 21:49 UTC: Dinis merged PR #48 (d1b8c1c). PR #46 conflicts with dev in REALITY.md; asked cells.b to resolve it with a signed merge or rebase.",
+    "2026-11-21 21:52 UTC: Dinis merged PR #46 (8c52f87); cells.b's conflict fix 7752d81 is SSH-signed with its Agent trailer. No Factory PRs open."
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
@@ -123,10 +124,9 @@
   "asks": [
     "Dinis: install the sovereignwebsite-transfer App on SovereignWebsite. Until you do, every transfer gets HTTP 403, so the dinis-cruz move is blocked (reported by conductor.b@SovereignWebsite, 00:21 UTC). Waits: https://claude.ai/code/session_01Kw9UwDCS5Px4dXRJUGP9Qu",
     "Dinis: name the SovereignWebsite agent that may commit to the dinis-cruz repository after the move. conductor.b@SovereignWebsite proposes dinis-cruz.b@SovereignWebsite.dinis; migration.b is asking you. Once named, cells.b adds its public key to team/keys.json. Waits: https://claude.ai/code/session_01Kw9UwDKiseUFyqtG1xyVaG",
-    "Dinis: after merging PR #46, run 'Protect release branches' from the Factory Actions tab on dev, so the PR #45 protection is applied (reported by cells.b, 00:22 UTC). Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/actions",
+    "Dinis: run 'Protect release branches' from the Factory Actions tab on dev. #45, #46 and #49 are all merged, so this run applies the base protections and moves PrompTugal__News__Live to stage pr. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/actions",
     "Dinis: approve cells.b's attach requests for the five tool repositories in its session (reported by cells.b 17:06 UTC; at 19:29 its summary no longer lists this ask, so it may be done or set aside, not checked). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: cell.email.b put its onboarding commit 42d3246 on the branch work/cell-email-b-onboarding; dev and the live site are unchanged. It asks you to allow the push to dev (which deploys the live site), and to choose whether it makes its signing key in its session or you supply only the public half. Its wake runs hourly at :12. Cost so far $1.13. Waits: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG",
-    "Dinis: merge Factory PR #46. cells.b fixed its conflict in cd126bd by merging dev in, keeping both REALITY.md entries; all checks pass (reported by cells.b, 00:21 UTC). Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/46",
     "Dinis: create AgentiCCells__Site__Transfer-Test yourself in GitHub (one README, no Pages). The Factory creates repositories only through a site request with a domain and Pages. Or say whether the Factory should allow a repository with no domain. cells.b then tells factory.b. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: add the tools.sovereignweb.site zone. The Factory may not manage that zone; the tools hub stays at tools.agenticcells.site until it exists. Tools sites passed to conductor.tools@. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: hub.b acts only on your word in its own session. Please confirm there that it keeps the registry. Set the HUB_CONTACT repository variable yourself (GitHub, Settings, Secrets and variables, Actions, Variables); hub.b's privacy check will not handle the address. It is drafting the sites.json and daily-rebuild proposals for you. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
