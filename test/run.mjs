@@ -25,5 +25,6 @@ fails += (await import('./check-symlinks.mjs')).default;
 fails += (await import('./leak-scan.mjs')).default;
 fails += (await import('./workflow-guards.mjs')).default;
 fails += (await import('./workflow-scripts.mjs')).default;
+fails += (await import('./protect.mjs')).default;
 if (fails) { console.log(`FAILED (${fails})`); process.exit(1); }
 console.log('OK (tests)');
