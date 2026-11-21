@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T00:22Z",
+  "updated": "2026-11-21T00:32Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -108,7 +108,8 @@
     "17:06 UTC: cells.b reports the tools hub live at tools.agenticcells.site, v0.1.2 with 47 tools, reviewer passed (reported by cells.b, not checked by conductor.b)",
     "18:08 UTC: day debrief written, team/conductor.b/debriefs/2026-11-20__day.md",
     "20:07 UTC: cells.b (review ready, $103.67 by get_session) pushed branch factory/read-web-flow-key, 274b1d0: a read-only workflow, no secrets, that fingerprints GitHub's web-flow signing key for live.b@ (asked 19:23). It reports the live.b@ key checks scheduled for 08:08 UTC tomorrow, then rollout. Not on dev yet.",
-    "00:19 UTC 21 Nov: Dinis said in this session 'yes, move dinis-cruz to SovereignWebsite' and merged PR #45 (eb3c1a6). Relayed to SovereignWebsite (conductor.b, migration.b) and cells.b at 00:20. cells.b is asked to rebase PR #46, which has a conflict."
+    "00:19 UTC 21 Nov: Dinis said in this session 'yes, move dinis-cruz to SovereignWebsite' and merged PR #45 (eb3c1a6). Relayed to SovereignWebsite (conductor.b, migration.b) and cells.b at 00:20. cells.b is asked to rebase PR #46, which has a conflict.",
+    "About 01:00 UTC 21 Nov (its clock): conductor.agenticcells-ai reports agenticcells.ai v0.1.285 serves design 1 at / with fifteen root pages, indexable and in the sitemap, at Dinis's word in its session ('go live with design 1', about 00:20). The /next/ preview stays. Reported, not checked by conductor.b."
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
@@ -124,7 +125,7 @@
     "Dinis: add the tools.sovereignweb.site zone. The Factory may not manage that zone; the tools hub stays at tools.agenticcells.site until it exists. Tools sites passed to conductor.tools@. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: hub.b acts only on your word in its own session. Please confirm there that it keeps the registry. Set the HUB_CONTACT repository variable yourself (GitHub, Settings, Secrets and variables, Actions, Variables); hub.b's privacy check will not handle the address. It is drafting the sites.json and daily-rebuild proposals for you. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
     "Dinis: Algarve Evolution moves to SovereignWebsite as a private vault site (your word in algarve-evolution.b's session, relayed 12:36 UTC). When it is working there, say the word here and the AgentiCCells side decommissions algarve-evolution.agenticcells.site and deletes AgentiCCells__Site__Algarve-Evolution. Nothing is touched until then. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-    "Dinis: agenticcells.ai refactor: go live and which design; confirm the four sizes and the event-team label; the website on the £500 rung or at its own £50; 'team inside' as the next step; names in the PrompTugal case study; the family bar; contact; languages. Review https://agenticcells.ai/next/review/. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
+    "Dinis: agenticcells.ai after go-live: what to do with the older pages (/partners/, /website-cell/, /start-here/ and others, which still show £250 for the website cell); languages; the contact address; the CI name check edit. Waits: https://claude.ai/code/session_01Kw9UwBFAEwyPc1Pt1idWxz",
     "Dinis: account B shows a seven-day usage warning (07:06 UTC). Decide which teams keep running today; the Algarve conductor ($98) stops after round 5. Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: give the agenticcells-site-factory App the organisation permission Members (read and write), so Sync site settings can add agenticcells-team-devs to every site. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: evals sites: may visitors keep their own OpenRouter key in browser storage (warning and forget button), or memory only? Waits: https://claude.ai/code/session_01Kw9UwFVMs4VBhWFNm8Fa9B",
