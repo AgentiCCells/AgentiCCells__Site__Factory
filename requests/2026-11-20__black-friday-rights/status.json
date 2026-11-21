@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-20__black-friday-rights",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-21T16:55:59Z",
+  "commit": "cece9b8c3683ae45ed50a358f70d1c7ea3e6b0e3",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-21T16:55:07Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__Black-Friday-Rights",
+      "time": "2026-11-21T16:55:10Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 9c1babd on dev",
+      "time": "2026-11-21T16:55:12Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://black-friday-rights.agenticcells.site; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-21T16:55:15Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME black-friday-rights.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-21T16:55:26Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain black-friday-rights.agenticcells.site",
+      "time": "2026-11-21T16:55:27Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-21T16:55:27Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 9c1babd",
+      "time": "2026-11-21T16:55:28Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://black-friday-rights.agenticcells.site/version.json serves v0.1.0 at 9c1babd; Enforce HTTPS turned on",
+      "time": "2026-11-21T16:55:59Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-21T16:55:59Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-21T16:55:59Z"
+    }
+  ]
+}
