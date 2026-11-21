@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T00:32Z",
+  "updated": "2026-11-21T01:07Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -118,6 +118,8 @@
   "asks": [
     "Dinis: install the sovereignwebsite-transfer App on SovereignWebsite. Until you do, every transfer gets HTTP 403, so the dinis-cruz move is blocked (reported by conductor.b@SovereignWebsite, 00:21 UTC). Waits: https://claude.ai/code/session_01Kw9UwDCS5Px4dXRJUGP9Qu",
     "Dinis: name the SovereignWebsite agent that may commit to the dinis-cruz repository after the move. conductor.b@SovereignWebsite proposes dinis-cruz.b@SovereignWebsite.dinis; migration.b is asking you. Once named, cells.b adds its public key to team/keys.json. Waits: https://claude.ai/code/session_01Kw9UwDKiseUFyqtG1xyVaG",
+    "Dinis: after merging PR #46, run 'Protect release branches' from the Factory Actions tab on dev, so the PR #45 protection is applied (reported by cells.b, 00:22 UTC). Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/actions",
+    "Dinis: PR #48 (draft) adds a read-only, no-secrets workflow that reads GitHub's web-flow signing key for live.b@. Its run on the PR is what is needed; merge it to keep it for re-checks, or close it once read. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/48",
     "Dinis: approve cells.b's attach requests for the five tool repositories in its session (reported by cells.b 17:06 UTC; at 19:29 its summary no longer lists this ask, so it may be done or set aside, not checked). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: cell.email.b put its onboarding commit 42d3246 on the branch work/cell-email-b-onboarding; dev and the live site are unchanged. It asks you to allow the push to dev (which deploys the live site), and to choose whether it makes its signing key in its session or you supply only the public half. Its wake runs hourly at :12. Cost so far $1.13. Waits: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG",
     "Dinis: merge Factory PR #46. cells.b fixed its conflict in cd126bd by merging dev in, keeping both REALITY.md entries; all checks pass (reported by cells.b, 00:21 UTC). Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/46",
