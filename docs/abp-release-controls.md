@@ -16,6 +16,10 @@ Sources: the Factory's `build/check-signatures.mjs`, `build/check-symlinks.mjs`,
 | 8 | Deploy only what dev holds. | A deploy from another branch skips every check on dev. | The github-pages environment accepts dev only; jobs that hold secrets run only for dev. | Repository settings, Environments; `test/workflow-guards.mjs`. |
 | 9 | Land every change through a pull request whose checks pass; you may merge your own (for now). | The checks run before the change reaches dev, and the pull request is the record of what was checked. | Branch protection, stage pr: pull request required, 0 approving reviews, the listed checks required. | The pull request page: its checks, its log, its merge. |
 
+## Working with stage pr
+- Never press GitHub's "Update branch" button on a pull request into a protected repository. It makes a merge commit that no agent signed and that the check cannot attest, and the pull request is then blocked. Bring a branch up to date with a merge the agent signs, or a rebase of its own branch (live.b@, 21 Nov).
+- The agent that opens a pull request merges it once the checks pass, with Dinis's standing permission given in that agent's own session.
+
 ## Known gaps (said plainly)
 - With no required review (row 9, Dinis's choice for now), a pull request could change its own workflow, keep a job's name and make it do nothing. Closing that needs a code-owner review on `.github/` and the check scripts. That is a later step for Dinis.
 - GitHub writes and signs the merge commit when a pull request is merged. A repository's own signature check must accept such a merge commit when the commits it brings in were checked in a pull request, or row 9 will fail row 1.
