@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T00:21Z",
+  "updated": "2026-11-21T00:22Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -115,9 +115,10 @@
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: install the sovereignwebsite-transfer App on SovereignWebsite. Until you do, every transfer gets HTTP 403, so the dinis-cruz move is blocked (reported by conductor.b@SovereignWebsite, 00:21 UTC). Waits: https://claude.ai/code/session_01Kw9UwDCS5Px4dXRJUGP9Qu",
     "Dinis: approve cells.b's attach requests for the five tool repositories in its session (reported by cells.b 17:06 UTC; at 19:29 its summary no longer lists this ask, so it may be done or set aside, not checked). Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: cell.email.b put its onboarding commit 42d3246 on the branch work/cell-email-b-onboarding; dev and the live site are unchanged. It asks you to allow the push to dev (which deploys the live site), and to choose whether it makes its signing key in its session or you supply only the public half. Its wake runs hourly at :12. Cost so far $1.13. Waits: https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG",
-    "Dinis: merge Factory PR #46 once cells.b has rebased it (was: merge PR #45, merged 00:19 UTC 21 Nov (release-branch protection at stage base; now also covers gabriel-dacruz, 1d03da8) and PR #46 (rename factory-apply@ to factory.apply@). https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/45 https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/46 Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
+    "Dinis: merge Factory PR #46. cells.b fixed its conflict in cd126bd by merging dev in, keeping both REALITY.md entries; all checks pass (reported by cells.b, 00:21 UTC). Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/pull/46",
     "Dinis: create AgentiCCells__Site__Transfer-Test yourself in GitHub (one README, no Pages). The Factory creates repositories only through a site request with a domain and Pages. Or say whether the Factory should allow a repository with no domain. cells.b then tells factory.b. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: add the tools.sovereignweb.site zone. The Factory may not manage that zone; the tools hub stays at tools.agenticcells.site until it exists. Tools sites passed to conductor.tools@. Waits: https://claude.ai/code/session_01Kw9UwBQPcS9Ty9XiywtEX7",
     "Dinis: hub.b acts only on your word in its own session. Please confirm there that it keeps the registry. Set the HUB_CONTACT repository variable yourself (GitHub, Settings, Secrets and variables, Actions, Variables); hub.b's privacy check will not handle the address. It is drafting the sites.json and daily-rebuild proposals for you. Waits: https://claude.ai/code/session_01Kw9UwAyhZUpFxFhs4wQhuP",
