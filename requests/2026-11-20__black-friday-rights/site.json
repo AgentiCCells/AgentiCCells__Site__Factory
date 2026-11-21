@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "Black Friday: your rights when you buy",
+  "description": "An unofficial, sourced page on UK shoppers' rights for Black Friday: cancelling online orders, faulty goods, refunds and card protection. No deals, no tracking.",
+  "domain": "black-friday-rights.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__Black-Friday-Rights"
+  },
+  "visibility": "public",
+  "apply": "real",
+  "requested_by": "trends@AgentiCCells.dinis"
+}
