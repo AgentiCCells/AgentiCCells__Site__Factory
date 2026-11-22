@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T01:51:00Z",
+  "updated": "2026-11-22T02:05:00Z",
   "state": "key merged (PR #52, 57c4c0e); my commits rebased onto dev, waiting to go to dev; cell.email.d building item 1",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -16,12 +16,12 @@
       "agent": "cell.email.d@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "state": "item 1 built, reported by cell.email.d (not checked by me): ea77d4f on work/cell.email.d, not on dev, not live; 112 tests pass (17 new), abp-check, validate, check-app and leak scan OK (its count). The page now runs the full C4 check on entries that carry signed.json and refuses every signed entry until approvers and lane keys are pinned (fail closed). Entries without signed.json behave as before. Stopped, waiting.",
+      "state": "item 1 live: v0.1.50 at c35e65c, built 02:03:52 UTC (checked by conductor.d at 02:04 UTC from https://email-cell.agenticcells.site/version.json; /app/cell/decide.mjs returns 200). Released through scripts/release.sh on Dinis's word in its session, about 02:03 UTC: \"yes push it to dev\" (reported by cell.email.d). Stopped.",
       "wake": "none",
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
         "signing_fingerprint": "sha256:40ff743093f2ecd5",
-        "state": "entry on work/maestro.d-cell-email-d-key, fixes 2 and 3 in f11e20c (maestro.d). Fix 1 open: the repository's commit check wants an AgentiCCells-form Agent: trailer, and maestro.d has asked Dinis which name to use or whether to merge with that check failing."
+        "state": "merged (PR #1 in AgentiCCells__Cell__Email, reported by cell.email.d); cell.email.b's key stays active."
       },
       "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them."
     }
@@ -31,10 +31,10 @@
     "Dinis: my commits are rebased onto dev and signature-checked on branch work/conductor.d-on-dev. The push to dev was held by this session's permission check. Say yes here and I push them to dev (fast-forward, my own files only). https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
     "Dinis: the wake trig_01DLGQUfJbiz2gRbTupmx8fj on account B still fires hourly into cell.email.b's session, which its hand-over says has stopped. Turn it off in conductor.b's session? https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: cell.email.d asks for read access to AgentiCCells__Site__Factory. Not needed now: I sent it the email-cell brief verbatim. Say yes in its session only if you want it. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
-    "Dinis: cell.email.d's key PR has fixes 2 and 3 (f11e20c). The commit check still fails on maestro.d's Agent: trailer; maestro.d has asked you in its session whether it commits under an AgentiCCells form of its name or you merge with that check failing. https://claude.ai/code/session_015gaHdbdtdAPC4v2AstRS8T",
     "Dinis: cell.email.d asks where the page gets pinned approvers. Proposal: the person pins their own key in the page, sealed in IndexedDB (team/cell.email.d/notes/2026-11-22-decide-in-page.md on work/cell.email.d). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: where agents' Ed25519 lane keys come from. Proposal: team/keys entries, built into the page as trusted.js is. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
-    "Dinis: push cell.email.d's ea77d4f to dev? It deploys the live email cell site; it reports no change for entries without signed.json. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6"
+    "Dinis: on AgentiCCells__Cell__Email, the remote work/cell.email.d still holds cell.email.d's pre-rebase commits (now on dev in rebased form). Its permission check refused the force-push; a person can delete or reset that branch. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: 847466e (malformed Agent: trailer, maestro.d) reached dev in AgentiCCells__Cell__Email through PR #1; check-commits will report it for any later range that includes it, unless the check's base moves past it. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6"
   ],
   "log": [
     "2026-11-22 ~01:24 UTC: started by maestro.d at Dinis's word (about 01:35 UTC by maestro.d's clock). Read CLAUDE.md, REALITY.md, conductor.b status and debriefs.",
@@ -49,6 +49,7 @@
     "2026-11-22 01:48 UTC: maestro.d reported cell.email.d's key PR (847466e) and Dinis's \"yes push it, keep cell.email.b's key active\". Passed to cell.email.d to check the entry.",
     "2026-11-22 01:49 UTC: cell.email.d reported item 1 built (ea77d4f, work/cell.email.d) and stopped; three decisions put to Dinis.",
     "2026-11-22 01:50 UTC: cell.email.d checked its key entry: keys match, three fixes; passed to maestro.d.",
-    "2026-11-22 01:50 UTC: maestro.d made fixes 2 and 3 (f11e20c); fix 1 put to Dinis by maestro.d."
+    "2026-11-22 01:50 UTC: maestro.d made fixes 2 and 3 (f11e20c); fix 1 put to Dinis by maestro.d.",
+    "2026-11-22 02:04 UTC: cell.email.d reported item 1 live (v0.1.50, c35e65c) at Dinis's word in its session; checked live by conductor.d. Its key merged (PR #1)."
   ]
 }
