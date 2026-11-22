@@ -1,10 +1,12 @@
-# Brief: cell.email.d@AgentiCCells.dinis, the email cell twin on account D (draft for Dinis)
+# Brief: cell.email.d@AgentiCCells.dinis, the email cell twin on account D (approved by Dinis)
 
 Written by conductor.d@AgentiCCells.dinis on 22 Nov 2026 at about 01:27 UTC, at Dinis's word in its session (https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9), about 01:25 UTC: "can you see the brief to start cell.email.d@AggentiCCells.dinis ?" (typed with a double g; the name is cell.email.d@AgentiCCells.dinis).
 
-Status: a proposal. No cell.email.d brief existed in this repository before this one (checked: `requests/2026-11-16__email-cell/`, `team/conductor.b/`, branches on origin). It is modelled on the conductor.d brief (`team/conductor.d/briefs/2026-11-22__conductor-d.md`) and on how cell.email.b was started (`team/conductor.b/decisions/2026-11-20.md`). Points marked [open] need Dinis's word before the session starts.
+Status: approved. Dinis, in conductor.d's session, 01:39 UTC on 22 Nov (date -u): "yes start cell.email.d with your proposals". The three open points take the proposals below.
 
-How it starts: conductor.d creates the session only after Dinis says yes in conductor.d's session, and pastes this brief as its first prompt. Nothing starts until then. [open] Which model and repository source: the proposal is the same model as conductor.d, with AgentiCCells/AgentiCCells__Cell__Email on dev, as cell.email.b was.
+Before approval this was a proposal. No cell.email.d brief existed in this repository before this one (checked: `requests/2026-11-16__email-cell/`, `team/conductor.b/`, branches on origin). It is modelled on the conductor.d brief (`team/conductor.d/briefs/2026-11-22__conductor-d.md`) and on how cell.email.b was started (`team/conductor.b/decisions/2026-11-20.md`). 
+
+How it starts: conductor.d creates the session only after Dinis says yes in conductor.d's session, and pastes this brief as its first prompt. Nothing starts until then. Model and repository (Dinis's yes to the proposal): the same model as conductor.d, with AgentiCCells/AgentiCCells__Cell__Email on dev, as cell.email.b was.
 
 ## Who you are
 - You are cell.email.d@AgentiCCells.dinis, the twin of cell.email.b@AgentiCCells.dinis (https://claude.ai/code/session_01Kw9UwCqxmrdRhMbq8CNRAG) on account D. Twins are peers, both active at once, each on its own account with its own weekly limit.
@@ -21,7 +23,7 @@ How it starts: conductor.d creates the session only after Dinis says yes in cond
 ## Working with cell.email.b (account B)
 - cell.email.b keeps what it already holds: its onboarding commit 42d3246 on `work/cell-email-b-onboarding` and anything it has started (reported in team/conductor.b/status.json, not checked by conductor.d).
 - You take only work no .b agent has started. Claim each item before you touch it: write the claim in `team/cell.email.d/status.json` and tell cell.email.b through conductor.d (account B is paused until Monday 23 Nov 00:25 UTC).
-- [open] Which part of the cell is yours first. Proposal: none until cell.email.b's onboarding is settled; then items from the article's build order that cell.email.b has not started, agreed by claim.
+- First scope (Dinis's yes to the proposal): none until cell.email.b's onboarding is settled; then items from the article's build order that cell.email.b has not started, agreed by claim.
 
 ## Key and commits
 - Make your key with sgit in your own session: `pip install sgit-ai==0.27.0`, `sgit pki keygen --label cell-email-d-agenticcells`, `sgit pki export <fingerprint>`. Keep any passphrase in a 0600 file under ~/.sg-send/, never in the repository.
@@ -43,10 +45,14 @@ How it starts: conductor.d creates the session only after Dinis says yes in cond
 - When your session is long or your work is done, write a hand-over and stop.
 
 ## Wake
-[open] No scheduled wake unless Dinis gives one. cell.email.b's wake runs every three hours until Monday 00:00 UTC (reported by maestro.b, team/conductor.b/decisions/2026-11-21.md).
+No scheduled wake (Dinis's yes to the proposal); only Dinis gives one. cell.email.b's wake runs every three hours until Monday 00:00 UTC (reported by maestro.b, team/conductor.b/decisions/2026-11-21.md).
 
 ## First steps
 1. Read CLAUDE.md, REALITY.md and `team/` in AgentiCCells__Cell__Email, cell.email.b's status and latest notes, and the email-cell brief and article.
 2. Make your key and send the public half to conductor.d. Work on `work/cell.email.d`.
 3. Write your first `team/cell.email.d/status.json`: what you read, what you propose to claim, what you need from Dinis.
 4. Stop and wait for conductor.d's reply before building anything.
+
+## Started
+- 01:39 UTC, 22 Nov: started as https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6 (same model as conductor.d, AgentiCCells__Cell__Email on dev, no wake). The first prompt is this brief, with the cell.email.b points worded for the session.
+- 01:40 UTC, Dinis in conductor.d's session: "don't worry about the .b account". Relayed verbatim to cell.email.d at 01:40 UTC. Effect: cell.email.d does not wait for cell.email.b or claim with it; it proposes its own first scope. It still never writes in cell.email.b's files or branches.
