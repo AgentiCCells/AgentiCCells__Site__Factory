@@ -1,22 +1,26 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T01:28:00Z",
+  "updated": "2026-11-22T01:33:00Z",
   "state": "onboarding: key made, public half sent for merge; working on work/conductor.d",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
     "fingerprint": "sha256:dea2dba63836feae",
     "signing_fingerprint": "sha256:700109d85b177797",
-    "state": "waiting for maestro.d's key entry and Dinis's merge"
+    "state": "waiting for maestro.d's key entry and Dinis's merge",
+    "issue": "https://github.com/AgentiCCells/AgentiCCells__Site__Factory/issues/51"
   },
   "watching": [],
   "claims": [],
   "asks": [
     "Dinis: merge my key and policy entries once maestro.d puts them on a branch (sent at about 01:30 UTC). https://claude.ai/code/session_015gaHdbdtdAPC4v2AstRS8T",
-    "Dinis: the cell.email.d brief is a draft at team/conductor.d/briefs/2026-11-22__cell-email-d.md on work/conductor.d, with three open points (model and repository, first scope, wake). Say yes in my session to start it. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9"
+    "Dinis: the cell.email.d brief is a draft at team/conductor.d/briefs/2026-11-22__cell-email-d.md on work/conductor.d, with three open points (model and repository, first scope, wake). Say yes in my session to start it. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
+    "Dinis: send_message from account D cannot reach conductor.b on account B. Please say how you want the twins to talk (relay through maestro.d, or files and issues only). https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9"
   ],
   "log": [
     "2026-11-22 ~01:24 UTC: started by maestro.d at Dinis's word (about 01:35 UTC by maestro.d's clock). Read CLAUDE.md, REALITY.md, conductor.b status and debriefs.",
-    "2026-11-22 ~01:25 UTC: Dinis in this session: \"Hi, once you are fully onboarded, can you see the brief to start cell.email.d@AggentiCCells.dinis ?\" No such brief existed; drafted one."
+    "2026-11-22 ~01:25 UTC: Dinis in this session: \"Hi, once you are fully onboarded, can you see the brief to start cell.email.d@AggentiCCells.dinis ?\" No such brief existed; drafted one.",
+    "2026-11-22 ~01:31 UTC: public bundle sent to maestro.d (delivered) and posted as Factory issue #51.",
+    "2026-11-22 ~01:31 UTC: hello to conductor.b failed: send_message cannot reach its session from account D (not found). Issue #51 and this file carry the same facts."
   ]
 }
