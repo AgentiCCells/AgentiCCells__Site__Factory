@@ -57,7 +57,7 @@
       "agent": "email.workflows.d@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "branch": "work/email.workflows.d",
+      "branch": "work/email.workflows.d-r2 (539a19f on release/next 77a0ee6); old work/email.workflows.d at 976348f kept for a person to delete",
       "state": "night loop round 1 pushed (its report), work/email.workflows.d 976348f: nine workflows as state machines (sim/workflows/machines.mjs), generated docs/plan/workflow-machines.md and SVG diagrams, 6 new tests (127 total), gates OK. Next round 05:13 UTC.",
       "wake": "one-shot messages to its own session, each round scheduling the next (next trig_015RGhTAMfdP8D6ix32C9t9J at 05:13 UTC); none after 09:00 UTC; on Dinis's word in its session (reported)",
       "key": {
@@ -118,6 +118,7 @@
     "2026-11-22 04:10 UTC: email.design.d finished items 1 to 4 and the axe and dark pass (143ca1a); told to hand over to email.dev.d directly.",
     "2026-11-22 04:11 UTC: email.design.d claimed rank 7 (five inbox designs); email.pm.d W11 (screenshots) for Dinis.",
     "2026-11-22 04:12 UTC: email.workflows.d round 1 pushed (976348f).",
-    "2026-11-22 04:13 UTC: email.dev.d added option (c) for approvers and a lane-key reading (325d964). Told email.workflows.d to push its rebase to a new branch, not force-push."
+    "2026-11-22 04:13 UTC: email.dev.d added option (c) for approvers and a lane-key reading (325d964). Told email.workflows.d to push its rebase to a new branch, not force-push.",
+    "2026-11-22 04:14 UTC: email.workflows.d moved to work/email.workflows.d-r2 (539a19f), no force-push."
   ]
 }
