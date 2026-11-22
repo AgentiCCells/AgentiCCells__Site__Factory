@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:01:00Z",
+  "updated": "2026-11-22T04:13:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -16,12 +16,12 @@
       "agent": "email.dev.d@AgentiCCells.dinis (formerly cell.email.d, renamed by Dinis ~02:12 UTC, reported)",
       "session": "https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "state": "v0.1.51 live (checked 02:14 UTC). Next: key rename commit; then pinned approvers from the respective website and lane keys from team/keys (Dinis 03:59 UTC).",
+      "state": "v0.1.51 live. Notes on approvers and lane keys in 096164d (work/email.dev.d); not built, waiting for Dinis.",
       "wake": "none",
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
         "signing_fingerprint": "sha256:40ff743093f2ecd5",
-        "state": "merged as cell.email.d (PR #1); rename approved by Dinis 03:59 UTC, to be committed by email.dev.d under its own name and released; PR #2 to be closed by maestro.d."
+        "state": "rename committed by email.dev.d (8b0fbf2, release/key-rename, signed, gates OK by its report); its push to dev was refused by its session's permission check because Dinis's word came by relay. maestro.d closes PR #2 once it lands."
       },
       "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them."
     },
@@ -52,6 +52,8 @@
   ],
   "claims": [],
   "asks": [
+    "Dinis: say yes in email.dev.d's session to release the key rename 8b0fbf2 (branch release/key-rename) to dev; its permission check needs your word there, not by relay. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: approvers \"from the respective website\": (a) this cell's own site, built from team/keys (breaks ABP N8 and C6b: any agent that can push becomes an approver; needs an ABP change), or (b) pki.sgit.ai's public register, already used by the page with its root pinned, the page pinning only the approver's identity name (keeps N8). email.dev.d proposes (b), with your own identity as the only approver for now. Which, and which identity? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.twins.d, email.contacts.d and email.crm.d wait for your word here, after pm, design and workflows report. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9"
   ],
   "log": [
@@ -73,6 +75,8 @@
     "2026-11-22 02:16 UTC: maestro.d put the rename in ef3160a; asked it to open a new PR since PR #1 is reported merged.",
     "2026-11-22 02:15 UTC: maestro.d opened PR #2 for the rename.",
     "2026-11-22 03:56 UTC: email.dev.d relayed Dinis's yes to the email.* team; asked Dinis to confirm in this session before starting.",
-    "2026-11-22 04:00 UTC: Dinis answered all asks (decisions/2026-11-22.md). Pushed to dev; started email.pm.d, email.design.d, email.workflows.d; relayed key rename, approvers, lane keys to email.dev.d; asked maestro.d to close PR #2 and carry the cell.email.b wake stop to account B."
+    "2026-11-22 04:00 UTC: Dinis answered all asks (decisions/2026-11-22.md). Pushed to dev; started email.pm.d, email.design.d, email.workflows.d; relayed key rename, approvers, lane keys to email.dev.d; asked maestro.d to close PR #2 and carry the cell.email.b wake stop to account B.",
+    "2026-11-22 04:02 UTC: maestro.d carried the cell.email.b wake stop to account B (board/team/maestros/from-d.md, for maestro.b: do not re-enable at Monday's restore; disable for good after confirming with Dinis). Not checked by me.",
+    "2026-11-22 04:12 UTC: email.dev.d committed the key rename (8b0fbf2), push to dev held by its permission check; wrote approvers and lane-keys notes with a question for Dinis."
   ]
 }
