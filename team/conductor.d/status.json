@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:27:00Z",
+  "updated": "2026-11-22T04:28:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -16,7 +16,7 @@
       "agent": "email.dev.d@AgentiCCells.dinis (formerly cell.email.d, renamed by Dinis ~02:12 UTC, reported)",
       "session": "https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "state": "release/next2 at 4ea6af4 supersedes release/next (its report): adds email.workflows.d's -r2 work with its own signatures, the approvers note with option (c), workflows tests moved into tests/, plan index links, REALITY.md. 15 commits since dev, each signer matches its Agent trailer; 131 tests and gates OK. Waits for Dinis's yes in its session; design's reader fix next.",
+      "state": "release/next2 at b2523c6 ready (its report): fast-forwarded onto design's -r2; 23 commits since dev from pm, workflows, design and dev, each signer matching its Agent trailer; 131 tests and gates OK. Live change: reader and phone layout, one top bar; nothing changes in what is sent, checked or stored. Waits for Dinis's yes in its session.",
       "wake": "none",
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
@@ -70,7 +70,7 @@
   ],
   "claims": [],
   "asks": [
-    "Dinis: release ready. Say yes in email.dev.d's session to release release/next2 (4ea6af4) to dev: email.pm.d's and email.workflows.d's work, the key rename and the pm, design and workflows keys, the checker's allow_cc and one_domain, the approvers note; 15 commits, every one signed by its own agent (checked by email.dev.d). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: release ready. Say \"push to dev\" in email.dev.d's session to release release/next2 (b2523c6): 23 commits from pm, workflows, design and dev, every one signed by its own agent. Live change: the mail reader and phone layout and one shared top bar; nothing changes in what is sent, checked or stored. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.design.d's five inbox designs are ready for you to pick one or two: docs/design/inbox-concepts.md on work/email.design.d (04520c9), screenshots in the page, made-up mail only. https://claude.ai/code/session_015gaHdb5B7vab8KyN7YiDNZ",
     "Dinis: approvers, now three options (email.dev.d's note 325d964 on release/next): (a) the cell's own site from team/keys (breaks ABP N8); (b) the pki.sgit.ai register, only your identity pinned; (c) from your 04:08 words: each workflow names its approvers, their published keys reach the page by QR code (k1 format) and the person accepts them there, sealed in IndexedDB; keeps N8 and can combine with (b). Which? And is this right for lane keys: a vault (or the agent in it) makes the key and it is published in team/keys? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: before building lane keys, email.dev.d asks for one narrow allowlist line in its leak scan (scripts/leak-scan.mjs) for the built-in lane-key file, as you approved for trusted.js on 16 Nov. It is a change to a check, so it waits for your yes. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
@@ -126,6 +126,7 @@
     "2026-11-22 04:17 UTC: email.design.d finished five inbox designs (04520c9); pick put to Dinis.",
     "2026-11-22 04:23 UTC: email.design.d finished the shared top bar (fec68eb) and stopped with a hand-over. conductor.d wrote its first hand-over debrief.",
     "2026-11-22 04:25 UTC: design stopped before rebasing; asked email.dev.d to carry design's 9d19d71, 143ca1a and fec68eb as its own signed commits crediting email.design.d (7f16cea left out).",
-    "2026-11-22 04:24 UTC: email.design.d rebased onto release/next2 on work/email.design.d-r2 (c6197ac), all commits signed by its key, then stopped; email.dev.d told to take that branch, keeping signatures."
+    "2026-11-22 04:24 UTC: email.design.d rebased onto release/next2 on work/email.design.d-r2 (c6197ac), all commits signed by its key, then stopped; email.dev.d told to take that branch, keeping signatures.",
+    "2026-11-22 04:25 UTC: email.dev.d reported release/next2 ready at b2523c6 (23 commits, all signers match)."
   ]
 }
