@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:11:00Z",
+  "updated": "2026-11-22T04:12:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -58,8 +58,8 @@
       "session": "https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.workflows.d",
-      "state": "first claims done (bb18ba7), both commits signed by its own key (its check). Now on rank 2, the workflow map (04:10 UTC).",
-      "wake": "none",
+      "state": "on Dinis's ~04:08 UTC word in its session (reported): mapping workflows as state machines, simplest up, as products, with drawings and rounds; workflow map (pm rank 2) claimed.",
+      "wake": "hourly message to its own session, set by itself on Dinis's word in its session (reported); stops at 09:00 UTC unless Dinis says otherwise",
       "key": {
         "fingerprint": "sha256:4da4bd396d0d9c19",
         "signing_fingerprint": "sha256:e5a47707dbd787ff",
@@ -109,6 +109,7 @@
     "2026-11-22 04:06 UTC: email.pm.d confirmed its commits a2b1092, 2bc8429, 212b94a are signed by its own key; design's proposals in its backlog (a2fe89f). Idle until its 05:05 UTC pass.",
     "2026-11-22 04:07 UTC: email.pm.d recorded its scheduled task's authority (75f92d9) and copied its notes to workflows, design and dev.",
     "2026-11-22 04:07 UTC: email.dev.d rebuilt the release as release/next (2454b8e) with every commit signed by its own agent and design's key; ready for Dinis. email.workflows.d finished both claims (bb18ba7).",
-    "2026-11-22 04:08 UTC: email.dev.d confirmed release/next keeps every agent's own signatures; asked for a leak-scan allowlist line for lane keys (put to Dinis). email.workflows.d moved to rank 2."
+    "2026-11-22 04:08 UTC: email.dev.d confirmed release/next keeps every agent's own signatures; asked for a leak-scan allowlist line for lane keys (put to Dinis). email.workflows.d moved to rank 2.",
+    "2026-11-22 04:08 UTC: Dinis spoke in email.workflows.d's session (reported): approvers, QR keys, vault lane keys, a chat panel, an overnight loop. Wake noted; approvers material passed to email.dev.d."
   ]
 }
