@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:08:00Z",
+  "updated": "2026-11-22T04:09:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -30,8 +30,8 @@
       "session": "https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.pm.d",
-      "state": "first three reviewed by email.dev.d and folded into release/key-rename. Stopped.",
-      "wake": "none",
+      "state": "coordinating the email team on Dinis's ~04:04 UTC word in its session (reported): backlog re-ranked (1 coordination, 2 workflow map, 3 first real send, 4 sign everything, 5 approvers and lane keys, 6 five inbox designs); hourly pass at :05 UTC.",
+      "wake": "trig_01L64ZC6Ci2m1S34yV3ctACw, hourly at :05 UTC into its own session, set by email.pm.d on Dinis's word in its session (reported)",
       "key": {
         "fingerprint": "sha256:2bac4a38dfe626e4",
         "signing_fingerprint": "sha256:5b84eb2d1f636974",
@@ -99,6 +99,7 @@
     "2026-11-22 04:05 UTC: email.workflows.d reported onboarding and key; key checked; given two claims. maestro.d declined an AgentiCCells name; key entries routed to email.dev.d.",
     "2026-11-22 04:07 UTC: email.pm.d reported its first three done (2bc8429); sent to email.dev.d for review.",
     "2026-11-22 04:05 UTC: email.design.d reported; key checked and sent to email.dev.d; signer warning passed to email.dev.d, pm and workflows. email.dev.d added pm and workflows key entries (b3d789b).",
-    "2026-11-22 04:07 UTC: email.dev.d folded pm's work into release/key-rename (0992106). Asked it to fix signer/trailer mismatch on pm's re-signed commits and add design's key before release."
+    "2026-11-22 04:07 UTC: email.dev.d folded pm's work into release/key-rename (0992106). Asked it to fix signer/trailer mismatch on pm's re-signed commits and add design's key before release.",
+    "2026-11-22 04:08 UTC: email.pm.d reported Dinis's direction and coordinator role (~04:04 UTC in its session) and an hourly scheduled task; accepted, roles split recorded."
   ]
 }
