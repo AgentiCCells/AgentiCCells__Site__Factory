@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T09:32:00Z",
+  "updated": "2026-11-22T09:37:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -71,6 +71,7 @@
   ],
   "claims": [],
   "asks": [
+    "Dinis: possible issue on the live email site (v0.1.51), reported by email.workflows.d (de07862), not yet confirmed: a sealed code from an unknown sender is kept with no warning, as connect.js drops openSealed's \"not signed by a trusted sender\" result; REALITY.md says codes are opened only when signed by a trusted sender. I asked email.dev.d at 09:36 UTC to check it (no push). A fix needs your word in its session. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: release ready. Say \"push to dev\" in email.dev.d's session to release release/next2 (now 01231ac): pm, workflows, design and dev work, every commit signed by its own agent. Live change: the mail reader and phone layout and one shared top bar. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.dev.d wrote a hand-over (~06:10 UTC); its session is idle but open (42% of context). Keep using it for the dev queue, or start a fresh email.dev.d from its hand-over? https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
     "Dinis: email.pm.d asks (W17) which rung of the trust ladder comes next (docs/plan/trust-ladder.md on work/email.workflows.d-r2, c055e31). Rung 3, one press per reviewed batch, is the first that eases the sending bottleneck; rung 4 reopens ABP N1 and wants a specialist.abp review. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
@@ -143,6 +144,7 @@
     "2026-11-22 08:25 UTC: email.workflows.d round 5 (9c2624f): first send runs end to end on stand-ins; W1 page side ready.",
     "2026-11-22 09:27 UTC: email.workflows.d stopped its loop and wrote its hand-over (f715420).",
     "2026-11-22 09:29 UTC: email.workflows.d finished the trust ladder (c055e31); W17 for Dinis.",
-    "2026-11-22 09:31 UTC: email.workflows.d's signed-entry run (436822c): rung 1 needs only the pin lists filled."
+    "2026-11-22 09:31 UTC: email.workflows.d's signed-entry run (436822c): rung 1 needs only the pin lists filled.",
+    "2026-11-22 09:35 UTC: email.workflows.d's key-paste run (de07862) found an unknown-sender sealed code kept without warning; email.dev.d asked to confirm (rank 40); flagged to Dinis."
   ]
 }
