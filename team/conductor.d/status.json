@@ -21,7 +21,7 @@
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
         "signing_fingerprint": "sha256:40ff743093f2ecd5",
-        "state": "rename committed by email.dev.d (8b0fbf2, release/key-rename, signed, gates OK by its report); its push to dev was refused by its session's permission check because Dinis's word came by relay. maestro.d closes PR #2 once it lands."
+        "state": "rename 8b0fbf2 and entries for pm and workflows b3d789b on release/key-rename (fingerprints recomputed by email.dev.d); design's entry to follow. Not on dev: needs Dinis's yes in email.dev.d's session."
       },
       "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them."
     },
@@ -43,8 +43,13 @@
       "session": "https://claude.ai/code/session_015gaHdb5B7vab8KyN7YiDNZ",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.design.d",
-      "state": "started 03:59 UTC at Dinis's word here; onboarding (read brief, key, status, report)",
-      "wake": "none"
+      "state": "onboarded (its report): work/email.design.d 9d19d71; first commit 7f16cea signed by the container's global signer, not its key (recorded, not rewritten). Five screen findings (simulation). Given at 04:05 UTC: items 1, 2, 4, then 3, then axe and dark mode, markup and CSS only, fixtures only.",
+      "wake": "none",
+      "key": {
+        "fingerprint": "sha256:4e5d4b8694bc2ab5",
+        "signing_fingerprint": "sha256:a9f9fe47aa83d23f",
+        "state": "checked by conductor.d; sent to email.dev.d for an entry on release/key-rename"
+      }
     },
     {
       "agent": "email.workflows.d@AgentiCCells.dinis",
@@ -62,11 +67,11 @@
   ],
   "claims": [],
   "asks": [
-    "Dinis: say yes in email.dev.d's session to release to dev the key rename 8b0fbf2 and the key entries for email.pm.d and email.workflows.d it is adding (signed by email.dev.d; maestro.d declined to commit under an AgentiCCells name without your word in its own session). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: say yes in email.dev.d's session to release branch release/key-rename to dev: its key rename (8b0fbf2) and key entries for email.pm.d and email.workflows.d (b3d789b), with email.design.d's to follow. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: approvers \"from the respective website\": (a) this cell's own site, built from team/keys (breaks ABP N8 and C6b: any agent that can push becomes an approver; needs an ABP change), or (b) pki.sgit.ai's public register, already used by the page with its root pinned, the page pinning only the approver's identity name (keeps N8). email.dev.d proposes (b), with your own identity as the only approver for now. Which, and which identity? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.pm.d's one-page list of what waits on you, board/2026-11-22-waits-on-dinis.md on work/email.pm.d (2bc8429). Still open there: W1 the outbox key, W2 the Safe Browsing review, W3 the passkey round trip, W4 approvers (a)/(b), W8 key merges. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: email.pm.d proposes first items for the others (team/email-agents/backlog.md on work/email.pm.d, a2b1092): design 4,5,6 (shared top bar, home page links, review of the live client); workflows 2,10,11 (first-send step list, templates, real policy as proposals); twins 12-14; contacts 15-17; crm 20,18,19. Confirm or change. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
-    "Dinis: email.twins.d, email.contacts.d and email.crm.d wait for your word here, after pm, design and workflows report. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9"
+    "Dinis: pm, design and workflows have all reported and are working. Start email.twins.d, email.contacts.d and email.crm.d now? https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9"
   ],
   "log": [
     "2026-11-22 ~01:24 UTC: started by maestro.d at Dinis's word (about 01:35 UTC by maestro.d's clock). Read CLAUDE.md, REALITY.md, conductor.b status and debriefs.",
@@ -92,6 +97,7 @@
     "2026-11-22 04:12 UTC: email.dev.d committed the key rename (8b0fbf2), push to dev held by its permission check; wrote approvers and lane-keys notes with a question for Dinis.",
     "2026-11-22 04:02 UTC: email.pm.d reported onboarding and key; key checked and sent to maestro.d; pm given its own first three.",
     "2026-11-22 04:05 UTC: email.workflows.d reported onboarding and key; key checked; given two claims. maestro.d declined an AgentiCCells name; key entries routed to email.dev.d.",
-    "2026-11-22 04:07 UTC: email.pm.d reported its first three done (2bc8429); sent to email.dev.d for review."
+    "2026-11-22 04:07 UTC: email.pm.d reported its first three done (2bc8429); sent to email.dev.d for review.",
+    "2026-11-22 04:05 UTC: email.design.d reported; key checked and sent to email.dev.d; signer warning passed to email.dev.d, pm and workflows. email.dev.d added pm and workflows key entries (b3d789b)."
   ]
 }
