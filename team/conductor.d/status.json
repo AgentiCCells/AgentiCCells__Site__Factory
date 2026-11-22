@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T07:23:00Z",
+  "updated": "2026-11-22T07:24:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -73,6 +73,7 @@
   "asks": [
     "Dinis: release ready. Say \"push to dev\" in email.dev.d's session to release release/next2 (now 01231ac): pm, workflows, design and dev work, every commit signed by its own agent. Live change: the mail reader and phone layout and one shared top bar. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.dev.d wrote a hand-over (~06:10 UTC); its session is idle but open (42% of context). Keep using it for the dev queue, or start a fresh email.dev.d from its hand-over? https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
+    "Dinis: email.pm.d asks (W16): outreach templates in your voice are off the email team's list, since real outreach drafts belong to conductor@PrompTugal.dinis. Confirm, and say whether the PrompTugal side should be told (I do not contact it). https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: email.design.d's five inbox designs are ready for you to pick one or two: docs/design/inbox-concepts.md on work/email.design.d (04520c9), screenshots in the page, made-up mail only. https://claude.ai/code/session_015gaHdb5B7vab8KyN7YiDNZ",
     "Dinis: approvers, now three options (email.dev.d's note 325d964 on release/next): (a) the cell's own site from team/keys (breaks ABP N8); (b) the pki.sgit.ai register, only your identity pinned; (c) from your 04:08 words: each workflow names its approvers, their published keys reach the page by QR code (k1 format) and the person accepts them there, sealed in IndexedDB; keeps N8 and can combine with (b). Which? And is this right for lane keys: a vault (or the agent in it) makes the key and it is published in team/keys? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: before building lane keys, email.dev.d asks for one narrow allowlist line in its leak scan (scripts/leak-scan.mjs) for the built-in lane-key file, as you approved for trusted.js on 16 Nov. It is a change to a check, so it waits for your yes. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
@@ -135,6 +136,7 @@
     "2026-11-22 06:05 UTC: email.pm.d's pass: email.dev.d handed over; release/next2 at 01231ac waits on Dinis; who takes the dev queue put to Dinis.",
     "2026-11-22 06:19 UTC: email.workflows.d round 3 (f9e15fe); W1 finding: first entry must be unsigned.",
     "2026-11-22 06:19 UTC: email.pm.d recorded the round 3 W1 finding on its waits page; added to the W1 ask. I do not contact PrompTugal; it goes to Dinis with the ask.",
-    "2026-11-22 07:22 UTC: email.workflows.d round 4 (168a94e): outreach policy and role drafted for Dinis to sign."
+    "2026-11-22 07:22 UTC: email.workflows.d round 4 (168a94e): outreach policy and role drafted for Dinis to sign.",
+    "2026-11-22 07:23 UTC: email.pm.d made the outreach policy W15 and templates-in-Dinis's-voice W16; ranks 37 and 38 for email.dev.d."
   ]
 }
