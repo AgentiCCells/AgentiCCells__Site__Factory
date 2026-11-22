@@ -1,7 +1,7 @@
 {
   "agent": "conductor.b@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
-  "updated": "2026-11-21T21:52:34Z",
+  "updated": "2026-11-22T01:21:29Z",
   "state": "night work done; waiting for Dinis's morning review",
   "source_note": "Session states and costs from get_session at the time above; site states from requests/*/status.json on dev. Live versions not yet checked unless a source is given.",
   "factory": {
@@ -115,13 +115,16 @@
     "2026-11-21 12:07 UTC: wake (three-hourly). No new commits on dev; no session changed since 09:13 UTC. Put PR #47 to Dinis.",
     "2026-11-21 16:53 UTC: Dinis merged PR #49 (Live to stage pr, d3e362a) and PR #47 (black-friday-rights request, 4e91aac). Still open: #46 and #48.",
     "2026-11-21 21:49 UTC: Dinis merged PR #48 (d1b8c1c). PR #46 conflicts with dev in REALITY.md; asked cells.b to resolve it with a signed merge or rebase.",
-    "2026-11-21 21:52 UTC: Dinis merged PR #46 (8c52f87); cells.b's conflict fix 7752d81 is SSH-signed with its Agent trailer. No Factory PRs open."
+    "2026-11-21 21:52 UTC: Dinis merged PR #46 (8c52f87); cells.b's conflict fix 7752d81 is SSH-signed with its Agent trailer. No Factory PRs open.",
+    "2026-11-22 01:21 UTC: drafted the conductor.d brief at Dinis's word; asked maestro.b how the account D twins are made."
   ],
   "next": [
     "Relay each round from agenticcells.ai; morning brief for Dinis with the five preview links.",
     "Restart london-billboard only on Dinis's yes."
   ],
   "asks": [
+    "Dinis: my wake was turned off at 15:33 UTC on 21 Nov (not by me; maestro.b set it to three-hourly at 09:08). Say whether it stays off or comes back (three-hourly until Monday, then hourly). Waits: https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
+    "Dinis: read the conductor.d brief draft (team/conductor.d/briefs/2026-11-22__conductor-d.md); parts wait on maestro.b's answer on how the account D twins are made. Waits: https://claude.ai/code/session_01Kw9UwEbwyWMbZ7yCr81Dq9",
     "Dinis: install the sovereignwebsite-transfer App on SovereignWebsite. Until you do, every transfer gets HTTP 403, so the dinis-cruz move is blocked (reported by conductor.b@SovereignWebsite, 00:21 UTC). Waits: https://claude.ai/code/session_01Kw9UwDCS5Px4dXRJUGP9Qu",
     "Dinis: name the SovereignWebsite agent that may commit to the dinis-cruz repository after the move. conductor.b@SovereignWebsite proposes dinis-cruz.b@SovereignWebsite.dinis; migration.b is asking you. Once named, cells.b adds its public key to team/keys.json. Waits: https://claude.ai/code/session_01Kw9UwDKiseUFyqtG1xyVaG",
     "Dinis: run 'Protect release branches' from the Factory Actions tab on dev. #45, #46 and #49 are all merged, so this run applies the base protections and moves PrompTugal__News__Live to stage pr. Waits: https://github.com/AgentiCCells/AgentiCCells__Site__Factory/actions",
