@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T09:30:00Z",
+  "updated": "2026-11-22T09:32:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -59,7 +59,7 @@
       "session": "https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.workflows.d-r2 (539a19f on release/next 77a0ee6); old work/email.workflows.d at 976348f kept for a person to delete",
-      "state": "woken by email.pm.d: trust ladder page done (docs/plan/trust-ladder.md, c055e31; six rungs from every press to sessions sending, proposed ABP wording, abp/ untouched); now on the page run with signed entries and pinned test approvers.",
+      "state": "signed-entry page run done (436822c, its and pm's report): as built the page refuses signed entries (fail closed); with made-up keys in the two empty pin lists a good signed entry passes C4 and sends once, a changed one is refused. So trust-ladder rung 1 needs only those lists filled (approvers W4, lane keys W5). Next: a trusted test sender in a test copy, then level-2 machines.",
       "wake": "none (loop ended)",
       "key": {
         "fingerprint": "sha256:4da4bd396d0d9c19",
@@ -142,6 +142,7 @@
     "2026-11-22 07:23 UTC: email.pm.d made the outreach policy W15 and templates-in-Dinis's-voice W16; ranks 37 and 38 for email.dev.d.",
     "2026-11-22 08:25 UTC: email.workflows.d round 5 (9c2624f): first send runs end to end on stand-ins; W1 page side ready.",
     "2026-11-22 09:27 UTC: email.workflows.d stopped its loop and wrote its hand-over (f715420).",
-    "2026-11-22 09:29 UTC: email.workflows.d finished the trust ladder (c055e31); W17 for Dinis."
+    "2026-11-22 09:29 UTC: email.workflows.d finished the trust ladder (c055e31); W17 for Dinis.",
+    "2026-11-22 09:31 UTC: email.workflows.d's signed-entry run (436822c): rung 1 needs only the pin lists filled."
   ]
 }
