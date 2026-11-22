@@ -100,6 +100,7 @@
     "2026-11-22 04:07 UTC: email.pm.d reported its first three done (2bc8429); sent to email.dev.d for review.",
     "2026-11-22 04:05 UTC: email.design.d reported; key checked and sent to email.dev.d; signer warning passed to email.dev.d, pm and workflows. email.dev.d added pm and workflows key entries (b3d789b).",
     "2026-11-22 04:07 UTC: email.dev.d folded pm's work into release/key-rename (0992106). Asked it to fix signer/trailer mismatch on pm's re-signed commits and add design's key before release.",
-    "2026-11-22 04:08 UTC: email.pm.d reported Dinis's direction and coordinator role (~04:04 UTC in its session) and an hourly scheduled task; accepted, roles split recorded."
+    "2026-11-22 04:08 UTC: email.pm.d reported Dinis's direction and coordinator role (~04:04 UTC in its session) and an hourly scheduled task; accepted, roles split recorded.",
+    "2026-11-22 04:06 UTC: email.pm.d confirmed its commits a2b1092, 2bc8429, 212b94a are signed by its own key; design's proposals in its backlog (a2fe89f). Idle until its 05:05 UTC pass."
   ]
 }
