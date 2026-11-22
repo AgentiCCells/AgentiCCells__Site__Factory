@@ -16,12 +16,12 @@
       "agent": "email.dev.d@AgentiCCells.dinis (formerly cell.email.d, renamed by Dinis ~02:12 UTC, reported)",
       "session": "https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "state": "release/key-rename at 0992106 (its report): key rename, pm and workflows keys, team briefs, approvers note, email.pm.d's work (reviewed), REALITY.md fix; gates OK. Held by conductor.d for one fix: pm's commits re-signed by email.dev.d keep Agent: email.pm.d (signer and trailer disagree); and design's key to add. Then for Dinis.",
+      "state": "release/next at 2454b8e ready (its report): email.pm.d's branch fast-forwarded with its own signatures, plus key rename and pm, design and workflows keys (2be7fc0, fingerprints recomputed), approvers note, REALITY.md. Every commit signed by its own agent; 7f16cea not included. Gates OK. release/key-rename superseded. Waits for Dinis's yes in its session.",
       "wake": "none",
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
         "signing_fingerprint": "sha256:40ff743093f2ecd5",
-        "state": "rename 8b0fbf2 and entries for pm and workflows b3d789b on release/key-rename (fingerprints recomputed by email.dev.d); design's entry to follow. Not on dev: needs Dinis's yes in email.dev.d's session."
+        "state": "rename in release/next (2be7fc0), waiting for release; maestro.d closes PR #2 after."
       },
       "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them.",
       "next": "from email.pm.d ~04:06 UTC: ranks 5 lane keys from team/keys (approvers wait on W4) and 4 sign everything"
@@ -49,7 +49,7 @@
       "key": {
         "fingerprint": "sha256:4e5d4b8694bc2ab5",
         "signing_fingerprint": "sha256:a9f9fe47aa83d23f",
-        "state": "checked by conductor.d; sent to email.dev.d for an entry on release/key-rename"
+        "state": "checked; entry in release/next (2be7fc0)"
       },
       "next": "from email.pm.d ~04:06 UTC: ranks 6 five inbox designs, 9 shared top bar, 11 live client against screenshots"
     },
@@ -58,7 +58,7 @@
       "session": "https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.workflows.d",
-      "state": "onboarded (its report): work/email.workflows.d da6f200. Given its two claims at 04:04 UTC: docs/plan/workflows.md (proposal, workflow only) and the signed.json writer with fixtures and a decideEntry() test (test handed to email.dev.d).",
+      "state": "both first claims done (its report), work/email.workflows.d bb18ba7: docs/plan/workflows.md proposal; sim/workflows/ signed.json writer, pins for (a) and (b), 9 tests (121 total). Proposals for email.dev.d passed to email.pm.d. Next items from email.pm.d.",
       "wake": "none",
       "key": {
         "fingerprint": "sha256:4da4bd396d0d9c19",
@@ -70,9 +70,10 @@
   ],
   "claims": [],
   "asks": [
-    "Dinis: say yes in email.dev.d's session to release branch release/key-rename to dev: its key rename (8b0fbf2) and key entries for email.pm.d and email.workflows.d (b3d789b), with email.design.d's to follow. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: release ready. Say yes in email.dev.d's session to release release/next (2454b8e) to dev: email.pm.d's work, the key rename and the pm, design and workflows keys, every commit signed by its own agent (checked by email.dev.d). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: approvers \"from the respective website\": (a) this cell's own site, built from team/keys (breaks ABP N8 and C6b: any agent that can push becomes an approver; needs an ABP change), or (b) pki.sgit.ai's public register, already used by the page with its root pinned, the page pinning only the approver's identity name (keeps N8). email.dev.d proposes (b), with your own identity as the only approver for now. Which, and which identity? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.pm.d's one-page list of what waits on you, board/2026-11-22-waits-on-dinis.md on work/email.pm.d (2bc8429). Still open there: W1 the outbox key, W2 the Safe Browsing review, W3 the passkey round trip, W4 approvers (a)/(b), W8 key merges. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
+    "Dinis: email.workflows.d's questions (docs/plan/workflows.md on work/email.workflows.d, bb18ba7, \"Open, for Dinis\"): conductor@PrompTugal.dinis is not a proposer, so its signed proposals would be refused (proposed: an outreach role and a real email policy signed by you); outreach defaults (no cc, one organisation) written as policy; follow-ups without a press: not yet (ABP N1); templates per campaign; who sets the follow-up wait. https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
     "Dinis: email.pm.d proposes first items for the others (team/email-agents/backlog.md on work/email.pm.d, a2b1092): design 4,5,6 (shared top bar, home page links, review of the live client); workflows 2,10,11 (first-send step list, templates, real policy as proposals); twins 12-14; contacts 15-17; crm 20,18,19. Confirm or change. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: pm, design and workflows have all reported and are working. Start email.twins.d, email.contacts.d and email.crm.d now? https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9"
   ],
@@ -105,6 +106,7 @@
     "2026-11-22 04:07 UTC: email.dev.d folded pm's work into release/key-rename (0992106). Asked it to fix signer/trailer mismatch on pm's re-signed commits and add design's key before release.",
     "2026-11-22 04:08 UTC: email.pm.d reported Dinis's direction and coordinator role (~04:04 UTC in its session) and an hourly scheduled task; accepted, roles split recorded.",
     "2026-11-22 04:06 UTC: email.pm.d confirmed its commits a2b1092, 2bc8429, 212b94a are signed by its own key; design's proposals in its backlog (a2fe89f). Idle until its 05:05 UTC pass.",
-    "2026-11-22 04:07 UTC: email.pm.d recorded its scheduled task's authority (75f92d9) and copied its notes to workflows, design and dev."
+    "2026-11-22 04:07 UTC: email.pm.d recorded its scheduled task's authority (75f92d9) and copied its notes to workflows, design and dev.",
+    "2026-11-22 04:07 UTC: email.dev.d rebuilt the release as release/next (2454b8e) with every commit signed by its own agent and design's key; ready for Dinis. email.workflows.d finished both claims (bb18ba7)."
   ]
 }
