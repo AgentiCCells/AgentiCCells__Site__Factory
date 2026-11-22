@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Synthetic",
+  "description": "The Synthetic role: Synthetic readers and users: personas who read and use the sites and report what works and what loses them. Fillers: synthetic@, synthetic-users.d.",
+  "domain": "role-synthetic.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Synthetic"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

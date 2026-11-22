@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Customers",
+  "description": "The Customers role: Dinis's briefs on readers, customers and products, routed to the owners who build.",
+  "domain": "role-customers.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Customers"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

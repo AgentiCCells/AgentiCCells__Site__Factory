@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Factory",
+  "description": "The Factory role: The pipelines that create and configure repositories, sites and DNS from requests. Fillers: factory.b, factory.d.",
+  "domain": "role-factory.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Factory"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

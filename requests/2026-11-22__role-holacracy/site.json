@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Holacracy",
+  "description": "The Holacracy role: The health of the whole team: the governance record (circles, roles, fillers), the org chart, escalations and maintenance. Filler: holacracy.d (account D). This repository also hol",
+  "domain": "role-holacracy.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Holacracy"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

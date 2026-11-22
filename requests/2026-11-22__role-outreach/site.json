@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Outreach",
+  "description": "The Outreach role: Drafts to organisations, each leading with their page; a person sends.",
+  "domain": "role-outreach.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Outreach"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

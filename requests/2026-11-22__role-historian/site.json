@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Historian",
+  "description": "The Historian role: The history of the work from the record: what was done, when, by whom and why; lessons briefed to the others.",
+  "domain": "role-historian.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Historian"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

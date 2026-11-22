@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Data",
+  "description": "The Data role: Collecting public data sources into vaults and APIs, with provenance and licences.",
+  "domain": "role-data.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Data"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

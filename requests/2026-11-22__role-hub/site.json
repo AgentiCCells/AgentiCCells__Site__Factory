@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Hub",
+  "description": "The Hub role: The hub galleries and vault sites. Fillers: hub.b, hub.d.",
+  "domain": "role-hub.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Hub"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

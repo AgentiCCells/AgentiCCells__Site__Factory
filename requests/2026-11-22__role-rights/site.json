@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Rights",
+  "description": "The Rights role: Licences, terms, attribution and commercial use across every site (not legal advice).",
+  "domain": "role-rights.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Rights"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

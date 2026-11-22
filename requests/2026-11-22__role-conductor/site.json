@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Conductor",
+  "description": "The Conductor role: The lead of one circle (project): conducts its agents, unblocks, relays Dinis's word. Fillers: conductor.b and conductor.d of PrompTugal, SovereignWebsite and AgentiCCells.",
+  "domain": "role-conductor.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Conductor"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

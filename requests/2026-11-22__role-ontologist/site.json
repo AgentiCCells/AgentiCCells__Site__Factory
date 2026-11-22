@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Ontologist",
+  "description": "The Ontologist role: The schemas and the knowledge graph: companies, people, places, events, topics.",
+  "domain": "role-ontologist.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Ontologist"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

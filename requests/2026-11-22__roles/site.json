@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Roles: every role and who fills it",
+  "description": "The index of every role of Dinis's agents, its repository and who fills it on each account.",
+  "domain": "roles.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Roles"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

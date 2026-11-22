@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Investors",
+  "description": "The Investors role: The investor story of each business, kept separate per company; questions that are Dinis's alone as decision pages.",
+  "domain": "role-investors.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Investors"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

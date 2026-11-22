@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Librarian",
+  "description": "The Librarian role: The map of everything: every page, file, decision and agent indexed; the library of Dinis's writing. Fillers: librarian@, librarian.b, library.d.",
+  "domain": "role-librarian.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Librarian"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

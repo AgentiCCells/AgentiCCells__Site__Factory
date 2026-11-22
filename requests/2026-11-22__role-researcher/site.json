@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Researcher",
+  "description": "The Researcher role: Public research on a mandate per task, from sources that need no login.",
+  "domain": "role-researcher.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Researcher"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

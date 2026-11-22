@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Maestro",
+  "description": "The Maestro role: The conductor of the conductors on each account: one view across projects and accounts, the brief to Dinis. Fillers: maestro.b (account B), maestro.d (account D).",
+  "domain": "role-maestro.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Maestro"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

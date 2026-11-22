@@ -1,0 +1,7 @@
+# Brief: the Customers role (AgentiCCells__Role__Customers)
+
+Dinis, 2026-11-22 ~02:30 UTC, in maestro.d (account-d)'s session (https://claude.ai/code/session_015gaHdbdtdAPC4v2AstRS8T): "Yes, I agree. I think let's go for all now. And what you can do is create ... a repo call, agentic sales __ roles, and then that is also the one that links for everyone that we have. And that means that every agent here is then connected to one of those role repos, and you will be connected to the maestro role". Earlier (~02:20 UTC): "should it be AgentiCCells/AgentiCCells__Role__Holacracy and AgentiCCells/AgentiCCells__Role__Dev AgentiCCells/AgentiCCells__Role__Conductor AgentiCCells/AgentiCCells__Role__Maestro .... etc".
+
+The home of the Customers role, shared by every agent that fills it, on every account. Purpose: Dinis's briefs on readers, customers and products, routed to the owners who build.
+
+Layout (a proposal for holacracy.d@AgentiCCells.dinis to settle): `ROLE.md` (purpose, domains, accountabilities), `policy/` (the role's behaviour policy, with abp@), `accounts/<a|b|c|d>/` (each filler on that account: public key, status.json, debriefs, claims), `practice/` (lessons shared across fillers). Twins of this role meet here and never message each other (PrompTugal__News__Website board/guidance/2026-11-22-twins-do-not-talk-across.md). Project detail stays in the project's own repository. Invent nothing; name no private person.

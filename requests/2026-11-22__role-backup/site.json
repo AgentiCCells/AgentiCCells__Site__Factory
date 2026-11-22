@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Backup",
+  "description": "The Backup role: Regular full backups of repositories and vaults, and the recovery plan with security.",
+  "domain": "role-backup.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Backup"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

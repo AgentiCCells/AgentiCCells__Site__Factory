@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Bulletins",
+  "description": "The Bulletins role: Bulletins from our data: text, audio and video summaries. Fillers: bulletins.b, bulletins.d.",
+  "domain": "role-bulletins.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Bulletins"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

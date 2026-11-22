@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: DevOps",
+  "description": "The DevOps role: The health of CI, the release and tag scripts, tools and scheduled automations.",
+  "domain": "role-devops.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__DevOps"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Sites",
+  "description": "The Sites role: New hosted sites through the factory and their content. Fillers: sites.b, sites.d.",
+  "domain": "role-sites.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Sites"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

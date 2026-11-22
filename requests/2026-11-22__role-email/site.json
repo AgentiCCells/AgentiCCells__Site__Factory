@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Email",
+  "description": "The Email role: The email cell: mailbox, drafts and the approve-and-send flow. Fillers: cell.email.b, email.dev.d.",
+  "domain": "role-email.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Email"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

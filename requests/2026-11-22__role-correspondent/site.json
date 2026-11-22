@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Correspondent",
+  "description": "The Correspondent role: The front page and the beats, with beat correspondents as sub-agents; drafts to the journalists.",
+  "domain": "role-correspondent.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Correspondent"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

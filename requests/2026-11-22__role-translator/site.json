@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Translator",
+  "description": "The Translator role: Translations of the content, never the same text twice, through a translation memory.",
+  "domain": "role-translator.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Translator"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

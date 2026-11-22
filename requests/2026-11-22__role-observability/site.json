@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Observability",
+  "description": "The Observability role: Who reads what and what the agents do, without identifying a reader: page views, drains, reports.",
+  "domain": "role-observability.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Observability"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

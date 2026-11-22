@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Accountant",
+  "description": "The Accountant role: Budgets of tokens and runs per agent, per pass and per loop; stops a loop at its budget.",
+  "domain": "role-accountant.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Accountant"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}

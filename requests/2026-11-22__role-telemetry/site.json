@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Role: Telemetry",
+  "description": "The Telemetry role: Tokens, cost, tools and hosts per agent and run, from the sessions' records; the only role that reads transcripts.",
+  "domain": "role-telemetry.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Role__Telemetry"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "maestro.d (account-d)"
+}
