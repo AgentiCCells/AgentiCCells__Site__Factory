@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:09:00Z",
+  "updated": "2026-11-22T04:10:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -23,7 +23,8 @@
         "signing_fingerprint": "sha256:40ff743093f2ecd5",
         "state": "rename 8b0fbf2 and entries for pm and workflows b3d789b on release/key-rename (fingerprints recomputed by email.dev.d); design's entry to follow. Not on dev: needs Dinis's yes in email.dev.d's session."
       },
-      "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them."
+      "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them.",
+      "next": "from email.pm.d ~04:06 UTC: ranks 5 lane keys from team/keys (approvers wait on W4) and 4 sign everything"
     },
     {
       "agent": "email.pm.d@AgentiCCells.dinis",
@@ -49,7 +50,8 @@
         "fingerprint": "sha256:4e5d4b8694bc2ab5",
         "signing_fingerprint": "sha256:a9f9fe47aa83d23f",
         "state": "checked by conductor.d; sent to email.dev.d for an entry on release/key-rename"
-      }
+      },
+      "next": "from email.pm.d ~04:06 UTC: ranks 6 five inbox designs, 9 shared top bar, 11 live client against screenshots"
     },
     {
       "agent": "email.workflows.d@AgentiCCells.dinis",
@@ -62,7 +64,8 @@
         "fingerprint": "sha256:4da4bd396d0d9c19",
         "signing_fingerprint": "sha256:e5a47707dbd787ff",
         "state": "checked by conductor.d (ssh line matches bundle.sign); entry to be committed by email.dev.d"
-      }
+      },
+      "next": "from email.pm.d ~04:06 UTC: ranks 2 workflow map, 3 first real send (after the outbox key), 7 workflow experiments; later 4 and 8"
     }
   ],
   "claims": [],
@@ -101,6 +104,7 @@
     "2026-11-22 04:05 UTC: email.design.d reported; key checked and sent to email.dev.d; signer warning passed to email.dev.d, pm and workflows. email.dev.d added pm and workflows key entries (b3d789b).",
     "2026-11-22 04:07 UTC: email.dev.d folded pm's work into release/key-rename (0992106). Asked it to fix signer/trailer mismatch on pm's re-signed commits and add design's key before release.",
     "2026-11-22 04:08 UTC: email.pm.d reported Dinis's direction and coordinator role (~04:04 UTC in its session) and an hourly scheduled task; accepted, roles split recorded.",
-    "2026-11-22 04:06 UTC: email.pm.d confirmed its commits a2b1092, 2bc8429, 212b94a are signed by its own key; design's proposals in its backlog (a2fe89f). Idle until its 05:05 UTC pass."
+    "2026-11-22 04:06 UTC: email.pm.d confirmed its commits a2b1092, 2bc8429, 212b94a are signed by its own key; design's proposals in its backlog (a2fe89f). Idle until its 05:05 UTC pass.",
+    "2026-11-22 04:07 UTC: email.pm.d recorded its scheduled task's authority (75f92d9) and copied its notes to workflows, design and dev."
   ]
 }
