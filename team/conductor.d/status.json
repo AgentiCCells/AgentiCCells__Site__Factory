@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T06:20:00Z",
+  "updated": "2026-11-22T06:21:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -76,7 +76,7 @@
     "Dinis: email.design.d's five inbox designs are ready for you to pick one or two: docs/design/inbox-concepts.md on work/email.design.d (04520c9), screenshots in the page, made-up mail only. https://claude.ai/code/session_015gaHdb5B7vab8KyN7YiDNZ",
     "Dinis: approvers, now three options (email.dev.d's note 325d964 on release/next): (a) the cell's own site from team/keys (breaks ABP N8); (b) the pki.sgit.ai register, only your identity pinned; (c) from your 04:08 words: each workflow names its approvers, their published keys reach the page by QR code (k1 format) and the person accepts them there, sealed in IndexedDB; keeps N8 and can combine with (b). Which? And is this right for lane keys: a vault (or the agent in it) makes the key and it is published in team/keys? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: before building lane keys, email.dev.d asks for one narrow allowlist line in its leak scan (scripts/leak-scan.mjs) for the built-in lane-key file, as you approved for trusted.js on 16 Nov. It is a change to a check, so it waits for your yes. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
-    "Dinis: email.pm.d's one-page list of what waits on you, board/2026-11-22-waits-on-dinis.md on work/email.pm.d (2bc8429). Still open there: W1 the outbox key, W2 the Safe Browsing review, W3 the passkey round trip, W4 approvers (a)/(b), W8 key merges. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
+    "Dinis: email.pm.d's one-page list of what waits on you, board/2026-11-22-waits-on-dinis.md on work/email.pm.d (2bc8429). Still open there: W1 the outbox key (note from email.workflows.d's round 3: conductor@PrompTugal.dinis's first entry for your send-to-self must be unsigned, as the policy refuses a signed entry to the mailbox itself), W2 the Safe Browsing review, W3 the passkey round trip, W4 approvers (a)/(b), W8 key merges. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: chat panel on the email site (your ask in email.workflows.d's session, ~04:08 UTC, now rank 6 for email.dev.d with email.design.d, proposal page first). email.pm.d asks (W10): how should messages from the panel reach the agents' sessions, and do you sign each one? https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: email.workflows.d's questions (docs/plan/workflows.md on work/email.workflows.d, bb18ba7, \"Open, for Dinis\"): conductor@PrompTugal.dinis is not a proposer, so its signed proposals would be refused (proposed: an outreach role and a real email policy signed by you); outreach defaults (no cc, one organisation) written as policy; follow-ups without a press: not yet (ABP N1); templates per campaign; who sets the follow-up wait. https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
     "Dinis: email.pm.d asks (W11) for more screenshots of the mail client on your real mail, for email.design.d's live-client review (rank 12). https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
@@ -133,6 +133,7 @@
     "2026-11-22 05:05 UTC: email.pm.d's pass (2bb8a6f): live still v0.1.51; release/next2 waits on Dinis; asks to start email.twins.d (put to Dinis).",
     "2026-11-22 05:16 UTC: email.workflows.d round 2 (da46c69).",
     "2026-11-22 06:05 UTC: email.pm.d's pass: email.dev.d handed over; release/next2 at 01231ac waits on Dinis; who takes the dev queue put to Dinis.",
-    "2026-11-22 06:19 UTC: email.workflows.d round 3 (f9e15fe); W1 finding: first entry must be unsigned."
+    "2026-11-22 06:19 UTC: email.workflows.d round 3 (f9e15fe); W1 finding: first entry must be unsigned.",
+    "2026-11-22 06:19 UTC: email.pm.d recorded the round 3 W1 finding on its waits page; added to the W1 ask. I do not contact PrompTugal; it goes to Dinis with the ask."
   ]
 }
