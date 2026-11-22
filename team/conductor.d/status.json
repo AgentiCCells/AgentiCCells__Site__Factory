@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T01:50:00Z",
+  "updated": "2026-11-22T01:51:00Z",
   "state": "key merged (PR #52, 57c4c0e); my commits rebased onto dev, waiting to go to dev; cell.email.d building item 1",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -21,7 +21,7 @@
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
         "signing_fingerprint": "sha256:40ff743093f2ecd5",
-        "state": "entry on AgentiCCells__Cell__Email branch work/maestro.d-cell-email-d-key (847466e), PR to dev for Dinis (reported by maestro.d, not checked by me: I cannot reach that repository; cell.email.d asked to check). cell.email.b's key stays active (Dinis in maestro.d's session, relayed)."
+        "state": "entry on work/maestro.d-cell-email-d-key (847466e): keys match (cell.email.d's check); three fixes asked of maestro.d before merge: commit check fails on its Agent: trailer, entry lacks agent and session, approved_by says merged before it is."
       },
       "note": "Gmail, Calendar and Drive connectors are attached to its session; it reports not using them and its brief forbids them."
     }
@@ -31,7 +31,7 @@
     "Dinis: my commits are rebased onto dev and signature-checked on branch work/conductor.d-on-dev. The push to dev was held by this session's permission check. Say yes here and I push them to dev (fast-forward, my own files only). https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
     "Dinis: the wake trig_01DLGQUfJbiz2gRbTupmx8fj on account B still fires hourly into cell.email.b's session, which its hand-over says has stopped. Turn it off in conductor.b's session? https://claude.ai/code/session_01Kw9UwFgyMuNDYCnrW1ZKkm",
     "Dinis: cell.email.d asks for read access to AgentiCCells__Site__Factory. Not needed now: I sent it the email-cell brief verbatim. Say yes in its session only if you want it. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
-    "Dinis: merge cell.email.d's key PR in AgentiCCells__Cell__Email (branch work/maestro.d-cell-email-d-key, 847466e). https://claude.ai/code/session_015gaHdbdtdAPC4v2AstRS8T",
+    "Dinis: hold the merge of cell.email.d's key PR until maestro.d fixes three points (failing commit check, missing agent and session, approved_by wording). https://claude.ai/code/session_015gaHdbdtdAPC4v2AstRS8T",
     "Dinis: cell.email.d asks where the page gets pinned approvers. Proposal: the person pins their own key in the page, sealed in IndexedDB (team/cell.email.d/notes/2026-11-22-decide-in-page.md on work/cell.email.d). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: where agents' Ed25519 lane keys come from. Proposal: team/keys entries, built into the page as trusted.js is. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: push cell.email.d's ea77d4f to dev? It deploys the live email cell site; it reports no change for entries without signed.json. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6"
@@ -47,6 +47,7 @@
     "2026-11-22 01:42 UTC: cell.email.d reported onboarding and proposed three items; 01:43 UTC conductor.d gave it item 1 (fixtures only; item 3 touches Gmail and waits for Dinis) and sent its key to maestro.d.",
     "2026-11-22 01:46 UTC: maestro.d reported PR #52 merged with Dinis's \"merged, go ahead\"; checked on dev. Rebased onto dev; check-signatures OK. The push to dev was refused by the session's permission check; pushed to work/conductor.d-on-dev instead.",
     "2026-11-22 01:48 UTC: maestro.d reported cell.email.d's key PR (847466e) and Dinis's \"yes push it, keep cell.email.b's key active\". Passed to cell.email.d to check the entry.",
-    "2026-11-22 01:49 UTC: cell.email.d reported item 1 built (ea77d4f, work/cell.email.d) and stopped; three decisions put to Dinis."
+    "2026-11-22 01:49 UTC: cell.email.d reported item 1 built (ea77d4f, work/cell.email.d) and stopped; three decisions put to Dinis.",
+    "2026-11-22 01:50 UTC: cell.email.d checked its key entry: keys match, three fixes; passed to maestro.d."
   ]
 }
