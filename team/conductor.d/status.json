@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:12:00Z",
+  "updated": "2026-11-22T04:13:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -16,7 +16,7 @@
       "agent": "email.dev.d@AgentiCCells.dinis (formerly cell.email.d, renamed by Dinis ~02:12 UTC, reported)",
       "session": "https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "state": "release/next at 2454b8e ready (its report): email.pm.d's branch fast-forwarded with its own signatures, plus key rename and pm, design and workflows keys (2be7fc0, fingerprints recomputed), approvers note, REALITY.md. Every commit signed by its own agent; 7f16cea not included. Gates OK. release/key-rename superseded. Waits for Dinis's yes in its session.",
+      "state": "release/next now also holds 77a0ee6 (checker: recipients.allow_cc and one_domain, from workflows' proposal); waits for Dinis's yes in its session. Approvers: will read Dinis's 04:08 words first; may become a third option (per-workflow approvers, QR keys, vault lane keys). Chat panel next after the release, starting with how an agent tells Dinis's signed words from other text.",
       "wake": "none",
       "key": {
         "fingerprint": "sha256:e11a6de219dacc73",
@@ -70,7 +70,7 @@
   ],
   "claims": [],
   "asks": [
-    "Dinis: release ready. Say yes in email.dev.d's session to release release/next (2454b8e) to dev: email.pm.d's work, the key rename and the pm, design and workflows keys, every commit signed by its own agent (checked by email.dev.d). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: release ready. Say yes in email.dev.d's session to release release/next to dev: email.pm.d's work, the key rename and the pm, design and workflows keys, and 77a0ee6 (checker learns recipients.allow_cc and one_domain); every commit signed by its own agent. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: approvers \"from the respective website\": (a) this cell's own site, built from team/keys (breaks ABP N8 and C6b: any agent that can push becomes an approver; needs an ABP change), or (b) pki.sgit.ai's public register, already used by the page with its root pinned, the page pinning only the approver's identity name (keeps N8). email.dev.d proposes (b), with your own identity as the only approver for now. Which, and which identity? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: before building lane keys, email.dev.d asks for one narrow allowlist line in its leak scan (scripts/leak-scan.mjs) for the built-in lane-key file, as you approved for trusted.js on 16 Nov. It is a change to a check, so it waits for your yes. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.pm.d's one-page list of what waits on you, board/2026-11-22-waits-on-dinis.md on work/email.pm.d (2bc8429). Still open there: W1 the outbox key, W2 the Safe Browsing review, W3 the passkey round trip, W4 approvers (a)/(b), W8 key merges. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
@@ -112,6 +112,7 @@
     "2026-11-22 04:07 UTC: email.dev.d rebuilt the release as release/next (2454b8e) with every commit signed by its own agent and design's key; ready for Dinis. email.workflows.d finished both claims (bb18ba7).",
     "2026-11-22 04:08 UTC: email.dev.d confirmed release/next keeps every agent's own signatures; asked for a leak-scan allowlist line for lane keys (put to Dinis). email.workflows.d moved to rank 2.",
     "2026-11-22 04:08 UTC: Dinis spoke in email.workflows.d's session (reported): approvers, QR keys, vault lane keys, a chat panel, an overnight loop. Wake noted; approvers material passed to email.dev.d.",
-    "2026-11-22 04:09 UTC: email.pm.d put the chat panel at rank 6 (81acfb9), W10 for Dinis."
+    "2026-11-22 04:09 UTC: email.pm.d put the chat panel at rank 6 (81acfb9), W10 for Dinis.",
+    "2026-11-22 04:10 UTC: email.dev.d added 77a0ee6 to release/next; approvers held until it reads Dinis's 04:08 words; chat panel to start with the instruction-channel question."
   ]
 }
