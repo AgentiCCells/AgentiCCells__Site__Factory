@@ -79,6 +79,33 @@
         "fingerprint": "sha256:d4350f8b6d416943",
         "signing_fingerprint": "sha256:30bc2667a0b3c2aa"
       }
+    },
+    {
+      "id": "sha256:dea2dba63836feae",
+      "agent": "conductor.d@AgentiCCells.dinis",
+      "label": "conductor.d@AgentiCCells.dinis",
+      "role": "Conducts the AgentiCCells agents on Dinis's account D, the twin of conductor.b@AgentiCCells.dinis. A session key: it ends with its session.",
+      "fingerprint": "sha256:dea2dba63836feae",
+      "signing_fingerprint": "sha256:700109d85b177797",
+      "created": "2026-11-22",
+      "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
+      "held_by": "conductor.d@AgentiCCells.dinis, session on Dinis's account D",
+      "lifetime": "ephemeral: valid while this agent's session exists",
+      "status": "active",
+      "how": "Made by the agent in its own session on 22 November 2026 with sgit pki keygen; public bundle from sgit pki export, sent to maestro.d (account-d), who added it here for Dinis to merge. Only the public half is here.",
+      "ssh_signing": {
+        "from": "public_key.sign",
+        "note": "Commits are signed with the public_key.sign key (ECDSA P-256) as a git SSH signature (namespace git)."
+      },
+      "authorised": "Dinis, 2026-11-22 ~01:23 UTC, in maestro.d (account-d)'s session: \"yes please start conductor.d for ACC with your changes\" (recorded in PrompTugal__News__Website board/team/maestro.d/decisions/2026-11-22-conductor-d-agenticcells.md, branch dev).",
+      "bundle": {
+        "v": 1,
+        "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAzBBCLj1wVT3+NNmeLKv4\nFSLssu79XIURprM6bSHrrouJ2Og29rz9BePSyoFEPqokGBqbb/wiaZBUYLTvttgc\nani/evr5R94jBcrVZh4XS7z7ziDpKNdfOLcRscVB8cK1s28k6Adf+Lg/Q8eLhHTU\nFkq+lRkAhVKZ9wr+u6IixLB4Gz9mz5FbwN39Y3ZuXEy4avsFmeDjdIfIwskXsuZj\nU6ZpSu4N5umhtYbELHMtKNrYlWX2oMOs3Gfwx5e8C3vqlW6/vtuIclYzHhd4NCeG\noNUZHWlHhiCboAsTGxZEbb62tvbdhbyYQL/PtXS5uH7aakixddMDRX1bnChYXwAy\nbfEYmbJk4Ol2XQqqkywNIJhKPhcehNsI7DObknWqGYp0D72IJ1vuqTYUrvY0bhy/\nC6FvrazpTm9gQAMfyDzwKGygZG9ewzQqkoFeGB3+tdYc6UyhBOQ6vT0jDuDtr1C1\nr8yXmmesg6drqB5BctMu5OudUqbVUf1JBsLmL6/I9LT0cPHgpihK8tKyPJJtdF3Y\nXfY5XzMdGDxYH4E/OnDORJaKVg1n0+ZgbInjmkye8ZJirLOPgLIHRUOyuQdEC7Ti\nS6hQzKbkvUh6vHffdRYJWoM51/ukm0PEl1IxS1T/xRWzlL5q8i3GJnq5BHgxc0ax\nQke5icgWqZN9lazuVEq/ct8CAwEAAQ==\n-----END PUBLIC KEY-----\n",
+        "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHpj8UulWrSCSWtgXc7Kgxlmgh+pN\nXLEPUKSFQ4lyq5yXQiMndwjAiDgfQrFmkxE1FiY5fYiSY0nnvJJUVNYDGA==\n-----END PUBLIC KEY-----\n",
+        "label": "conductor-d-agenticcells",
+        "fingerprint": "sha256:dea2dba63836feae",
+        "signing_fingerprint": "sha256:700109d85b177797"
+      }
     }
   ]
 }
