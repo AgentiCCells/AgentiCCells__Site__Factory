@@ -71,7 +71,7 @@
   "claims": [],
   "asks": [
     "Dinis: release ready. Say yes in email.dev.d's session to release release/next to dev: email.pm.d's work, the key rename and the pm, design and workflows keys, and 77a0ee6 (checker learns recipients.allow_cc and one_domain); every commit signed by its own agent. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
-    "Dinis: approvers \"from the respective website\": (a) this cell's own site, built from team/keys (breaks ABP N8 and C6b: any agent that can push becomes an approver; needs an ABP change), or (b) pki.sgit.ai's public register, already used by the page with its root pinned, the page pinning only the approver's identity name (keeps N8). email.dev.d proposes (b), with your own identity as the only approver for now. Which, and which identity? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: approvers, now three options (email.dev.d's note 325d964 on release/next): (a) the cell's own site from team/keys (breaks ABP N8); (b) the pki.sgit.ai register, only your identity pinned; (c) from your 04:08 words: each workflow names its approvers, their published keys reach the page by QR code (k1 format) and the person accepts them there, sealed in IndexedDB; keeps N8 and can combine with (b). Which? And is this right for lane keys: a vault (or the agent in it) makes the key and it is published in team/keys? https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: before building lane keys, email.dev.d asks for one narrow allowlist line in its leak scan (scripts/leak-scan.mjs) for the built-in lane-key file, as you approved for trusted.js on 16 Nov. It is a change to a check, so it waits for your yes. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.pm.d's one-page list of what waits on you, board/2026-11-22-waits-on-dinis.md on work/email.pm.d (2bc8429). Still open there: W1 the outbox key, W2 the Safe Browsing review, W3 the passkey round trip, W4 approvers (a)/(b), W8 key merges. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: chat panel on the email site (your ask in email.workflows.d's session, ~04:08 UTC, now rank 6 for email.dev.d with email.design.d, proposal page first). email.pm.d asks (W10): how should messages from the panel reach the agents' sessions, and do you sign each one? https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
@@ -117,6 +117,7 @@
     "2026-11-22 04:10 UTC: email.dev.d added 77a0ee6 to release/next; approvers held until it reads Dinis's 04:08 words; chat panel to start with the instruction-channel question.",
     "2026-11-22 04:10 UTC: email.design.d finished items 1 to 4 and the axe and dark pass (143ca1a); told to hand over to email.dev.d directly.",
     "2026-11-22 04:11 UTC: email.design.d claimed rank 7 (five inbox designs); email.pm.d W11 (screenshots) for Dinis.",
-    "2026-11-22 04:12 UTC: email.workflows.d round 1 pushed (976348f)."
+    "2026-11-22 04:12 UTC: email.workflows.d round 1 pushed (976348f).",
+    "2026-11-22 04:13 UTC: email.dev.d added option (c) for approvers and a lane-key reading (325d964). Told email.workflows.d to push its rebase to a new branch, not force-push."
   ]
 }
