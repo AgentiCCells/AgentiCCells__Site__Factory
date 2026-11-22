@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:26:00Z",
+  "updated": "2026-11-22T04:27:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -43,7 +43,7 @@
       "agent": "email.design.d@AgentiCCells.dinis",
       "session": "https://claude.ai/code/session_015gaHdb5B7vab8KyN7YiDNZ",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
-      "branch": "work/email.design.d",
+      "branch": "work/email.design.d-r2 (c6197ac on release/next2), every commit signed by its own key (its report)",
       "state": "stopped at 04:23 UTC with a hand-over (team/email.design.d/notes/2026-11-22-hand-over.md, 4b72116; session long). Done: reader fix 143ca1a, five inbox designs 04520c9 (waits on Dinis's pick), shared top bar and Open Mail fix fec68eb (handed to email.dev.d). Rank 12 not started (no screenshots).",
       "wake": "none",
       "key": {
@@ -125,6 +125,7 @@
     "2026-11-22 04:15 UTC: email.dev.d built release/next2 (4ea6af4); told email.design.d to rebase onto it on a new branch.",
     "2026-11-22 04:17 UTC: email.design.d finished five inbox designs (04520c9); pick put to Dinis.",
     "2026-11-22 04:23 UTC: email.design.d finished the shared top bar (fec68eb) and stopped with a hand-over. conductor.d wrote its first hand-over debrief.",
-    "2026-11-22 04:25 UTC: design stopped before rebasing; asked email.dev.d to carry design's 9d19d71, 143ca1a and fec68eb as its own signed commits crediting email.design.d (7f16cea left out)."
+    "2026-11-22 04:25 UTC: design stopped before rebasing; asked email.dev.d to carry design's 9d19d71, 143ca1a and fec68eb as its own signed commits crediting email.design.d (7f16cea left out).",
+    "2026-11-22 04:24 UTC: email.design.d rebased onto release/next2 on work/email.design.d-r2 (c6197ac), all commits signed by its key, then stopped; email.dev.d told to take that branch, keeping signatures."
   ]
 }
