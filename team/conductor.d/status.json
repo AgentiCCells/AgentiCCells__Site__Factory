@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T09:39:00Z",
+  "updated": "2026-11-22T17:06:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -71,6 +71,7 @@
   ],
   "claims": [],
   "asks": [
+    "Dinis: maestro.d relays your ~17:05 UTC word \"Yes, the conductor can decide on open items\" (two-way doors go ahead, one-way doors come to you). Please confirm here, since it widens my brief. If yes, I would: have email.dev.d build fixes 1 and 2 for the unknown-sender codes (two-way, protective); release release/next2 with them; take approvers option (c) with lane keys made by vaults and published in team/keys; allow the narrow leak-scan line for the lane-key file (a check change, so I would rather you say yes to that one); and leave the inbox concept pick to you, as it is your taste. Releases still need your word in email.dev.d's session unless you allow my relayed word there. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
     "Dinis: CONFIRMED by email.dev.d (medium to high), live email site v0.1.51: a sealed code from an unknown sender opens with no question and no sender line (connect.js:122 and :130; the confirmation was removed on your 16 Nov word, cea820f). Reproduced with made-up keys: the stored twin key was replaced silently and the page went to open the outsider's vault; a code could also replace the SG/Send token, make the next sync write mailbox headers into an outsider's vault, or plant an outbox key (sends still need your press). Proposed fix: (1) always say \"not signed by a trusted sender\"; (2) never overwrite a stored twin key, outbox key or token without one confirmation showing old and new vault ids; (3) optional: confirm every unknown-sender code. (1) and (2) keep open-straight-away for trusted senders and first keys. Say which in its session; until fixed, paste only codes you made or asked for, and keep a copy of your twin key. Notes: team/email.dev.d/notes/2026-11-22-unknown-sender-codes.md (release/next2 f1cd6bc). https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: release ready. Say \"push to dev\" in email.dev.d's session to release release/next2 (now 01231ac): pm, workflows, design and dev work, every commit signed by its own agent. Live change: the mail reader and phone layout and one shared top bar. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: email.dev.d wrote a hand-over (~06:10 UTC); its session is idle but open (42% of context). Keep using it for the dev queue, or start a fresh email.dev.d from its hand-over? https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
@@ -146,6 +147,7 @@
     "2026-11-22 09:29 UTC: email.workflows.d finished the trust ladder (c055e31); W17 for Dinis.",
     "2026-11-22 09:31 UTC: email.workflows.d's signed-entry run (436822c): rung 1 needs only the pin lists filled.",
     "2026-11-22 09:35 UTC: email.workflows.d's key-paste run (de07862) found an unknown-sender sealed code kept without warning; email.dev.d asked to confirm (rank 40); flagged to Dinis.",
-    "2026-11-22 09:37 UTC: email.dev.d confirmed the unknown-sender code issue on the live site (medium to high); fix options put to Dinis; nothing pushed."
+    "2026-11-22 09:37 UTC: email.dev.d confirmed the unknown-sender code issue on the live site (medium to high); fix options put to Dinis; nothing pushed.",
+    "2026-11-22 17:04 UTC: maestro.d relayed Dinis's word that the conductor can decide open items; asked Dinis to confirm here; Gmail tool naming (gmail.google.tool.sws) noted."
   ]
 }
