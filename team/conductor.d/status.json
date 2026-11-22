@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T04:14:00Z",
+  "updated": "2026-11-22T04:15:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -58,8 +58,8 @@
       "session": "https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.workflows.d",
-      "state": "on Dinis's ~04:08 UTC word in its session (reported): mapping workflows as state machines, simplest up, as products, with drawings and rounds; workflow map (pm rank 2) claimed.",
-      "wake": "hourly message to its own session, set by itself on Dinis's word in its session (reported); stops at 09:00 UTC unless Dinis says otherwise",
+      "state": "night loop round 1 pushed (its report), work/email.workflows.d 976348f: nine workflows as state machines (sim/workflows/machines.mjs), generated docs/plan/workflow-machines.md and SVG diagrams, 6 new tests (127 total), gates OK. Next round 05:13 UTC.",
+      "wake": "one-shot messages to its own session, each round scheduling the next (next trig_015RGhTAMfdP8D6ix32C9t9J at 05:13 UTC); none after 09:00 UTC; on Dinis's word in its session (reported)",
       "key": {
         "fingerprint": "sha256:4da4bd396d0d9c19",
         "signing_fingerprint": "sha256:e5a47707dbd787ff",
@@ -116,6 +116,7 @@
     "2026-11-22 04:09 UTC: email.pm.d put the chat panel at rank 6 (81acfb9), W10 for Dinis.",
     "2026-11-22 04:10 UTC: email.dev.d added 77a0ee6 to release/next; approvers held until it reads Dinis's 04:08 words; chat panel to start with the instruction-channel question.",
     "2026-11-22 04:10 UTC: email.design.d finished items 1 to 4 and the axe and dark pass (143ca1a); told to hand over to email.dev.d directly.",
-    "2026-11-22 04:11 UTC: email.design.d claimed rank 7 (five inbox designs); email.pm.d W11 (screenshots) for Dinis."
+    "2026-11-22 04:11 UTC: email.design.d claimed rank 7 (five inbox designs); email.pm.d W11 (screenshots) for Dinis.",
+    "2026-11-22 04:12 UTC: email.workflows.d round 1 pushed (976348f)."
   ]
 }
