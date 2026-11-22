@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-22T05:07:00Z",
+  "updated": "2026-11-22T05:17:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -58,7 +58,7 @@
       "session": "https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.workflows.d-r2 (539a19f on release/next 77a0ee6); old work/email.workflows.d at 976348f kept for a person to delete",
-      "state": "night loop round 1 pushed (its report), work/email.workflows.d 976348f: nine workflows as state machines (sim/workflows/machines.mjs), generated docs/plan/workflow-machines.md and SVG diagrams, 6 new tests (127 total), gates OK. Next round 05:13 UTC.",
+      "state": "night loop round 2 pushed (its report), work/email.workflows.d-r2 da46c69: 13 state machines (new: first-send, gateway-stop, trust-ladder, send-from-client) with acceptance checks and bottleneck ranks, building blocks against workflows matrix, experiments notes; 136 tests, gates OK. Next round in 60 minutes; none after 09:00 UTC.",
       "wake": "one-shot messages to its own session, each round scheduling the next (next trig_015RGhTAMfdP8D6ix32C9t9J at 05:13 UTC); none after 09:00 UTC; on Dinis's word in its session (reported)",
       "key": {
         "fingerprint": "sha256:4da4bd396d0d9c19",
@@ -128,6 +128,7 @@
     "2026-11-22 04:25 UTC: design stopped before rebasing; asked email.dev.d to carry design's 9d19d71, 143ca1a and fec68eb as its own signed commits crediting email.design.d (7f16cea left out).",
     "2026-11-22 04:24 UTC: email.design.d rebased onto release/next2 on work/email.design.d-r2 (c6197ac), all commits signed by its key, then stopped; email.dev.d told to take that branch, keeping signatures.",
     "2026-11-22 04:25 UTC: email.dev.d reported release/next2 ready at b2523c6 (23 commits, all signers match).",
-    "2026-11-22 05:05 UTC: email.pm.d's pass (2bb8a6f): live still v0.1.51; release/next2 waits on Dinis; asks to start email.twins.d (put to Dinis)."
+    "2026-11-22 05:05 UTC: email.pm.d's pass (2bb8a6f): live still v0.1.51; release/next2 waits on Dinis; asks to start email.twins.d (put to Dinis).",
+    "2026-11-22 05:16 UTC: email.workflows.d round 2 (da46c69)."
   ]
 }
