@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-23T04:57:00Z",
+  "updated": "2026-11-23T04:58:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -151,7 +151,8 @@
     "2026-11-22 17:04 UTC: maestro.d relayed Dinis's word that the conductor can decide open items; asked Dinis to confirm here; Gmail tool naming (gmail.google.tool.sws) noted.",
     "2026-11-23 04:52 UTC: maestro.d relayed Dinis's no-agent-blocked rule; passed to the email team; branch-only fixes and approvers (c) asked of email.dev.d, logged as exceptions.",
     "2026-11-23 04:55 UTC: rule text verified against https://promptugal.news/CLAUDE.md and forwarded verbatim to email.pm.d and email.dev.d.",
-    "2026-11-23 04:53 UTC: email.dev.d built unknown-sender fixes (458c4ad); approvers (c) needs Dinis's key-type choice; release/next2 at 92bb7de."
+    "2026-11-23 04:53 UTC: email.dev.d built unknown-sender fixes (458c4ad); approvers (c) needs Dinis's key-type choice; release/next2 at 92bb7de.",
+    "2026-11-23 04:53 UTC: email.pm.d's permission check refused adopting the relayed rule; it keeps to its brief and did not pass the rule to workflows and design (a7a4f7f). The rule applies to the email team only once Dinis says so in their sessions or it is copied into their CLAUDE.md on his word."
   ],
   "exceptions": [
     {
