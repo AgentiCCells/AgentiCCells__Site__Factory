@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-23T04:53:00Z",
+  "updated": "2026-11-23T04:56:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -148,7 +148,8 @@
     "2026-11-22 09:35 UTC: email.workflows.d's key-paste run (de07862) found an unknown-sender sealed code kept without warning; email.dev.d asked to confirm (rank 40); flagged to Dinis.",
     "2026-11-22 09:37 UTC: email.dev.d confirmed the unknown-sender code issue on the live site (medium to high); fix options put to Dinis; nothing pushed.",
     "2026-11-22 17:04 UTC: maestro.d relayed Dinis's word that the conductor can decide open items; asked Dinis to confirm here; Gmail tool naming (gmail.google.tool.sws) noted.",
-    "2026-11-23 04:52 UTC: maestro.d relayed Dinis's no-agent-blocked rule; passed to the email team; branch-only fixes and approvers (c) asked of email.dev.d, logged as exceptions."
+    "2026-11-23 04:52 UTC: maestro.d relayed Dinis's no-agent-blocked rule; passed to the email team; branch-only fixes and approvers (c) asked of email.dev.d, logged as exceptions.",
+    "2026-11-23 04:55 UTC: rule text verified against https://promptugal.news/CLAUDE.md and forwarded verbatim to email.pm.d and email.dev.d."
   ],
   "exceptions": [
     {
