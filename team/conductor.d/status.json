@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-23T15:08:00Z",
+  "updated": "2026-11-23T16:07:00Z",
   "state": "on dev; key merged; conducting email.dev.d and three new email agents on account D",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -86,7 +86,7 @@
     "Dinis: email.workflows.d's questions (docs/plan/workflows.md on work/email.workflows.d, bb18ba7, \"Open, for Dinis\"): conductor@PrompTugal.dinis is not a proposer, so its signed proposals would be refused (now drafted for you to sign on work/email.workflows.d-r2, 168a94e: one outreach policy per campaign with its address list, and an outreach role); outreach defaults (no cc, one organisation) written as policy; follow-ups without a press: not yet (ABP N1); templates per campaign; who sets the follow-up wait. https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9",
     "Dinis: email.pm.d asks (W11) for more screenshots of the mail client on your real mail, for email.design.d's live-client review (rank 12). https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
     "Dinis: email.pm.d proposes first items for the others (team/email-agents/backlog.md on work/email.pm.d, a2b1092): design 4,5,6 (shared top bar, home page links, review of the live client); workflows 2,10,11 (first-send step list, templates, real policy as proposals); twins 12-14; contacts 15-17; crm 20,18,19. Confirm or change. https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
-    "Dinis: start email.twins.d now (agreed order: twins, then contacts, then crm)? email.pm.d reports rank 33 (load the twin into the page's full check, so replies can pass) and ranks 19 to 21 wait on it. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
+    "Dinis: start email.twins.d now? I recommend not starting email.crm.d: account A's crm.dev.a already builds a CRM in the browser (own CRM vault, linking a mail thread to a company; work/crm.dev.a 3a41ef2, reported by email.pm.d, not checked), which overlaps it; email.contacts.d may overlap too. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
     "Dinis: email.design.d stopped with a hand-over (session long). Restart a fresh email.design.d from its hand-over when you want design work to continue? https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
     "Dinis: email.workflows.d's overnight loop ended at 08:25 UTC with a hand-over. Should it run again (in its session), or wait for your answers on approvers, the outreach policy and the outbox key? https://claude.ai/code/session_015gaHdbAGDK9xNPDa9znvB9"
   ],
@@ -154,7 +154,8 @@
     "2026-11-23 04:55 UTC: rule text verified against https://promptugal.news/CLAUDE.md and forwarded verbatim to email.pm.d and email.dev.d.",
     "2026-11-23 04:53 UTC: email.dev.d built unknown-sender fixes (458c4ad); approvers (c) needs Dinis's key-type choice; release/next2 at 92bb7de.",
     "2026-11-23 04:53 UTC: email.pm.d's permission check refused adopting the relayed rule; it keeps to its brief and did not pass the rule to workflows and design (a7a4f7f). The rule applies to the email team only once Dinis says so in their sessions or it is copied into their CLAUDE.md on his word.",
-    "2026-11-23 15:06 UTC: email.pm.d reported an account A mail team (mail.conductor.a, mail.dev.a) with an overlapping release; asked maestro.d to connect; release order put to Dinis."
+    "2026-11-23 15:06 UTC: email.pm.d reported an account A mail team (mail.conductor.a, mail.dev.a) with an overlapping release; asked maestro.d to connect; release order put to Dinis.",
+    "2026-11-23 16:05 UTC: email.pm.d reported account A's crm.dev.a building a browser CRM, overlapping email.crm.d (not started)."
   ],
   "exceptions": [
     {
