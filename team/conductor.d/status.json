@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-23T16:55:00Z",
+  "updated": "2026-11-23T16:56:00Z",
   "state": "Email Cell code work moving to account A (G1); hand-overs asked of email.dev.d and email.pm.d; asks now go to d.decisions",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -32,8 +32,8 @@
       "session": "https://claude.ai/code/session_015gaHdasKF9YcSA27g5dMPz",
       "repository": "AgentiCCells/AgentiCCells__Cell__Email",
       "branch": "work/email.pm.d",
-      "state": "coordinating the email team on Dinis's ~04:04 UTC word in its session (reported): backlog re-ranked (1 coordination, 2 workflow map, 3 first real send, 4 sign everything, 5 approvers and lane keys, 6 five inbox designs); hourly pass at :05 UTC.",
-      "wake": "trig_01L64ZC6Ci2m1S34yV3ctACw, hourly at :05 UTC into its own session, set by email.pm.d on Dinis's word in its session (reported)",
+      "state": "hand-over to account A pushed: work/email.pm.d 0c27bd0, team/email.pm.d/notes/2026-11-23-hand-over-to-account-a.md. Idle.",
+      "wake": "trig_01L64ZC6Ci2m1S34yV3ctACw disabled (not deleted) at ~16:52 UTC 23 Nov",
       "key": {
         "fingerprint": "sha256:2bac4a38dfe626e4",
         "signing_fingerprint": "sha256:5b84eb2d1f636974",
@@ -140,7 +140,8 @@
     "2026-11-23 04:53 UTC: email.pm.d's permission check refused adopting the relayed rule; it keeps to its brief and did not pass the rule to workflows and design (a7a4f7f). The rule applies to the email team only once Dinis says so in their sessions or it is copied into their CLAUDE.md on his word.",
     "2026-11-23 15:06 UTC: email.pm.d reported an account A mail team (mail.conductor.a, mail.dev.a) with an overlapping release; asked maestro.d to connect; release order put to Dinis.",
     "2026-11-23 16:05 UTC: email.pm.d reported account A's crm.dev.a building a browser CRM, overlapping email.crm.d (not started).",
-    "2026-11-23 16:54 UTC: G1 relayed: Email Cell code work moves to account A. Hand-overs asked of email.dev.d and email.pm.d; two asks sent to d.decisions; the rest pass to account A."
+    "2026-11-23 16:54 UTC: G1 relayed: Email Cell code work moves to account A. Hand-overs asked of email.dev.d and email.pm.d; two asks sent to d.decisions; the rest pass to account A.",
+    "2026-11-23 16:52 UTC: email.pm.d pushed its hand-over to account A (0c27bd0) and disabled its hourly pass."
   ],
   "exceptions": [
     {
