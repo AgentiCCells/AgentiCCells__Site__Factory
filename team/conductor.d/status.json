@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-24T11:55:00Z",
+  "updated": "2026-11-24T11:58:00Z",
   "state": "Email Cell handed to account A (G1): all four account D email agents handed over and idle. Two asks with d.decisions.",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -72,7 +72,9 @@
   "claims": [],
   "asks": [
     "Dinis: URGENT, release the security fix (release/next2, 92bb7de) to the live email site; sent to d.decisions 16:54 UTC. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
-    "Dinis: copy the reversible-steps rule into AgentiCCells repositories' CLAUDE.md; sent to d.decisions 16:54 UTC. https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG"
+    "Dinis: earlier commits in the public Factory history (22 to 23 Nov, team/conductor.d/) describe the unfixed live email-site issue (rank 40); I trimmed the current files but did not rewrite history. Releasing the fix closes it. https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
+    "Dinis: copy the reversible-steps rule into AgentiCCells repositories' CLAUDE.md; sent to d.decisions 16:54 UTC. https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG",
+    "Dinis: archive email.pm.d, email.workflows.d and email.design.d (idle since 23 Nov 17:00, nothing waiting)? Keep email.dev.d until the rank 40 fix is live, since your push must be said in its session. https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG"
   ],
   "log": [
     "2026-11-22 ~01:24 UTC: started by maestro.d at Dinis's word (about 01:35 UTC by maestro.d's clock). Read CLAUDE.md, REALITY.md, conductor.b status and debriefs.",
@@ -142,7 +144,8 @@
     "2026-11-23 16:05 UTC: email.pm.d reported account A's crm.dev.a building a browser CRM, overlapping email.crm.d (not started).",
     "2026-11-23 16:54 UTC: G1 relayed: Email Cell code work moves to account A. Hand-overs asked of email.dev.d and email.pm.d; two asks sent to d.decisions; the rest pass to account A.",
     "2026-11-23 16:52 UTC: email.pm.d pushed its hand-over to account A (0c27bd0) and disabled its hourly pass.",
-    "2026-11-23 16:53 UTC: email.dev.d pushed its hand-over (b19ed7d). All account D email agents idle; hand-over commits sent to maestro.d for account A."
+    "2026-11-23 16:53 UTC: email.dev.d pushed its hand-over (b19ed7d). All account D email agents idle; hand-over commits sent to maestro.d for account A.",
+    "2026-11-24 11:57 UTC: maestro.d relayed the morning sync and checklist. Area files added (52417ac); live-issue details trimmed; archive candidates reported to maestro.d."
   ],
   "exceptions": [
     {
@@ -156,6 +159,12 @@
       "what": "chose approvers option (c) for email.dev.d to build on a branch behind the fail-closed default",
       "rule": "same",
       "why": "email.dev.d's recommendation, closest to Dinis's 04:08 UTC 22 Nov words; keeps ABP N8; reversible until released"
+    },
+    {
+      "time": "2026-11-24T11:56:00Z",
+      "what": "trimmed details of the unfixed live email-site issue (rank 40) from my status, decisions and debriefs; history not rewritten",
+      "rule": "how-it-works page, Never: publish details of an unfixed vulnerability in a live system (decisions.agents.sovereignweb.site, v0.1.87)",
+      "why": "the Factory is public; details stay in email.dev.d's notes until the fix is live"
     }
   ],
   "agent_alias": "d.conductor (AgentiCCells), per maestro.d 17:00 UTC 23 Nov",
