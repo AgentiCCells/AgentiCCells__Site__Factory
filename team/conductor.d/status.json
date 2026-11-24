@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-24T11:58:00Z",
+  "updated": "2026-11-24T13:51:00Z",
   "state": "Email Cell handed to account A (G1): all four account D email agents handed over and idle. Two asks with d.decisions.",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -145,7 +145,8 @@
     "2026-11-23 16:54 UTC: G1 relayed: Email Cell code work moves to account A. Hand-overs asked of email.dev.d and email.pm.d; two asks sent to d.decisions; the rest pass to account A.",
     "2026-11-23 16:52 UTC: email.pm.d pushed its hand-over to account A (0c27bd0) and disabled its hourly pass.",
     "2026-11-23 16:53 UTC: email.dev.d pushed its hand-over (b19ed7d). All account D email agents idle; hand-over commits sent to maestro.d for account A.",
-    "2026-11-24 11:57 UTC: maestro.d relayed the morning sync and checklist. Area files added (52417ac); live-issue details trimmed; archive candidates reported to maestro.d."
+    "2026-11-24 11:57 UTC: maestro.d relayed the morning sync and checklist. Area files added (52417ac); live-issue details trimmed; archive candidates reported to maestro.d.",
+    "2026-11-24 13:50 UTC: maestro.d relayed the keep-your-area guidance (Site__Agent__Factory 16d5ea3); added now.md."
   ],
   "exceptions": [
     {

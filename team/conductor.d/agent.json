@@ -16,5 +16,6 @@
   "restart": "team/conductor.d/restart.md",
   "active_until": "2026-12-01",
   "asks_go_to": "d.decisions https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG",
-  "updated": "2026-11-24T11:56:00Z"
+  "updated": "2026-11-24T13:51:00Z",
+  "now": "team/conductor.d/now.md"
 }
