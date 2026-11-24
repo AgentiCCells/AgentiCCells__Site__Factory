@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-23T16:59:00Z",
+  "updated": "2026-11-24T11:55:00Z",
   "state": "Email Cell handed to account A (G1): all four account D email agents handed over and idle. Two asks with d.decisions.",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -71,7 +71,7 @@
   ],
   "claims": [],
   "asks": [
-    "Dinis: URGENT, release the unknown-sender fix (release/next2, 92bb7de) to the live email site; sent to d.decisions 16:54 UTC. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
+    "Dinis: URGENT, release the security fix (release/next2, 92bb7de) to the live email site; sent to d.decisions 16:54 UTC. https://claude.ai/code/session_015gaHde7zcTqMyBWcdpdnR6",
     "Dinis: copy the reversible-steps rule into AgentiCCells repositories' CLAUDE.md; sent to d.decisions 16:54 UTC. https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG"
   ],
   "log": [
@@ -131,12 +131,12 @@
     "2026-11-22 09:27 UTC: email.workflows.d stopped its loop and wrote its hand-over (f715420).",
     "2026-11-22 09:29 UTC: email.workflows.d finished the trust ladder (c055e31); W17 for Dinis.",
     "2026-11-22 09:31 UTC: email.workflows.d's signed-entry run (436822c): rung 1 needs only the pin lists filled.",
-    "2026-11-22 09:35 UTC: email.workflows.d's key-paste run (de07862) found an unknown-sender sealed code kept without warning; email.dev.d asked to confirm (rank 40); flagged to Dinis.",
-    "2026-11-22 09:37 UTC: email.dev.d confirmed the unknown-sender code issue on the live site (medium to high); fix options put to Dinis; nothing pushed.",
+    "2026-11-22 09:35 UTC: email.workflows.d found a possible security issue on the live email site (rank 40); email.dev.d asked to confirm; flagged to Dinis.",
+    "2026-11-22 09:37 UTC: email.dev.d confirmed the security issue (rank 40, medium to high); fix options put to Dinis; nothing pushed. Details are in email.dev.d's notes and are not repeated here until it is fixed.",
     "2026-11-22 17:04 UTC: maestro.d relayed Dinis's word that the conductor can decide open items; asked Dinis to confirm here; Gmail tool naming (gmail.google.tool.sws) noted.",
     "2026-11-23 04:52 UTC: maestro.d relayed Dinis's no-agent-blocked rule; passed to the email team; branch-only fixes and approvers (c) asked of email.dev.d, logged as exceptions.",
     "2026-11-23 04:55 UTC: rule text verified against https://promptugal.news/CLAUDE.md and forwarded verbatim to email.pm.d and email.dev.d.",
-    "2026-11-23 04:53 UTC: email.dev.d built unknown-sender fixes (458c4ad); approvers (c) needs Dinis's key-type choice; release/next2 at 92bb7de.",
+    "2026-11-23 04:53 UTC: email.dev.d built security fix (458c4ad); approvers (c) needs Dinis's key-type choice; release/next2 at 92bb7de.",
     "2026-11-23 04:53 UTC: email.pm.d's permission check refused adopting the relayed rule; it keeps to its brief and did not pass the rule to workflows and design (a7a4f7f). The rule applies to the email team only once Dinis says so in their sessions or it is copied into their CLAUDE.md on his word.",
     "2026-11-23 15:06 UTC: email.pm.d reported an account A mail team (mail.conductor.a, mail.dev.a) with an overlapping release; asked maestro.d to connect; release order put to Dinis.",
     "2026-11-23 16:05 UTC: email.pm.d reported account A's crm.dev.a building a browser CRM, overlapping email.crm.d (not started).",
@@ -147,7 +147,7 @@
   "exceptions": [
     {
       "time": "2026-11-23T04:52:00Z",
-      "what": "asked email.dev.d to build unknown-sender fixes (1) and (2) with tests, branch only",
+      "what": "asked email.dev.d to build security fix (1) and (2) with tests, branch only",
       "rule": "No agent blocked: reversible steps go on your own call (Dinis ~03:00 and ~03:35 UTC 23 Nov, relayed by maestro.d); also within email.dev.d's brief (branch work)",
       "why": "protective, reversible, nothing goes live without a release; confirmed medium-to-high issue on live v0.1.51"
     },

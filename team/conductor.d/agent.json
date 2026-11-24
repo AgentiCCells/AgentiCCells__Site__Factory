@@ -1,0 +1,20 @@
+{
+  "name": "conductor.d@AgentiCCells.dinis",
+  "alias": "d.conductor (AgentiCCells)",
+  "account": "D",
+  "role": "Conducts the AgentiCCells agents on account D: watches, unblocks, relays Dinis's word, puts to Dinis what only he decides. Builds no sites.",
+  "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
+  "repository": "AgentiCCells/AgentiCCells__Site__Factory",
+  "area": "team/conductor.d/",
+  "key": {
+    "fingerprint": "sha256:dea2dba63836feae",
+    "signing_fingerprint": "sha256:700109d85b177797",
+    "published": "team/keys.json (PR #52, merged by Dinis, 57c4c0e)"
+  },
+  "brief": "team/conductor.d/briefs/2026-11-22__conductor-d.md",
+  "status": "team/conductor.d/status.json",
+  "restart": "team/conductor.d/restart.md",
+  "active_until": "2026-12-01",
+  "asks_go_to": "d.decisions https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG",
+  "updated": "2026-11-24T11:56:00Z"
+}
