@@ -1,7 +1,7 @@
 {
   "agent": "conductor.d@AgentiCCells.dinis",
   "session": "https://claude.ai/code/session_015gaHdcaj9Ta2Tke7pnZ3Q9",
-  "updated": "2026-11-24T13:51:00Z",
+  "updated": "2026-11-26T23:54:00Z",
   "state": "Email Cell handed to account A (G1): all four account D email agents handed over and idle. Two asks with d.decisions.",
   "source_note": "Facts from this repository on dev at 7d7bb7b and from this session. Nothing on account D checked with get_session yet: no sessions to watch.",
   "key": {
@@ -146,7 +146,8 @@
     "2026-11-23 16:52 UTC: email.pm.d pushed its hand-over to account A (0c27bd0) and disabled its hourly pass.",
     "2026-11-23 16:53 UTC: email.dev.d pushed its hand-over (b19ed7d). All account D email agents idle; hand-over commits sent to maestro.d for account A.",
     "2026-11-24 11:57 UTC: maestro.d relayed the morning sync and checklist. Area files added (52417ac); live-issue details trimmed; archive candidates reported to maestro.d.",
-    "2026-11-24 13:50 UTC: maestro.d relayed the keep-your-area guidance (Site__Agent__Factory 16d5ea3); added now.md."
+    "2026-11-24 13:50 UTC: maestro.d relayed the keep-your-area guidance (Site__Agent__Factory 16d5ea3); added now.md.",
+    "2026-11-26 23:52 UTC: cl-4.maestro (new maestro session) relayed Dinis's word (~23:50 UTC, old maestro session): only the maestro runs on a schedule; agents are woken by message. I have no scheduled wake; email.pm.d's was already disabled (23 Nov)."
   ],
   "exceptions": [
     {
@@ -169,5 +170,6 @@
     }
   ],
   "agent_alias": "d.conductor (AgentiCCells), per maestro.d 17:00 UTC 23 Nov",
-  "asks_channel": "d.decisions https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG"
+  "asks_channel": "d.decisions https://claude.ai/code/session_015gaHdaiX9VvjVwHaNezGJG",
+  "maestro": "cl-4.maestro https://claude.ai/code/session_015gaHdaUZWyhvN7nQ4fEmMo (took over from https://claude.ai/code/session_015gaHdbdtdAPC4v2AstRS8T at 23:34 UTC 25 Nov, its report)"
 }
