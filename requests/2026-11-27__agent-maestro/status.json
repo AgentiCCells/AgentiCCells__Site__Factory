@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-27__agent-maestro",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-27T14:01:57Z",
+  "commit": "93e5a2e32af82efdaea50270517f014c716b9247",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-27T14:01:18Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Agent__Maestro",
+      "time": "2026-11-27T14:01:22Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 0247f86 on dev",
+      "time": "2026-11-27T14:01:24Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://agent-maestro.agenticcells.site; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-27T14:01:28Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "CNAME agent-maestro.agenticcells.site -> agenticcells.github.io, visible in public DNS",
+      "time": "2026-11-27T14:01:39Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain agent-maestro.agenticcells.site",
+      "time": "2026-11-27T14:01:39Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-27T14:01:39Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 0247f86",
+      "time": "2026-11-27T14:01:41Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://agent-maestro.agenticcells.site/version.json serves v0.1.0 at 0247f86; Enforce HTTPS turned on",
+      "time": "2026-11-27T14:01:57Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-27T14:01:57Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-27T14:01:57Z"
+    }
+  ]
+}
