@@ -22,6 +22,8 @@ export const ZONES = {
   // agenticcells.org added at Dinis's word, 2026-11-27 ~13:50 UTC in factory.c's session ("yes I agree with your plan").
   // Apex only: a person points it at GitHub Pages; the factory never writes an apex.
   'agenticcells.org': ['AgentiCCells'],
+  // agilecells.org added at Dinis's word, 2026-11-27 ~14:55 UTC in c.maestro's session (relayed): build agilecells.org now, the .org only.
+  'agilecells.org': ['AgentiCCells'],
 };
 export const ALLOWED_ZONES = Object.keys(ZONES);
 // The zone a domain belongs to (the longest allowed suffix), or null.
