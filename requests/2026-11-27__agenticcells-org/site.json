@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "AgentiCCells.org: Agile Cells",
+  "description": "Agile Cells: a framework for ephemeral agile teams of people and agents, many types of cells working together, with an API and JSON files that describe each cell.",
+  "domain": "agenticcells.org",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Site__AgentiCCells-Org"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cl-3.factory@AgentiCCells.dinis"
+}

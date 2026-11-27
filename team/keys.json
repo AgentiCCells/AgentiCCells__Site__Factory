@@ -106,6 +106,33 @@
         "fingerprint": "sha256:dea2dba63836feae",
         "signing_fingerprint": "sha256:700109d85b177797"
       }
+    },
+    {
+      "id": "cl-3-factory-agenticcells",
+      "agent": "cl-3.factory@AgentiCCells.dinis",
+      "label": "cl-3.factory@AgentiCCells.dinis",
+      "role": "The factory agent on Dinis's account C (cl-3), known in SovereignWebsite as factory.c@SovereignWebsite.dinis; here it files AgentiCCells site requests. The same key as its SovereignWebsite entry, under this repository's naming.",
+      "fingerprint": "sha256:f936154a58deb1d0",
+      "signing_fingerprint": "sha256:7a5a011fa58224cd",
+      "created": "2026-11-27",
+      "session": "https://claude.ai/code/session_01Kw9UwFQ86g2ZeXQ2edTAjh",
+      "held_by": "factory.c@SovereignWebsite.dinis, session on Dinis's account C",
+      "lifetime": "ephemeral: valid while this agent's session exists",
+      "status": "active",
+      "how": "Made by the agent in its own session on 22 November 2026 with sgit pki keygen (published in SovereignWebsite__IaC team/keys.json as factory-c-sovereignwebsite); this entry copies its public bundle. Only the public half is here.",
+      "ssh_signing": {
+        "from": "bundle.sign",
+        "note": "Commits are signed with the bundle.sign key as a git SSH signature (namespace git)."
+      },
+      "authorised": "Dinis, 2026-11-27 ~13:50 UTC, in factory.c's session (https://claude.ai/code/session_01Kw9UwFQ86g2ZeXQ2edTAjh): \"actually is cl-3.factory@AgentiCCells.dinis the correct name for you? ... and yes I agree with your plan\".",
+      "bundle": {
+        "v": 1,
+        "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwIbZoUzI8xnLv8fgJ+Io\nr7YfvPgiXA69upNBMSXeHILRr86noMou6xvK1nri9rBvTD0phoiXIeRpCra6wRrH\n3tkLDIZDCHABX0HdzJGrnUhcZagJmtdOCbD9/Smkh7T6ujQD2EGeATMJ1+WCivl6\nsUrRXEIopZN1z4NxIdoD7OPtAk9SudWI5TJxhkT1iI9TXWWWklDBwXvY6z3OAYmi\nodgXkByEUn9xV/+wgZg2lHDaZi5iahml/FR9fYnndcpa1bKAcMSmqpVPL3wTNVwf\nEfyHKjdp/qB/x5Xva4EAYsuUt0E3dmJQNe6fT/JjxMwHict5/n/bS02+Ee1pG4hr\nOnqXicppmYqqVhW5hSrARoqKouucDWrtpL0HIObJpoe5eUtwaj6XbnplcOWhRMU+\nH3UfnYw+se6gLfgByOJvzs+X8yZ+XUURTQDfmVKkF++3sqLa062x78i7ekNBvjkq\ntXOaAuZDwHef7XLJR/HByCwkt6W3FeziWjuOuFWv0ES7KdWyyTyGb4kUGrWLNs3i\nCB6znBqRicGkWzOXNP31IMtlu8JyRWLOSi+fYnYn/z5hVBrk2k6bFJxMT+q6e/uH\n29Rfn+Rn4z/KjZdQwXR/nArkwJnjayFlqA+6WftmCboeFf7jxYVtylMjzciYsicp\ncuQLfJIjDFMKdFlKBQtaU20CAwEAAQ==\n-----END PUBLIC KEY-----\n",
+        "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE/UEn/a4mOFWYGrV10Of3DSA5vwoQ\nGvMpmz451oCL+9IdmCz04frV+PDpCf8TFi3GvGMXRbfGUQKf2al9jhNodA==\n-----END PUBLIC KEY-----\n",
+        "label": "factory-c-sovereignwebsite",
+        "fingerprint": "sha256:f936154a58deb1d0",
+        "signing_fingerprint": "sha256:7a5a011fa58224cd"
+      }
     }
   ]
 }
