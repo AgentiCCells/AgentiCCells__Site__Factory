@@ -4,8 +4,8 @@
   "description": "Agile Cells: many types of cells, made of people and agents, working together in an agile way, with an API and JSON files that describe each cell, its roles and its work.",
   "domain": "agilecells.org",
   "repo": {
-    "owner": "AgentiCCells",
-    "name": "AgentiCCells__Site__AgileCells-Org"
+    "owner": "AgileCells",
+    "name": "AgileCells__Site__Website"
   },
   "visibility": "public",
   "vault": {

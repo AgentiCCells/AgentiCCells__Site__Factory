@@ -95,6 +95,14 @@ jobs:
           app-id: ${{ vars.FACTORY_APP_ID }}
           private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
           owner: PrompTugal
+      - name: GitHub App token for AgileCells (if the App is installed there)
+        id: app_agc
+        continue-on-error: true
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FACTORY_APP_ID }}
+          private-key: ${{ secrets.FACTORY_APP_PRIVATE_KEY }}
+          owner: AgileCells
       - name: AWS role for Route 53 (OIDC, no stored keys)
         if: vars.FACTORY_AWS_ROLE_ARN != ''
         uses: aws-actions/configure-aws-credentials@v4
@@ -107,6 +115,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app.outputs.token }}
           GH_TOKEN_PROMPTUGAL: ${{ steps.app_pt.outputs.token }}
+          GH_TOKEN_AGILECELLS: ${{ steps.app_agc.outputs.token }}
           FACTORY_ROUTE53_ZONE_ID: ${{ vars.FACTORY_ROUTE53_ZONE_ID }}
           FACTORY_ROUTE53_ZONES: ${{ vars.FACTORY_ROUTE53_ZONES }}
         run: node build/apply.mjs --real
