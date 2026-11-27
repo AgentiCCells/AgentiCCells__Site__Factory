@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Agent: Maestro",
+  "description": "The maestro agents' home in AgentiCCells: their keys, areas and state, each account's under its own folder (cl-3.maestro first). The maestro routes Dinis's words to the agents.",
+  "domain": "agent-maestro.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Agent__Maestro"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cl-3.factory@AgentiCCells.dinis"
+}

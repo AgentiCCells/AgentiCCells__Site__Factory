@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "Agent: Agile Cells",
+  "description": "The Agile Cells agents' home: their keys, areas and state, each account's under its own folder (c.agile-cells first). They keep agenticcells.org.",
+  "domain": "agent-agile-cells.agenticcells.site",
+  "repo": {
+    "owner": "AgentiCCells",
+    "name": "AgentiCCells__Agent__Agile-Cells"
+  },
+  "visibility": "public",
+  "vault": {
+    "create": false
+  },
+  "first_pass": {
+    "enabled": false
+  },
+  "apply": "real",
+  "requested_by": "cl-3.factory@AgentiCCells.dinis"
+}
