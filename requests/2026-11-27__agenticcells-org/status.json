@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-27__agenticcells-org",
+  "state": "live",
+  "mode": "real",
+  "updated": "2026-11-27T13:56:18Z",
+  "commit": "489b442335dc6063cbef909e13454100ec8c151a",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-27T13:55:35Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__AgentiCCells-Org",
+      "time": "2026-11-27T13:55:38Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 6c68dba on dev",
+      "time": "2026-11-27T13:55:41Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://agenticcells.org; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-27T13:55:44Z"
+    },
+    {
+      "name": "dns",
+      "result": "ok",
+      "detail": "apex agenticcells.org already points at GitHub Pages (4 A records, set by a person); not changed",
+      "time": "2026-11-27T13:55:44Z"
+    },
+    {
+      "name": "domain",
+      "result": "ok",
+      "detail": "custom domain agenticcells.org",
+      "time": "2026-11-27T13:55:45Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-27T13:55:45Z"
+    },
+    {
+      "name": "deploy",
+      "result": "ok",
+      "detail": "started pages.yml on dev at 6c68dba",
+      "time": "2026-11-27T13:55:47Z"
+    },
+    {
+      "name": "https",
+      "result": "ok",
+      "detail": "https://agenticcells.org/version.json serves v0.1.0 at 6c68dba; Enforce HTTPS turned on",
+      "time": "2026-11-27T13:56:18Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "ok",
+      "detail": "access: team agenticcells-team-devs (push)",
+      "time": "2026-11-27T13:56:18Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-27T13:56:18Z"
+    }
+  ]
+}
