@@ -19,6 +19,9 @@ const REF = /^[A-Za-z0-9._/-]{1,100}$/;
 export const ZONES = {
   'agenticcells.site': ['AgentiCCells'],
   'promptugal.news': ['PrompTugal'],
+  // agenticcells.org added at Dinis's word, 2026-11-27 ~13:50 UTC in factory.c's session ("yes I agree with your plan").
+  // Apex only: a person points it at GitHub Pages; the factory never writes an apex.
+  'agenticcells.org': ['AgentiCCells'],
 };
 export const ALLOWED_ZONES = Object.keys(ZONES);
 // The zone a domain belongs to (the longest allowed suffix), or null.
