@@ -1,0 +1,75 @@
+{
+  "request": "2026-11-27__agilecells-org",
+  "state": "failed",
+  "mode": "real",
+  "updated": "2026-11-27T14:30:25Z",
+  "commit": "7b3e4c2f3a9c5a5b773fd784bf2fbe5289e937b2",
+  "steps": [
+    {
+      "name": "validate",
+      "result": "ok",
+      "detail": "request is valid",
+      "time": "2026-11-27T14:30:16Z"
+    },
+    {
+      "name": "repo",
+      "result": "ok",
+      "detail": "created AgentiCCells/AgentiCCells__Site__AgileCells-Org",
+      "time": "2026-11-27T14:30:19Z"
+    },
+    {
+      "name": "seed",
+      "result": "ok",
+      "detail": "seeded from AgentiCCells/AgentiCCells__Site__Template@dev as 5b11bd8 on dev",
+      "time": "2026-11-27T14:30:21Z"
+    },
+    {
+      "name": "settings",
+      "result": "ok",
+      "detail": "default branch dev; website https://agilecells.org; Pages from GitHub Actions; dev may deploy",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "dns",
+      "result": "failed",
+      "detail": "apex agilecells.org does not point at GitHub Pages (A records: 208.91.197.27); a person sets the apex, the factory does not",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "domain",
+      "result": "skipped",
+      "detail": "an earlier step failed",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "vault",
+      "result": "skipped",
+      "detail": "an earlier step failed",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "deploy",
+      "result": "skipped",
+      "detail": "an earlier step failed",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "https",
+      "result": "skipped",
+      "detail": "an earlier step failed",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "collaborators",
+      "result": "skipped",
+      "detail": "an earlier step failed",
+      "time": "2026-11-27T14:30:25Z"
+    },
+    {
+      "name": "first-pass",
+      "result": "skipped",
+      "detail": "not requested",
+      "time": "2026-11-27T14:30:25Z"
+    }
+  ]
+}
